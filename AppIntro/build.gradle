@@ -1,0 +1,24 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+apply plugin: 'signing'
+apply from: 'maven-push.gradle'
+
+android {
+    compileSdkVersion project.compileSdkVersion
+    buildToolsVersion project.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+        versionCode 13
+        versionName "4.1.0"
+
+        consumerProguardFiles 'consumer-proguard-rules.pro'
+        vectorDrawables.useSupportLibrary = true
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:appcompat-v7:' + project.supportLibraryVersion
+    implementation 'com.android.support:support-annotations:' + project.supportLibraryVersion
+}

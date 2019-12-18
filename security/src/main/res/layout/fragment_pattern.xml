@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/current_step"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="23sp" />
+
+    <vn.vmb.security.widget.SquareLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <me.zhanghai.android.patternlock.PatternView
+            android:id="@+id/pattern"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:pl_successColor="@color/colorPrimary"
+            app:pl_errorColor="@android:color/holo_red_light"/>
+    </vn.vmb.security.widget.SquareLayout>
+</LinearLayout>

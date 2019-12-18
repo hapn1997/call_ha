@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="lock_type" format="enum">
+        <enum name="passcode" value="0" />
+        <enum name="pattern" value="1" />
+    </attr>
+
+    <attr name="action" format="enum">
+        <enum name="unlock" value="0" />
+        <enum name="create_password" value="1" />
+    </attr>
+
+    <declare-styleable name="LockView">
+        <attr name="lock_type" />
+        <attr name="action" />
+    </declare-styleable>
+</resources>

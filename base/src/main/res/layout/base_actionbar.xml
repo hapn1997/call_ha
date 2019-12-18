@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlBaseActionbar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base_actionbar_height"
+    android:background="@color/transparent">
+
+    <ImageView
+        android:id="@+id/ivLeft"
+        android:layout_width="@dimen/base_actionbar_height"
+        android:layout_height="@dimen/base_actionbar_height"
+        android:padding="@dimen/base_actionbar_iv_padding" />
+
+    <ImageView
+        android:id="@+id/ivRight"
+        android:layout_width="@dimen/base_actionbar_height"
+        android:layout_height="@dimen/base_actionbar_height"
+        android:layout_alignParentRight="true"
+        android:padding="@dimen/base_actionbar_iv_padding" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@+id/ivRight"
+        android:layout_toRightOf="@+id/ivLeft"
+        android:gravity="center"
+        android:textSize="@dimen/base_actionbar_size_title" />
+
+    <EditText
+        android:id="@+id/autoEt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null"
+        android:layout_toLeftOf="@+id/ivRight"
+        android:layout_toRightOf="@+id/ivLeft"
+        android:completionThreshold="1"
+        android:ems="10"
+        android:gravity="center"
+        android:visibility="gone" />
+
+</RelativeLayout>

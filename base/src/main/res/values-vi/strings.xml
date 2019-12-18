@@ -1,0 +1,9 @@
+<resources>
+    <string name="update_network_fail">Kết nối tới máy chủ có vấn đề.</string>
+    <string name="update_network_fail_message">Xem lại cài đặt mạng và khởi chạy lại ứng dụng.</string>
+    <string name="update_network_fail_message2">Vuốt xuống để thử lại.</string>
+    <string name="base_downloading">Đang tải file. Xin vui lòng đợi....</string>
+    <string name="base_download_fail">Tải file thất bại.</string>
+    <string name="base_update_bt_ok">Có</string>
+    <string name="base_update_bt_no">Không</string>
+</resources>

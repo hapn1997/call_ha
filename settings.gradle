@@ -1,0 +1,1 @@
+include ':app', ':AppIntro', ':base', ':FloatingView', ':frag-nav', ':MaterialDateTimePicker', ':PagerSlidingTabStrip', ':security', ':TagsEditText'

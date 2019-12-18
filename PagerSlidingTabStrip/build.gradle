@@ -1,0 +1,15 @@
+apply plugin: 'com.android.library'
+
+dependencies {
+    implementation 'com.android.support:support-v4:' + project.supportLibraryVersion
+}
+
+android {
+    compileSdkVersion project.compileSdkVersion
+    buildToolsVersion project.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+    }
+}

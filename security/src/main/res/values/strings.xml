@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Security</string>
+    <string name="next">Next</string>
+    <string name="alert_not_enough_digits">6 digits is required</string>
+
+    <string name="set_password">Set password (6 Characters)</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="draw_pattern">Draw a pattern</string>
+    <string name="confirm_pattern">Confirm pattern</string>
+    <string name="alert_no_fingerprint">No fingerprint configured. Please register at least one fingerprint in your device\'s Settings</string>
+    <string name="alert_need_keyguard_secure">Please enable lockscreen security in your device\'s Settings</string>
+    <string name="alert_no_support">Your device doesn\'t support fingerprint authentication</string>
+    <string name="alert_no_permission">Please enable the fingerprint permission</string>
+    <string name="alert_verify">Place your fingertip on the Home button to verify your identity</string>
+    <string name="alert_verify_create_password"></string>
+</resources>

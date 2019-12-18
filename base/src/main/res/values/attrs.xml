@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Banner">
+        <attr name="isThumbnail" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="BaseActionbar">
+        <attr name="bgBaseActionbar" format="integer" />
+        <attr name="bgBaseActionbarColor" format="color" />
+        <attr name="srcLeft" format="integer" />
+        <attr name="srcRight" format="integer" />
+        <attr name="isSearch" format="boolean" />
+
+        <attr name="title" format="string" />
+        <attr name="titleColor" format="color" />
+
+    </declare-styleable>
+
+</resources>
