@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="xanh">#009900</color>
+    <color name="colorPrimary">#1181ff</color>
+    <color name="colorPrimaryDark">#1181ff</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="primary_color_detail_contact">#5f7d8c</color>
+    <color name="divider">#e5e8ef</color>
+    <color name="color_tab_emoji_normal">#9E9E9E</color>
+    <color name="color_tag_recipient">#cfdbdc</color>
+    <color name="gray_400">#BDBDBD</color>
+    <color name="gray_300">#E0E0E0</color>
+    <color name="transparent">#00000000</color>
+    <color name="start_color_shadow">#30000000</color>
+    <color name="gray_200">#EEEEEE</color>
+    <color name="schedule_message">#aa47bb</color>
+    <color name="avatar">#989CA8</color>
+    <color name="transparent_90">#90000000</color>
+    <color name="blue_ios">#1181ff</color>
+    <color name="custom_dark_grey">#919191</color>
+    <color name="side_bar_color">#999E9E9E</color>
+
+    <color name="colorDivider">#e6e5eb</color>
+    <color name="colorBlue">#1181ff</color>
+    <color name="colorBlack">#90000000</color>
+    <color name="bg_incomming_message">#1181ff</color>
+    <color name="bg_outgoing_message">#e6e5eb</color>
+    <color name="snippet_text_color">#87868b</color>
+    <color name="custom_grey">#f8f8f8</color>
+</resources>

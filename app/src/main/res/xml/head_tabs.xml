@@ -1,0 +1,28 @@
+<tabs>
+
+    <tab
+        icon="@drawable/icon_tab_fb_mess"
+        id="@+id/tab_fb_mess"
+        title="Fb Chat"/>
+
+    <tab
+        icon="@drawable/icon_tab_home"
+        id="@+id/tab_message"
+        title="Messages"/>
+
+    <tab
+        icon="@drawable/icon_tab_call_log"
+        id="@+id/tab_call_log"
+        title="Recents"/>
+
+    <tab
+        icon="@drawable/icon_tab_dialpad"
+        id="@+id/tab_dialpad"
+        title="Keypad"/>
+
+    <tab
+        icon="@drawable/icon_tab_contact"
+        id="@+id/tab_contact"
+        title="Contacts"/>
+
+</tabs>

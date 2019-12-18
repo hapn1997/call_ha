@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vn.com.call.widget.dialpadview.DialpadKeyButton
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:soundEffectsEnabled="false"
+    android:clickable="true"
+    android:layout_width="0dp"
+    android:layout_height="77dp"
+    android:layout_weight="1"
+    android:minHeight="77dp"
+    android:focusable="true"
+    android:background="@color/white">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+       android:layout_marginLeft="@dimen/dp_10"
+        android:background="@drawable/ic_contact_dark"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dialpad_key_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="30sp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_marginTop="-7dp"
+            android:textStyle="bold"
+            android:id="@+id/dialpad_key_letters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="9dp"
+            android:textColor="@android:color/black"
+
+            android:text="ABC"/>
+    </LinearLayout>
+</vn.com.call.widget.dialpadview.DialpadKeyButton>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fast_scroll_overlay_text_size">100dp</dimen>
+    <dimen name="padding_segment_button_call">8dp</dimen>
+    <dimen name="size_avatar_contact_list">48dp</dimen>
+    <dimen name="height_sub_item_detail_contact">64dp</dimen>
+    <dimen name="corner_background_message">10dp</dimen>
+    <dimen name="corner_small_background_message">2dp</dimen>
+    <dimen name="min_input_message">48dp</dimen>
+    <dimen name="height_row_more_screen">56dp</dimen>
+    <dimen name="text_size_sms">15sp</dimen>
+    <dimen name="max_height_recipients">120dp</dimen>
+    <dimen name="min_height_compose_view">48dp</dimen>
+    <dimen name="TabPaddingLeftRight">0dp</dimen>
+    <dimen name="over_margin_touchbar">8dp</dimen>
+    <dimen name="dialpad_key_height">64dp</dimen>
+    <dimen name="height_call_button_dialpad">48dp</dimen>
+    <dimen name="size_text_star_letter">15sp</dimen>
+    <dimen name="margin_icon_charhead">12dp</dimen>
+    <dimen name="text_badge_chathead_size">10sp</dimen>
+    <dimen name="size_badge_chathead">16dp</dimen>
+    <dimen name="padding_tag_recipient">8dp</dimen>
+    <dimen name="padding_tag_pick_contact">8dp</dimen>
+    <dimen name="padding_tag_pick_contact_top_bottom">4dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="fab_size_touchbar">56dp</dimen>
+
+    <dimen name="text_size_sms_15">15sp</dimen>
+    <dimen name="text_size_sms_16">16sp</dimen>
+    <dimen name="text_size_sms_17">17sp</dimen>
+    <dimen name="text_size_sms_18">18sp</dimen>
+    <dimen name="text_size_sms_19">19sp</dimen>
+    <dimen name="text_size_sms_20">20sp</dimen>
+    <dimen name="text_size_sms_21">21sp</dimen>
+    <dimen name="text_size_sms_22">22sp</dimen>
+    <dimen name="text_size_sms_23">23sp</dimen>
+    <dimen name="text_size_sms_24">24sp</dimen>
+    <dimen name="size_icon_chathead_small">32dp</dimen>
+    <dimen name="size_icon_chathead_normal">38dp</dimen>
+    <dimen name="size_icon_chathead_large">44dp</dimen>
+    <dimen name="size_icon_chathead_extra_large">50dp</dimen>
+
+
+    <dimen name="text_size_tiny">9sp</dimen>
+    <dimen name="text_size_small">11sp</dimen>
+    <dimen name="text_size_smallx">12sp</dimen>
+    <dimen name="text_size_smallxx">13sp</dimen>
+    <dimen name="text_size_smallxxx">14sp</dimen>
+    <dimen name="text_size_normal">15sp</dimen>
+    <dimen name="text_size_normalx">16sp</dimen>
+    <dimen name="text_size_normalxx">17sp</dimen>
+    <dimen name="text_size_normalxxx">18sp</dimen>
+    <dimen name="text_size_large">20sp</dimen>
+    <dimen name="text_size_largex">22sp</dimen>
+    <dimen name="text_size_largexx">25sp</dimen>
+    <dimen name="text_size_largexxx">28sp</dimen>
+    <dimen name="text_size_huge">32sp</dimen>
+    <dimen name="text_size_hugex">35sp</dimen>
+    <dimen name="text_size_hugexx">38sp</dimen>
+
+    <dimen name="margin_normal">15dp</dimen>
+    <dimen name="margin_normalx">17dp</dimen>
+    <dimen name="margin_normalxx">20dp</dimen>
+    <dimen name="margin_normalxxx">23dp</dimen>
+    <dimen name="margin_large">25dp</dimen>
+    <dimen name="margin_largex">28dp</dimen>
+    <dimen name="margin_largexx">30dp</dimen>
+    <dimen name="margin_largexxx">40dp</dimen>
+    <dimen name="margin_huge">45dp</dimen>
+    <dimen name="margin_hugex">48dp</dimen>
+    <dimen name="margin_hugexx">52dp</dimen>
+    <dimen name="margin_hugexxx">65dp</dimen>
+    <dimen name="margin_tiny">1dp</dimen>
+    <dimen name="margin_tinyx">2dp</dimen>
+    <dimen name="margin_tinyxx">3dp</dimen>
+    <dimen name="margin_tinyxxx">4dp</dimen>
+    <dimen name="margin_small">5dp</dimen>
+    <dimen name="margin_smallx">8dp</dimen>
+    <dimen name="margin_smallxx">10dp</dimen>
+    <dimen name="margin_smallxxx">12dp</dimen>
+    <dimen name="_20sdp">20dp</dimen>
+    <dimen name="_4sdp">4dp</dimen>
+    <dimen name="_2sdp">2dp</dimen>
+    <dimen name="_40sdp">40dp</dimen>
+    <dimen name="_5sdp">5dp</dimen>
+    <dimen name="_8sdp">8dp</dimen>
+    <dimen name="_3sdp">3dp</dimen>
+    <dimen name="_24sdp">24dp</dimen>
+
+
+
+
+
+
+
+
+
+        <dimen name="_80sdp">80dp</dimen>
+
+
+
+
+        <dimen name="_10sdp">10dp</dimen>
+        <dimen name="_35sdp">35dp</dimen>
+
+        <dimen name="_50sdp">50dp</dimen>
+        <dimen name="_12sdp">12dp</dimen>
+        <dimen name="_44sdp">44dp</dimen>
+
+
+
+</resources>

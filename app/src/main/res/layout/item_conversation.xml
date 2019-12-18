@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:background="@drawable/background_row"
+    android:id="@+id/root">
+    <vn.com.call.widget.AvatarView
+        android:id="@+id/avatar"
+        android:layout_width="@dimen/size_avatar_contact_list"
+        android:layout_height="@dimen/size_avatar_contact_list" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@+id/avatar"
+        android:layout_marginLeft="16dp">
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:drawablePadding="8dp"
+            android:text="Vietcombank"/>
+        <TextView
+            android:id="@+id/snippet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="4dp"
+            android:text="to get a list of sms conversation. The recipient_ids returns some value Like 302, 301 259 etc. What I want is a function where i will pass the recipient_ids as perameter and it will return the display name of the contact (If available else the Number)"/>
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:alpha="0.5"
+            android:layout_marginTop="4dp"
+            android:textSize="12sp"
+            android:text="11:11"/>
+
+    </LinearLayout>
+</RelativeLayout>

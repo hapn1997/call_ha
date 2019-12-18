@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_container"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.NestedScrollView
+
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <vn.com.call.widget.LinearLayoutRatio
+                android:layout_marginTop="70dp"
+                android:id="@+id/avatar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:ratioHeight="9"
+                app:ratioWidth="16">
+
+                <vn.com.call.widget.AvatarView
+                     android:layout_marginTop="7dp"
+                    android:id="@+id/avatar"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_above="@+id/name"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="16dp" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="Cuc cu"
+                    android:textColor="@android:color/black"
+                    android:textSize="25sp" />
+                   <LinearLayout
+                       android:layout_marginTop="@dimen/_20sdp"
+                       android:padding="@dimen/_5sdp"
+                       android:weightSum="3"
+                       android:background="@color/white"
+                       android:orientation="horizontal"
+                       android:layout_width="match_parent"
+                       android:layout_height="@dimen/_80sdp">
+
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:weightSum="2"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                       <ImageButton
+                           android:paddingRight="8dp"
+                           android:background="@color/white"
+
+                           android:scaleType="fitEnd"
+                           android:layout_weight="1"
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:id="@+id/sms"
+                           android:src="@drawable/mesager_icon">
+                       </ImageButton>
+                    <TextView
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:text="Messager"
+                        android:textColor="@color/blue_ios"
+                        android:gravity="end"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    </TextView>
+                </LinearLayout>
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:layout_weight="1"
+                           android:orientation="vertical"
+                           android:weightSum="2">
+
+                           <ImageButton
+                               android:id="@+id/call"
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"
+                               android:layout_weight="1"
+                               android:background="@color/white"
+                               android:scaleType="fitCenter"
+                               android:src="@drawable/call_iconv">
+
+                           </ImageButton>
+
+                           <TextView
+                               android:layout_marginTop="3dp"
+                                  android:textSize="12dp"
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"
+                               android:gravity="center_horizontal"
+                               android:text="Call"
+                               android:textColor="@color/blue_ios">
+
+                           </TextView>
+
+                       </LinearLayout>
+                <LinearLayout
+                    android:background="@color/white"
+                    android:layout_weight="1"
+                    android:weightSum="2"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                       <ImageButton
+                           android:paddingLeft="6dp"
+                           android:scaleType="fitStart"
+                           android:src="@drawable/ic_edit_primary_color_24dp"
+                           android:background="@color/white"
+                           android:layout_weight="1"
+                           android:id="@+id/edit"
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent">
+
+                       </ImageButton>
+                    <TextView
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:id="@+id/saveedit"
+                        android:text="Edit"
+                        android:textColor="@color/blue_ios"
+                        android:gravity="top"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"></TextView>
+                </LinearLayout>
+
+                   </LinearLayout>
+            </vn.com.call.widget.LinearLayoutRatio>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp" />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:id="@+id/phone_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/recents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/head_recents_layout_contact_detail" />
+
+                    <include layout="@layout/item_call_log_detail_contact_detail" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:id="@+id/another_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </android.support.v7.widget.CardView>
+
+
+            <LinearLayout
+                android:id="@+id/bottom_tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:background="@color/gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"></View>
+                <TextView
+                    android:id="@+id/send_sms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/send_message"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size_sms_15" />
+                <View
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@color/gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"></View>
+
+                <TextView
+
+                    android:id="@+id/share_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="11dp"
+                    android:text="@string/share_contact"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size_sms_15" />
+                <View
+                    android:layout_marginTop="11dp"
+                    android:background="@color/gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"></View>
+
+                <TextView
+                    android:id="@+id/add_favorite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/add_favorite"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size_sms_15"
+                     />
+                <View
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"></View>
+                <TextView
+                    android:id="@+id/locationw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Share my Location"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size_sms_15"
+                    />
+                <View
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"></View>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@android:color/transparent"/>
+
+    <android.support.v7.widget.CardView
+        android:visibility="gone"
+        android:id="@+id/tools"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardElevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/call1"
+                style="@style/DetailContact.Tools.Item"
+                android:drawableTop="@drawable/call_iconv"
+                android:text="@string/call" />
+
+            <Button
+                android:id="@+id/sms1"
+                style="@style/DetailContact.Tools.Item"
+                android:drawableTop="@drawable/mesager_icon"
+
+                android:text="@string/sms" />
+
+            <Button
+
+                android:id="@+id/edit1"
+                style="@style/DetailContact.Tools.Item"
+                android:drawableTop="@drawable/ic_edit_primary_color_24dp"
+                android:text="@string/edit" />
+
+            <Button
+                android:id="@+id/block"
+                style="@style/DetailContact.Tools.Item"
+                android:drawableTop="@drawable/ic_block_primary_color_24dp"
+                android:text="@string/block"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</FrameLayout>

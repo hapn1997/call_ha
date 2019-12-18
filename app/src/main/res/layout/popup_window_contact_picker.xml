@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/colorPrimary">
+        <ImageButton
+            android:id="@+id/cancel"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/ic_arrow_back_white_24dp"
+            android:background="@drawable/background_row"/>
+
+        <EditText
+            android:id="@+id/input_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/done"
+            android:layout_toRightOf="@+id/cancel"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="16dp"
+            android:hint="@string/hint_pick_people"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="15sp"/>
+
+        <ImageButton
+            android:id="@+id/done"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/ic_done_white_24dp"
+            android:background="@drawable/background_row"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp">
+
+        <vn.com.call.widget.RecipientLayout
+            android:id="@+id/recipient_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:maxHeight="@dimen/max_height_recipients" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/contacts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

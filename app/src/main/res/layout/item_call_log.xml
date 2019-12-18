@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:background="@drawable/background_row"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="8dp"
+    >
+
+
+    <ImageView
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:visibility="gone"
+        android:src="@drawable/removeitem"
+        android:id="@+id/imageremove"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/text_size_sms_18"
+        ></ImageView>
+
+    <LinearLayout
+        android:layout_marginLeft="11dp"
+         android:layout_toRightOf="@+id/imageremove"
+        android:id="@+id/type_log"
+        android:layout_width="9dp"
+        android:layout_height="9dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_24sdp">
+
+    </LinearLayout>
+
+    <vn.com.call.widget.AvatarView
+        android:visibility="gone"
+        android:layout_marginTop="9dp"
+        android:layout_toRightOf="@+id/type_log"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:id="@+id/avatar"
+        android:layout_width="45dp"
+        android:layout_height="45dp" />
+
+    <LinearLayout
+        android:id="@+id/dcdcdc"
+        android:layout_width="match_parent"
+        android:layout_height="63dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_toLeftOf="@+id/right"
+        android:layout_toRightOf="@+id/avatar"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:textSize="@dimen/text_size_sms_15"
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:text="Nguyen Son"
+            android:textColor="@android:color/black" />
+
+        <LinearLayout
+            android:id="@+id/log"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Viet Nam"
+                android:textColor="@color/snippet_text_color"
+                android:textSize="11sp" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+
+        android:layout_marginTop="4dp"
+        android:id="@+id/right"
+        android:layout_width="138dp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_alignParentRight="true"
+        android:gravity="right"
+        >
+        <TextView
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="@dimen/text_size_sms_17"
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="8 hour ago"
+            android:textColor="@color/snippet_text_color"
+            android:textSize="@dimen/_10sdp" />
+        <ImageButton
+            android:visibility="gone"
+            android:scaleType="centerCrop"
+            android:id="@+id/call"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            android:src="@drawable/ic_call_primary_color_24dp" />
+
+        <ImageButton
+            android:layout_marginTop="13dp"
+            android:layout_toRightOf="@id/date"
+            android:layout_marginRight="9dp"
+            android:scaleType="centerCrop"
+            android:id="@+id/info"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_info_outline_primary_color_24dp" />
+    </RelativeLayout>
+    <View
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/dcdcdc"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider"/>
+</RelativeLayout>

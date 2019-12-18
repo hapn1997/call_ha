@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_above="@+id/numbers"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/cdfg"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@android:color/white">
+
+
+            <ImageButton
+                android:id="@+id/add_contact"
+                android:layout_width="58dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:layout_alignParentRight="true"
+
+                android:src="@color/white"
+                 />
+
+            <EditText
+                android:layout_marginLeft="65dp"
+                android:singleLine="true"
+                android:id="@+id/input_number"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/threedot"
+                android:background="@android:color/white"
+                android:focusable="false"
+                android:gravity="center_horizontal|center_vertical"
+                android:textColor="@android:color/black"
+                android:textSize="27dp"
+                />
+              <TextView
+                  android:visibility="gone"
+                  android:layout_toLeftOf="@id/add_contact"
+                  android:background="@color/white"
+                  android:paddingBottom="@dimen/_20sdp"
+                  android:textColor="@color/black"
+                  android:textSize="@dimen/_20sdp"
+                  android:text="..."
+                  android:gravity="bottom"
+                  android:layout_width="30dp"
+                  android:layout_height="match_parent"
+                  android:id="@+id/threedot"
+                  ></TextView>
+        </RelativeLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_below="@+id/cdfg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <TextView
+                android:visibility="gone"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_sms_15"
+                android:text="cdc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/contactname"></TextView>
+        <TextView
+            android:visibility="gone"
+            android:textColor="@color/colorBlue"
+            android:textSize="@dimen/text_size_sms_15"
+            android:id="@+id/addnumber"
+            android:text="Add Number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"></TextView>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:id="@+id/numbers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:paddingTop="16dp">
+
+        <LinearLayout
+            android:layout_marginLeft="5dp"
+            android:id="@+id/row1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <include
+
+                android:id="@+id/key_one"
+                layout="@layout/dialpad_key" />
+
+            <include
+                android:id="@+id/key_two"
+                layout="@layout/dialpad_key" />
+
+            <include
+                android:id="@+id/key_three"
+                layout="@layout/dialpad_key" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="5dp"
+
+            android:background="@color/white"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/row2"
+            android:orientation="horizontal">
+
+            <include
+                android:id="@+id/key_four"
+                layout="@layout/dialpad_key" />
+
+            <include
+                android:id="@+id/key_five"
+                layout="@layout/dialpad_key" />
+
+            <include
+                android:id="@+id/key_six"
+                layout="@layout/dialpad_key" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="5dp"
+
+            android:background="@color/white"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/row3"
+            android:orientation="horizontal">
+
+            <include
+                android:id="@+id/key_seven"
+                layout="@layout/dialpad_key" />
+
+            <include
+                android:id="@+id/key_eight"
+                layout="@layout/dialpad_key" />
+
+            <include
+                android:id="@+id/key_nine"
+                layout="@layout/dialpad_key" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="5dp"
+
+            android:background="@color/white"
+
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/row4"
+
+            android:orientation="horizontal">
+
+            <include
+                android:id="@+id/key_star"
+                layout="@layout/dialpad_key_star"
+                />
+
+            <include
+                android:id="@+id/key_zero"
+                layout="@layout/dialpad_key" />
+
+            <include
+                android:id="@+id/key_pound"
+                layout="@layout/dialpad_key_pound" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingBottom="12dp"
+        android:paddingTop="1dp">
+
+        <LinearLayout
+            android:id="@+id/layout_multi_sim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <ImageButton
+                android:id="@+id/call_sim_1"
+                android:layout_width="85dp"
+                android:layout_height="75dp"
+                android:background="@drawable/bg_call_left"
+                android:src="@drawable/sim_1" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="@dimen/height_call_button_dialpad"
+                android:alpha="0.5"
+                android:background="@android:color/black" />
+
+            <ImageButton
+                android:id="@+id/call_sim_2"
+                android:layout_width="85dp"
+                android:layout_height="75dp"
+                android:background="@drawable/bg_call_right"
+                android:src="@drawable/sim_2" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/call_single_sim"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_call_circular"
+            android:src="@drawable/ic_call_white_24dp"
+            android:visibility="gone"
+             />
+        <vn.com.call.widget.SquareHeightImageButton
+            android:visibility="gone"
+            android:padding="@dimen/_5sdp"
+            android:id="@+id/backspace"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginTop="18dp"
+            android:layout_marginRight="70dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_backspace_grey_500_24dp"
+
+            />
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <info.hoang8f.android.segmented.SegmentedGroup
+        android:id="@+id/groups"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:sc_border_width="1dp"
+        app:sc_corner_radius="3dp"
+        app:sc_checked_text_color="@android:color/white"
+        android:checkedButton="@+id/contact">
+        <RadioButton
+            android:id="@+id/contact"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/contacts"
+            style="@style/RadioButton"
+            android:padding="@dimen/padding_segment_button_call"
+            android:textAllCaps="true"/>
+
+        <RadioButton
+            android:id="@+id/call_log"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/call_log"
+            style="@style/RadioButton"
+            android:padding="@dimen/padding_segment_button_call"
+            android:textAllCaps="true"/>
+    </info.hoang8f.android.segmented.SegmentedGroup>
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

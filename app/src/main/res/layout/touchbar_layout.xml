@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vn.com.call.widget.LinearLayoutKeyEvent
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:theme="@style/AppTheme">
+
+    <RelativeLayout
+        android:id="@+id/touchbar_layout_out"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/touchbar_layout_move"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/guideline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="80"
+                android:background="@color/transparent"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@android:color/white">
+
+                    <TextView
+                        android:id="@+id/title_conversation"
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="16dp"
+                        android:textColor="@android:color/black"
+                        android:visibility="gone"/>
+                </FrameLayout>
+            </RelativeLayout>
+
+            <FrameLayout
+                android:id="@+id/content_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:background="@android:color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_above="@+id/bottom_bar">
+
+                        <vn.com.call.widget.ListCallLogView
+                            android:id="@+id/call_log_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="gone"/>
+
+                        <vn.com.call.widget.ListConversationView
+                            android:id="@+id/conversation_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                        <vn.com.call.widget.dialpadview.DialpadContainer
+                            android:id="@+id/dialpad"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="gone"/>
+
+                        <vn.com.call.widget.ListContactView
+                            android:id="@+id/contact_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="gone"/>
+
+                        <vn.com.call.widget.FBMessView
+                            android:id="@+id/fb_mess_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="gone"/>
+
+                    </FrameLayout>
+
+                    <vn.com.call.widget.BottomBarExtend
+                        android:id="@+id/bottom_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_alignParentBottom="true"
+                        app:bb_showShadow="true"
+                        app:bb_tabXmlResource="@xml/head_tabs"
+                        app:hideTitle="false"/>
+                </RelativeLayout>
+
+                <vn.com.call.widget.ConversationDetailView
+                    android:id="@+id/conversation_detail_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"/>
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</vn.com.call.widget.LinearLayoutKeyEvent>

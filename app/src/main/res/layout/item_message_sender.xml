@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="112dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:id="@+id/root">
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/background_message_white"
+        android:padding="8dp"
+        android:textIsSelectable="false"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size_sms"
+        android:textColorLink="@android:color/black"
+        android:text="di kdfg dfglkdfg asldfksdflk sdlfksldf lskdfksldf "/>
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/text"
+        android:layout_marginTop="4dp"
+        android:paddingRight="8dp"
+        android:textColor="@android:color/black"
+        android:alpha="0.4"
+        android:textSize="10sp"
+        android:text="Jun 30, 10:53 AM ● Delivered"/>
+</RelativeLayout>

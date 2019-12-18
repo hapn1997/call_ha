@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/favorite"
+        android:title="@string/detail_activity_title_menu_add_favorite"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/copy_name"
+        android:title="@string/detail_activity_title_menu_copy_name"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/copy_number"
+        android:title="@string/detail_activity_title_menu_copy_number"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/copy_contact"
+        android:title="@string/detail_activity_title_menu_copy_contact"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/remove_contact"
+        android:title="@string/detail_activity_title_menu_remove_contact"
+        app:showAsAction="never"/>
+</menu>

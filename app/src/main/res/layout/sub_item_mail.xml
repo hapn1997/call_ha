@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vn.com.call.widget.RelativeLayoutRatio xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/height_sub_item_detail_contact"
+    android:background="?attr/selectableItemBackgroundBorderless"
+    android:orientation="horizontal">
+
+    <vn.com.call.widget.SquareHeightImageButton
+        android:id="@+id/email_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_email_primary_color_detail_contact_24dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@+id/line_vertical"
+        android:layout_toRightOf="@+id/email_icon"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:id="@+id/email_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="nguyen.son@gmail.com"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/type_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:textSize="12sp" />
+    </LinearLayout>
+</vn.com.call.widget.RelativeLayoutRatio>

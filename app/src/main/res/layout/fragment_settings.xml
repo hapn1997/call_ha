@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/icon_app"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/ic_app_icon"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/icon_app"
+                android:layout_centerHorizontal="true"
+                android:text="@string/app_name"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"/>
+
+                <LinearLayout
+                    android:id="@+id/settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <vn.com.call.widget.SquareHeightImageButton
+                        android:layout_width="@dimen/height_row_more_screen"
+                        android:layout_height="@dimen/height_row_more_screen"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_settings"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_row_more_screen"
+                            android:gravity="center_vertical"
+                            android:text="@string/title_settings"
+                            android:textColor="@android:color/black"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/height_row_more_screen"
+                    android:background="@color/divider"/>
+
+                <LinearLayout
+                    android:id="@+id/settings_chathead"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <vn.com.call.widget.SquareHeightImageButton
+                        android:layout_width="@dimen/height_row_more_screen"
+                        android:layout_height="@dimen/height_row_more_screen"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_app_icon_wb"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_row_more_screen"
+                            android:gravity="center_vertical"
+                            android:text="@string/title_settings_chathead"
+                            android:textColor="@android:color/black"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/height_row_more_screen"
+                    android:background="@color/divider"/>
+
+                <LinearLayout
+                    android:id="@+id/settings_call_flash"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <vn.com.call.widget.SquareHeightImageButton
+                        android:layout_width="@dimen/height_row_more_screen"
+                        android:layout_height="@dimen/height_row_more_screen"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_call_black_24dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_row_more_screen"
+                            android:gravity="center_vertical"
+                            android:text="@string/title_settings_call_flash"
+                            android:textColor="@android:color/black"/>
+
+                        <pl.droidsonroids.gif.GifImageView
+                            android:layout_width="@dimen/height_row_more_screen"
+                            android:layout_height="@dimen/height_row_more_screen"
+                            android:layout_alignParentRight="true"
+                            android:padding="@dimen/margin_smallxxx"
+                            android:src="@drawable/ic_gif_love"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/height_row_more_screen"
+                    android:background="@color/divider"/>
+
+                <LinearLayout
+                    android:id="@+id/language"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_row_more_screen"
+                    android:orientation="horizontal">
+
+                    <vn.com.call.widget.SquareHeightImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_public_black_24dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/title_setting_language"
+                        android:textColor="@android:color/black"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/height_row_more_screen"
+                    android:background="@color/divider"/>
+
+                <LinearLayout
+                    android:id="@+id/security"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_row_more_screen"
+                    android:orientation="horizontal">
+
+                    <vn.com.call.widget.SquareHeightImageButton
+                        android:id="@+id/ivLock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_lock_grey_400_24dp"/>
+
+                    <TextView
+                        android:id="@+id/tvLock"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/title_security"
+                        android:textColor="#BDBDBD"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/height_row_more_screen"
+                    android:background="@color/divider"/>
+
+                <LinearLayout
+                    android:id="@+id/settings_buy_pro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <vn.com.call.widget.SquareHeightImageButton
+                        android:layout_width="@dimen/height_row_more_screen"
+                        android:layout_height="@dimen/height_row_more_screen"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_pro"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_row_more_screen"
+                            android:gravity="center_vertical"
+                            android:text="@string/inapp_billing_upgrade_title"
+                            android:textColor="@android:color/black"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/facebook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"/>
+
+                <LinearLayout
+                    android:id="@+id/feedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_row_more_screen"
+                    android:orientation="horizontal">
+
+                    <vn.com.call.widget.SquareHeightImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_rate_us"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/title_feedback"
+                        android:textColor="@android:color/black"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/height_row_more_screen"
+                    android:background="@color/divider"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_row_more_screen"
+                    android:orientation="horizontal">
+
+                    <vn.com.call.widget.SquareHeightImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_version"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/title_version"
+                            android:textColor="@android:color/black"/>
+
+                        <TextView
+                            android:id="@+id/version"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:alpha="0.7"
+                            android:text="1.0"
+                            android:textColor="@android:color/black"
+                            android:textSize="12sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

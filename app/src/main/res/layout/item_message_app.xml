@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:background="@android:color/white"
+    android:layout_marginBottom="1dp">
+    <vn.com.call.widget.SquareHeightImageView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/icon"
+        android:layout_toLeftOf="@+id/drag_handle"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/app_name"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:textColor="@android:color/black"
+            android:gravity="center_vertical"
+            android:textSize="15sp"
+            android:text="Messager"/>
+
+        <TextView
+            android:id="@+id/last_used"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textColor="@android:color/black"
+            android:alpha="0.5"
+            android:textSize="12sp"
+            android:gravity="center_vertical"
+            android:text="sdfsdf"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/drag_handle"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:src="@drawable/ic_drag_handle_grey_500_24dp"
+        android:text="300"
+        android:layout_margin="8dp"/>
+</RelativeLayout>

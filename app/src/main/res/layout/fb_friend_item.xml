@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/facebook_friend_item_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_row"
+                android:paddingTop="@dimen/margin_smallx"
+                android:paddingBottom="@dimen/margin_smallx">
+
+    <ImageView
+        android:id="@+id/facebook_friend_item_avatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/app_name"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/facebook_friend_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/facebook_friend_item_avatar"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_normalx"/>
+
+</RelativeLayout>

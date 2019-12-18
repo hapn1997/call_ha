@@ -1,0 +1,190 @@
+<resources>
+    <string name="app_name_ban2">X Messages</string>
+    <string name="app_name">Call</string>
+
+    <string name="app_id_facebook">1900201133404652</string>
+
+    <string name="loading">Loading...</string>
+    <string name="error">Error</string>
+    <string name="apply">Apply</string>
+
+    <string name="contacts">Contacts</string>
+    <string name="call_log">Call logs</string>
+    <string name="search">Search</string>
+    <string name="title_intro_sms">sms</string>
+    <string name="continues">Continues</string>
+    <string name="title_intro">To get going, give Messenger access</string>
+    <string name="description">Messenger needs access to your contacts, device storage, call history and SMS. This makes it even easier to connect.</string>
+    <string name="settings">Settings</string>
+    <string name="title_add_remove_messenger_app">Add/Remove</string>
+    <string name="today">Today</string>
+    <string name="older">Older</string>
+    <string name="delete">Delete</string>
+    <string name="title_activity_call_log_detail">Call details</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="incoming">Incoming call</string>
+    <string name="outgoing">Outgoing call</string>
+    <string name="missed">Missed call</string>
+    <string name="second">sec</string>
+    <string name="recents">Recents</string>
+    <string name="favorites">Favorites</string>
+    <string name="call">Call</string>
+    <string name="sms">SMS</string>
+    <string name="edit">Edit</string>
+    <string name="block">Block</string>
+    <string name="permission_needed">Permission Needed</string>
+    <string name="permission_usage_data">permission usage data</string>
+
+    <string name="alert_dont_have_any_contact">You don\'t have any contacts yet</string>
+
+    <string name="detail_activity_title_menu_copy_name">Copy name</string>
+    <string name="detail_activity_title_menu_copy_number">Copy number</string>
+    <string name="detail_activity_title_menu_copy_contact">Copy contact</string>
+    <string name="detail_activity_title_menu_remove_contact">Remove contact</string>
+    <string name="detail_activity_title_menu_add_favorite">Add favorite</string>
+    <string name="detail_activity_title_menu_remove_favorite">Remove favorite</string>
+    <string name="detail_activity_title_toast_add_favorite">{name} is now a favorite</string>
+    <string name="detail_activity_title_toast_remove_favorite">{name} is added as a favorite</string>
+    <string name="save">Save</string>
+    <string name="copied_to_clipboard">Copied to clipboard</string>
+    <string name="title_dialog_confirm_delete_contact">Remove Contact</string>
+    <string name="content_dialog_confirm_delete_contact">Are you sure that you want to remove this contact?</string>
+    <string name="cancel">Cancel</string>
+    <string name="retry">Retry</string>
+    <string name="add_phone_number">Add phone number</string>
+    <string name="add_email">Add email</string>
+    <string name="view_all_calllog">View all calllog</string>
+    <string name="delete_items">Delete {number} item?</string>
+    <string name="call_history">Call history</string>
+
+    <string name="title_dialog_confirm_delete_calllog">Remove Call history</string>
+    <string name="content_dialog_confirm_delete_calllog">Are you sure that you want to remove call history?</string>
+    <string name="to">To</string>
+    <string name="hint_input_message">Type an SMS message</string>
+    <string name="option_people"><![CDATA[People & options]]></string>
+    <string name="add_contact">Add contact</string>
+    <string name="send_failed">Failed</string>
+    <string name="delivered">Delivered</string>
+    <string name="sending">Sending</string>
+    <string name="tap_to_retry">Not sent. Tap to try again.</string>
+    <string name="select_sim">Select SIM</string>
+    <string name="new_message">New conversation</string>
+    <string name="hint_pick_people">Type a name or phone number</string>
+    <string name="to_compose">Go compose</string>
+    <string name="type">Type</string>
+    <string name="type_sms">Text message</string>
+    <string name="from">From</string>
+    <string name="sent">Sent</string>
+    <string name="received">Received</string>
+    <string name="title_detail_message">Message details</string>
+    <string name="mark_as_read">Mark as read</string>
+    <string name="title_app_in_more_screen">Messenger</string>
+    <string name="title_version">Version</string>
+    <string name="title_rate_us">Rate us</string>
+    <string name="title_fb_follow">Facebook</string>
+    <string name="title_feedback">Feedback</string>
+    <string name="title_faq">Faq</string>
+    <string name="title_setting_chathead">Chathead</string>
+    <string name="title_settings">Settings SMS</string>
+    <string name="title_setting_widget_notification">Notification</string>
+    <string name="title_setting_delivery_report">Get SMS delivery reports</string>
+    <string name="title_setting_use_simple_characters">Use simpe characters</string>
+    <string name="title_setting_vibrate">Vibrate</string>
+    <string name="settings_general">General</string>
+    <string name="settings_notification">Notifications</string>
+    <string name="settings_vibrate">Vibrate</string>
+    <string name="settings_advanced">Advanced</string>
+    <string name="settings_delivery_report">Get SMS delivery reports</string>
+    <string name="settings_use_simple_characters">Use simple characters</string>
+    <string name="settings_color_conversation">Conversation color</string>
+    <string name="title_settings_conversation">Conversation settings</string>
+    <string name="edit_conversation_color">Edit conversation color</string>
+    <string name="hint_search_main">Search</string>
+    <string name="title_contact">Contacts</string>
+    <string name="title_call_log">Call history</string>
+    <string name="title_sms">Messages</string>
+    <string name="title_result_search">result found</string>
+    <string name="reply">Reply</string>
+    <string name="sound_outgoing_message">Hear outgoing message sounds</string>
+    <string name="clear">Clear</string>
+    <string name="send_to">Send to</string>
+    <string name="title_settings_chathead">Chat Heads</string>
+    <string name="title_settings_call_flash">Call Flash</string>
+
+    <string name="title_bottom_dialog_grant_draw_permission">System Permissions</string>
+    <string name="content_bottom_dialog_grant_draw_permission">Go to device settings, turn on Messenger for more features in app</string>
+    <string name="title_button_go_settings">Go to open</string>
+    <string name="send_message">Send Message</string>
+    <string name="add_favorite">Add to Favorites</string>
+    <string name="share_contact">Share Contact</string>
+    <string name="send_sms">Send SMS</string>
+    <string name="key_two" translatable="false">ABC</string>
+    <string name="key_three" translatable="false">DEF</string>
+    <string name="key_four" translatable="false">GHI</string>
+    <string name="key_five" translatable="false">JKL</string>
+    <string name="key_six" translatable="false">MNO</string>
+    <string name="key_seven" translatable="false">PQRS</string>
+    <string name="key_eight" translatable="false">TUV</string>
+    <string name="key_nine" translatable="false">WXYZ</string>
+
+    <string name="title_setting_language_device_language">Device Language</string>
+    <string name="title_setting_language_english" translatable="false">English</string>
+    <string name="title_setting_language_vietnamese" translatable="false">Tiếng Việt</string>
+    <string name="title_setting_language_indonesia" translatable="false">Indonesia</string>
+    <string name="title_setting_language_thailand" translatable="false">ไทย</string>
+    <string name="title_setting_language_hindi" translatable="false">हिंदी</string>
+    <string name="title_setting_language">Language</string>
+    <string name="title_security">Security</string>
+    <string name="reset_password">Reset password</string>
+    <string name="always_lock">Always lock</string>
+    <string name="brief_setting">Brief setting</string>
+    <string name="pin_lock">PIN lock</string>
+    <string name="title_setting_brief">Brief exit time limit</string>
+    <string name="five_minute">5 minutes</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="pattern_lock">Pattern lock</string>
+    <string name="fingerprint">Fingerprint</string>
+    <string name="pin_code">PIN code</string>
+    <string name="pattern">Pattern</string>
+    <string name="add_number">Add Number</string>
+    <string name="settings_default_color_conversation">Color primary</string>
+    <string name="text_size_small">Small</string>
+    <string name="text_size_normal">Normal</string>
+    <string name="text_size_large">Large</string>
+    <string name="text_size_extra_large">Extra large</string>
+    <string name="font_size">Font size</string>
+    <string name="delete_contact">Delete contact</string>
+    <string name="alert_delete_contact">Are you sure you want to delete this contact?</string>
+    <string name="content_text_notification">Tap to open Messenger</string>
+    <string name="types_lock">Fingerprint, PIN, Pattern</string>
+    <string name="message_feedback">Message</string>
+    <string name="report">Report</string>
+    <string name="title_delete_conversation">All message of conversation will be deleted.</string>
+    <string name="settings_private_mode">Privacy mode</string>
+    <string name="content_private_mode">Show \"new messages\" instead of content</string>
+    <string name="settings_privacy_mode">Privacy mode</string>
+    <string name="send">Send</string>
+    <string name="size_chathead">Size</string>
+    <string name="schedule_message">Schedule Message</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="unschedule">Unschedule</string>
+    <string name="now">Now</string>
+    <string name="contact_picker">Pick contacts</string>
+    <string name="title_setting_show_chathead_icon">Always show icon on screen</string>
+    <string name="default_floatingview_channel_name">Default</string>
+    <string name="new_message_channel_id">new_message_channel_id</string>
+    <string name="new_message_channel_name">New message</string>
+    <string name="default_notification_channel_id">default_notification_channel_id</string>
+
+    <string name="chat_head_nofity_need_mess_fb">You need to install \"Messenger Facebook\" for this task.</string>
+    <string name="chat_head_mess_fb_ads">Chat, make voice and video call free from anywhere</string>
+    <string name="title_activity_add_messenger_app">AddMessengerAppActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_favorites_add_fragment">FavoritesAddFragment</string>
+
+
+</resources>

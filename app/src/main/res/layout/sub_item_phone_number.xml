@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vn.com.call.widget.RelativeLayoutRatio
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/height_sub_item_detail_contact"
+    android:background="@drawable/background_row"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/call"
+        android:layout_width="@dimen/height_sub_item_detail_contact"
+        android:layout_height="@dimen/height_sub_item_detail_contact"
+        android:src="@drawable/call_iconv"
+        android:padding="@dimen/sp_16"/>
+
+    <LinearLayout
+        android:layout_marginLeft="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@+id/sms"
+        android:layout_toRightOf="@+id/call"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:paddingRight="16dp">
+        <TextView
+            android:id="@+id/type_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mobile"
+            android:textSize="12sp"
+            android:layout_marginTop="4dp"/>
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0988999999"
+            android:textColor="@android:color/black" />
+
+
+    </LinearLayout>
+
+    <vn.com.call.widget.SquareHeightImageButton
+        android:visibility="gone"
+        android:id="@+id/sms"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/background_row"
+        android:src="@drawable/ic_sms_primary_color_detail_contact_24dp" />
+</vn.com.call.widget.RelativeLayoutRatio>

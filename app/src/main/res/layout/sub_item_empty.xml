@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <vn.com.call.widget.RelativeLayoutRatio
+        android:id="@+id/add_phone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_sub_item_detail_contact"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:orientation="horizontal">
+
+        <vn.com.call.widget.SquareHeightImageButton
+            android:id="@+id/phone_icon"
+            android:scaleType="fitCenter"
+            android:padding="@dimen/text_size_sms_15"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/call_iconv" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_phone_number"
+            android:textColor="@color/blue_ios"
+            android:layout_toRightOf="@+id/phone_icon"
+            android:layout_centerVertical="true"
+            android:textSize="17sp" />
+    </vn.com.call.widget.RelativeLayoutRatio>
+
+    <include layout="@layout/line_horizontal_detail_contact" />
+
+    <vn.com.call.widget.RelativeLayoutRatio
+        android:id="@+id/add_email"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_sub_item_detail_contact"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:orientation="horizontal">
+
+        <vn.com.call.widget.SquareHeightImageButton
+            android:id="@+id/email_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_email_primary_color_detail_contact_24dp" />
+
+        <TextView
+            android:id="@+id/email_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_email"
+            android:textColor="@color/colorBlue"
+            android:layout_toRightOf="@+id/email_icon"
+            android:layout_centerVertical="true"
+            android:textSize="17sp"/>
+    </vn.com.call.widget.RelativeLayoutRatio>
+</LinearLayout>

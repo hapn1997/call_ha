@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/recents"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/recents"
+        android:padding="16dp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:drawableRight="@drawable/ic_keyboard_arrow_right_primary_color_24dp"
+        android:gravity="center_vertical"/>
+
+    <View android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/black"
+        android:alpha="0.2"
+        android:layout_below="@+id/text"/>
+</RelativeLayout>

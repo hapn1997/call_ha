@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <LinearLayout
+        android:id="@+id/lineart"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/btnLastHeaderDeleteAll"
+            style="@style/HeaderSideText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="left"
+            android:paddingLeft="@dimen/_12sdp"
+            android:text="Clear"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="5">
+
+            <Button
+                android:id="@+id/btnLastHeaderAll"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/last_header_button_left"
+                android:text="All"
+                android:textColor="@color/colorBlue"
+
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnLastHeaderMissed"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/last_header_button_right"
+                android:singleLine="true"
+                android:text="Missed"
+                android:textColor="@color/colorBlue"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <TextView
+            android:paddingRight="13dp"
+            android:id="@+id/btnLastHeaderEdit"
+            style="@style/HeaderSideText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="right"
+            android:text="Edit" />
+    </LinearLayout>
+    <TextView
+        android:layout_below="@id/lineart"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:paddingLeft="@dimen/_20sdp"
+        android:id="@+id/textrecent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recents"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="35dp"
+        />
+    <View
+        android:id="@+id/viewhY"
+        android:layout_below="@+id/textrecent"
+        android:background="@color/custom_dark_grey"
+        android:layout_width="match_parent"
+        android:layout_height="0.4dp"
+        />
+
+    <vn.com.call.widget.FabBottomRecyclerView
+        android:layout_below="@+id/viewhY"
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+   <TextView
+       android:visibility="gone"
+       android:id="@+id/norecents"
+       android:layout_below="@id/viewhY"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:text="No Recents"
+       android:gravity="center"
+       android:textSize="25dp"
+       android:textColor="@color/gray"
+       ></TextView>
+
+
+</RelativeLayout>

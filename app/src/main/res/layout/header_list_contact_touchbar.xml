@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EditText android:id="@+id/input_search"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="15dp"
+          android:layout_marginRight="15dp"
+          android:hint="@string/hint_pick_people"
+          android:imeOptions="flagNoExtractUi"
+          android:paddingBottom="12dp"
+          android:paddingTop="12dp"
+          android:textColor="@android:color/black"
+          android:textColorHint="@color/gray_400"
+          android:textSize="@dimen/text_size_normal"/>

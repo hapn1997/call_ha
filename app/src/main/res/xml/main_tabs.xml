@@ -1,0 +1,23 @@
+<tabs>
+
+    <tab
+        id="@+id/tab_message"
+        icon="@drawable/icon_tab_home"
+        title="Favorites" />
+    <tab
+        id="@+id/tab_call_log"
+        icon="@drawable/icon_tab_call_log"
+        title="Recents" />
+
+    <tab
+        id="@+id/tab_contact"
+        icon="@drawable/icon_tab_contact"
+        title="Contacts" />
+
+    <tab
+        id="@+id/tab_dialpad"
+        icon="@drawable/icon_tab_dialpad"
+        title="Keypad" />
+
+
+</tabs>

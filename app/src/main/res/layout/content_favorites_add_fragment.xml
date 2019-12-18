@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+
+    <RelativeLayout
+
+        android:id="@+id/tabHome"
+        android:layout_width="match_parent"
+        android:layout_height="43dp">
+
+        <RelativeLayout
+            android:id="@+id/relative_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="43dp">
+
+            <View
+                android:id="@+id/view_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:layout_alignParentBottom="true"
+                android:alpha="0.5"
+                android:background="@color/colorDivider" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/relative_search"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <RelativeLayout
+
+                android:id="@+id/layout_search"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:layout_toStartOf="@+id/tvTabCancel"
+                android:layout_toLeftOf="@+id/tvTabCancel"
+                android:background="@drawable/custom_background_search_os13"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:paddingLeft="@dimen/_4sdp"
+                android:paddingRight="@dimen/_4sdp">
+
+                <ImageView
+                    android:id="@+id/img_search_1"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:padding="@dimen/_3sdp"
+                    android:src="@drawable/ic_search_gray" />
+
+                <EditText
+                    android:id="@+id/edt_search_thread_message"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/img_search_1"
+                    android:layout_toLeftOf="@+id/img_cancel"
+                    android:background="@android:color/transparent"
+                    android:gravity="center_vertical"
+                    android:hint="@string/search"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textSize="@dimen/sp_14"
+                    android:paddingStart="@dimen/_4sdp"
+                    android:paddingLeft="@dimen/_4sdp"
+                    android:paddingEnd="@dimen/_2sdp"
+                    android:paddingRight="@dimen/_2sdp"
+                    android:scrollHorizontally="true" />
+
+                <ImageView
+
+                    android:id="@+id/img_cancel"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/_4sdp"
+                    android:src="@drawable/cancel_os13" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvTabCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:layout_marginRight="@dimen/_4sdp"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/cancel"
+                android:textColor="@color/colorBlue" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_marginTop="30dp"
+        android:id="@+id/ưqwqwqw"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:gravity="center_horizontal"
+        >
+        <TextView
+            android:layout_marginTop="@dimen/_10sdp"
+            android:id="@+id/contacttext"
+            android:gravity="center"
+            android:textSize="@dimen/_12sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Choose a contact to add to Favorites"></TextView>
+        <LinearLayout
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal"
+            android:layout_below="@+id/contacttext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="477dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="Contacts"
+                android:textSize="16dp"
+                android:textStyle="bold"></TextView>
+            <TextView
+                android:id="@+id/cancelfragment"
+                android:layout_marginRight="@dimen/text_size_sms_19"
+                android:gravity="end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:textColor="@color/blue_ios"
+                android:layout_weight="1"></TextView>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_below="@+id/ưqwqwqw"
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_layout"
+            android:background="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:elevation="0dp"
+            android:layout_height="wrap_content">
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/collapsing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:layout_scrollFlags="scroll"
+                app:statusBarScrim="@android:color/transparent">
+
+                <RelativeLayout
+                    android:id="@+id/relative_change"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:id="@+id/linear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/relative_searchchinh"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_below="@+id/linear"
+                        >
+
+                        <RelativeLayout
+                            android:id="@+id/layout_searchchinh"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="19dp"
+                            android:layout_marginTop="@dimen/_5sdp"
+
+                            android:layout_marginEnd="19dp"
+                            android:layout_marginBottom="@dimen/_8sdp"
+                            android:background="@drawable/custom_background_search_os13"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:paddingLeft="7dp"
+                            android:paddingRight="7dp">
+
+                            <ImageView
+                                android:id="@+id/img_search_1chinh"
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginLeft="4dp"
+                                android:padding="@dimen/_3sdp"
+                                android:src="@drawable/ic_search_gray" />
+
+                            <TextView
+
+                                android:id="@+id/edt_search_thread_messagechinh"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_toRightOf="@+id/img_search_1chinh"
+
+                                android:background="@android:color/transparent"
+                                android:ellipsize="end"
+                                android:gravity="center_vertical"
+                                android:hint="@string/search"
+                                android:textColorHint="@color/gray_400"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:paddingStart="@dimen/_4sdp"
+                                android:paddingLeft="@dimen/_4sdp"
+                                android:paddingEnd="@dimen/_2sdp"
+                                android:paddingRight="@dimen/_2sdp"
+                                android:scrollHorizontally="true" />
+
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_marginTop="5dp"
+                            android:layout_below="@+id/layout_searchchinh"
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="@color/colorDivider" />
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+        </android.support.design.widget.AppBarLayout>
+        <vn.com.call.widget.FabBottomRecyclerView
+            android:paddingBottom="48dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:scrollbars="none"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+    <FrameLayout
+        android:id="@+id/search_content1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <FrameLayout
+        android:layout_below="@id/tabHome"
+        android:id="@+id/search_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</RelativeLayout>
