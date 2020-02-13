@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name_ban2">X Messages</string>
+    <string name="app_name_ban2">X Call</string>
     <string name="app_name">Call</string>
 
     <string name="app_id_facebook">1900201133404652</string>
@@ -13,8 +13,8 @@
     <string name="search">Search</string>
     <string name="title_intro_sms">sms</string>
     <string name="continues">Continues</string>
-    <string name="title_intro">To get going, give Messenger access</string>
-    <string name="description">Messenger needs access to your contacts, device storage, call history and SMS. This makes it even easier to connect.</string>
+    <string name="title_intro">To get going, give Call access</string>
+    <string name="description">Call needs access to your contacts, device storage, call history. This makes it even easier to connect.</string>
     <string name="settings">Settings</string>
     <string name="title_add_remove_messenger_app">Add/Remove</string>
     <string name="today">Today</string>

@@ -27,7 +27,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:textStyle="bold"
+                android:fontFamily="@font/ios_medium"
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,9 +35,10 @@
                 android:maxLines="1"
                 android:text="Son"
                 android:textColor="@android:color/black"
-                android:textSize="@dimen/sp_16" />
+                android:textSize="@dimen/text_size_sms_17" />
 
             <TextView
+                android:fontFamily="@font/ios_regular"
                 android:id="@+id/address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,12 +54,13 @@
         <View
 
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
+            android:layout_height="0.2dp"
 
             android:background="@color/avatar" />
     </LinearLayout>
 
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/expand"
         android:layout_width="match_parent"
         android:layout_height="48dp"

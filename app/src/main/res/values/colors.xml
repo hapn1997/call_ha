@@ -25,6 +25,6 @@
     <color name="colorBlack">#90000000</color>
     <color name="bg_incomming_message">#1181ff</color>
     <color name="bg_outgoing_message">#e6e5eb</color>
-    <color name="snippet_text_color">#87868b</color>
+    <color name="snippet_text_color">#A2A1A6</color>
     <color name="custom_grey">#f8f8f8</color>
 </resources>

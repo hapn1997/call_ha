@@ -89,7 +89,7 @@ public class AvatarView extends CircleImageView {
         // text color - #3D3D3D
         paint.setColor(Color.WHITE);
         // text size in pixels
-        paint.setTextSize(w / 3);
+        paint.setTextSize(w / 2);
         paint.setTextAlign(Paint.Align.CENTER);
 
 

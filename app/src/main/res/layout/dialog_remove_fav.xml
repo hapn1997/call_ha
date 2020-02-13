@@ -35,7 +35,7 @@
             android:padding="@dimen/_4sdp">
 
             <TextView
-
+                android:fontFamily="@font/ios_medium"
                 android:textSize="@dimen/sp_16"
                 android:textStyle="normal"
                 android:textColor="#747474"
@@ -74,10 +74,11 @@
 
 
             <TextView
+                android:fontFamily="@font/ios_regular"
                 android:padding="@dimen/_2sdp"
                 android:layout_toRightOf="@+id/imageMes"
                 android:textSize="18dp"
-                android:textStyle="normal"
+
                 android:textColor="#747474"
                 android:id="@+id/txt_mess"
                 android:background="@drawable/custom_background_white_os13"
@@ -97,7 +98,7 @@
     </RelativeLayout>
     <TextView
         android:textSize="18dp"
-
+        android:fontFamily="@font/ios_bold"
         android:textStyle="normal"
         android:textColor="@color/colorBlue"
         android:gravity="center"

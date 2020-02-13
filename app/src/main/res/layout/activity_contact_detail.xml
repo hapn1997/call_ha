@@ -31,8 +31,8 @@
                 <vn.com.call.widget.AvatarView
                      android:layout_marginTop="7dp"
                     android:id="@+id/avatar"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_above="@+id/name"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="16dp" />
@@ -132,6 +132,7 @@
 
                        </ImageButton>
                     <TextView
+                        android:layout_marginLeft="@dimen/_12sdp"
                         android:layout_marginTop="@dimen/_3sdp"
                         android:textSize="@dimen/_12sdp"
                         android:id="@+id/saveedit"

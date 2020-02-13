@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
+    android:layout_height="65dp"
     android:background="@drawable/background_row"
     android:orientation="vertical"
     android:paddingLeft="16dp"
@@ -18,12 +18,13 @@
     android:layout_marginTop="@dimen/text_size_sms_15"
     ></ImageView>
     <vn.com.call.widget.AvatarView
+
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_toRightOf="@+id/imageremove"
-        android:layout_marginTop="2.5dp"
+        android:layout_marginTop="7dp"
         android:id="@+id/avatar"
-        android:layout_width="48dp"
-        android:layout_height="48dp" />
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp" />
 
     <LinearLayout
         android:id="@+id/fvfvfv"
@@ -33,25 +34,24 @@
         android:layout_marginRight="16dp"
         android:layout_toLeftOf="@+id/right"
         android:layout_toRightOf="@+id/avatar"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="2dp"
         android:orientation="vertical">
 
         <TextView
-            android:textSize="16dp"
+            android:textSize="@dimen/text_size_sms_17"
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textStyle="bold"
             android:text="Nguyen Son"
+            android:fontFamily="@font/ios_medium"
             android:textColor="@android:color/black" />
 
         <LinearLayout
             android:id="@+id/log"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -65,8 +65,8 @@
              <ImageView
                  android:id="@+id/imagecallOrMess"
                  android:src="@drawable/iconfavcall1l"
-                 android:layout_width="@dimen/text_size_sms_15"
-                 android:layout_height="@dimen/text_size_sms_15"/>
+                 android:layout_width="@dimen/sp_14"
+                 android:layout_height="@dimen/sp_14"/>
             <TextView
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
@@ -74,7 +74,8 @@
                 android:layout_marginLeft="1dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="Call"
+                android:text="mobile"
+                android:fontFamily="@font/ios_regular"
                 android:textColor="@color/snippet_text_color"
                 android:textSize="13sp" />
         </LinearLayout>
@@ -85,24 +86,24 @@
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/_12sdp"
         android:orientation="horizontal">
 
         <ImageButton
             android:scaleType="centerInside"
             android:id="@+id/info"
-            android:layout_width="27dp"
-            android:layout_height="27dp"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
             android:background="@android:color/transparent"
             android:padding="2dp"
             android:src="@drawable/ic_info_outline_primary_color_24dp" />
     </LinearLayout>
 
     <View
-        android:layout_marginLeft="@dimen/_50sdp"
+        android:layout_marginLeft="60dp"
         android:id="@+id/view_1"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="0.2dp"
         android:layout_below="@+id/fvfvfv"
         android:layout_marginBottom="8dp"
         android:background="#33110808" />

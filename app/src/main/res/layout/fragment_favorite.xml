@@ -13,19 +13,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <RelativeLayout
+        android:layout_marginTop="@dimen/_10sdp"
         android:id="@+id/relative_tool_bar1"
         android:layout_width="match_parent"
         android:layout_height="43dp">
 
         <TextView
-            android:visibility="gone"
             android:id="@+id/tvTabTitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Favourites"
-            android:textColor="@color/colorBlack"
-            android:textStyle="normal|bold"
+            android:text="Favorites"
+            android:fontFamily="@font/ios_regular"
             android:textSize="@dimen/sp_16" />
 
 
@@ -39,6 +38,8 @@
             android:padding="6dp"
             android:src="@drawable/ic_add_primary_color_24dp" />
         <TextView
+
+            android:fontFamily="@font/ios_regular"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/_12sdp"
             android:id="@+id/tvTabEdit"
@@ -92,9 +93,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Favorites"
-                                android:textStyle="bold"
                                 android:textColor="@color/black"
-                                android:textSize="33dp"
+                                android:textSize="35dp"
+                                android:fontFamily="@font/ios_bold"
                                 />
                             <View
                                 android:id="@+id/view_bottom"

@@ -7,7 +7,7 @@
     <style name="HeaderSideText">
         <item name="android:textSize">15dp</item>
         <item name="android:textColor">@color/colorBlue</item>
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:fontFamily">@font/ios_regular</item>
     </style>
 
     <style name="DetailContact.Tools.Item">

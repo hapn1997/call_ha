@@ -3,7 +3,8 @@
     <tab
         id="@+id/tab_message"
         icon="@drawable/icon_tab_home"
-        title="Favorites" />
+        title="Favorites"
+        />
     <tab
         id="@+id/tab_call_log"
         icon="@drawable/icon_tab_call_log"

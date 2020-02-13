@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
+        android:layout_marginTop="@dimen/_10sdp"
         android:id="@+id/tabHome"
         android:layout_width="match_parent"
         android:layout_height="43dp">
@@ -16,14 +17,12 @@
             android:layout_height="43dp">
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/tvTabTitle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="Contacts"
-                android:textColor="@color/colorBlack"
-                android:textStyle="normal|bold"
+                android:fontFamily="@font/ios_regular"
                 android:textSize="@dimen/text_size_sms_15" />
 
             <!--<ImageView-->
@@ -196,15 +195,15 @@
 
 
                         <TextView
+                            android:fontFamily="@font/ios_bold"
                             android:layout_marginBottom="@dimen/_5sdp"
                             android:paddingLeft="@dimen/_20sdp"
                             android:id="@+id/txtmessage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Contacts"
-                            android:textStyle="bold"
                             android:textColor="@color/black"
-                            android:textSize="35dp"
+                            android:textSize="@dimen/_35sdp"
                             />
 
                         <ImageView
@@ -266,7 +265,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_toRightOf="@+id/img_search_1chinh"
-
+                                android:fontFamily="@font/ios_regular"
                                 android:background="@android:color/transparent"
                                 android:ellipsize="end"
                                 android:gravity="center_vertical"

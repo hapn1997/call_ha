@@ -160,8 +160,7 @@ public class IntroFragment extends BaseFragment {
     }
 
     private boolean isNeedToSystemSettingsPermissions() {
-        return !ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), PermissionUtils.PERMISSION_SMS)
-                && !ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), PermissionUtils.PERMISSION_PHONE)
+        return  !ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), PermissionUtils.PERMISSION_PHONE)
                 && !ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), PermissionUtils.PERMISSION_CONTACTS)
                 && !ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), PermissionUtils.PERMISSION_READ_CONTACTS)
                 && !ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), PermissionUtils.PERMISSION_READ_PHONE_STATE)

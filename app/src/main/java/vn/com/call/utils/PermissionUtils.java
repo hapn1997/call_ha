@@ -14,7 +14,7 @@ import java.util.List;
 
 public class PermissionUtils {
 
-    public static final String PERMISSION_SMS = Manifest.permission.SEND_SMS;
+    //public static final String PERMISSION_SMS = Manifest.permission.SEND_SMS;
     public static final String PERMISSION_CONTACTS = Manifest.permission.WRITE_CONTACTS;
     public static final String PERMISSION_READ_CONTACTS = Manifest.permission.READ_CONTACTS;
     public static final String PERMISSION_PHONE = Manifest.permission.WRITE_CALL_LOG;
@@ -25,8 +25,8 @@ public class PermissionUtils {
     public static String[] getPermissionsNeedGrantAtIntro(Context context) {
         List<String> permissions = new ArrayList<>();
 
-        if (ContextCompat.checkSelfPermission(context, PERMISSION_SMS) != PackageManager.PERMISSION_GRANTED)
-            permissions.add(PERMISSION_SMS);
+//        if (ContextCompat.checkSelfPermission(context, PERMISSION_SMS) != PackageManager.PERMISSION_GRANTED)
+//            permissions.add(PERMISSION_SMS);
         if (ContextCompat.checkSelfPermission(context, PERMISSION_PHONE) != PackageManager.PERMISSION_GRANTED)
             permissions.add(PERMISSION_PHONE);
         if (ContextCompat.checkSelfPermission(context, PERMISSION_CONTACTS) != PackageManager.PERMISSION_GRANTED)
@@ -47,8 +47,9 @@ public class PermissionUtils {
     }
 
     public static boolean isAllPermissionGrantedAtIntro(Context context) {
-        return ContextCompat.checkSelfPermission(context, PERMISSION_SMS) == PackageManager.PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(context, PERMISSION_PHONE) == PackageManager.PERMISSION_GRANTED
+        return
+//        ContextCompat.checkSelfPermission(context, PERMISSION_SMS) == PackageManager.PERMISSION_GRANTED
+                 ContextCompat.checkSelfPermission(context, PERMISSION_PHONE) == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(context, PERMISSION_CONTACTS) == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(context, PERMISSION_READ_CONTACTS) == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(context, PERMISSION_READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED

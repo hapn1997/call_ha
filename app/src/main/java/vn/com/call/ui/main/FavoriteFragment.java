@@ -2,14 +2,19 @@ package vn.com.call.ui.main;
 
 import android.Manifest;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +47,7 @@ import vn.com.call.db.cache.ContactCache;
 import vn.com.call.favController;
 import vn.com.call.model.contact.Contact;
 import vn.com.call.ui.BaseFragment;
+import vn.com.call.ui.callback.SwipeToDeleteCallback;
 import vn.com.call.widget.FabBottomRecyclerView;
 
 import static vn.com.call.db.ContactHelper.convertToSectionEntity;
@@ -49,6 +55,8 @@ import static vn.com.call.db.ContactHelper.convertToSectionEntity;
 @RuntimePermissions
 
 public class FavoriteFragment extends BaseFragment {
+    @BindView(R.id.coordinator)
+    CoordinatorLayout coordinatorLayout;
     @BindView(R.id.norecents)
     TextView norecents;
     @BindView(R.id.app_bar_layout)
@@ -116,8 +124,11 @@ public class FavoriteFragment extends BaseFragment {
         addFavourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getChildFragmentManager().beginTransaction().replace(R.id.frmen ,favoritesAddFragment).addToBackStack("FavoriteFragment").commitAllowingStateLoss();
+                getChildFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.anim.push_up_in,R.anim.push_down_out)
+                        .replace(R.id.frmen ,favoritesAddFragment).addToBackStack("FavoriteFragment").commitAllowingStateLoss();
                  relative_tool_bar.setVisibility(View.GONE);
+              //   getActivity().overridePendingTransition(R.anim.push_up_in,R.anim.push_down_out);
             }
         });
 
@@ -135,11 +146,11 @@ public class FavoriteFragment extends BaseFragment {
             public void onClick(View v) {
             if(horizontalContactAdapter.check()){
                 setCancel();
-                Toast.makeText(getContext(),"ccddcdd",Toast.LENGTH_LONG).show();
+              //  Toast.makeText(getContext(),"ccddcdd",Toast.LENGTH_LONG).show();
                 return;
 
             }else{
-                Toast.makeText(getContext(),"edeefef",Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(),"edeefef",Toast.LENGTH_LONG).show();
                 setEdit();
                 return;
 
