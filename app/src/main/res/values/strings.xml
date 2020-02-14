@@ -19,7 +19,7 @@
     <string name="title_add_remove_messenger_app">Add/Remove</string>
     <string name="today">Today</string>
     <string name="older">Older</string>
-    <string name="delete">Delete</string>
+    <string name="deleteitem">Delete</string>
     <string name="title_activity_call_log_detail">Call details</string>
     <string name="yesterday">Yesterday</string>
     <string name="incoming">Incoming call</string>
@@ -126,7 +126,7 @@
     <string name="key_seven" translatable="false">PQRS</string>
     <string name="key_eight" translatable="false">TUV</string>
     <string name="key_nine" translatable="false">WXYZ</string>
-
+    <string name="delete">Delete</string>
     <string name="title_setting_language_device_language">Device Language</string>
     <string name="title_setting_language_english" translatable="false">English</string>
     <string name="title_setting_language_vietnamese" translatable="false">Tiếng Việt</string>

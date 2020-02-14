@@ -1,5 +1,6 @@
 package vn.com.call.ui.callback;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -20,22 +21,29 @@ abstract public class SwipeToDeleteCallback extends ItemTouchHelper.Callback {
 
     Context mContext;
     private Paint mClearPaint;
+    private Paint mClearPaint1;
     private ColorDrawable mBackground;
     private int backgroundColor;
     private Drawable deleteDrawable;
     private int intrinsicWidth;
     private int intrinsicHeight;
+    private String delete = "delete";
 
 
-    SwipeToDeleteCallback(Context context) {
+    @SuppressLint("ResourceType")
+    public SwipeToDeleteCallback(Context context) {
         mContext = context;
         mBackground = new ColorDrawable();
         backgroundColor = Color.parseColor("#b80f0a");
         mClearPaint = new Paint();
+        mClearPaint1 = new Paint();
         mClearPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+        mClearPaint1.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
         deleteDrawable = ContextCompat.getDrawable(mContext, R.drawable.ic_delete_white_24dp);
+
         intrinsicWidth = deleteDrawable.getIntrinsicWidth();
         intrinsicHeight = deleteDrawable.getIntrinsicHeight();
+
 
 
     }
@@ -80,6 +88,7 @@ abstract public class SwipeToDeleteCallback extends ItemTouchHelper.Callback {
         deleteDrawable.setBounds(deleteIconLeft, deleteIconTop, deleteIconRight, deleteIconBottom);
         deleteDrawable.draw(c);
 
+
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
 
 
@@ -87,6 +96,7 @@ abstract public class SwipeToDeleteCallback extends ItemTouchHelper.Callback {
 
     private void clearCanvas(Canvas c, Float left, Float top, Float right, Float bottom) {
         c.drawRect(left, top, right, bottom, mClearPaint);
+        c.drawText(delete,left,top,mClearPaint1);
 
     }
 

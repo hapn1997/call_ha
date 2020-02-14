@@ -42,11 +42,15 @@ public class CallLogAdapter extends BaseSectionQuickAdapter<CallLogSectionEntity
       this.fragment = fragment;
         this.listener = listener;
     }
+    public void enableSwipeToDeleteAndUndo1(CallLog callLog){
+        callLog.enableSwipeToDeleteAndUndo(mContext,false,fragment);
 
+    }
     @Override
     protected void convert(final CallLogViewHolder holder, CallLogSectionEntity item) {
         final CallLog callLog = item.t;
-
+        enableSwipeToDeleteAndUndo1(callLog);
+       // callLog.enableSwipeToDeleteAndUndo(mContext,false,fragment);
         holder.avatar.loadAvatar(callLog.getPhotoContact(), callLog.getNameContact(), callLog.getNumber());
         holder.name.setText(callLog.getNameContact() == null ? callLog.getNumber() : callLog.getNameContact());
 
@@ -64,7 +68,8 @@ public class CallLogAdapter extends BaseSectionQuickAdapter<CallLogSectionEntity
         holder.info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.onClickInfo(callLog);
+                listener.onClickAvatar(callLog, holder.avatar);
+//                listener.onClickInfo(callLog);
             }
         });
 

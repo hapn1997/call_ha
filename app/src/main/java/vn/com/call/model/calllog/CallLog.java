@@ -11,6 +11,9 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -25,6 +28,7 @@ import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import vn.com.call.R;
 import vn.com.call.db.cache.CallLogHelper;
+import vn.com.call.ui.callback.SwipeToDeleteCallback;
 import vn.com.call.ui.main.CallLogFragment;
 import vn.com.call.ui.main.MainActivity;
 
@@ -85,7 +89,24 @@ public class CallLog implements Parcelable {
         return details;
     }
 
+    public void enableSwipeToDeleteAndUndo(final Context context, final boolean finishAfterDelete, final CallLogFragment fragment) {
+        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(context) {
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
 
+                final int position = viewHolder.getAdapterPosition();
+                Log.d("vvfvfvfv", String.valueOf(position));
+                //mFavoriteContacts.get(position).changeFavorite(getContext());
+                deleteAllCallLogs(context, finishAfterDelete);
+                fragment.getFragmentManager().beginTransaction().detach(fragment).attach(fragment).commit();
+
+
+            }
+        };
+
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
+        //itemTouchhelper.attachToRecyclerView(mList);
+    }
     public void delete(final Context context, boolean showConfirm, final boolean finishAfterDelete, final CallLogFragment fragment) {
         if (showConfirm) {
 

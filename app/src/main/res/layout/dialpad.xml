@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical">
+    >
 
     <RelativeLayout
+        android:id="@+id/rèecđc"
         android:background="@color/white"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="110dp"
-        android:layout_above="@+id/numbers"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -31,6 +31,7 @@
                  />
 
             <EditText
+                android:fontFamily="@font/ios_regular"
                 android:layout_marginLeft="65dp"
                 android:singleLine="true"
                 android:id="@+id/input_number"
@@ -42,9 +43,10 @@
                 android:focusable="false"
                 android:gravity="center_horizontal|center_vertical"
                 android:textColor="@android:color/black"
-                android:textSize="27dp"
+                android:textSize="30dp"
                 />
               <TextView
+                  android:fontFamily="@font/ios_regular"
                   android:visibility="gone"
                   android:layout_toLeftOf="@id/add_contact"
                   android:background="@color/white"
@@ -66,6 +68,7 @@
             android:layout_height="match_parent"
             >
             <TextView
+                android:fontFamily="@font/ios_regular"
                 android:visibility="gone"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_sms_15"
@@ -74,9 +77,10 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/contactname"></TextView>
         <TextView
+            android:fontFamily="@font/ios_regular"
             android:visibility="gone"
             android:textColor="@color/colorBlue"
-            android:textSize="@dimen/text_size_sms_15"
+            android:textSize="@dimen/text_size_sms_17"
             android:id="@+id/addnumber"
             android:text="Add Number"
             android:layout_width="wrap_content"
@@ -84,18 +88,22 @@
             android:gravity="center"></TextView>
         </LinearLayout>
     </RelativeLayout>
+<RelativeLayout
+    android:gravity="bottom"
+    android:layout_below="@+id/rèecđc"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_marginTop="8dp"
         android:id="@+id/numbers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bottom"
         android:background="@android:color/white"
         android:orientation="vertical"
         android:paddingTop="16dp">
 
         <LinearLayout
+
             android:layout_marginLeft="5dp"
             android:id="@+id/row1"
             android:layout_width="300dp"
@@ -120,7 +128,7 @@
 
         <LinearLayout
             android:layout_marginLeft="5dp"
-
+            android:layout_marginTop="@dimen/_10sdp"
             android:background="@color/white"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -143,6 +151,7 @@
 
         <LinearLayout
             android:layout_marginLeft="5dp"
+            android:layout_marginTop="@dimen/_10sdp"
 
             android:background="@color/white"
             android:layout_width="300dp"
@@ -166,6 +175,7 @@
 
         <LinearLayout
             android:layout_marginLeft="5dp"
+            android:layout_marginTop="@dimen/_10sdp"
 
             android:background="@color/white"
 
@@ -192,7 +202,11 @@
     </LinearLayout>
 
     <FrameLayout
-        android:id="@+id/bottom"
+        android:layout_marginTop="@dimen/_10sdp"
+
+        android:layout_marginBottom="30dp"
+        android:layout_below="@+id/numbers"
+        android:id="@+id/bottom1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
@@ -228,27 +242,30 @@
                 android:src="@drawable/sim_2" />
         </LinearLayout>
 
+
         <ImageButton
+            android:layout_gravity="center"
             android:id="@+id/call_single_sim"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:layout_gravity="center"
             android:background="@drawable/bg_call_circular"
             android:src="@drawable/ic_call_white_24dp"
-            android:visibility="gone"
              />
         <vn.com.call.widget.SquareHeightImageButton
             android:visibility="gone"
+            android:layout_toRightOf="@+id/call_single_sim"
+            android:layout_marginLeft="280dp"
             android:padding="@dimen/_5sdp"
             android:id="@+id/backspace"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:layout_marginTop="18dp"
-            android:layout_marginRight="70dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_size_sms_15"
             android:background="@color/white"
             android:src="@drawable/ic_backspace_grey_500_24dp"
 
             />
+
     </FrameLayout>
-</LinearLayout>
+</RelativeLayout>
+
+</RelativeLayout>

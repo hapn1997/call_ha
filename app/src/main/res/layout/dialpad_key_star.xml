@@ -20,6 +20,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:fontFamily="@font/ios_medium"
             android:id="@+id/dialpad_key_letters"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

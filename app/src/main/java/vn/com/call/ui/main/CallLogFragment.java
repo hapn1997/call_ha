@@ -11,6 +11,8 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +49,7 @@ import vn.com.call.model.calllog.CallLog;
 import vn.com.call.model.contact.Contact;
 import vn.com.call.ui.BaseFragment;
 import vn.com.call.ui.callback.CallMaker;
+import vn.com.call.ui.callback.SwipeToDeleteCallback;
 import vn.com.call.utils.CallUtils;
 import vn.com.call.utils.TimeUtils;
 import vn.com.call.widget.FabBottomRecyclerView;
@@ -103,6 +106,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
         addlistCall.setSelected(true);
         btnLastHeaderMissed.setSelected(false);
         addlistCall.setTextColor(Color.WHITE);
+
         addlistCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,6 +164,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
             }
         });
 
+      //  mAdapter.enableSwipeToDeleteAndUndo1(mCallLogs);
     }
 
 

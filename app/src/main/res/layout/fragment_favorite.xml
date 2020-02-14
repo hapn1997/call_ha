@@ -38,7 +38,7 @@
             android:padding="6dp"
             android:src="@drawable/ic_add_primary_color_24dp" />
         <TextView
-
+            style="@style/HeaderSideText"
             android:fontFamily="@font/ios_regular"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/_12sdp"

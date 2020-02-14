@@ -15,6 +15,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -108,7 +109,32 @@ public class FavoriteFragment extends BaseFragment {
         }
     }
 
+    private void enableSwipeToDeleteAndUndo() {
+        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(getContext()) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
 
+                return super.onMove(recyclerView, viewHolder, viewHolder1);
+
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
+
+                 final int position = viewHolder.getAdapterPosition();
+                Log.d("vvfvfvfv", String.valueOf(position));
+                mFavoriteContacts.get(position).changeFavorite(getContext());
+                FavoriteFragment fragment = new FavoriteFragment();
+
+                FavoriteFragment.this.getFragmentManager().beginTransaction().detach(FavoriteFragment.this).attach(FavoriteFragment.this).commit();
+
+
+            }
+        };
+
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
+        itemTouchhelper.attachToRecyclerView(mlist);
+    }
     @Override
     protected void onCreateView(Bundle savedInstanceState) {
         controller  = new favController(getContext());
@@ -116,6 +142,7 @@ public class FavoriteFragment extends BaseFragment {
         mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mlist.setLayoutManager(mLayoutManager);
         loadAndShowData();
+        enableSwipeToDeleteAndUndo();
        horizontalContactAdapter=  new HorizontalContactAdapter(this,mFavoriteContacts);
        horizontalContactAdapter.notifyDataSetChanged();
         mlist.setAdapter(horizontalContactAdapter);

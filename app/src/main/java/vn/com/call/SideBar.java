@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
@@ -50,15 +51,16 @@ public class SideBar extends View {
         super.onDraw(canvas);
         int height = getHeight();
         int width = getWidth();
-        int singleHeight = height / letters.length;
+        int singleHeight = height / (letters.length+10);
 
         for (int i = 0; i < letters.length; i++) {
-            paint.setColor(Color.BLUE);
+            int color = ContextCompat.getColor(getContext(),R.color.blue_ios);
+            paint.setColor(color);
             paint.setTypeface(Typeface.DEFAULT);
             paint.setAntiAlias(true);
-            paint.setTextSize(spToPx(10));
+            paint.setTextSize(spToPx(11));
             if (i == choose) {
-                paint.setColor(Color.parseColor("#9C27B0"));
+                paint.setColor(Color.parseColor("#1181ff"));
                 paint.setFakeBoldText(true);
             }
 

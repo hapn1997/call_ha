@@ -2,14 +2,14 @@
 <vn.com.call.widget.RelativeLayoutRatio xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/height_sub_item_detail_contact"
-    android:background="?attr/selectableItemBackgroundBorderless"
+
     android:orientation="horizontal">
 
     <vn.com.call.widget.SquareHeightImageButton
         android:id="@+id/email_icon"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="?attr/selectableItemBackgroundBorderless"
+
         android:src="@drawable/ic_email_primary_color_detail_contact_24dp" />
 
     <LinearLayout

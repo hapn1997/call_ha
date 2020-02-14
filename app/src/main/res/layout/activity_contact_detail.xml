@@ -18,7 +18,7 @@
             android:orientation="vertical">
 
             <vn.com.call.widget.LinearLayoutRatio
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="68dp"
                 android:id="@+id/avatar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -31,13 +31,14 @@
                 <vn.com.call.widget.AvatarView
                      android:layout_marginTop="7dp"
                     android:id="@+id/avatar"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="76dp"
+                    android:layout_height="76dp"
                     android:layout_above="@+id/name"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="16dp" />
 
                 <TextView
+                    android:fontFamily="@font/ios_medium"
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -45,7 +46,7 @@
                     android:layout_centerVertical="true"
                     android:text="Cuc cu"
                     android:textColor="@android:color/black"
-                    android:textSize="25sp" />
+                    android:textSize="26dp" />
                    <LinearLayout
                        android:layout_marginTop="@dimen/_20sdp"
                        android:padding="@dimen/_5sdp"
@@ -76,7 +77,7 @@
                     <TextView
                         android:layout_marginTop="@dimen/_3sdp"
                         android:textSize="@dimen/_12sdp"
-                        android:text="Messager"
+                        android:text="message"
                         android:textColor="@color/blue_ios"
                         android:gravity="end"
                         android:layout_width="match_parent"
@@ -107,7 +108,7 @@
                                android:layout_width="match_parent"
                                android:layout_height="match_parent"
                                android:gravity="center_horizontal"
-                               android:text="Call"
+                               android:text="mobile"
                                android:textColor="@color/blue_ios">
 
                            </TextView>
@@ -145,46 +146,73 @@
 
                    </LinearLayout>
             </vn.com.call.widget.LinearLayoutRatio>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_35sdp" />
-
-            <android.support.v7.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp">
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/recents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!--  <include layout="@layout/head_recents_layout_contact_detail" />-->
+
+                    <include layout="@layout/item_call_log_detail_contact_detail" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/gray"></View>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/phone_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical" />
-            </android.support.v7.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp">
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:visibility="gone"
-                    android:id="@+id/recents"
+                <TextView
+                    android:textSize="13dp"
+                    android:text="Notes"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/ios_regular"
+                    android:layout_marginLeft="@dimen/sp_16"
+                    android:id="@+id/note"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                     />
+                <EditText
+                    app:backgroundTint="@android:color/transparent"
+                    android:layout_marginLeft="@dimen/sp_16"
+                    android:textSize="@dimen/sp_14"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/ios_regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    ></EditText>
 
-                    <include layout="@layout/head_recents_layout_contact_detail" />
 
-                    <include layout="@layout/item_call_log_detail_contact_detail" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
@@ -207,7 +235,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="16dp"
                 android:orientation="vertical">
@@ -217,12 +245,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"></View>
                 <TextView
+
                     android:id="@+id/send_sms"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/send_message"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/text_size_sms_15" />
+                    android:textSize="@dimen/sp_16" />
                 <View
                     android:layout_marginTop="@dimen/dp_10"
                     android:background="@color/gray"
@@ -237,7 +266,7 @@
                     android:layout_marginTop="11dp"
                     android:text="@string/share_contact"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/text_size_sms_15" />
+                    android:textSize="@dimen/sp_16" />
                 <View
                     android:layout_marginTop="11dp"
                     android:background="@color/gray"
@@ -251,7 +280,7 @@
                     android:layout_marginTop="10dp"
                     android:text="@string/add_favorite"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/text_size_sms_15"
+                    android:textSize="@dimen/sp_16"
                      />
                 <View
                     android:layout_marginTop="@dimen/_12sdp"
@@ -265,7 +294,7 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:text="Share my Location"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/text_size_sms_15"
+                    android:textSize="@dimen/sp_16"
                     />
                 <View
                     android:layout_marginTop="@dimen/_12sdp"
@@ -277,10 +306,23 @@
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.v7.widget.Toolbar
+
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent">
+        <TextView
+            style="@style/HeaderSideText"
+            android:id="@+id/edit3"
+            android:layout_marginRight="@dimen/sp_14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            android:gravity="right"
+            android:fontFamily="@font/ios_regular"
+            android:textColor="@color/blue_ios"
+            ></TextView>
+    </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.CardView
         android:visibility="gone"

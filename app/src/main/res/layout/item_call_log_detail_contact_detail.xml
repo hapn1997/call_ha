@@ -15,19 +15,22 @@
 
     <LinearLayout
 
-        android:layout_marginLeft="@dimen/_10sdp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingTop="16dp"
         android:paddingRight="16dp"
-        android:paddingBottom="16dp">
+        android:paddingBottom="8dp">
         <TextView
-            android:id="@+id/number"
+            android:textSize="@dimen/_12sdp"
+            android:id="@+id/date"
+            android:fontFamily="@font/ios_medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="0948586833"/>
         <TextView
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mobile"
@@ -38,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="2dp"
             android:gravity="center_vertical">
             <ImageView
                 android:visibility="gone"
@@ -48,13 +51,13 @@
                 android:src="@drawable/ic_call_made_primary_color_18dp"/>
 
             <TextView
-                android:visibility="gone"
-                android:id="@+id/date"
+                android:fontFamily="@font/ios_bold"
+                android:id="@+id/number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
-                android:alpha="0.5"
-                android:textSize="12sp"/>
+                android:textSize="@dimen/_10sdp"/>
         </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

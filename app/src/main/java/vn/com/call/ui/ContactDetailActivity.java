@@ -24,6 +24,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Pair;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
@@ -73,9 +74,29 @@ import vn.com.call.utils.TimeUtils;
  */
 
 public class ContactDetailActivity extends BaseActivity {
+    public static final String EXTRA_CALL_LOG = "call_log";
+
     public static final String EXTRA_CONTACT = "contact";
     private static final String TAG = ContactDetailActivity.class.getSimpleName();
     favController controller;
+    @OnClick(R.id.edit3)
+    void edit3(){
+        if (mContact.getId() != null) {
+            Uri uriContact = ContactsContract.Contacts.getLookupUri(Long.parseLong(mContact.getId()), mContact.getLookupKey());
+
+            Intent editIntent = new Intent(Intent.ACTION_EDIT);
+            editIntent.setDataAndType(uriContact, ContactsContract.Contacts.CONTENT_ITEM_TYPE);
+            startActivity(editIntent);
+        } else {
+            Intent intentInsertEdit = new Intent(Intent.ACTION_INSERT_OR_EDIT);
+            intentInsertEdit.setType(ContactsContract.Contacts.CONTENT_ITEM_TYPE);
+            intentInsertEdit.putExtra(ContactsContract.Intents.Insert.PHONE, mContact.getNumbers().get(0).getNumber())
+                    .putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_WORK);
+
+            startActivity(intentInsertEdit);
+        }
+    }
+
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.tools)
@@ -258,6 +279,8 @@ public class ContactDetailActivity extends BaseActivity {
 
         Intent intent = new Intent(activity, ContactDetailActivity.class);
         intent.putExtra(ContactDetailActivity.EXTRA_CONTACT, contact);
+        intent.putExtra(ContactDetailActivity.EXTRA_CALL_LOG, "ddvdvdvdv");
+
 
         if (Build.VERSION.SDK_INT >= 23)
             ActivityCompat.startActivity(activity, intent, options.toBundle());
@@ -283,6 +306,7 @@ public class ContactDetailActivity extends BaseActivity {
     public static void launch(Context context, Contact contact) {
         Intent intent = new Intent(context.getApplicationContext(), ContactDetailActivity.class);
         intent.putExtra(ContactDetailActivity.EXTRA_CONTACT, contact);
+        intent.putExtra(ContactDetailActivity.EXTRA_CALL_LOG, "ddvdvdvdv");
 
         if (context instanceof Service) {
             intent.putExtra(BaseActivity.EXTRA_FROM_SERVICE, true);
@@ -319,6 +343,7 @@ public class ContactDetailActivity extends BaseActivity {
             e.printStackTrace();
         }
         mAddToFavorite.setVisibility(mContact.getId() == null ? View.GONE : View.VISIBLE);
+        loadCallLog();
     }
 
     @Override
@@ -327,7 +352,7 @@ public class ContactDetailActivity extends BaseActivity {
 
         loadInfoContact();
 
-        loadCallLog();
+
     }
 
     @Override
@@ -342,10 +367,10 @@ public class ContactDetailActivity extends BaseActivity {
                 mAddToFavorite.setText(mContact.isFavorite() ? R.string.detail_activity_title_menu_remove_favorite : R.string.detail_activity_title_menu_add_favorite);
 
             //menu.findItem(R.id.favorite).setTitle(mContact.isFavorite() ? R.string.detail_activity_title_menu_remove_favorite : R.string.detail_activity_title_menu_add_favorite);
-            menu.findItem(R.id.remove_contact).setVisible(mContact.getId() != null);
-            menu.findItem(R.id.favorite).setVisible(mContact.getId() != null);
-            menu.findItem(R.id.copy_contact).setVisible(mContact.getId() != null);
-            menu.findItem(R.id.copy_name).setVisible(mContact.getId() != null);
+//            menu.findItem(R.id.remove_contact).setVisible(mContact.getId() != null);
+//            menu.findItem(R.id.favorite).setVisible(mContact.getId() != null);
+//            menu.findItem(R.id.copy_contact).setVisible(mContact.getId() != null);
+//            menu.findItem(R.id.copy_name).setVisible(mContact.getId() != null);
         }
 
         return super.onPrepareOptionsMenu(menu);
@@ -353,7 +378,7 @@ public class ContactDetailActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_detail_contact, menu);
+       // getMenuInflater().inflate(R.menu.activity_detail_contact, menu);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -413,12 +438,14 @@ public class ContactDetailActivity extends BaseActivity {
         });
 
         mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_primary_color_detail_contact_24dp);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        mToolbar.setNavigationOnClickListener(
+                new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
             }
         });
+
 
         setSupportActionBar(mToolbar);
     }
@@ -509,9 +536,9 @@ public class ContactDetailActivity extends BaseActivity {
                 TextView typeNumber = layoutPhoneNumber.findViewById(R.id.type_number);
 
                 number.setText(phoneNumber.getNumber());
-                typeNumber.setText("Home");
+                typeNumber.setText("mobile");
                number.setTextColor(getColor(R.color.colorBlue));
-                call.setVisibility(i == 0 ? View.VISIBLE : View.INVISIBLE);
+               // call.setVisibility(i == 0 ? View.VISIBLE : View.INVISIBLE);
 
                 layoutPhoneNumber.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -621,52 +648,64 @@ public class ContactDetailActivity extends BaseActivity {
 
     private void showCallLog(final List<CallLogDetail> callLogDetails) {
         mLayoutCallLog.removeAllViews();
+        Intent intent1 =getIntent();
+        String calllof= intent1.getStringExtra(ContactDetailActivity.EXTRA_CALL_LOG);
+        if(calllof != null) {
 
-        if (callLogDetails.size() > 0) {
-            final int MAX_CALLLOG_SHOW = 3;
 
-            mLayoutCallLog.setVisibility(View.VISIBLE);
+            if (callLogDetails.size() > 0) {
+                final int MAX_CALLLOG_SHOW = 3;
 
-            View header = LayoutInflater.from(this).inflate(R.layout.head_recents_layout_contact_detail, mLayoutCallLog, false);
-            header.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(ContactDetailActivity.this, ListCallLogByContactActivity.class);
-                    intent.putParcelableArrayListExtra(ListCallLogByContactActivity.EXTRA_LIST_CALL_LOG_DETAIL, (ArrayList<CallLogDetail>) callLogDetails);
-                    startActivity(intent);
+                mLayoutCallLog.setVisibility(View.VISIBLE);
+
+                View header = LayoutInflater.from(this).inflate(R.layout.head_recents_layout_contact_detail, mLayoutCallLog, false);
+                header.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(ContactDetailActivity.this, ListCallLogByContactActivity.class);
+                        intent.putParcelableArrayListExtra(ListCallLogByContactActivity.EXTRA_LIST_CALL_LOG_DETAIL, (ArrayList<CallLogDetail>) callLogDetails);
+                        startActivity(intent);
+                    }
+                });
+                // mLayoutCallLog.addView(header);
+
+                int max = callLogDetails.size() > MAX_CALLLOG_SHOW ? MAX_CALLLOG_SHOW : callLogDetails.size();
+
+                for (int i = 0; i < max; i++) {
+                    CallLogDetail callLogDetail = callLogDetails.get(i);
+
+                    View callLogView = LayoutInflater.from(this).inflate(R.layout.item_call_log_detail_contact_detail, mLayoutCallLog, false);
+
+                    TextView number = callLogView.findViewById(R.id.number);
+                    ImageView typeCallLog = callLogView.findViewById(R.id.type_call_log);
+                    TextView date = callLogView.findViewById(R.id.date);
+
+                    //number.setText(callLogDetail.getNumber());
+                    if (callLogDetail.getType() == CallLog.Calls.INCOMING_TYPE) {
+                        typeCallLog.setImageResource(R.drawable.ic_call_received_primary_color_18dp);
+                        number.setText(R.string.incoming);
+
+                    } else if (callLogDetail.getType() == CallLog.Calls.OUTGOING_TYPE) {
+                        typeCallLog.setImageResource(R.drawable.ic_call_made_primary_color_18dp);
+                        number.setText(R.string.outgoing);
+                    } else {
+                        typeCallLog.setImageResource(R.drawable.ic_call_received_red_700_18dp);
+                        number.setText(R.string.missed);
+                    }
+                    typeCallLog.setVisibility(View.GONE);
+                    date.setText(TimeUtils.getTimeFormatCallLogDetail(callLogDetail.getDate()));
+
+                    mLayoutCallLog.addView(callLogView);
                 }
-            });
-            mLayoutCallLog.addView(header);
-
-            int max = callLogDetails.size() > MAX_CALLLOG_SHOW ? MAX_CALLLOG_SHOW : callLogDetails.size();
-
-            for (int i = 0; i < max; i++) {
-                CallLogDetail callLogDetail = callLogDetails.get(i);
-
-                View callLogView = LayoutInflater.from(this).inflate(R.layout.item_call_log_detail_contact_detail, mLayoutCallLog, false);
-
-                TextView number = callLogView.findViewById(R.id.number);
-                ImageView typeCallLog = callLogView.findViewById(R.id.type_call_log);
-                TextView date = callLogView.findViewById(R.id.date);
-
-                number.setText(callLogDetail.getNumber());
-                if (callLogDetail.getType() == CallLog.Calls.INCOMING_TYPE) {
-                    typeCallLog.setImageResource(R.drawable.ic_call_received_primary_color_18dp);
-                } else if (callLogDetail.getType() == CallLog.Calls.OUTGOING_TYPE) {
-                    typeCallLog.setImageResource(R.drawable.ic_call_made_primary_color_18dp);
-                } else {
-                    typeCallLog.setImageResource(R.drawable.ic_call_received_red_700_18dp);
-                }
-
-                date.setText(TimeUtils.getTimeFormatCallLogDetail(callLogDetail.getDate()));
-
-                mLayoutCallLog.addView(callLogView);
+            } else {
                 mLayoutCallLog.setVisibility(View.GONE);
             }
         } else {
             mLayoutCallLog.setVisibility(View.GONE);
+
         }
-    }
+
+        }
 
     private View getLineView(ViewGroup parent) {
         return LayoutInflater.from(this).inflate(R.layout.line_horizontal_detail_contact, parent, false);

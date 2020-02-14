@@ -20,14 +20,17 @@
         android:orientation="vertical">
 
         <TextView
+            android:fontFamily="@font/ios_medium"
             android:id="@+id/dialpad_key_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"
-            android:textSize="30sp"
+            android:textSize="31dp"
             android:textColor="@color/black"/>
 
         <TextView
+            android:letterSpacing="0.3"
+            android:fontFamily="@font/ios_regular"
             android:layout_marginTop="-7dp"
             android:textStyle="bold"
             android:id="@+id/dialpad_key_letters"

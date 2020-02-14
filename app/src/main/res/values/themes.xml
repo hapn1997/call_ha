@@ -44,9 +44,9 @@
     </style>
 
     <style name="SplashTheme" parent="BaseTheme">
-        <item name="android:windowBackground">@color/green</item>
-        <item name="colorPrimary">@color/green</item>
-        <item name="colorPrimaryDark">@color/green</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
     </style>
 
     <style name="AppTheme.Tranlucent">
