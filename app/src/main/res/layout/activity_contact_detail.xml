@@ -18,7 +18,7 @@
             android:orientation="vertical">
 
             <vn.com.call.widget.LinearLayoutRatio
-                android:layout_marginTop="68dp"
+                android:layout_marginTop="60dp"
                 android:id="@+id/avatar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
                 app:ratioWidth="16">
 
                 <vn.com.call.widget.AvatarView
-                     android:layout_marginTop="7dp"
+                     android:layout_marginTop="9dp"
                     android:id="@+id/avatar"
                     android:layout_width="76dp"
                     android:layout_height="76dp"
