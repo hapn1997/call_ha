@@ -40,6 +40,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -96,7 +97,8 @@ public class ContactDetailActivity extends BaseActivity {
             startActivity(intentInsertEdit);
         }
     }
-
+    @BindView(R.id.checklogfav)
+    LinearLayout linearLayout;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.tools)
@@ -179,6 +181,8 @@ public class ContactDetailActivity extends BaseActivity {
             mContact.setFavorite(false);
             ContactHelper.removeFavorite(this, mContact.getId());
             mAddToFavorite.setText(mContact.isFavorite() ? R.string.detail_activity_title_menu_remove_favorite : R.string.detail_activity_title_menu_add_favorite);
+            String toast = getString(R.string.detail_activity_title_toast_remove_favorite).replace("{name}", getNameContact());
+            Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
 
         }else {
             mContact.setFavorite(true);
@@ -216,6 +220,8 @@ public class ContactDetailActivity extends BaseActivity {
 //                }else;
                 mAddToFavorite.setText(mContact.isFavorite() ? R.string.detail_activity_title_menu_remove_favorite : R.string.detail_activity_title_menu_add_favorite);
                 ContactHelper.setFavorite(context, contact.getId());
+                String toast = getString(R.string.detail_activity_title_toast_add_favorite).replace("{name}", getNameContact());
+                Toast.makeText(context, toast, Toast.LENGTH_SHORT).show();
                 deleteDialog.dismiss();
 
             }
@@ -229,6 +235,8 @@ public class ContactDetailActivity extends BaseActivity {
 //                }else;
                 mAddToFavorite.setText(mContact.isFavorite() ? R.string.detail_activity_title_menu_remove_favorite : R.string.detail_activity_title_menu_add_favorite);
                 ContactHelper.setFavorite(context, contact.getId());
+                String toast = getString(R.string.detail_activity_title_toast_add_favorite).replace("{name}", getNameContact());
+                Toast.makeText(context, toast, Toast.LENGTH_SHORT).show();
                 deleteDialog.dismiss();
             }
         });
@@ -276,15 +284,19 @@ public class ContactDetailActivity extends BaseActivity {
 
     public static void launch(Activity activity, View avatar, Contact contact) {
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, new Pair<>(avatar, "avatar"));
-
         Intent intent = new Intent(activity, ContactDetailActivity.class);
         intent.putExtra(ContactDetailActivity.EXTRA_CONTACT, contact);
         intent.putExtra(ContactDetailActivity.EXTRA_CALL_LOG, "ddvdvdvdv");
 
 
         if (Build.VERSION.SDK_INT >= 23)
+
+
             ActivityCompat.startActivity(activity, intent, options.toBundle());
-        else activity.startActivity(intent);
+        else {
+            activity.startActivity(intent);
+        }
+
     }
 
     public static void launch(Activity activity, View avatar, Contact contact, int requestCode) {
@@ -307,6 +319,7 @@ public class ContactDetailActivity extends BaseActivity {
         Intent intent = new Intent(context.getApplicationContext(), ContactDetailActivity.class);
         intent.putExtra(ContactDetailActivity.EXTRA_CONTACT, contact);
         intent.putExtra(ContactDetailActivity.EXTRA_CALL_LOG, "ddvdvdvdv");
+        Log.d("fffrfrfr","vfvfvfvfv000");
 
         if (context instanceof Service) {
             intent.putExtra(BaseActivity.EXTRA_FROM_SERVICE, true);
@@ -328,7 +341,7 @@ public class ContactDetailActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContact = getIntent().getParcelableExtra(EXTRA_CONTACT);
-
+        Log.d("dcdcdcdc0","vfvfvfvfv000");
         ViewCompat.setTransitionName(mAvatar, "avatar");
 
         initToolbar();
@@ -343,7 +356,9 @@ public class ContactDetailActivity extends BaseActivity {
             e.printStackTrace();
         }
         mAddToFavorite.setVisibility(mContact.getId() == null ? View.GONE : View.VISIBLE);
-        loadCallLog();
+        linearLayout.setVisibility(mContact.getId() == null ? View.GONE : View.VISIBLE);
+
+
     }
 
     @Override
@@ -352,7 +367,7 @@ public class ContactDetailActivity extends BaseActivity {
 
         loadInfoContact();
 
-
+        loadCallLog();
     }
 
     @Override
@@ -702,6 +717,7 @@ public class ContactDetailActivity extends BaseActivity {
             }
         } else {
             mLayoutCallLog.setVisibility(View.GONE);
+
 
         }
 

@@ -4,28 +4,28 @@
     android:soundEffectsEnabled="false"
     android:clickable="true"
     android:layout_width="0dp"
-    android:layout_height="77dp"
+    android:layout_height="79dp"
     android:layout_weight="1"
-    android:minHeight="77dp"
+    android:minHeight="79dp"
     android:focusable="true"
     android:background="@color/white">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_marginLeft="@dimen/dp_10"
         android:background="@drawable/ic_contact_dark"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
 
         <TextView
+            android:layout_marginBottom="4dp"
             android:fontFamily="@font/ios_medium"
             android:id="@+id/dialpad_key_letters"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textSize="23sp"
+            android:textSize="27dp"
             android:textColor="@android:color/black"
             android:text="#"/>
     </LinearLayout>

@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/rèecđc"
         android:background="@color/white"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/_40sdp"
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:orientation="vertical">
@@ -61,7 +61,7 @@
                   ></TextView>
         </RelativeLayout>
         <LinearLayout
-            android:gravity="center"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
             android:layout_below="@+id/cdfg"
             android:layout_width="match_parent"
@@ -77,8 +77,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/contactname"></TextView>
         <TextView
-            android:fontFamily="@font/ios_regular"
             android:visibility="gone"
+            android:fontFamily="@font/ios_regular"
             android:textColor="@color/colorBlue"
             android:textSize="@dimen/text_size_sms_17"
             android:id="@+id/addnumber"
@@ -103,8 +103,7 @@
         android:paddingTop="16dp">
 
         <LinearLayout
-
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="2dp"
             android:id="@+id/row1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -127,8 +126,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginLeft="2dp"
+
+            android:layout_marginTop="@dimen/_12sdp"
             android:background="@color/white"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -150,8 +150,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginLeft="2dp"
+
+            android:layout_marginTop="@dimen/_12sdp"
 
             android:background="@color/white"
             android:layout_width="300dp"
@@ -174,8 +175,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="@dimen/_12sdp"
 
             android:background="@color/white"
 
@@ -202,13 +203,13 @@
     </LinearLayout>
 
     <FrameLayout
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="13dp"
 
         android:layout_marginBottom="30dp"
         android:layout_below="@+id/numbers"
         android:id="@+id/bottom1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="88dp"
         android:background="@android:color/white"
         android:paddingBottom="12dp"
         android:paddingTop="1dp">
@@ -244,6 +245,7 @@
 
 
         <ImageButton
+
             android:layout_gravity="center"
             android:id="@+id/call_single_sim"
             android:layout_width="75dp"

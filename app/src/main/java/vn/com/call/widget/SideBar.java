@@ -1,4 +1,4 @@
-package vn.com.call;
+package vn.com.call.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,6 +13,8 @@ import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
+
+import vn.com.call.R;
 
 public class SideBar extends View {
 
@@ -54,7 +56,7 @@ public class SideBar extends View {
         int singleHeight = height / (letters.length+10);
 
         for (int i = 0; i < letters.length; i++) {
-            int color = ContextCompat.getColor(getContext(),R.color.blue_ios);
+            int color = ContextCompat.getColor(getContext(), R.color.blue_ios);
             paint.setColor(color);
             paint.setTypeface(Typeface.DEFAULT);
             paint.setAntiAlias(true);

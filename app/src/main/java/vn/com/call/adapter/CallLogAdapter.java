@@ -68,6 +68,7 @@ public class CallLogAdapter extends BaseSectionQuickAdapter<CallLogSectionEntity
         holder.info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 listener.onClickAvatar(callLog, holder.avatar);
 //                listener.onClickInfo(callLog);
             }
@@ -76,7 +77,7 @@ public class CallLogAdapter extends BaseSectionQuickAdapter<CallLogSectionEntity
         holder.avatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.onClickAvatar(callLog, holder.avatar);
+               // listener.onClickAvatar(callLog, holder.avatar);
             }
         });
 

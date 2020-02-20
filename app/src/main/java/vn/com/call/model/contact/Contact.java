@@ -191,14 +191,14 @@ public class Contact implements Parcelable {
             setFavorite(false);
             ContactHelper.removeFavorite(context, id);
 
-            //String toast = context.getString(R.string.detail_activity_title_toast_remove_favorite).replace("{name}", getName());
-           // Toast.makeText(context, toast, Toast.LENGTH_SHORT).show();
+            String toast = context.getString(R.string.detail_activity_title_toast_remove_favorite).replace("{name}", getName());
+            Toast.makeText(context, toast, Toast.LENGTH_SHORT).show();
         } else {
             setFavorite(true);
             ContactHelper.setFavorite(context, id);
 
-           // String toast = context.getString(R.string.detail_activity_title_toast_add_favorite).replace("{name}", getName());
-           // Toast.makeText(context, toast, Toast.LENGTH_SHORT).show();
+            String toast = context.getString(R.string.detail_activity_title_toast_add_favorite).replace("{name}", getName());
+            Toast.makeText(context, toast, Toast.LENGTH_SHORT).show();
         }
 
         ContactCache.changeFavoriteContact(id, favorite);

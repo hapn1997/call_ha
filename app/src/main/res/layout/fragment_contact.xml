@@ -314,7 +314,7 @@
               android:layout_width="30dp"
               android:layout_height="match_parent">
 
-            <vn.com.call.SideBar
+            <vn.com.call.widget.SideBar
 
                 android:id="@+id/sideBar"
                 android:layout_width="30dp"

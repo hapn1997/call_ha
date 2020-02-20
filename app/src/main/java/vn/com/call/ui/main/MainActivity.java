@@ -111,7 +111,7 @@ public class MainActivity extends BaseActivity {
         initSearch();
 
         loadCallLog();
-        cacheAllSms();
+        //boquyen cacheAllSms();
        //hasua
 //        if (!isDefaultSmsApp()) setDefaultSmsApp();
 //

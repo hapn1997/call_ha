@@ -37,8 +37,8 @@ public class PermissionUtils {
             permissions.add(PERMISSION_READ_PHONE_STATE);
         if (ContextCompat.checkSelfPermission(context, PERMISSION_CALL_PHONE) != PackageManager.PERMISSION_GRANTED)
             permissions.add(PERMISSION_CALL_PHONE);
-        if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED)
-            permissions.add(Manifest.permission.READ_SMS);
+//        if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED)
+//            permissions.add(Manifest.permission.READ_SMS);
 
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED)
             permissions.add(Manifest.permission.READ_CALL_LOG);
@@ -54,7 +54,7 @@ public class PermissionUtils {
                 && ContextCompat.checkSelfPermission(context, PERMISSION_READ_CONTACTS) == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(context, PERMISSION_READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(context, PERMISSION_CALL_PHONE) == PackageManager.PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(context, Manifest.permission.READ_SMS) == PackageManager.PERMISSION_GRANTED
+               // && ContextCompat.checkSelfPermission(context, Manifest.permission.READ_SMS) == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(context, Manifest.permission.READ_CALL_LOG) == PackageManager.PERMISSION_GRANTED;
 
     }

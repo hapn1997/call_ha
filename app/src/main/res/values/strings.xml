@@ -44,7 +44,7 @@
     <string name="detail_activity_title_menu_add_favorite">Add favorite</string>
     <string name="detail_activity_title_menu_remove_favorite">Remove favorite</string>
     <string name="detail_activity_title_toast_add_favorite">{name} is now a favorite</string>
-    <string name="detail_activity_title_toast_remove_favorite">{name} is added as a favorite</string>
+    <string name="detail_activity_title_toast_remove_favorite">{name} is removed as a favorite</string>
     <string name="save">Save</string>
     <string name="copied_to_clipboard">Copied to clipboard</string>
     <string name="title_dialog_confirm_delete_contact">Remove Contact</string>

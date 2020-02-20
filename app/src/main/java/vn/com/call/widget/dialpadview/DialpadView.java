@@ -296,6 +296,7 @@ public class DialpadView extends FrameLayout implements View.OnClickListener, Lo
         switch (id) {
             case R.id.addnumber :
                 showSetting(getContext());
+                break;
             case R.id.backspace :
                 mInputNumber.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
                 break;

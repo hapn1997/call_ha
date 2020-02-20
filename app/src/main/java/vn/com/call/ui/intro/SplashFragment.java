@@ -38,7 +38,7 @@ public class SplashFragment extends BaseFragment {
 
     @Override
     protected void onCreateView(Bundle savedInstanceState) {
-        RecipientIdsCache.init(getContext());
+       //boquyen RecipientIdsCache.init(getContext());
 
         if (ContactCache.existCache()) {
             startMainActivity();

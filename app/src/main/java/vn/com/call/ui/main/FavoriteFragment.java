@@ -2,6 +2,7 @@ package vn.com.call.ui.main;
 
 import android.Manifest;
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -48,6 +49,8 @@ import vn.com.call.db.cache.ContactCache;
 import vn.com.call.favController;
 import vn.com.call.model.contact.Contact;
 import vn.com.call.ui.BaseFragment;
+import vn.com.call.ui.callback.SwipeController;
+import vn.com.call.ui.callback.SwipeControllerActions;
 import vn.com.call.ui.callback.SwipeToDeleteCallback;
 import vn.com.call.widget.FabBottomRecyclerView;
 
@@ -83,7 +86,7 @@ public class FavoriteFragment extends BaseFragment {
     // TODO: Rename and change types of parameters
     @BindView(R.id.tvTabTitle1)
     TextView tvTabTitle1;
-
+    SwipeController swipeController = null;
     protected Subscription mLoadContact;
     public FavoriteFragment() {
         // Required empty public constructor
@@ -110,30 +113,45 @@ public class FavoriteFragment extends BaseFragment {
     }
 
     private void enableSwipeToDeleteAndUndo() {
-        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(getContext()) {
+        swipeController = new SwipeController(new SwipeControllerActions() {
             @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
+            public void onRightClicked(int position) {
 
-                return super.onMove(recyclerView, viewHolder, viewHolder1);
 
-            }
-
-            @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
-
-                 final int position = viewHolder.getAdapterPosition();
-                Log.d("vvfvfvfv", String.valueOf(position));
+//                Log.d("vvfvfvfv", String.valueOf(position));
                 mFavoriteContacts.get(position).changeFavorite(getContext());
                 FavoriteFragment fragment = new FavoriteFragment();
 
                 FavoriteFragment.this.getFragmentManager().beginTransaction().detach(FavoriteFragment.this).attach(FavoriteFragment.this).commit();
-
-
             }
-        };
+       },getContext());
 
-        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
         itemTouchhelper.attachToRecyclerView(mlist);
+//        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(getContext()) {
+//            @Override
+//            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
+//
+//                return super.onMove(recyclerView, viewHolder, viewHolder1);
+//
+//            }
+//
+//            @Override
+//            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
+//
+//                 final int position = viewHolder.getAdapterPosition();
+//                Log.d("vvfvfvfv", String.valueOf(position));
+//                mFavoriteContacts.get(position).changeFavorite(getContext());
+//                FavoriteFragment fragment = new FavoriteFragment();
+//
+//                FavoriteFragment.this.getFragmentManager().beginTransaction().detach(FavoriteFragment.this).attach(FavoriteFragment.this).commit();
+//
+//
+//            }
+//        };
+//
+//        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
+//        itemTouchhelper.attachToRecyclerView(mlist);
     }
     @Override
     protected void onCreateView(Bundle savedInstanceState) {
@@ -143,11 +161,17 @@ public class FavoriteFragment extends BaseFragment {
         mlist.setLayoutManager(mLayoutManager);
         loadAndShowData();
         enableSwipeToDeleteAndUndo();
+
        horizontalContactAdapter=  new HorizontalContactAdapter(this,mFavoriteContacts);
        horizontalContactAdapter.notifyDataSetChanged();
         mlist.setAdapter(horizontalContactAdapter);
         mlist.getAdapter().notifyDataSetChanged();
-
+        mlist.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+                swipeController.onDraw(c);
+            }
+        });
         addFavourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

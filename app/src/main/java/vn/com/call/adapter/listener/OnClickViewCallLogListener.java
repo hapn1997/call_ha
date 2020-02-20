@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -44,6 +45,7 @@ public class OnClickViewCallLogListener {
 
     public void onClickAvatar(CallLog callLog, View avatar) {
         Contact contact;
+        Log.d("rerer","vfvfvfvfv000");
 
         if (callLog.getIdContact() == null) {
             contact = new Contact(null, null, null);
@@ -75,7 +77,7 @@ public class OnClickViewCallLogListener {
         if (context instanceof Activity) {
 
             ContactDetailActivity.launch(activity, avatar, contact, requestCode);
-           ContactDetailActivity.launch(activity, avatar, contact);
+          // ContactDetailActivity.launch(activity, avatar, contact);
         } else {
             ContactDetailActivity.launch(activity, contact, requestCode);
         }

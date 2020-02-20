@@ -250,8 +250,8 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
 
         @Override
         public void onClickAvatar(CallLog callLog, View avatar) {
-//            super.onClickAvatar(callLog, avatar);
-            onClickAvatar(getActivity(), callLog, avatar, BaseConstant.REQUEST_CODE_SHOW_POPUP);
+            super.onClickAvatar(callLog, avatar);
+            //onClickAvatar(getActivity(), callLog, avatar, BaseConstant.REQUEST_CODE_SHOW_POPUP);
         }
 
         @Override
