@@ -4,11 +4,11 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="16"
-6-->D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml
+6-->D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml
 7        android:targetSdkVersion="28" />
-7-->D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml
+7-->D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml
 8
 9    <application />
-9-->D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml:4:5-20
+9-->D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml:4:5-20
 10
 11</manifest>

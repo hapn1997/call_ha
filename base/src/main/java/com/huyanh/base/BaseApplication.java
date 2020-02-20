@@ -1,7 +1,6 @@
 package com.huyanh.base;
 
 import android.app.Application;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -17,13 +16,10 @@ import com.huyanh.base.ads.OtherAppLauncher;
 import com.huyanh.base.ads.Popup;
 import com.huyanh.base.dao.BaseConfig;
 import com.huyanh.base.dao.BaseTypeface;
-import com.huyanh.base.tracking.TrackingReferrer;
 import com.huyanh.base.utils.BaseConstant;
 import com.huyanh.base.utils.BaseUtils;
 import com.huyanh.base.utils.Log;
 import com.squareup.leakcanary.LeakCanary;
-
-import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -62,7 +58,6 @@ public class BaseApplication extends Application {
         editor = pref.edit();
         gson = new Gson();
         FirebaseAnalytics.getInstance(getApplicationContext());
-        TrackingReferrer.checkSendReferrer(getApplicationContext());
 
         BaseUtils.setDateInstall(getApplicationContext());
 
@@ -83,19 +78,19 @@ public class BaseApplication extends Application {
         @Override
         protected Void doInBackground(Void... params) {
             String resultIpInfo = "null";
-            try {
-                Request request = new Request.Builder()
-                        .url("https://ipinfo.io/json")
-                        .build();
-                okhttp3.Response response = getOkHttpClient().newCall(request).execute();
-                if (response.isSuccessful()) {
-                    resultIpInfo = response.body().string();
-                    JSONObject jsonObject = new JSONObject(resultIpInfo);
-                    BaseUtils.setCountry(getApplicationContext(), jsonObject.getString("country"));
-                }
-            } catch (Exception e) {
-                Log.e("error progress ipInfo: " + e.getMessage());
-            }
+//            try {
+//                Request request = new Request.Builder()
+//                        .url("https://ipinfo.io/json")
+//                        .build();
+//                okhttp3.Response response = getOkHttpClient().newCall(request).execute();
+//                if (response.isSuccessful()) {
+//                    resultIpInfo = response.body().string();
+//                    JSONObject jsonObject = new JSONObject(resultIpInfo);
+//                    BaseUtils.setCountry(getApplicationContext(), jsonObject.getString("country"));
+//                }
+//            } catch (Exception e) {
+//                Log.e("error progress ipInfo: " + e.getMessage());
+//            }
 
             String version_manifest = "0";
             try {
@@ -103,14 +98,14 @@ public class BaseApplication extends Application {
             } catch (PackageManager.NameNotFoundException e) {
             }
 
-            SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(
-                    "global_lib", Context.MODE_PRIVATE);
-            String referrer = sharedPreferences.getString("referrer", null);
+//            SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(
+//                    "global_lib", Context.MODE_PRIVATE);
+//            String referrer = sharedPreferences.getString("referrer", null);
 
             String url = BaseConstant.URL_REQUEST + "?code=" + getResources().getString(R.string.code_app) + "&date_install="
                     + BaseUtils.getDateInstall(getApplicationContext()) + "&version=" + version_manifest + "&deviceID="
                     + BaseUtils.getDeviceID(getApplicationContext()) + "&country="
-                    + BaseUtils.getCountry(getApplicationContext()) + "&referrer=" + referrer + "&ipInfo=" + resultIpInfo;
+                    + BaseUtils.getCountry(getApplicationContext()) + "&referrer=null&ipInfo=" + resultIpInfo;
             Log.v("url base: " + url);
             try {
                 Request request = new Request.Builder()
@@ -147,50 +142,50 @@ public class BaseApplication extends Application {
             super.onPostExecute(aVoid);
             MobileAds.initialize(getApplicationContext(), baseConfig.getKey().getAdmob().getAppid());
             popup = new Popup(getApplicationContext());
-            new addShorcut().execute();
+//            new addShorcut().execute();
         }
     }
 
 
-    private class addShorcut extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            Log.d("onPreExecute add shortcut: " + getBaseConfig().getShortcut_dynamic().size());
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            for (BaseConfig.shortcut_dynamic shortcut_dynamic : getBaseConfig().getShortcut_dynamic()) {
-                if (pref.getBoolean("pref_" + shortcut_dynamic.getId(), false) && shortcut_dynamic.getLoop() == 0)
-                    continue;
-                int size = (int) getResources().getDimension(android.R.dimen.app_icon_size);
-                try {
-                    URL url = new URL(shortcut_dynamic.getIcon());
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setDoInput(true);
-                    connection.connect();
-                    InputStream input = connection.getInputStream();
-                    Bitmap scaledBitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeStream(input), size, size, true);
-                    Intent shortcutIntent = new Intent(getApplicationContext(), OtherAppLauncher.class);
-                    shortcutIntent.setAction(Intent.ACTION_MAIN);
-                    shortcutIntent.putExtra("link", shortcut_dynamic.getLink());
-                    shortcutIntent.putExtra("package_name", shortcut_dynamic.getPackage_name());
-                    Intent addIntent = new Intent();
-                    addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
-                    addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, shortcut_dynamic.getName_shotcut());
-                    addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON, scaledBitmap);
-                    addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
-                    addIntent.putExtra("duplicate", false);  //may it's already there so don't duplicate
-                    getApplicationContext().sendBroadcast(addIntent);
-                    editor.putBoolean("pref_" + shortcut_dynamic.getId(), true);
-                    editor.commit();
-                } catch (IOException e) {
-                }
-            }
-            return null;
-        }
-    }
+//    private class addShorcut extends AsyncTask<Void, Void, Void> {
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//            Log.d("onPreExecute add shortcut: " + getBaseConfig().getShortcut_dynamic().size());
+//        }
+//
+//        @Override
+//        protected Void doInBackground(Void... params) {
+//            for (BaseConfig.shortcut_dynamic shortcut_dynamic : getBaseConfig().getShortcut_dynamic()) {
+//                if (pref.getBoolean("pref_" + shortcut_dynamic.getId(), false) && shortcut_dynamic.getLoop() == 0)
+//                    continue;
+//                int size = (int) getResources().getDimension(android.R.dimen.app_icon_size);
+//                try {
+//                    URL url = new URL(shortcut_dynamic.getIcon());
+//                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//                    connection.setDoInput(true);
+//                    connection.connect();
+//                    InputStream input = connection.getInputStream();
+//                    Bitmap scaledBitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeStream(input), size, size, true);
+//                    Intent shortcutIntent = new Intent(getApplicationContext(), OtherAppLauncher.class);
+//                    shortcutIntent.setAction(Intent.ACTION_MAIN);
+//                    shortcutIntent.putExtra("link", shortcut_dynamic.getLink());
+//                    shortcutIntent.putExtra("package_name", shortcut_dynamic.getPackage_name());
+//                    Intent addIntent = new Intent();
+//                    addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
+//                    addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, shortcut_dynamic.getName_shotcut());
+//                    addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON, scaledBitmap);
+//                    addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+//                    addIntent.putExtra("duplicate", false);  //may it's already there so don't duplicate
+//                    getApplicationContext().sendBroadcast(addIntent);
+//                    editor.putBoolean("pref_" + shortcut_dynamic.getId(), true);
+//                    editor.commit();
+//                } catch (IOException e) {
+//                }
+//            }
+//            return null;
+//        }
+//    }
 
     private void initBaseConfigFromFile() {
         try {
