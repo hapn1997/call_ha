@@ -46,7 +46,6 @@ import vn.com.call.adapter.HorizontalContactAdapter;
 import vn.com.call.db.ContactHelper;
 import vn.com.call.db.SharePref;
 import vn.com.call.db.cache.ContactCache;
-import vn.com.call.favController;
 import vn.com.call.model.contact.Contact;
 import vn.com.call.ui.BaseFragment;
 import vn.com.call.ui.callback.SwipeController;
@@ -79,7 +78,6 @@ public class FavoriteFragment extends BaseFragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private LinearLayoutManager mLayoutManager;
-    favController controller ;
     @BindView(R.id.tvTabEdit)
     TextView tvTabEdit;
     HorizontalContactAdapter horizontalContactAdapter;
@@ -155,7 +153,6 @@ public class FavoriteFragment extends BaseFragment {
     }
     @Override
     protected void onCreateView(Bundle savedInstanceState) {
-        controller  = new favController(getContext());
         final FavoritesAddFragment favoritesAddFragment = new FavoritesAddFragment();
         mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mlist.setLayoutManager(mLayoutManager);

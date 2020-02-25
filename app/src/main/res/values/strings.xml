@@ -41,8 +41,8 @@
     <string name="detail_activity_title_menu_copy_number">Copy number</string>
     <string name="detail_activity_title_menu_copy_contact">Copy contact</string>
     <string name="detail_activity_title_menu_remove_contact">Remove contact</string>
-    <string name="detail_activity_title_menu_add_favorite">Add favorite</string>
-    <string name="detail_activity_title_menu_remove_favorite">Remove favorite</string>
+    <string name="detail_activity_title_menu_add_favorite">Add to Favorites</string>
+    <string name="detail_activity_title_menu_remove_favorite">Remove Favorite</string>
     <string name="detail_activity_title_toast_add_favorite">{name} is now a favorite</string>
     <string name="detail_activity_title_toast_remove_favorite">{name} is removed as a favorite</string>
     <string name="save">Save</string>

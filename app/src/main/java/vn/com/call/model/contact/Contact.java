@@ -21,7 +21,6 @@ import java.util.List;
 import vn.com.call.R;
 import vn.com.call.db.ContactHelper;
 import vn.com.call.db.cache.ContactCache;
-import vn.com.call.favController;
 import vn.com.call.utils.ClipboardUtils;
 
 /**

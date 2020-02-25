@@ -11,7 +11,7 @@
 <ImageView
     android:layout_marginLeft="@dimen/_10sdp"
     android:visibility="gone"
-    android:src="@drawable/removeitem"
+    android:src="@drawable/ic_remove_circle_red_700_36dp"
     android:id="@+id/imageremove"
     android:layout_width="@dimen/_20sdp"
     android:layout_height="@dimen/_20sdp"

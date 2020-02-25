@@ -1,27 +1,27 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml:1:1-5:12
-INJECTED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml:1:1-5:12
-INJECTED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml:1:1-5:12
+ADDED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml:1:1-5:12
+INJECTED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml:1:1-5:12
+INJECTED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml:1:1-5:12
 	package
-		ADDED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml:2:5-47
-		INJECTED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml
-		INJECTED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml
+		ADDED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml:2:5-47
+		INJECTED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml
+		INJECTED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml:1:11-69
+		ADDED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml:1:11-69
 application
-ADDED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml:4:5-20
+ADDED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml:4:5-20
 uses-sdk
-INJECTED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml
-INJECTED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml
-INJECTED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml
-INJECTED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml
+INJECTED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml
+INJECTED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml
+INJECTED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml
+INJECTED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml
-		ADDED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml
-		INJECTED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml
+		INJECTED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml
+		ADDED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml
+		INJECTED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml
-		ADDED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml
-		INJECTED from D:\WS\other\Call_Ha\PagerSlidingTabStrip\src\main\AndroidManifest.xml
+		INJECTED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml
+		ADDED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml
+		INJECTED from D:\sacorp\project message\messagerios\PagerSlidingTabStrip\src\main\AndroidManifest.xml
