@@ -3,7 +3,7 @@ package vn.com.call.ui.setting;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 
 public class SettingCallFlashActivity extends AppCompatActivity {
 

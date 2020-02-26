@@ -19,7 +19,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 import vn.com.call.model.contact.PhoneNumber;
 import vn.com.call.utils.CallUtils;
 

@@ -39,7 +39,7 @@ import java.util.concurrent.TimeUnit;
 import butterknife.BindView;
 import butterknife.OnClick;
 import rx.schedulers.Schedulers;
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 import vn.com.call.bus.ShowDialpad;
 import vn.com.call.db.SmsHelper;
 import vn.com.call.db.cache.CallLogHelper;

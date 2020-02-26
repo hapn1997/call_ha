@@ -11,7 +11,7 @@ import android.view.WindowManager;
 
 import com.github.paolorotolo.appintro.AppIntro;
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 import vn.com.call.utils.PermissionUtils;
 public class IntroSplashActivity extends AppIntro {
 

@@ -15,7 +15,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import vn.com.call.App;
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 import vn.com.call.model.calllog.CallLogDetail;
 import vn.com.call.utils.TimeUtils;
 

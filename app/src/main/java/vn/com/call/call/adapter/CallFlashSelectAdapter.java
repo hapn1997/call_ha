@@ -10,7 +10,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 import vn.com.call.call.model.CallFlashItem;
 import vn.com.call.ui.BaseActivity;
 import vn.com.call.App;

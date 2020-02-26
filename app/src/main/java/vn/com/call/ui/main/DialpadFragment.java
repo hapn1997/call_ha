@@ -3,7 +3,7 @@ package vn.com.call.ui.main;
 import android.os.Bundle;
 
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 import vn.com.call.ui.BaseFragment;
 
 /**

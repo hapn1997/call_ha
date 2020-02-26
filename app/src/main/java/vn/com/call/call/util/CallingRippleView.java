@@ -11,7 +11,7 @@ import android.view.View;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 
 public class CallingRippleView extends View {
 

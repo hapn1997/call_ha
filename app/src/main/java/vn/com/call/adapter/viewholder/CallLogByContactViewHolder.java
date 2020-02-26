@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseViewHolder;
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 
 /**
  * Created by ngson on 13/07/2017.

@@ -14,7 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 
 public class SideBar extends View {
 

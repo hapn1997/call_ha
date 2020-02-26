@@ -15,7 +15,7 @@ import com.chad.library.adapter.base.BaseSectionQuickAdapter;
 
 import java.util.List;
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 import vn.com.call.adapter.listener.OnClickViewCallLogListener;
 import vn.com.call.adapter.viewholder.CallLogViewHolder;
 import vn.com.call.db.SharePref;

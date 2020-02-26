@@ -93,7 +93,7 @@ public class NotificationServiceCustom extends NotificationListenerService {
                             intentAnswer = action.actionIntent;
                         } else if (action.title.toString().toLowerCase().contains("decline")
                                 || action.title.toString().toLowerCase().contains("bỏ qua")
-                                ) {
+                        ) {
                             intentDecline = action.actionIntent;
                         }
                     } catch (Exception e) {

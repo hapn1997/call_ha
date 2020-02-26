@@ -20,7 +20,7 @@ import permissions.dispatcher.OnShowRationale;
 import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.RuntimePermissions;
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 import vn.com.call.adapter.CallLogDetailAdapter;
 import vn.com.call.model.calllog.CallLog;
 import vn.com.call.utils.CallUtils;

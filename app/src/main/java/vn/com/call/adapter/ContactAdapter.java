@@ -24,7 +24,7 @@ import com.huyanh.base.utils.BaseConstant;
 import java.util.ArrayList;
 import java.util.List;
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 import vn.com.call.adapter.listener.OnClickViewConversationListener;
 import vn.com.call.adapter.listener.OnClickViewFavoritesListener;
 import vn.com.call.adapter.viewholder.ContactViewHolder;

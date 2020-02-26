@@ -35,7 +35,7 @@ import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 import vn.com.call.bus.DismissTouchbar;
 import vn.com.call.model.contact.Contact;
 import vn.com.call.utils.CallUtils;

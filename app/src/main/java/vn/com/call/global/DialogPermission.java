@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 
 public class DialogPermission {
 

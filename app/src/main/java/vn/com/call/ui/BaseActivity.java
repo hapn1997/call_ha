@@ -19,7 +19,7 @@ import java.util.Locale;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 import vn.com.call.db.Settings;
 import vn.com.call.utils.ColorUtils;
 

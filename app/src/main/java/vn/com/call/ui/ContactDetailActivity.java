@@ -5,7 +5,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 
 import android.app.Activity;
 import android.app.Service;

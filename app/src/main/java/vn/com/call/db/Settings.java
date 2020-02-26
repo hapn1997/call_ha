@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 
 
 /**

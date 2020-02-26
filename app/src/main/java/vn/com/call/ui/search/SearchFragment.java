@@ -16,7 +16,7 @@ import android.view.ViewTreeObserver;
 import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 import vn.com.call.bus.ChangeKeyword;
 import vn.com.call.ui.BaseFragment;
 import vn.com.call.ui.main.ContactFragment;

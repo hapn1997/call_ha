@@ -27,7 +27,7 @@ android {
 
     defaultConfig {
         multiDexEnabled true
-        applicationId "vn.com.call"
+        applicationId "com.dialer.ios.iphone.contacts"
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
         versionCode 1

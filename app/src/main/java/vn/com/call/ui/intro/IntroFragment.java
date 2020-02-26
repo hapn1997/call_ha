@@ -15,7 +15,7 @@ import android.widget.Button;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 import vn.com.call.db.Settings;
 import vn.com.call.ui.BaseFragment;
 import vn.com.call.utils.PermissionUtils;

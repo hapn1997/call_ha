@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 
 public class BaseIntroSlideFragment extends Fragment {
 

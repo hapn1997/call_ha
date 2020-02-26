@@ -14,7 +14,7 @@ import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.BottomBarTab;
 
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 
 /**
  * Created by ngson on 03/07/2017.

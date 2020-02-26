@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 import vn.com.call.adapter.HorizontalContactAdapter;
 import vn.com.call.db.cache.ContactCache;
 import vn.com.call.model.calllog.CallLog;

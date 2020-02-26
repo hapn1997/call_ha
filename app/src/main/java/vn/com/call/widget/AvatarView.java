@@ -18,7 +18,7 @@ import com.bumptech.glide.Glide;
 import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 import vn.com.call.db.cache.ColorCache;
 /**
  * Created by ngson on 03/07/2017.

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="vn.com.call">
+    package="com.dialer.ios.iphone.contacts">
 
     <uses-feature
         android:name="android.hardware.fingerprint"
@@ -13,13 +13,14 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
+<!--    <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />-->
     <uses-permission android:name="android.permission.makeDefaultDialer();MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-<!--    <uses-permission android:name="android.permission.SEND_SMS" />-->
-<!--    <uses-permission android:name="android.permission.READ_SMS" />-->
-<!--    <uses-permission android:name="android.permission.WRITE_SMS" />-->
-<!--    <uses-permission android:name="android.permission.RECEIVE_SMS" />-->
-<!--    <uses-permission android:name="android.permission.RECEIVE_MMS" />-->
+    <!--    <uses-permission android:name="android.permission.SEND_SMS" />-->
+    <!--    <uses-permission android:name="android.permission.READ_SMS" />-->
+    <!--    <uses-permission android:name="android.permission.WRITE_SMS" />-->
+    <!--    <uses-permission android:name="android.permission.RECEIVE_SMS" />-->
+    <!--    <uses-permission android:name="android.permission.RECEIVE_MMS" />-->
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.provider.Telephony.SMS_RECEIVED" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -42,7 +43,7 @@
         tools:ignore="ProtectedPermissions" />
 
     <application
-        android:name=".App"
+        android:name="vn.com.call.App"
         android:allowBackup="true"
         android:icon="@drawable/phone"
         android:label="@string/app_name"
@@ -50,11 +51,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.main.FavoritesAddFragment"
+            android:name="vn.com.call.ui.main.FavoritesAddFragment"
             android:label="@string/title_activity_favorites_add_fragment"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
-        <receiver android:name=".utils.UserPresentReceiver">
+        <receiver android:name="vn.com.call.utils.UserPresentReceiver">
             <intent-filter
                 android:enabled="true"
                 android:exported="false">
@@ -63,14 +64,14 @@
         </receiver>
 
         <service
-            android:name=".utils.AppCheckService"
+            android:name="vn.com.call.utils.AppCheckService"
             android:enabled="true" />
         <service
-            android:name=".touchbar.TouchBarService"
+            android:name="vn.com.call.touchbar.TouchBarService"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name=".service.HeadlessSmsSendService"
+            android:name="vn.com.call.service.HeadlessSmsSendService"
             android:exported="true"
             android:permission="android.permission.SEND_RESPOND_VIA_MESSAGE">
             <intent-filter>
@@ -86,7 +87,7 @@
         </service>
 
         <activity
-            android:name=".receiver.MmsReceiver"
+            android:name="vn.com.call.receiver.MmsReceiver"
             android:permission="android.permission.BROADCAST_WAP_PUSH">
             <intent-filter>
                 <action android:name="android.provider.Telephony.WAP_PUSH_DELIVER" />
@@ -96,7 +97,7 @@
         </activity>
 
         <receiver
-            android:name=".receiver.SmsReceiver"
+            android:name="vn.com.call.receiver.SmsReceiver"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BROADCAST_SMS">
@@ -114,7 +115,7 @@
             android:name="com.klinker.android.send_message.DeliveredReceiver"
             android:taskAffinity="vn.com.call.SMS_DELIVERED" />
         <receiver
-            android:name=".receiver.BootCompleteReceiver"
+            android:name="vn.com.call.receiver.BootCompleteReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -122,26 +123,26 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ui.FeedbackActivity" />
-        <activity android:name=".ui.PeopleAndOptionOfConversationActivity" />
+        <activity android:name="vn.com.call.ui.FeedbackActivity" />
+        <activity android:name="vn.com.call.ui.PeopleAndOptionOfConversationActivity" />
         <activity
-            android:name=".ui.LockScreenActivity"
+            android:name="vn.com.call.ui.LockScreenActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.setting.SettingCallFlashPreviewActivity"
+            android:name="vn.com.call.ui.setting.SettingCallFlashPreviewActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
         <activity
-            android:name=".fbmess.LoginFBActivity"
+            android:name="vn.com.call.fbmess.LoginFBActivity"
             android:theme="@style/Theme.Transparent" />
-        <activity android:name=".ui.setting.SecuritySettingsActivity" />
-        <activity android:name=".ui.setting.LanguageSettingActivity" />
-        <activity android:name=".ui.setting.ChatheadSettingActivity" />
-        <activity android:name=".ui.setting.SettingCallFlashActivity" />
-        <activity android:name=".ui.setting.SettingsSmsActivity" />
-        <activity android:name=".ui.NewConversationActivity" />
+        <activity android:name="vn.com.call.ui.setting.SecuritySettingsActivity" />
+        <activity android:name="vn.com.call.ui.setting.LanguageSettingActivity" />
+        <activity android:name="vn.com.call.ui.setting.ChatheadSettingActivity" />
+        <activity android:name="vn.com.call.ui.setting.SettingCallFlashActivity" />
+        <activity android:name="vn.com.call.ui.setting.SettingsSmsActivity" />
+        <activity android:name="vn.com.call.ui.NewConversationActivity" />
         <activity
-            android:name=".ui.messenger_apps.ConversationActivity"
-            android:parentActivityName=".ui.main.MainActivity"
+            android:name="vn.com.call.ui.messenger_apps.ConversationActivity"
+            android:parentActivityName="vn.com.call.ui.main.MainActivity"
             android:theme="@style/ComposeTheme"
             android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
@@ -163,15 +164,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="vn.com.call.ui.main.MainActivity" />
         </activity>
-        <activity android:name=".ui.ListCallLogByContactActivity" />
-        <activity android:name=".ui.ContactDetailActivity" />
-        <activity android:name=".ui.CallLogDetailActivity" />
+        <activity android:name="vn.com.call.ui.ListCallLogByContactActivity" />
+        <activity android:name="vn.com.call.ui.ContactDetailActivity" />
+        <activity android:name="vn.com.call.ui.CallLogDetailActivity" />
         <activity
-            android:name=".ui.messenger_apps.AddMessengerAppActivity"
+            android:name="vn.com.call.ui.messenger_apps.AddMessengerAppActivity"
             android:label="@string/title_activity_add_messenger_app"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.intro.IntroActivity"
+            android:name="vn.com.call.ui.intro.IntroActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.DIAL" />
@@ -191,7 +192,7 @@
                 <action android:name="android.intent.action.DIAL" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.MainActivity">
+        <activity android:name="vn.com.call.ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.DIAL" />
                 <data android:scheme="tel" />
@@ -202,7 +203,7 @@
 
         </activity>
         <activity
-            android:name=".ui.intro.IntroSplashActivity"
+            android:name="vn.com.call.ui.intro.IntroSplashActivity"
 
             android:allowTaskReparenting="true" />
 
@@ -217,7 +218,7 @@
             android:value="9c4d5ecd18ea81005aac67df738c03507adec620" />
 
         <service
-            android:name=".call.util.NotificationServiceCustom"
+            android:name="vn.com.call.call.util.NotificationServiceCustom"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />
@@ -225,7 +226,7 @@
         </service>
 
         <receiver
-            android:name=".call.service.PhoneStateReceiver"
+            android:name="vn.com.call.call.service.PhoneStateReceiver"
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
@@ -233,7 +234,7 @@
         </receiver>
 
         <service
-            android:name=".call.service.ServiceCallRing"
+            android:name="vn.com.call.call.service.ServiceCallRing"
             android:enabled="true" />
     </application>
 

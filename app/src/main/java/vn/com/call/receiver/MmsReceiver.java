@@ -3,7 +3,7 @@ package vn.com.call.receiver;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 
 public class MmsReceiver extends AppCompatActivity {
 

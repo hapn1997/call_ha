@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
 
-import vn.com.call.R;
+import com.dialer.ios.iphone.contacts.R;
 
 /**
  * Created by ngson on 11/07/2017.
