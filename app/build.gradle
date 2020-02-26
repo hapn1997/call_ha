@@ -32,7 +32,6 @@ android {
         targetSdkVersion project.targetSdkVersion
         versionCode 20200226
         versionName "1.0.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
     }

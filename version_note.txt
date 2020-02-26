@@ -5,6 +5,9 @@ com.dialer.ios.iphone.contacts
 packageName cũ
 vn.com.call
 
+gradle version 3.1.4
+3.3.2
+
 
 42.112.16.118:33141
 admin / vPXaHihID0pr0
