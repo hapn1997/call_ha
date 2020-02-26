@@ -29,7 +29,6 @@ import vn.com.call.adapter.listener.OnClickViewConversationListener;
 import vn.com.call.adapter.listener.OnClickViewFavoritesListener;
 import vn.com.call.adapter.viewholder.ContactViewHolder;
 import vn.com.call.db.ContactHelper;
-import vn.com.call.favController;
 import vn.com.call.model.contact.Contact;
 import vn.com.call.model.contact.PhoneNumber;
 import vn.com.call.model.sms.Conversation;
@@ -51,7 +50,6 @@ public class ContactFavAdapter extends BaseSectionQuickAdapter<ContactSectionEnt
     OnClickViewFavoritesListener onClickViewFavoritesListener;
     private OnClickViewConversationListener onClickViewConversation;
     private OnClickContactListener onClickContactListener;
-    favController controller;
     Fragment fragment;
     public ContactFavAdapter(List<ContactSectionEntity> data, Fragment fragment) {
         super(R.layout.item_contact, R.layout.item_header_contact, data);
@@ -89,12 +87,7 @@ public class ContactFavAdapter extends BaseSectionQuickAdapter<ContactSectionEnt
         } else helper.address.setVisibility(View.GONE);
 
         helper.expand.setVisibility(isExpand(contact.getId()) ? View.VISIBLE : View.GONE);
-       controller  =  new favController(mContext);
-        try {
-            controller.isCreatedDatabase();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         helper.root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

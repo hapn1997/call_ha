@@ -1,9 +1,6 @@
 <tabs>
 
-    <tab
-        icon="@drawable/icon_tab_fb_mess"
-        id="@+id/tab_fb_mess"
-        title="Fb Chat"/>
+
 
     <tab
         icon="@drawable/icon_tab_home"

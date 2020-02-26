@@ -20,10 +20,10 @@ public class IntroSplashActivity extends AppIntro {
         super.onCreate(savedInstanceState);
 
         if (!PermissionUtils.isAllPermissionGrantedAtIntro(this)) {
-            addSlide(BaseIntroSlideFragment.newInstance(R.drawable.intro_1));
-            addSlide(BaseIntroSlideFragment.newInstance(R.drawable.intro_2));
-            addSlide(BaseIntroSlideFragment.newInstance(R.drawable.intro_3));
-            addSlide(BaseIntroSlideFragment.newInstance(R.drawable.intro_4));
+//            addSlide(BaseIntroSlideFragment.newInstance(R.drawable.intro_1));
+//            addSlide(BaseIntroSlideFragment.newInstance(R.drawable.intro_2));
+//            addSlide(BaseIntroSlideFragment.newInstance(R.drawable.intro_3));
+//            addSlide(BaseIntroSlideFragment.newInstance(R.drawable.intro_4));
 
             try {
                 if (Build.VERSION.SDK_INT >= 21) {

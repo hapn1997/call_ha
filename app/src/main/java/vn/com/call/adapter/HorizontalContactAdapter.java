@@ -29,10 +29,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.dialer.ios.iphone.contacts.R;
 import vn.com.call.adapter.listener.OnClickViewConversationListener;
-import vn.com.call.favController;
 import vn.com.call.model.contact.Contact;
 import vn.com.call.model.contact.PhoneNumber;
-import vn.com.call.ui.ChooseNumberDialogFragment;
 import vn.com.call.ui.ChooseNumberPopupWindow;
 import vn.com.call.ui.ContactDetailActivity;
 import vn.com.call.ui.main.MainActivity;
@@ -46,7 +44,6 @@ import vn.com.call.widget.AvatarView;
 public class HorizontalContactAdapter extends RecyclerView.Adapter<HorizontalContactAdapter.HorizontalViewHolder> {
     private Context context;
     private List<Contact> mContacts;
-    favController controller;
     private OnClickViewConversationListener onClickViewConversation;
     private OnClickContactListener onClickContactListener;
     Fragment fragment;
@@ -69,12 +66,7 @@ public class HorizontalContactAdapter extends RecyclerView.Adapter<HorizontalCon
         final Contact contact = mContacts.get(position);
 
         //final Context context = holder.root.getContext();
-        controller = new favController(context);
-        try {
-            controller.isCreatedDatabase();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         final List<PhoneNumber> phoneNumbers = contact.getNumbers();
         String numberCacheColor = phoneNumbers != null && phoneNumbers.size() > 0 ? phoneNumbers.get(0).getNumber() : "";
         holder.avatar.loadAvatar(contact.getPhoto(), contact.getName(), numberCacheColor);

@@ -58,7 +58,6 @@ import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 import vn.com.call.db.cache.CallLogHelper;
-import vn.com.call.favController;
 import vn.com.call.ui.main.FavoritesAddFragment;
 import vn.com.call.widget.AvatarView;
 import vn.com.call.db.ContactHelper;
@@ -79,7 +78,6 @@ public class ContactDetailActivity extends BaseActivity {
 
     public static final String EXTRA_CONTACT = "contact";
     private static final String TAG = ContactDetailActivity.class.getSimpleName();
-    favController controller;
     @OnClick(R.id.edit3)
     void edit3(){
         if (mContact.getId() != null) {
@@ -190,12 +188,6 @@ public class ContactDetailActivity extends BaseActivity {
 
         }
 
-//         FavoritesAddFragment favoritesAddFragment = new FavoritesAddFragment();
-//         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container ,favoritesAddFragment).addToBackStack("FavoriteFragment").commit();
-//        mScrollView.setVisibility(View.GONE);
-//        mToolbar.setVisibility(View.GONE);
-//        mContact.changeFavorite(this);
-//        invalidateOptionsMenu();
     }
     public void showSetting(final Context context, final Contact contact, final String phoneNumber, final String photo){
         LayoutInflater factory = LayoutInflater.from(context);
@@ -215,9 +207,6 @@ public class ContactDetailActivity extends BaseActivity {
         deleteDialogView.findViewById(R.id.txt_mess).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if(controller.checkcallorsms(contact,"Messager") ==null){
-//                    boolean check =  controller.insertDevice(contact,"Messager",phoneNumber,photo);
-//                }else;
                 mAddToFavorite.setText(mContact.isFavorite() ? R.string.detail_activity_title_menu_remove_favorite : R.string.detail_activity_title_menu_add_favorite);
                 ContactHelper.setFavorite(context, contact.getId());
                 String toast = getString(R.string.detail_activity_title_toast_add_favorite).replace("{name}", getNameContact());
@@ -319,7 +308,6 @@ public class ContactDetailActivity extends BaseActivity {
         Intent intent = new Intent(context.getApplicationContext(), ContactDetailActivity.class);
         intent.putExtra(ContactDetailActivity.EXTRA_CONTACT, contact);
         intent.putExtra(ContactDetailActivity.EXTRA_CALL_LOG, "ddvdvdvdv");
-        Log.d("fffrfrfr","vfvfvfvfv000");
 
         if (context instanceof Service) {
             intent.putExtra(BaseActivity.EXTRA_FROM_SERVICE, true);
@@ -341,7 +329,6 @@ public class ContactDetailActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContact = getIntent().getParcelableExtra(EXTRA_CONTACT);
-        Log.d("dcdcdcdc0","vfvfvfvfv000");
         ViewCompat.setTransitionName(mAvatar, "avatar");
 
         initToolbar();
@@ -349,12 +336,7 @@ public class ContactDetailActivity extends BaseActivity {
         initScrollView();
 
         showCardViewPhoneAndEmail();
-        controller  =  new favController(this);
-        try {
-            controller.isCreatedDatabase();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         mAddToFavorite.setVisibility(mContact.getId() == null ? View.GONE : View.VISIBLE);
         linearLayout.setVisibility(mContact.getId() == null ? View.GONE : View.VISIBLE);
 
@@ -485,14 +467,14 @@ public class ContactDetailActivity extends BaseActivity {
     private void initButtonsInToolView() {
         if (mContact.getId() == null) {
             mEdit.setImageDrawable(getDrawable(R.drawable.ic_person_add_primary_color_24dp));
-            saveedit.setText("Save");
+            saveedit.setText("save");
            // mEdit.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.drawable.ic_person_add_primary_color_24dp), null, null);
            // mEdit.setText(R.string.save);
         } else {
            // mEdit.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.drawable.ic_edit_primary_color_24dp), null, null);
             //mEdit.setText(R.string.edit);
             mEdit.setImageDrawable(getDrawable(R.drawable.ic_edit_primary_color_24dp));
-            saveedit.setText("Edit");
+            saveedit.setText("edit");
         }
     }
 
@@ -551,8 +533,9 @@ public class ContactDetailActivity extends BaseActivity {
                 TextView typeNumber = layoutPhoneNumber.findViewById(R.id.type_number);
 
                 number.setText(phoneNumber.getNumber());
-                typeNumber.setText("mobile");
-               number.setTextColor(getColor(R.color.colorBlue));
+                typeNumber.setText("Mobile");
+                int color = ContextCompat.getColor(this,R.color.colorBlue);
+               number.setTextColor(color);
                // call.setVisibility(i == 0 ? View.VISIBLE : View.INVISIBLE);
 
                 layoutPhoneNumber.setOnClickListener(new View.OnClickListener() {
