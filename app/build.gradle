@@ -30,7 +30,7 @@ android {
         applicationId "com.dialer.ios.iphone.contacts"
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
-        versionCode 1
+        versionCode 20200226
         versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 

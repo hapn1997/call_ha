@@ -103,17 +103,17 @@
             android:permission="android.permission.BROADCAST_SMS">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_DELIVER" />
-                <action android:name="vn.com.call.MARK_READ" />
-                <action android:name="vn.com.call.REPLY" />
-                <action android:name="vn.com.call.MARK_READ_COMPLETE" />
+                <action android:name="com.dialer.ios.iphone.contacts.MARK_READ" />
+                <action android:name="com.dialer.ios.iphone.contacts.REPLY" />
+                <action android:name="com.dialer.ios.iphone.contacts.MARK_READ_COMPLETE" />
             </intent-filter>
         </receiver>
         <receiver
             android:name="com.klinker.android.send_message.SentReceiver"
-            android:taskAffinity="vn.com.call.SMS_SENT" />
+            android:taskAffinity="com.dialer.ios.iphone.contacts.SMS_SENT" />
         <receiver
             android:name="com.klinker.android.send_message.DeliveredReceiver"
-            android:taskAffinity="vn.com.call.SMS_DELIVERED" />
+            android:taskAffinity="com.dialer.ios.iphone.contacts.SMS_DELIVERED" />
         <receiver
             android:name="vn.com.call.receiver.BootCompleteReceiver"
             android:enabled="true"
