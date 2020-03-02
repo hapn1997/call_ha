@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
-<!--    <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />-->
+    <!--    <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />-->
     <uses-permission android:name="android.permission.makeDefaultDialer();MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!--    <uses-permission android:name="android.permission.SEND_SMS" />-->
@@ -215,7 +215,7 @@
             android:value="GlideModule" />
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="9c4d5ecd18ea81005aac67df738c03507adec620" />
+            android:value="fb6056e08bf4294972659c24d7ce217c80515fbd" />
 
         <service
             android:name="vn.com.call.call.util.NotificationServiceCustom"
