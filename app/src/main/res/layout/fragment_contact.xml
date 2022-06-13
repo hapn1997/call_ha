@@ -163,20 +163,20 @@
 
 
     </RelativeLayout>
-    <android.support.design.widget.CoordinatorLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
 
         android:id="@+id/coordinator"
         android:layout_below="@+id/tabHome"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <android.support.design.widget.AppBarLayout
+        <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar_layout"
             android:background="@android:color/transparent"
             android:layout_width="match_parent"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:elevation="0dp"
             android:layout_height="wrap_content">
-            <android.support.design.widget.CollapsingToolbarLayout
+            <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/collapsing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -292,9 +292,9 @@
 
 
                 </RelativeLayout>
-            </android.support.design.widget.CollapsingToolbarLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-        </android.support.design.widget.AppBarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
         <FrameLayout
 
             android:id="@+id/scrollletter"
@@ -324,7 +324,7 @@
                 />
           </RelativeLayout>
         </FrameLayout>
-    </android.support.design.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
 

@@ -2,7 +2,7 @@ package vn.com.call.db;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.dialer.ios.iphone.contacts.R;
 

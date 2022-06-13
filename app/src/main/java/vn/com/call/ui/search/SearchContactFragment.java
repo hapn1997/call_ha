@@ -1,7 +1,8 @@
 package vn.com.call.ui.search;
 
+import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -43,7 +44,9 @@ public class SearchContactFragment extends ContactFragment {
 
     @Override
     protected void onCreateView(Bundle savedInstanceState) {
-        super.onCreateView(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            super.onCreateView(savedInstanceState);
+        }
         hideButtonAddContact();
         //loadAndShowData();
     }

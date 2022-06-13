@@ -39,7 +39,7 @@
             android:visibility="gone"/>
     </RelativeLayout>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardElevation="4dp">
@@ -49,9 +49,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:maxHeight="@dimen/max_height_recipients" />
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/contacts"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

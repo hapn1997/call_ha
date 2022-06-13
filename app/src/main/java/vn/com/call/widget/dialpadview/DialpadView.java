@@ -12,12 +12,14 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -225,7 +227,7 @@ public class DialpadView extends FrameLayout implements View.OnClickListener, Lo
     public void showSetting(final Context context){
         LayoutInflater factory = LayoutInflater.from(context);
         final View deleteDialogView = factory.inflate(R.layout.dialog_create_contact, null);
-        final android.support.v7.app.AlertDialog deleteDialog = new android.support.v7.app.AlertDialog.Builder(context).create();
+        final AlertDialog deleteDialog = new AlertDialog.Builder(context).create();
 
 
         deleteDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));

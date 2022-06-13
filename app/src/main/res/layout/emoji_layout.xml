@@ -40,7 +40,7 @@
         android:background="@android:color/black"
         android:layout_above="@+id/bottom_emoji"/>
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager_emoji"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

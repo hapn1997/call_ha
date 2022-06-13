@@ -6,9 +6,10 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.multidex.MultiDex;
 import android.text.TextUtils;
 import android.widget.ImageView;
+
+import androidx.multidex.MultiDex;
 
 import com.crashlytics.android.Crashlytics;
 import com.evernote.android.job.JobManager;

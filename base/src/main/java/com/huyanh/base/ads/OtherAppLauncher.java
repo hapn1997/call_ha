@@ -3,7 +3,7 @@ package com.huyanh.base.ads;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.huyanh.base.R;
 import com.huyanh.base.utils.BaseUtils;

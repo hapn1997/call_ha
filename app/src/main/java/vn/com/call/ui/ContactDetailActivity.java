@@ -1,8 +1,9 @@
 package vn.com.call.ui;
 
 import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.dialer.ios.iphone.contacts.R;
@@ -17,15 +18,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.CallLog;
 import android.provider.ContactsContract;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.util.Pair;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.util.Pair;
+import androidx.core.view.ViewCompat;
+import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -192,7 +193,7 @@ public class ContactDetailActivity extends BaseActivity {
     public void showSetting(final Context context, final Contact contact, final String phoneNumber, final String photo){
         LayoutInflater factory = LayoutInflater.from(context);
         final View deleteDialogView = factory.inflate(R.layout.custom_diglog_favourite, null);
-        final android.support.v7.app.AlertDialog deleteDialog = new android.support.v7.app.AlertDialog.Builder(context).create();
+        final AlertDialog deleteDialog = new AlertDialog.Builder(context).create();
 
 
         deleteDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));

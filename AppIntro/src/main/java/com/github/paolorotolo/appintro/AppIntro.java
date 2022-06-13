@@ -1,13 +1,15 @@
 package com.github.paolorotolo.appintro;
 
 import android.graphics.drawable.Drawable;
-import android.support.annotation.ColorInt;
-import android.support.annotation.Nullable;
+//import androidx.annotation.ColorInt;
+import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.ColorInt;
 
 import com.github.paolorotolo.appintro.util.CustomFontCache;
 import com.github.paolorotolo.appintro.util.LogHelper;

@@ -64,7 +64,7 @@
                 android:background="@android:color/black"
                 android:orientation="horizontal">
 
-                <android.support.design.widget.TabLayout
+                <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tab_layout_emoji"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -79,7 +79,7 @@
                     android:src="@drawable/ic_backspace_white_24dp" />
             </LinearLayout>
 
-            <android.support.v4.view.ViewPager
+            <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewpager_emoji"
                 android:layout_width="match_parent"
                 android:layout_height="200dp" />

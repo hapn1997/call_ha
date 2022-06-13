@@ -9,7 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -200,7 +200,7 @@ public class ContactFavAdapter extends BaseSectionQuickAdapter<ContactSectionEnt
     public void showSetting(final Context context, final Contact contact, final String phoneNumber, final String photo){
         LayoutInflater factory = LayoutInflater.from(context);
         final View deleteDialogView = factory.inflate(R.layout.custom_diglog_favourite, null);
-        final android.support.v7.app.AlertDialog deleteDialog = new android.support.v7.app.AlertDialog.Builder(context).create();
+        final AlertDialog deleteDialog = new AlertDialog.Builder(context).create();
 
 
         deleteDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
@@ -223,8 +223,6 @@ public class ContactFavAdapter extends BaseSectionQuickAdapter<ContactSectionEnt
                 }else {
                    contact.setFavorite(true);
                    ContactHelper.setFavorite(context, contact.getId());
-
-
                }
                 deleteDialog.dismiss();
 

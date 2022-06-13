@@ -6,9 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -156,7 +158,7 @@ public class HorizontalContactAdapter extends RecyclerView.Adapter<HorizontalCon
     public void showSetting(final Contact contact, final HorizontalViewHolder holder){
         LayoutInflater factory = LayoutInflater.from(context);
         final View deleteDialogView = factory.inflate(R.layout.dialog_remove_fav, null);
-        final android.support.v7.app.AlertDialog deleteDialog = new android.support.v7.app.AlertDialog.Builder(context).create();
+        final AlertDialog deleteDialog = new AlertDialog.Builder(context).create();
 
 
         deleteDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));

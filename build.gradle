@@ -25,10 +25,10 @@ allprojects {
     }
     project.ext {
         minSdkVersion = 16
-        targetSdkVersion = 28
-        compileSdkVersion = 28
-        buildToolsVersion = '28.0.3'
-        supportLibraryVersion = '28.0.0'
+        targetSdkVersion = 30
+        compileSdkVersion = 30
+        buildToolsVersion = '30.0.3'
+        supportLibraryVersion = '30.0.0'
         playServiceVersion='11.4.2'
     }
 }

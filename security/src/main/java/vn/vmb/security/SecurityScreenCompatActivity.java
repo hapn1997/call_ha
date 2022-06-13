@@ -1,8 +1,8 @@
 package vn.vmb.security;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import vn.vmb.security.listener.OnCreatePasswordListener;
 import vn.vmb.security.listener.OnUnlockListener;

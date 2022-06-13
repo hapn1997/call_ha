@@ -6,13 +6,12 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -197,7 +196,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
     public void showSetting(final Fragment fragment){
         LayoutInflater factory = LayoutInflater.from(getContext());
         final View deleteDialogView = factory.inflate(R.layout.dialog_remove_fav, null);
-        final android.support.v7.app.AlertDialog deleteDialog = new android.support.v7.app.AlertDialog.Builder(getContext()).create();
+        final AlertDialog deleteDialog = new AlertDialog.Builder(getContext()).create();
 
 //        TextView txt_message = deleteDialogView.findViewById(R.id.txt_message);
 //        txt_message.setText("");
