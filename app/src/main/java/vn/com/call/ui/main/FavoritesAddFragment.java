@@ -324,7 +324,6 @@ public class FavoritesAddFragment extends BaseFragment {
         appBarLayout.setVisibility(View.GONE);
         tabHome.setVisibility(View.GONE);
         relativeLayout_search.setVisibility(View.GONE);
-
     }
 
     @Override

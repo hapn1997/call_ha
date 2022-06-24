@@ -111,7 +111,7 @@ public class ContactDetailActivity extends BaseActivity {
     @BindView(R.id.name)
     TextView mName;
     @BindView(R.id.edit)
-    ImageButton mEdit;
+    LinearLayout mEdit;
     @BindView(R.id.saveedit)
     TextView saveedit;
     @BindView(R.id.phone_email)
@@ -243,20 +243,24 @@ public class ContactDetailActivity extends BaseActivity {
 
     @OnClick(R.id.edit)
     void editOrCreateContact() {
-        if (mContact.getId() != null) {
-            Uri uriContact = ContactsContract.Contacts.getLookupUri(Long.parseLong(mContact.getId()), mContact.getLookupKey());
-
-            Intent editIntent = new Intent(Intent.ACTION_EDIT);
-            editIntent.setDataAndType(uriContact, ContactsContract.Contacts.CONTENT_ITEM_TYPE);
-            startActivity(editIntent);
-        } else {
-            Intent intentInsertEdit = new Intent(Intent.ACTION_INSERT_OR_EDIT);
-            intentInsertEdit.setType(ContactsContract.Contacts.CONTENT_ITEM_TYPE);
-            intentInsertEdit.putExtra(ContactsContract.Intents.Insert.PHONE, mContact.getNumbers().get(0).getNumber())
-                    .putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_WORK);
-
-            startActivity(intentInsertEdit);
-        }
+//        Intent videocall= new Intent("com.android.phone.videocall");
+//        videocall.putExtra("videocall", true);
+//        videocall.setData(Uri.parse("tel:" + mContact.getNumbers().get(0).getNumber()));
+//        startActivity(videocall);
+//        if (mContact.getId() != null) {
+//            Uri uriContact = ContactsContract.Contacts.getLookupUri(Long.parseLong(mContact.getId()), mContact.getLookupKey());
+//
+//            Intent editIntent = new Intent(Intent.ACTION_EDIT);
+//            editIntent.setDataAndType(uriContact, ContactsContract.Contacts.CONTENT_ITEM_TYPE);
+//            startActivity(editIntent);
+//        } else {
+//            Intent intentInsertEdit = new Intent(Intent.ACTION_INSERT_OR_EDIT);
+//            intentInsertEdit.setType(ContactsContract.Contacts.CONTENT_ITEM_TYPE);
+//            intentInsertEdit.putExtra(ContactsContract.Intents.Insert.PHONE, mContact.getNumbers().get(0).getNumber())
+//                    .putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_WORK);
+//
+//            startActivity(intentInsertEdit);
+//        }
     }
 
     @OnClick(R.id.block)
@@ -424,8 +428,8 @@ public class ContactDetailActivity extends BaseActivity {
     }
 
     private void initToolbar() {
-        mToolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.primary_color_detail_contact));
-        mToolbar.setTitle("");
+        mToolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
+        mToolbar.setTitle(getResources().getString(R.string.contacts));
         mToolbar.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -435,7 +439,7 @@ public class ContactDetailActivity extends BaseActivity {
             }
         });
 
-        mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_primary_color_detail_contact_24dp);
+        mToolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24);
         mToolbar.setNavigationOnClickListener(
                 new View.OnClickListener() {
             @Override
@@ -461,23 +465,23 @@ public class ContactDetailActivity extends BaseActivity {
         params.gravity = Gravity.TOP;
         mToolsView.setLayoutParams(params);
 
-        initButtonsInToolView();
+//        initButtonsInToolView();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void initButtonsInToolView() {
-        if (mContact.getId() == null) {
-            mEdit.setImageDrawable(getDrawable(R.drawable.ic_person_add_primary_color_24dp));
-            saveedit.setText("save");
-           // mEdit.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.drawable.ic_person_add_primary_color_24dp), null, null);
-           // mEdit.setText(R.string.save);
-        } else {
-           // mEdit.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.drawable.ic_edit_primary_color_24dp), null, null);
-            //mEdit.setText(R.string.edit);
-            mEdit.setImageDrawable(getDrawable(R.drawable.ic_edit_primary_color_24dp));
-            saveedit.setText("edit");
-        }
-    }
+//    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+//    private void initButtonsInToolView() {
+//        if (mContact.getId() == null) {
+//            mEdit.setImageDrawable(getDrawable(R.drawable.ic_person_add_primary_color_24dp));
+//            saveedit.setText("save");
+//           // mEdit.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.drawable.ic_person_add_primary_color_24dp), null, null);
+//           // mEdit.setText(R.string.save);
+//        } else {
+//           // mEdit.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.drawable.ic_edit_primary_color_24dp), null, null);
+//            //mEdit.setText(R.string.edit);
+//            mEdit.setImageDrawable(getDrawable(R.drawable.ic_edit_primary_color_24dp));
+//            saveedit.setText("edit");
+//        }
+//    }
 
     private void initScrollView() {
         mScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
@@ -534,7 +538,7 @@ public class ContactDetailActivity extends BaseActivity {
                 TextView typeNumber = layoutPhoneNumber.findViewById(R.id.type_number);
 
                 number.setText(phoneNumber.getNumber());
-                typeNumber.setText("Mobile");
+                typeNumber.setText(getResources().getString(R.string.mobile1));
                 int color = ContextCompat.getColor(this,R.color.colorBlue);
                number.setTextColor(color);
                // call.setVisibility(i == 0 ? View.VISIBLE : View.INVISIBLE);

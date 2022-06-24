@@ -1,6 +1,8 @@
 package vn.com.call.ui.intro;
 
+import android.app.role.RoleManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 
@@ -19,6 +21,7 @@ import vn.com.call.db.cache.RecipientIdsCache;
 import vn.com.call.model.contact.Contact;
 import vn.com.call.ui.BaseFragment;
 import vn.com.call.ui.main.MainActivity;
+import vn.com.call.ui.main.PermisstionActivity;
 
 /**
  * Created by ngson on 30/06/2017.
@@ -61,11 +64,31 @@ public class SplashFragment extends BaseFragment {
     protected int getLayoutId() {
         return R.layout.fragment_splash;
     }
-
+    private void setDefaultCallAppApi30() {
+        RoleManager roleManager;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            roleManager = getContext().getSystemService(RoleManager.class);
+            if (roleManager.isRoleAvailable(RoleManager.ROLE_DIALER)) {
+                if (roleManager.isRoleHeld(RoleManager.ROLE_DIALER)) {
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                } else {
+                    Intent intent = new Intent(getContext(), PermisstionActivity.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                }
+            }
+        }
+    }
     private void startMainActivity() {
-        Intent intent = new Intent(getContext(), MainActivity.class);
-        startActivity(intent);
-        getActivity().finish();
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q){
+            setDefaultCallAppApi30();
+        }else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            }
+        }
+
     }
 
     private void loadContact() {

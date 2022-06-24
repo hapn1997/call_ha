@@ -12,15 +12,10 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-    <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
-    <!--    <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />-->
-    <uses-permission android:name="android.permission.makeDefaultDialer();MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_USER_DICTIONARY" /> <!-- <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" /> -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <!--    <uses-permission android:name="android.permission.SEND_SMS" />-->
-    <!--    <uses-permission android:name="android.permission.READ_SMS" />-->
-    <!--    <uses-permission android:name="android.permission.WRITE_SMS" />-->
-    <!--    <uses-permission android:name="android.permission.RECEIVE_SMS" />-->
-    <!--    <uses-permission android:name="android.permission.RECEIVE_MMS" />-->
+    <uses-permission android:name="android.permission.MANAGE_OWN_CALLS" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.provider.Telephony.SMS_RECEIVED" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -51,9 +46,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name="vn.com.call.ui.main.PermisstionActivity"
+            android:exported="false" />
+        <activity
             android:name="vn.com.call.ui.main.FavoritesAddFragment"
             android:label="@string/title_activity_favorites_add_fragment"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <receiver android:name="vn.com.call.utils.UserPresentReceiver">
             <intent-filter
@@ -148,7 +146,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <action android:name="android.intent.action.SENDTO" />
-
                 <action android:name="android.intent.action.DIAL" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -179,32 +176,40 @@
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
             <intent-filter>
                 <action android:name="android.intent.action.DIAL" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:scheme="tel" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.DIAL" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name="vn.com.call.ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.DIAL" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:scheme="tel" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.DIAL" />
-            </intent-filter>
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
             android:name="vn.com.call.ui.intro.IntroSplashActivity"
-
             android:allowTaskReparenting="true" />
 
         <meta-data

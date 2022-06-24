@@ -18,7 +18,7 @@
     package="com.wdullaer.materialdatetimepicker" >
 
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="21"
         android:targetSdkVersion="30" />
 
     <uses-permission android:name="android.permission.VIBRATE" />

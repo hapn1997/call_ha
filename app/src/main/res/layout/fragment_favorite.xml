@@ -34,7 +34,7 @@
             android:layout_width="43dp"
             android:layout_height="43dp"
             android:layout_centerVertical="true"
-             android:layout_marginLeft="14dp"
+            android:layout_marginLeft="14dp"
             android:padding="6dp"
             android:src="@drawable/ic_add_primary_color_24dp" />
         <TextView

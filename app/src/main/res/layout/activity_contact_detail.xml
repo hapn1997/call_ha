@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fragment_container"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
+    android:background="@color/color_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -22,11 +22,10 @@
                 android:id="@+id/avatar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/white"
                 android:gravity="center"
                 android:orientation="vertical"
 
-                app:ratioWidth="16">
+                app:ratioWidth="2">
 
                 <vn.com.call.widget.AvatarView
                      android:layout_marginTop="25dp"
@@ -50,103 +49,136 @@
                    <LinearLayout
                        android:layout_marginTop="@dimen/text_size_sms_17"
                        android:padding="@dimen/_5sdp"
-                       android:weightSum="3"
-                       android:background="@color/white"
+                       android:weightSum="4"
+                       android:layout_marginLeft="@dimen/dp_10"
+                       android:layout_marginRight="@dimen/dp_10"
                        android:orientation="horizontal"
                        android:layout_width="match_parent"
                        android:layout_height="86dp">
 
 
-                <LinearLayout
+                       <LinearLayout
+                           android:layout_marginRight="5dp"
+                           android:id="@+id/sms"
+
                     android:layout_weight="1"
-                    android:weightSum="2"
+                    android:background="@drawable/bg_touchbar"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
                     android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                       <ImageButton
-                           android:paddingRight="8dp"
-                           android:background="@color/white"
-
-                           android:scaleType="fitEnd"
-                           android:layout_weight="1"
-                           android:layout_width="match_parent"
-                           android:layout_height="match_parent"
-                           android:id="@+id/sms"
-                           android:src="@drawable/mesager_icon">
-                       </ImageButton>
+                       <ImageView
+                           android:layout_width="22dp"
+                           android:layout_height="22dp"
+                           android:src="@drawable/mesage15">
+                       </ImageView>
                     <TextView
                         android:fontFamily="@font/ios_medium"
                         android:layout_marginTop="@dimen/_3sdp"
                         android:textSize="@dimen/_12sdp"
-                        android:text="message"
+                        android:text="@string/message"
                         android:textColor="@color/blue_ios"
-                        android:gravity="end"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
                     </TextView>
                 </LinearLayout>
                        <LinearLayout
+                           android:layout_marginRight="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:id="@+id/call"
+
                            android:layout_width="match_parent"
                            android:layout_height="match_parent"
                            android:layout_weight="1"
                            android:orientation="vertical"
-                           android:weightSum="2">
+                           android:gravity="center"
+                           android:layout_marginTop="6dp"
+                           android:layout_marginBottom="6dp"
+                           android:background="@drawable/bg_touchbar"
+                           android:layout_gravity="center">
 
-                           <ImageButton
-                               android:id="@+id/call"
-                               android:layout_width="match_parent"
-                               android:layout_height="match_parent"
-                               android:layout_weight="1"
-                               android:background="@color/white"
-                               android:scaleType="fitCenter"
-                               android:src="@drawable/call_iconv">
+                           <ImageView
+                               android:padding="2dp"
+                               android:layout_width="22dp"
+                               android:layout_height="22dp"
+                               android:src="@drawable/call15">
 
-                           </ImageButton>
+                           </ImageView>
 
                            <TextView
                                android:fontFamily="@font/ios_medium"
                                android:layout_marginTop="3dp"
                                   android:textSize="12dp"
-                               android:layout_width="match_parent"
-                               android:layout_height="match_parent"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
                                android:gravity="center_horizontal"
-                               android:text="mobile"
+                               android:text="@string/mobile"
                                android:textColor="@color/blue_ios">
 
                            </TextView>
 
                        </LinearLayout>
-                <LinearLayout
-
-                    android:background="@color/white"
-                    android:layout_weight="1"
-                    android:weightSum="2"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                       <ImageButton
-                           android:paddingLeft="6dp"
-                           android:scaleType="fitStart"
-                           android:src="@drawable/ic_edit_primary_color_24dp"
-                           android:background="@color/white"
-                           android:layout_weight="1"
+                       <LinearLayout
+                           android:layout_marginRight="5dp"
+                           android:layout_marginLeft="5dp"
                            android:id="@+id/edit"
+
+                           android:gravity="center"
+                           android:background="@drawable/bg_touchbar"
+                           android:layout_gravity="center"
+                           android:layout_marginTop="6dp"
+                           android:layout_marginBottom="6dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                           <ImageView
+                               android:src="@drawable/video15"
+                               android:layout_width="22dp"
+                               android:layout_height="22dp">
+
+                           </ImageView>
+                            <TextView
+                                android:fontFamily="@font/ios_medium"
+                                android:layout_marginTop="@dimen/_3sdp"
+                                android:textSize="@dimen/_12sdp"
+                                android:id="@+id/saveedit"
+                                android:text="@string/cameravideo"
+                                android:textColor="@color/blue_ios"
+                                android:gravity="top"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"></TextView>
+                </LinearLayout>
+                       <LinearLayout
+                           android:layout_marginLeft="5dp"
+                           android:layout_weight="1"
+                           android:background="@drawable/bg_touchbar"
+                           android:layout_marginTop="6dp"
+                           android:layout_marginBottom="6dp"
+                           android:orientation="vertical"
+                           android:gravity="center"
+                           android:layout_gravity="center"
                            android:layout_width="match_parent"
                            android:layout_height="match_parent">
-
-                       </ImageButton>
-                    <TextView
-                        android:fontFamily="@font/ios_medium"
-                        android:layout_marginLeft="@dimen/_12sdp"
-                        android:layout_marginTop="@dimen/_3sdp"
-                        android:textSize="@dimen/_12sdp"
-                        android:id="@+id/saveedit"
-                        android:text="edit"
-                        android:textColor="@color/blue_ios"
-                        android:gravity="top"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"></TextView>
-                </LinearLayout>
+                           <ImageView
+                               android:layout_width="22dp"
+                               android:layout_height="22dp"
+                               android:id="@+id/email"
+                               android:src="@drawable/mail15">
+                           </ImageView>
+                           <TextView
+                               android:fontFamily="@font/ios_medium"
+                               android:layout_marginTop="@dimen/_3sdp"
+                               android:textSize="@dimen/_12sdp"
+                               android:text="@string/email"
+                               android:textColor="@color/gray"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content">
+                           </TextView>
+                       </LinearLayout>
 
                    </LinearLayout>
             </vn.com.call.widget.LinearLayoutRatio>
@@ -159,19 +191,20 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:background="@drawable/bg_touchbar"
+                    android:padding="16dp"
+                    android:layout_margin="16dp"
                     android:id="@+id/recents"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+
                     android:orientation="vertical">
 
                     <!--  <include layout="@layout/head_recents_layout_contact_detail" />-->
 
                     <include layout="@layout/item_call_log_detail_contact_detail" />
                 </LinearLayout>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.1dp"
-                    android:background="@color/gray"></View>
+
 
             </LinearLayout>
 
@@ -188,6 +221,8 @@
 
             </LinearLayout>
             <LinearLayout
+                android:layout_margin="16dp"
+                android:background="@drawable/bg_touchbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -195,9 +230,10 @@
 
                 <TextView
                     android:textSize="13dp"
-                    android:text="Notes"
+                    android:text="@string/note"
                     android:textColor="@color/black"
                     android:fontFamily="@font/ios_regular"
+                    android:layout_marginTop="@dimen/dp_10"
                     android:layout_marginLeft="@dimen/sp_16"
                     android:id="@+id/note"
                     android:layout_width="match_parent"
@@ -235,19 +271,14 @@
 
 
             <LinearLayout
+                android:background="@drawable/bg_touchbar"
                 android:id="@+id/bottom_tools"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
+               android:layout_margin="16dp"
+                android:padding="16dp"
                 android:orientation="vertical">
-                <View
-                    android:layout_marginBottom="@dimen/dp_10"
-                    android:background="@color/gray"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"></View>
+
                 <TextView
 
                     android:id="@+id/send_sms"
@@ -301,15 +332,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Share my Location"
+                    android:text="@string/share_mylocaion"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/sp_16"
                     />
-                <View
-                    android:layout_marginTop="@dimen/_12sdp"
-                    android:background="@color/gray"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"></View>
+
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
@@ -320,19 +347,20 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@android:color/transparent">
-        <TextView
-            style="@style/HeaderSideText"
-            android:id="@+id/edit3"
-            android:layout_marginRight="@dimen/sp_14"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Edit"
-            android:gravity="right"
-            android:fontFamily="@font/ios_regular"
-            android:textColor="@color/blue_ios"
-            ></TextView>
-    </androidx.appcompat.widget.Toolbar>
 
+    </androidx.appcompat.widget.Toolbar>
+    <TextView
+        style="@style/HeaderSideText"
+        android:id="@+id/edit3"
+        android:layout_gravity="right"
+        android:layout_marginTop="19dp"
+        android:layout_marginRight="@dimen/sp_14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit"
+        android:fontFamily="@font/ios_regular"
+        android:textColor="@color/blue_ios"
+        ></TextView>
     <androidx.cardview.widget.CardView
         android:visibility="gone"
         android:id="@+id/tools"

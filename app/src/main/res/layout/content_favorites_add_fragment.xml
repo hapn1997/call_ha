@@ -129,7 +129,7 @@
             android:textSize="@dimen/_12sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Choose a contact to add to Favorites"></TextView>
+            android:text="@string/choose_contact_fav"></TextView>
         <LinearLayout
             android:layout_marginTop="6dp"
             android:orientation="horizontal"
@@ -238,14 +238,14 @@
                                 android:ellipsize="end"
                                 android:gravity="center_vertical"
                                 android:hint="@string/search"
-                                android:textColorHint="@color/gray_400"
                                 android:inputType="text"
                                 android:maxLines="1"
                                 android:paddingStart="@dimen/_4sdp"
                                 android:paddingLeft="@dimen/_4sdp"
                                 android:paddingEnd="@dimen/_2sdp"
                                 android:paddingRight="@dimen/_2sdp"
-                                android:scrollHorizontally="true" />
+                                android:scrollHorizontally="true"
+                                android:textColorHint="@color/gray_400" />
 
 
                         </RelativeLayout>

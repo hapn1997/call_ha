@@ -361,12 +361,12 @@
             android:layout_height="0.5dp"
             android:background="@color/colorDivider" />
     </RelativeLayout>
+
     <FrameLayout
-        android:layout_below="@id/tabHome"
         android:id="@+id/search_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        android:layout_below="@id/tabHome" />
 
 
 </RelativeLayout>

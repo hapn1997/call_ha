@@ -2,6 +2,7 @@ package vn.com.call.ui.main;
 
 import android.annotation.TargetApi;
 import android.app.AppOpsManager;
+import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -10,8 +11,11 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.provider.Telephony;
 import androidx.annotation.IdRes;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import android.telecom.TelecomManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -113,7 +117,13 @@ public class MainActivity extends BaseActivity {
         loadCallLog();
         //boquyen cacheAllSms();
        //hasua
-//        if (!isDefaultSmsApp()) setDefaultSmsApp();
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q){
+            setDefaultCallAppApi30();
+        }else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                checkDefaultHandler();
+            }
+        }
 //
 //        AppShortcutUtils.createAppShortcuts(this);
 //
@@ -134,7 +144,13 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onResume() {
         super.onResume();
-
+//        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q){
+//            setDefaultCallAppApi30();
+//        }else {
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                checkDefaultHandler();
+//            }
+//        }
         mFragNavController.onResumeFragments();
 
         isSavedInstanceState = false;
@@ -375,15 +391,42 @@ public class MainActivity extends BaseActivity {
                 .subscribe();
     }
 
-    private boolean isDefaultSmsApp() {
-        return Build.VERSION.SDK_INT < 19 || (Build.VERSION.SDK_INT >= 19 && Telephony.Sms.getDefaultSmsPackage(this).equals(getPackageName()));
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void checkDefaultHandler() {
+        if (isAlreadyDefaultDialer()) {
+            return;
+        }
+        Intent intent = new Intent(TelecomManager.ACTION_CHANGE_DEFAULT_DIALER);
+        intent.putExtra(TelecomManager.EXTRA_CHANGE_DEFAULT_DIALER_PACKAGE_NAME, getPackageName());
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+        else{
+            throw new RuntimeException("Default phone functionality not found");
+        }
     }
 
-    @TargetApi(Build.VERSION_CODES.KITKAT)
-    private void setDefaultSmsApp() {
-        Intent intent = new Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT);
-        intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, getPackageName());
-        startActivity(intent);
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private boolean isAlreadyDefaultDialer() {
+        TelecomManager telecomManager = (TelecomManager) getSystemService(TELECOM_SERVICE);
+        return getPackageName().equals(telecomManager.getDefaultDialerPackage());
+    }
+    private void setDefaultCallAppApi30() {
+        RoleManager roleManager;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            roleManager = getApplicationContext().getSystemService(RoleManager.class);
+            if (roleManager.isRoleAvailable(RoleManager.ROLE_DIALER)) {
+                if (roleManager.isRoleHeld(RoleManager.ROLE_DIALER)) {
+//                    Toast.makeText(getApplicationContext(), "PrismApp set as default.", Toast.LENGTH_SHORT).show();
+//                    Intent i = new Intent(Settings.ACTION_MANAGE_DEFAULT_APPS_SETTINGS);
+//                    startActivity(i);
+                } else {
+                    Intent roleRequestIntent = roleManager.createRequestRoleIntent(RoleManager.ROLE_DIALER);
+                    startActivityForResult(roleRequestIntent, 2);
+                }
+            }
+        }
     }
 
     private void showTouchBar() {

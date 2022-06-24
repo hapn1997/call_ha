@@ -32,4 +32,6 @@
     <color name="black80">#CC000000</color>
     <color name="black90">#E6000000</color>
     <color name="black100">#FF000000</color>
+    <color name="color_main">#1AC8C8C8</color>
+    <color name="color_main1">#4DC8C8C8</color>
 </resources>

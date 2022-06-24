@@ -185,6 +185,21 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_favorites_add_fragment">FavoritesAddFragment</string>
+    <string name="message">mesage</string>
+    <string name="mobile">mobile</string>
+    <string name="edit1">edit</string>
+    <string name="email">mail</string>
+    <string name="cameravideo">FaceTime</string>
+    <string name="mobile1">Mobile</string>
+    <string name="note">Notes</string>
+    <string name="share_mylocaion">Share my Location</string>
+    <string name="choose_contact_fav">Choose a contact to add to Favorites</string>
+    <string name="grand_permistion">Grant permisstion and get start</string>
+    <string name="title_default">Make default dialer</string>
+    <string name="title_default1">To enable call screen</string>
+    <string name="permission">Permissions</string>
+    <string name="grand_permistion_contact">Grant contact permission to show contacts and phone permission for dial and accept phone call</string>
+    <string name="let_doit">Let\'s do it</string>
 
 
 </resources>

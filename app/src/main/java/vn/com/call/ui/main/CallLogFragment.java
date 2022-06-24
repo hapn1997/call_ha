@@ -104,14 +104,14 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
         mAdapter = new CallLogAdapter(mOnClickViewCallLogListener, mCallLogs,this);
         addlistCall.setSelected(true);
         btnLastHeaderMissed.setSelected(false);
-        addlistCall.setTextColor(Color.WHITE);
+        addlistCall.setTextColor(Color.BLACK);
 
         addlistCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                btnLastHeaderMissed.setTextColor(getContext().getResources().getColor(R.color.colorBlue));
-                addlistCall.setTextColor(Color.WHITE);
+                btnLastHeaderMissed.setTextColor(getContext().getResources().getColor(R.color.black));
+                addlistCall.setTextColor(Color.BLACK);
 
                 addlistCall.setSelected(true);
                     btnLastHeaderMissed.setSelected(false);
@@ -123,8 +123,8 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
         btnLastHeaderMissed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btnLastHeaderMissed.setTextColor(Color.WHITE);
-               addlistCall.setTextColor(getContext().getResources().getColor(R.color.colorBlue));
+                btnLastHeaderMissed.setTextColor(Color.BLACK);
+               addlistCall.setTextColor(getContext().getResources().getColor(R.color.black));
                 addlistCall.setSelected(false);
                 btnLastHeaderMissed.setSelected(true);
                 checkaddMiss = false;
