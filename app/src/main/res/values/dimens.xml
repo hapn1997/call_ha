@@ -107,6 +107,13 @@
         <dimen name="_12sdp">12dp</dimen>
         <dimen name="_44sdp">44dp</dimen>
     <dimen name="sp_16">16sp</dimen>
+    <dimen name="len_40">20dp</dimen>
+    <dimen name="len_32">16dp</dimen>
+    <dimen name="len_28">14dp</dimen>
+    <dimen name="margin_vertical_small">10dp</dimen>
+    <dimen name="text_size_list_item_text_small">15sp</dimen>
+    <dimen name="margin_horizontal_small">10dp</dimen>
+    <dimen name="sp_20">20sp</dimen>
 
 
 </resources>

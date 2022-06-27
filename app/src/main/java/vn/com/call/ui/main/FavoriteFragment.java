@@ -305,7 +305,6 @@ public  void setCancel(){
         horizontalContactAdapter.notifyDataSetChanged();
         if (horizontalContactAdapter !=null){
             mlist.setAdapter(horizontalContactAdapter);
-
         }
 
     }
@@ -325,7 +324,7 @@ public  void setCancel(){
     }
     protected void loadAndShowData() {
         commitData(ContactCache.getContacts());
-        FavoriteFragmentPermissionsDispatcher.readContactWithCheck(this);
+//        FavoriteFragmentPermissionsDispatcher.readContactWithCheck(this);
 
     }
 

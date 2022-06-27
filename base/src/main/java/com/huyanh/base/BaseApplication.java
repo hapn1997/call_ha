@@ -19,7 +19,6 @@ import com.huyanh.base.dao.BaseTypeface;
 import com.huyanh.base.utils.BaseConstant;
 import com.huyanh.base.utils.BaseUtils;
 import com.huyanh.base.utils.Log;
-import com.squareup.leakcanary.LeakCanary;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,10 +47,10 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            return;
-        }
-        LeakCanary.install(this);
+//        if (LeakCanary.isInAnalyzerProcess(this)) {
+//            return;
+//        }
+//        LeakCanary.install(this);
 
         new File(getFilesDir().getPath() + "/txt/").mkdirs();
         pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());

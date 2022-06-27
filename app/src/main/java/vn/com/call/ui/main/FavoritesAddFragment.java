@@ -289,6 +289,14 @@ public class FavoritesAddFragment extends BaseFragment implements OnClickFav {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        final FavoriteFragment favoriteFragment = new FavoriteFragment();
+        getChildFragmentManager().beginTransaction().replace(R.id.search_content1 ,favoriteFragment).addToBackStack("FavoriteFragment").commitAllowingStateLoss();
+
+    }
+
+    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
@@ -339,6 +347,9 @@ public class FavoritesAddFragment extends BaseFragment implements OnClickFav {
     public void onDestroyView() {
         if (mLoadContact != null) mLoadContact.unsubscribe();
         super.onDestroyView();
+        final FavoriteFragment favoriteFragment = new FavoriteFragment();
+        getChildFragmentManager().beginTransaction().replace(R.id.search_content1 ,favoriteFragment).addToBackStack("FavoriteFragment").commitAllowingStateLoss();
+
     }
 
     @NeedsPermission(Manifest.permission.WRITE_CONTACTS)

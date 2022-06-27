@@ -6,95 +6,139 @@
     android:layout_height="match_parent"
     android:gravity="center"
     tools:context="vn.com.call.ui.main.PermisstionActivity">
-   <LinearLayout
-       android:gravity="center"
 
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
 
-       <TextView
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:gravity="center"
-           android:text="@string/grand_permistion"
-           android:textColor="@color/colorPrimary"
-           android:textStyle="bold"
-           android:textSize="19sp" />
-       <LinearLayout
-           android:layout_marginTop="30dp"
-           android:layout_marginLeft="20dp"
-           android:layout_marginRight="20dp"
-           android:orientation="horizontal"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content">
-           <ImageView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:src="@drawable/security_lock_new"
-               app:tint="@color/gray" />
-           <LinearLayout
-               android:orientation="vertical"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content">
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="@string/title_default"
-                   android:textSize="15sp"
-                   android:textStyle="bold"/>
-               <TextView
-                   android:textSize="15sp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
 
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="@string/title_default1"
-                   android:textColor="@color/gray_400"/>
-           </LinearLayout>
-       </LinearLayout>
-       <LinearLayout
-           android:layout_marginTop="5dp"
-           android:layout_marginLeft="20dp"
-           android:layout_marginRight="20dp"
-           android:orientation="horizontal"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content">
-           <ImageView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:src="@drawable/security_lock_new"
-               app:tint="@color/gray" />
-           <LinearLayout
-               android:orientation="vertical"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content">
-               <TextView
-                   android:textSize="15sp"
+        <TextView
+            android:fontFamily="@font/ios_bold"
 
-                   android:textStyle="bold"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="@string/permission"/>
-               <TextView
-                   android:textSize="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/grand_permistion"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/sp_20"
+            />
 
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="@string/grand_permistion_contact"
-                   android:textColor="@color/gray_400"/>
-           </LinearLayout>
-       </LinearLayout>
-       <Button
-           android:id="@+id/bt_click"
-           android:paddingLeft="10dp"
-           android:paddingRight="10dp"
-           android:layout_marginTop="30dp"
-           android:background="@drawable/bg_schedule_message"
-           android:layout_width="wrap_content"
-           android:layout_height="36dp"
-           android:textColor="@color/white"
-           android:text="@string/let_doit"/>
+        <RelativeLayout
+            android:id="@+id/item_accessibility_permission"
+            style="@style/PermissionItemView"
+            android:layout_width="match_parent"
+            android:layout_height="90dp">
+
+            <ImageView
+                android:id="@+id/iv_modifi1"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/security_lock_new" />
+
+            <TextView
+                android:fontFamily="@font/ios_bold"
+                android:id="@+id/text_config_accessibility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/len_32"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_toEndOf="@+id/iv_modifi1"
+                android:gravity="center_vertical"
+                android:text="@string/title_default"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_16"
+                 />
+
+            <TextView
+                android:fontFamily="@font/ios_medium"
+
+                android:id="@+id/text_config_accessibility_desc"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_config_accessibility"
+                android:layout_marginLeft="@dimen/len_32"
+                android:layout_marginBottom="@dimen/margin_vertical_small"
+                android:layout_toEndOf="@+id/iv_modifi1"
+                android:gravity="center_vertical"
+                android:text="@string/title_default1"
+                android:textColor="@color/gray_400"
+                android:textSize="@dimen/text_size_list_item_text_small" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            style="@style/PermissionItemView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_modifi2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/security_lock_new" />
+
+            <TextView
+                android:fontFamily="@font/ios_bold"
+
+                android:id="@+id/text_config_accessibility1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/len_32"
+                android:layout_toEndOf="@+id/iv_modifi2"
+                android:gravity="center_vertical"
+                android:text="@string/permission"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_16"
+                />
+
+            <TextView
+                android:fontFamily="@font/ios_medium"
+                android:id="@+id/text_config_accessibility_desc2"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_config_accessibility1"
+                android:layout_marginLeft="@dimen/len_32"
+                android:layout_toEndOf="@+id/iv_modifi2"
+                android:gravity="center_vertical"
+                android:text="@string/grand_permistion_contact"
+                android:textColor="@color/gray_400"
+                android:textSize="@dimen/text_size_list_item_text_small" />
+            <Switch
+                android:id="@+id/img_config_accessibility_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/margin_horizontal_small"
+                android:clickable="false"
+                android:scaleType="fitCenter"
+                android:thumbTint="@drawable/check_color_switch"
+                android:trackTint="@drawable/check_color_switch" />
+
+        </RelativeLayout>
 
 
-   </LinearLayout>
+
+
+
+        <Button
+            android:id="@+id/bt_click"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg_schedule_message"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/let_doit"
+            android:fontFamily="@font/ios_bold"
+
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
 </RelativeLayout>

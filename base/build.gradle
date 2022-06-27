@@ -30,8 +30,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-ads:11.4.2'
     implementation 'com.facebook.android:audience-network-sdk:4.+'
 
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+//    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 
     implementation 'com.github.piasy:safelyandroid:1.2.0'
 }

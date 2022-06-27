@@ -8,7 +8,10 @@
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/background_message.xml" value="0.2365" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/background_message_mid.xml" value="0.2365" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/bg_schedule_message.xml" value="0.2365" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/bg_touchbar.xml" value="0.1935" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/bg_touchbar1.xml" value="0.2365" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/border_green.xml" value="0.1935" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/check_color_switch.xml" value="0.1935" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.1935" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/ic_outgoing_call.xml" value="0.1935" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/last_header_button_left.xml" value="0.2365" />
@@ -23,7 +26,7 @@
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/activity_contact_detail.xml" value="0.33" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/activity_favorites_add_fragment.xml" value="0.3625" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/activity_main.xml" value="0.18541666666666667" />
-        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/activity_permisstion.xml" value="0.3625" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/activity_permisstion.xml" value="0.33" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/activity_setting_call_flash_preview.xml" value="0.18958333333333333" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/content_add_messenger_app.xml" value="0.18541666666666667" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/content_favorites_add_fragment.xml" value="0.3625" />
