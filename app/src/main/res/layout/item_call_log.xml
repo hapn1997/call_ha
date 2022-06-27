@@ -22,14 +22,14 @@
         ></ImageView>
 
     <LinearLayout
-        android:layout_marginLeft="11dp"
-         android:layout_toRightOf="@+id/imageremove"
         android:id="@+id/type_log"
         android:layout_width="13dp"
         android:layout_height="13dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:layout_toRightOf="@+id/imageremove"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/_24sdp">
+        android:orientation="horizontal">
 
     </LinearLayout>
 
@@ -54,15 +54,15 @@
         android:orientation="vertical">
 
         <TextView
-            android:textSize="17dp"
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:maxLines="1"
             android:fontFamily="@font/ios_medium"
+            android:maxLines="1"
             android:text="Nguyen Son"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:textSize="17dp" />
 
         <LinearLayout
             android:id="@+id/log"
@@ -70,12 +70,13 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal">
+
             <TextView
-                android:fontFamily="@font/ios_regular"
                 android:id="@+id/location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
+                android:fontFamily="@font/ios_regular"
                 android:maxLines="1"
                 android:text="mobile"
                 android:textColor="@color/snippet_text_color"

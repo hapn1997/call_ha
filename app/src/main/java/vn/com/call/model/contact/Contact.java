@@ -163,13 +163,12 @@ public class Contact implements Parcelable {
         if (showConfirm) {
             new MaterialDialog.Builder(context)
                     .backgroundColor(Color.WHITE)
-                    .title(R.string.title_dialog_confirm_delete_contact)
                     .titleColor(Color.BLACK)
                     .content(R.string.content_dialog_confirm_delete_contact)
                     .contentColor(Color.BLACK)
                     .negativeText(R.string.cancel)
                     .negativeColor(ContextCompat.getColor(context, R.color.colorPrimary))
-                    .positiveText(R.string.ok)
+                    .positiveText(R.string.delete)
                     .positiveColor(ContextCompat.getColor(context, R.color.colorPrimary))
                     .onPositive(new MaterialDialog.SingleButtonCallback() {
                         @Override

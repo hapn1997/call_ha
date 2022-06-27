@@ -102,6 +102,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
 //        mOnClickViewCallLogListener = new OnClickViewCallLogListener(getContext());
         mOnClickViewCallLogListener = new extOnClickViewCallLogListener(getContext());
         mAdapter = new CallLogAdapter(mOnClickViewCallLogListener, mCallLogs,this);
+        mAdapter.setType(true);
         addlistCall.setSelected(true);
         btnLastHeaderMissed.setSelected(false);
         addlistCall.setTextColor(Color.BLACK);
@@ -116,8 +117,10 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
                 addlistCall.setSelected(true);
                     btnLastHeaderMissed.setSelected(false);
 
-                checkaddMiss = true;
-                loadAndShowData();
+                checkaddMiss = false;
+
+                    loadAndShowData();
+
             }
         });
         btnLastHeaderMissed.setOnClickListener(new View.OnClickListener() {
@@ -127,7 +130,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
                addlistCall.setTextColor(getContext().getResources().getColor(R.color.black));
                 addlistCall.setSelected(false);
                 btnLastHeaderMissed.setSelected(true);
-                checkaddMiss = false;
+                checkaddMiss = true;
                 loadandShowMiss();
             }
         });
@@ -281,19 +284,38 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
 
     protected void commitData(List<CallLog> callLogs) {
         mCallLogs.clear();
-
         if (callLogs.size() > 0) {
             int numberCallLog = callLogs.size();
             int index = 0;
             CallLog callLog = callLogs.get(index);
 
             if (TimeUtils.isToday(callLog.getDetails().get(0).getDate())) {
-                mCallLogs.add(new CallLogSectionEntity(true, getString(R.string.today)));
+                if (checkaddMiss ==true ){
+                    if ((callLog.getDetails().get(0).getType() == android.provider.CallLog.Calls.MISSED_TYPE)){
+                        mCallLogs.add(new CallLogSectionEntity(true, getString(R.string.today)));
+
+                    }
+
+
+                }else {
+                    mCallLogs.add(new CallLogSectionEntity(true, getString(R.string.today)));
+
+                }
 
                 while (index < numberCallLog) {
                     callLog = callLogs.get(index);
                     if (TimeUtils.isToday(callLog.getDetails().get(0).getDate())) {
-                        mCallLogs.add(new CallLogSectionEntity(callLog));
+                        if (checkaddMiss ==true ){
+                            if ((callLog.getDetails().get(0).getType() == android.provider.CallLog.Calls.MISSED_TYPE)){
+                                mCallLogs.add(new CallLogSectionEntity(callLog));
+
+                            }
+
+
+                        }else {
+                            mCallLogs.add(new CallLogSectionEntity(callLog));
+
+                        }
                         index++;
                     } else {
                         break;
@@ -308,7 +330,17 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
                     callLog = callLogs.get(index);
 
                     if (TimeUtils.isYesterday(callLog.getDetails().get(0).getDate())) {
-                        mCallLogs.add(new CallLogSectionEntity(callLog));
+                        if (checkaddMiss ==true ){
+                            if ((callLog.getDetails().get(0).getType() == android.provider.CallLog.Calls.MISSED_TYPE)){
+                                mCallLogs.add(new CallLogSectionEntity(callLog));
+
+                            }
+
+
+                        }else {
+                            mCallLogs.add(new CallLogSectionEntity(callLog));
+
+                        }
                         index++;
                     } else break;
                 }
@@ -318,7 +350,17 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
                 mCallLogs.add(new CallLogSectionEntity(true, getString(R.string.older)));
                 while (index < numberCallLog) {
                     callLog = callLogs.get(index);
-                    mCallLogs.add(new CallLogSectionEntity(callLog));
+                    if (checkaddMiss ==true ){
+                        if ((callLog.getDetails().get(0).getType() == android.provider.CallLog.Calls.MISSED_TYPE)){
+                            mCallLogs.add(new CallLogSectionEntity(callLog));
+
+                        }
+
+
+                    }else {
+                        mCallLogs.add(new CallLogSectionEntity(callLog));
+
+                    }
                     index++;
                 }
             }
@@ -350,11 +392,11 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
     public void loadAndShowData() {
         showCacheCallLog();
 
-        CallLogFragmentPermissionsDispatcher.queryCallLogWithCheck(this);
+//        CallLogFragmentPermissionsDispatcher.queryCallLogWithCheck(this);
     }
     public void loadandShowMiss(){
         showCacheCallLog();
-        CallLogFragmentPermissionsDispatcher.queryCallLogMisWithCheck(this);
+//        CallLogFragmentPermissionsDispatcher.queryCallLogMisWithCheck(this);
 
     }
 

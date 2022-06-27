@@ -192,7 +192,6 @@
 
                 <LinearLayout
                     android:background="@drawable/bg_touchbar"
-                    android:padding="16dp"
                     android:layout_margin="16dp"
                     android:id="@+id/recents"
                     android:layout_width="match_parent"
@@ -240,6 +239,7 @@
                     android:layout_height="wrap_content"
                      />
                 <EditText
+                    android:enabled="false"
                     app:backgroundTint="@android:color/transparent"
                     android:layout_marginLeft="@dimen/sp_16"
                     android:textSize="@dimen/sp_14"
@@ -278,35 +278,62 @@
                android:layout_margin="16dp"
                 android:padding="16dp"
                 android:orientation="vertical">
-
-                <TextView
-
+                <LinearLayout
+                    android:id="@+id/new_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="11dp"
+                        android:text="@string/create_new_contact"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/sp_16" />
+                    <View
+                        android:layout_marginTop="11dp"
+                        android:background="@color/gray"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"></View>
+                </LinearLayout>
+                <LinearLayout
                     android:id="@+id/send_sms"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/send_message"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/sp_16" />
-                <View
-                    android:layout_marginTop="@dimen/dp_10"
-                    android:background="@color/gray"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"></View>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_marginTop="11dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/send_message"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/sp_16" />
+                    <View
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:background="@color/gray"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"></View>
+                </LinearLayout>
 
-                <TextView
-
+                <LinearLayout
                     android:id="@+id/share_contact"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:text="@string/share_contact"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/sp_16" />
-                <View
-                    android:layout_marginTop="11dp"
-                    android:background="@color/gray"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"></View>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="11dp"
+                        android:text="@string/share_contact"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/sp_16" />
+                    <View
+                        android:layout_marginTop="11dp"
+                        android:background="@color/gray"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"></View>
+                </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/checklogfav"
                     android:layout_width="match_parent"
@@ -327,7 +354,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"></View>
                 </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/delete_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/delete_contact"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/sp_16"
+                     />
+                <View
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"></View>
+                </LinearLayout>
+                <TextView
+                    android:visibility="gone"
                     android:id="@+id/locationw"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

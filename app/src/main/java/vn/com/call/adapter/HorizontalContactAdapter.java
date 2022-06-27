@@ -30,6 +30,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.dialer.ios.iphone.contacts.R;
+
+import vn.com.call.adapter.listener.OnClickFav;
 import vn.com.call.adapter.listener.OnClickViewConversationListener;
 import vn.com.call.model.contact.Contact;
 import vn.com.call.model.contact.PhoneNumber;
@@ -50,10 +52,12 @@ public class HorizontalContactAdapter extends RecyclerView.Adapter<HorizontalCon
     private OnClickContactListener onClickContactListener;
     Fragment fragment;
    private  boolean checkRemove;
-    public HorizontalContactAdapter(Fragment fragment,List<Contact> mContacts) {
+   OnClickFav onClickFav;
+    public HorizontalContactAdapter(Fragment fragment, List<Contact> mContacts) {
         this.mContacts = mContacts;
         this.context = fragment.getContext();
         this.fragment= fragment;
+
 
     }
 
@@ -131,12 +135,6 @@ public class HorizontalContactAdapter extends RecyclerView.Adapter<HorizontalCon
             holder.imageView.setVisibility(View.GONE);
         }
         holder.imageView.setVisibility(checkRemove ==true ? View.VISIBLE : View.GONE);
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 
 
@@ -179,7 +177,9 @@ public class HorizontalContactAdapter extends RecyclerView.Adapter<HorizontalCon
                     // controller.deleteDevice(contact,holder.callorMess.getText().toString());
                 contact.changeFavorite(context);
                 deleteDialog.dismiss();
-//
+                mContacts.remove(contact);
+                notifyItemChanged(holder.getAdapterPosition());
+                notifyDataSetChanged();
                 fragment.getFragmentManager().beginTransaction().detach(fragment).attach(fragment).commit();
             }
         });

@@ -1,10 +1,15 @@
 package vn.com.call.ui.intro;
 
+import static android.content.Context.TELECOM_SERVICE;
+
 import android.app.role.RoleManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.telecom.TelecomManager;
+
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 
 import java.util.List;
@@ -86,7 +91,26 @@ public class SplashFragment extends BaseFragment {
             setDefaultCallAppApi30();
         }else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                checkDefaultHandler();
             }
+        }
+
+    }
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private boolean isAlreadyDefaultDialer() {
+        TelecomManager telecomManager = (TelecomManager) getContext().getSystemService(TELECOM_SERVICE);
+        return getContext().getPackageName().equals(telecomManager.getDefaultDialerPackage());
+    }
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void checkDefaultHandler() {
+        if (isAlreadyDefaultDialer()) {
+            Intent intent = new Intent(getContext(), MainActivity.class);
+            startActivity(intent);
+            getActivity().finish();
+        }else {
+            Intent intent = new Intent(getContext(), PermisstionActivity.class);
+            startActivity(intent);
+            getActivity().finish();
         }
 
     }

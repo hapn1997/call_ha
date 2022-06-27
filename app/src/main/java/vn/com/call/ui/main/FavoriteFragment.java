@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.CallSuper;
 import androidx.annotation.IdRes;
@@ -13,9 +14,12 @@ import com.google.android.material.appbar.AppBarLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +41,7 @@ import permissions.dispatcher.OnPermissionDenied;
 import permissions.dispatcher.OnShowRationale;
 import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.RuntimePermissions;
+import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -174,7 +179,7 @@ public class FavoriteFragment extends BaseFragment {
             public void onClick(View v) {
                 getChildFragmentManager().beginTransaction()
                         .setCustomAnimations(R.anim.push_up_in,R.anim.push_down_out)
-                        .replace(R.id.frmen ,favoritesAddFragment).addToBackStack("FavoriteFragment").commitAllowingStateLoss();
+                        .replace(R.id.frmen ,favoritesAddFragment).addToBackStack("FavoriteFragment").commit();
                  relative_tool_bar.setVisibility(View.GONE);
               //   getActivity().overridePendingTransition(R.anim.push_up_in,R.anim.push_down_out);
             }
@@ -263,7 +268,7 @@ public  void setCancel(){
     @Override
     public void onPause() {
         super.onPause();
-        getChildFragmentManager().popBackStack();
+//        getChildFragmentManager().popBackStack();
     }
 
     @Override
@@ -280,13 +285,13 @@ public  void setCancel(){
         if (mLoadContact != null) mLoadContact.unsubscribe();
         super.onDestroyView();
 
-        loadAndShowData();
+//        loadAndShowData();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        loadAndShowData();
+//        loadAndShowData();
     }
 
     protected void commitData(List<Contact> contacts) {
@@ -296,7 +301,12 @@ public  void setCancel(){
             mFavoriteContacts.clear();
            mFavoriteContacts.addAll(ContactCache.getFavoriteContacts());
             // mFavoriteContacts.addAll(controller.getAllDevice());
+        horizontalContactAdapter=  new HorizontalContactAdapter(this,mFavoriteContacts);
+        horizontalContactAdapter.notifyDataSetChanged();
+        if (horizontalContactAdapter !=null){
+            mlist.setAdapter(horizontalContactAdapter);
 
+        }
 
     }
     @Override
@@ -309,10 +319,14 @@ public  void setCancel(){
     public void onResume() {
         super.onResume();
         loadAndShowData();
+
+
+
     }
     protected void loadAndShowData() {
         commitData(ContactCache.getContacts());
         FavoriteFragmentPermissionsDispatcher.readContactWithCheck(this);
+
     }
 
     @NeedsPermission(Manifest.permission.WRITE_CONTACTS)
@@ -320,6 +334,7 @@ public  void setCancel(){
         mLoadContact = ContactHelper.getListContact(getContext())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
+                .onErrorResumeNext(throwable -> Observable.empty())
                 .subscribe(new Action1<List<Contact>>() {
                     @Override
                     public void call(List<Contact> contacts) {

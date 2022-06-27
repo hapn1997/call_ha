@@ -58,7 +58,9 @@ public class OnClickViewCallLogListener {
         if (context instanceof Activity) {
             Activity activity = (Activity) context;
 
-            ContactDetailActivity.launch(activity, avatar, contact);
+//            ContactDetailActivity.launch(activity, avatar, contact);
+            ContactDetailActivity.launch(context, contact);
+
         } else {
             ContactDetailActivity.launch(context, contact);
         }

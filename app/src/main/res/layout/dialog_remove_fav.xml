@@ -35,23 +35,22 @@
             android:padding="@dimen/_4sdp">
 
             <TextView
-                android:fontFamily="@font/ios_medium"
-                android:textSize="@dimen/sp_16"
-                android:textStyle="normal"
-                android:textColor="#747474"
-                android:gravity="center"
                 android:id="@+id/txt_message"
-                android:background="@drawable/custom_background_white_os13"
-                android:focusable="true"
-                android:clickable="true"
+                style="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_44sdp"
+                android:layout_alignParentBottom="true"
                 android:layout_marginLeft="@dimen/_12sdp"
                 android:layout_marginRight="@dimen/_12sdp"
-
+                android:background="@drawable/custom_background_white_os13"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/ios_medium"
+                android:gravity="center"
                 android:text="Are you want to remove this number ?"
-                android:layout_alignParentBottom="true"
-                style="?android:attr/textAppearanceMedium"/>
+                android:textColor="#747474"
+                android:textSize="@dimen/sp_16"
+                android:textStyle="normal" />
         </RelativeLayout>
 
         <View
@@ -72,26 +71,25 @@
             android:padding="@dimen/_4sdp">
 
 
-
             <TextView
-                android:fontFamily="@font/ios_regular"
-                android:padding="@dimen/_2sdp"
-                android:layout_toRightOf="@+id/imageMes"
-                android:textSize="18dp"
-
-                android:textColor="#747474"
                 android:id="@+id/txt_mess"
-                android:background="@drawable/custom_background_white_os13"
-                android:focusable="true"
-                android:clickable="true"
+                style="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_44sdp"
+
+                android:layout_alignParentBottom="true"
                 android:layout_marginLeft="@dimen/_12sdp"
                 android:layout_marginRight="@dimen/_12sdp"
-                     android:gravity="center"
+                android:layout_toRightOf="@+id/imageMes"
+                android:background="@drawable/custom_background_white_os13"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/ios_regular"
+                android:gravity="center"
+                android:padding="@dimen/_2sdp"
                 android:text="Delete"
-                android:layout_alignParentBottom="true"
-                style="?android:attr/textAppearanceMedium"/>
+                android:textColor="#747474"
+                android:textSize="18dp" />
         </RelativeLayout>
 
 

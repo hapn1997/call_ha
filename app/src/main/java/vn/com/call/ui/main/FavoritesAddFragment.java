@@ -20,6 +20,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -42,6 +43,7 @@ import permissions.dispatcher.OnPermissionDenied;
 import permissions.dispatcher.OnShowRationale;
 import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.RuntimePermissions;
+import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -49,6 +51,8 @@ import rx.schedulers.Schedulers;
 import com.dialer.ios.iphone.contacts.R;
 import vn.com.call.adapter.ContactFavAdapter;
 import vn.com.call.adapter.HorizontalContactAdapter;
+import vn.com.call.adapter.listener.OnClickFav;
+import vn.com.call.adapter.listener.OnClickViewFavoritesListener;
 import vn.com.call.db.ContactHelper;
 import vn.com.call.db.cache.ContactCache;
 import vn.com.call.model.contact.Contact;
@@ -64,7 +68,7 @@ import vn.com.call.utils.CallUtils;
  */
 
 @RuntimePermissions
-public class FavoritesAddFragment extends BaseFragment {
+public class FavoritesAddFragment extends BaseFragment implements OnClickFav {
     private final static String TAG = FavoritesAddFragment.class.getSimpleName();
 
     public static FavoritesAddFragment newInstance() {
@@ -203,7 +207,7 @@ public class FavoritesAddFragment extends BaseFragment {
                 }
                 }
             }
-        });
+        },this);
 //        mAdapter = new ContactAdapter(contactSectionEntities, new OnClickViewConversationListener());
         mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mList.setLayoutManager(mLayoutManager);
@@ -342,6 +346,7 @@ public class FavoritesAddFragment extends BaseFragment {
         mLoadContact = ContactHelper.getListContact(getContext())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
+                .onErrorResumeNext(throwable -> Observable.empty())
                 .subscribe(new Action1<List<Contact>>() {
                     @Override
                     public void call(List<Contact> contacts) {
@@ -362,6 +367,13 @@ public class FavoritesAddFragment extends BaseFragment {
 
     @OnNeverAskAgain(Manifest.permission.WRITE_CONTACTS)
     public void onNeverAskAgainContact() {
+
+    }
+
+    @Override
+    public void update() {
+        final FavoriteFragment favoriteFragment = new FavoriteFragment();
+        getChildFragmentManager().beginTransaction().replace(R.id.search_content1 ,favoriteFragment).addToBackStack("FavoriteFragment").commitAllowingStateLoss();
 
     }
 }

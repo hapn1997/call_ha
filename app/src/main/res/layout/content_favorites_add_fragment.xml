@@ -136,10 +136,12 @@
             android:layout_below="@+id/contacttext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="2">
+            android:gravity="center"
+            android:weightSum="3">
 
             <TextView
-                android:layout_width="477dp"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
@@ -147,10 +149,19 @@
                 android:textSize="16dp"
                 android:textStyle="bold"></TextView>
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Contacts"
+                android:layout_gravity="center"
+                android:textSize="16dp"
+                android:textStyle="bold"></TextView>
+            <TextView
                 android:id="@+id/cancelfragment"
                 android:layout_marginRight="@dimen/text_size_sms_19"
                 android:gravity="end"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cancel"
                 android:textColor="@color/blue_ios"

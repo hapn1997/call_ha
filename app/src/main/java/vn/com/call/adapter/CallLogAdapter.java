@@ -25,6 +25,7 @@ import vn.com.call.model.contact.Contact;
 import vn.com.call.ui.main.CallLogFragment;
 import vn.com.call.ui.main.CallLogSectionEntity;
 import vn.com.call.utils.TimeUtils;
+import vn.com.call.widget.AvatarView;
 
 /**
  * Created by ngson on 03/07/2017.
@@ -37,10 +38,15 @@ public class CallLogAdapter extends BaseSectionQuickAdapter<CallLogSectionEntity
     public  CallLogFragment fragment;
     private OnClickViewCallLogListener listener;
     private boolean checklog;
+    private boolean type;
     public CallLogAdapter(OnClickViewCallLogListener listener, List<CallLogSectionEntity> data, CallLogFragment fragment) {
         super(R.layout.item_call_log, R.layout.item_header_calllog, data);
       this.fragment = fragment;
         this.listener = listener;
+
+    }
+    public void setType(boolean type){
+        this.type = type;
     }
     public void enableSwipeToDeleteAndUndo1(CallLog callLog){
         callLog.enableSwipeToDeleteAndUndo(mContext,false,fragment);
@@ -51,7 +57,7 @@ public class CallLogAdapter extends BaseSectionQuickAdapter<CallLogSectionEntity
         final CallLog callLog = item.t;
         enableSwipeToDeleteAndUndo1(callLog);
        // callLog.enableSwipeToDeleteAndUndo(mContext,false,fragment);
-        holder.avatar.loadAvatar(callLog.getPhotoContact(), callLog.getNameContact(), callLog.getNumber());
+//        holder.avatar.loadAvatar(callLog.getPhotoContact(), callLog.getNameContact(), callLog.getNumber());
         holder.name.setText(callLog.getNameContact() == null ? callLog.getNumber() : callLog.getNameContact());
 
         showCallLogDetail(holder, callLog.getDetails());
@@ -74,12 +80,12 @@ public class CallLogAdapter extends BaseSectionQuickAdapter<CallLogSectionEntity
             }
         });
 
-        holder.avatar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               // listener.onClickAvatar(callLog, holder.avatar);
-            }
-        });
+//        holder.avatar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//               // listener.onClickAvatar(callLog, holder.avatar);
+//            }
+//        });
 
         holder.root.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,9 +133,25 @@ public class CallLogAdapter extends BaseSectionQuickAdapter<CallLogSectionEntity
 
             CallLogDetail detail = details.get(i);
             if (detail.getType() == android.provider.CallLog.Calls.INCOMING_TYPE)
-                callLogView.setImageResource(R.drawable.ic_outgoing_call);
+                {
+                callLogView.setImageResource(R.drawable.incoming_call);
+//                    if (type == false){
+//                        holder.root.setVisibility(View.GONE);
+//                    }else {
+//                        holder.root.setVisibility(View.VISIBLE);
+//
+//                    }
+            }
             else if (detail.getType() == android.provider.CallLog.Calls.OUTGOING_TYPE)
+                {
                 callLogView.setImageResource(R.drawable.ic_outgoing_call);
+//                    if (type == false){
+//                        holder.root.setVisibility(View.GONE);
+//                    }else {
+//                        holder.root.setVisibility(View.VISIBLE);
+//
+//                    }
+            }
             else {
 
                 // callLogView.setImageResource(R.drawable.ic_call_received_red_700_18dp);

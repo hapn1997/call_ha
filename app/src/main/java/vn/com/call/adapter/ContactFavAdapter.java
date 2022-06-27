@@ -25,6 +25,8 @@ import java.io.IOException;
 import java.util.List;
 
 import com.dialer.ios.iphone.contacts.R;
+
+import vn.com.call.adapter.listener.OnClickFav;
 import vn.com.call.adapter.listener.OnClickViewConversationListener;
 import vn.com.call.adapter.listener.OnClickViewFavoritesListener;
 import vn.com.call.adapter.viewholder.ContactViewHolder;
@@ -34,6 +36,7 @@ import vn.com.call.model.contact.PhoneNumber;
 import vn.com.call.model.sms.Conversation;
 import vn.com.call.ui.ChooseNumberPopupWindow;
 import vn.com.call.ui.main.ContactSectionEntity;
+import vn.com.call.ui.main.FavoriteFragment;
 import vn.com.call.ui.main.MainActivity;
 import vn.com.call.utils.CallUtils;
 
@@ -47,6 +50,7 @@ public class ContactFavAdapter extends BaseSectionQuickAdapter<ContactSectionEnt
 
     private String idContactExpand = null;
     private boolean checkb = true;
+    OnClickFav onClickFav;
     OnClickViewFavoritesListener onClickViewFavoritesListener;
     private OnClickViewConversationListener onClickViewConversation;
     private OnClickContactListener onClickContactListener;
@@ -56,13 +60,15 @@ public class ContactFavAdapter extends BaseSectionQuickAdapter<ContactSectionEnt
          this.fragment = fragment;
         this.data = data;
 
+
     }
 
-    public ContactFavAdapter(List<ContactSectionEntity> data, Fragment fragment,OnClickContactListener onClickContactListener) {
+    public ContactFavAdapter(List<ContactSectionEntity> data, Fragment fragment,OnClickContactListener onClickContactListener,OnClickFav onClickFav) {
         super(R.layout.item_contact, R.layout.item_header_contact, data);
         this.data = data;
         this.onClickContactListener = onClickContactListener;
         this.fragment = fragment;
+        this.onClickFav = onClickFav;
     }
 
 
@@ -223,6 +229,7 @@ public class ContactFavAdapter extends BaseSectionQuickAdapter<ContactSectionEnt
                 }else {
                    contact.setFavorite(true);
                    ContactHelper.setFavorite(context, contact.getId());
+                   onClickFav.update();
                }
                 deleteDialog.dismiss();
 
@@ -236,12 +243,14 @@ public class ContactFavAdapter extends BaseSectionQuickAdapter<ContactSectionEnt
 //                    boolean check =  controller.insertDevice(contact,"Call",phoneNumber,photo);
 //                }else;
                 if( contact.isFavorite()){
+
                    // String toast = context.getString(R.string.detail_activity_title_toast_remove_favorite).replace("{name}", contact.getName());
                     //Toast.makeText(context, toast, Toast.LENGTH_SHORT).show();
 
                 }else {
                     contact.setFavorite(true);
                     ContactHelper.setFavorite(context, contact.getId());
+                    onClickFav.update();
 
                 }
                 deleteDialog.dismiss();

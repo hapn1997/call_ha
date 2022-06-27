@@ -77,23 +77,23 @@
 
 
             <TextView
-                android:fontFamily="@font/ios_regular"
-                android:padding="@dimen/_2sdp"
-                android:layout_toRightOf="@+id/imageMes"
-                android:textSize="18dp"
-                android:textStyle="normal"
                 android:id="@+id/txt_mess"
-                android:background="@drawable/custom_background_white_os13"
-                android:focusable="true"
-                android:clickable="true"
+                style="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_44sdp"
+                android:layout_alignParentBottom="true"
                 android:layout_marginLeft="@dimen/_12sdp"
                 android:layout_marginRight="@dimen/_12sdp"
+                android:layout_toRightOf="@+id/imageMes"
+                android:background="@drawable/custom_background_white_os13"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/ios_regular"
+                android:padding="@dimen/_2sdp"
 
                 android:text="Message"
-                android:layout_alignParentBottom="true"
-                style="?android:attr/textAppearanceMedium"/>
+                android:textSize="18dp"
+                android:textStyle="normal" />
         </RelativeLayout>
         <View
             android:id="@+id/view_1"
@@ -120,23 +120,23 @@
 
 
             <TextView
-                android:fontFamily="@font/ios_regular"
-                android:padding="@dimen/_2sdp"
-                android:layout_toRightOf="@+id/imageCall"
-                android:textSize="18dp"
-                android:textStyle="normal"
                 android:id="@+id/txt_call"
-                android:background="@drawable/custom_background_white_os13"
-                android:focusable="true"
-                android:clickable="true"
+                style="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_44sdp"
+                android:layout_alignParentBottom="true"
                 android:layout_marginLeft="@dimen/_12sdp"
                 android:layout_marginRight="@dimen/_12sdp"
+                android:layout_toRightOf="@+id/imageCall"
+                android:background="@drawable/custom_background_white_os13"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/ios_regular"
+                android:padding="@dimen/_2sdp"
 
                 android:text="Call"
-                android:layout_alignParentBottom="true"
-                style="?android:attr/textAppearanceMedium"/>
+                android:textSize="18dp"
+                android:textStyle="normal" />
         </RelativeLayout>
     </RelativeLayout>
     <TextView

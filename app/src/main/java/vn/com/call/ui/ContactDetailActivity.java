@@ -1,5 +1,6 @@
 package vn.com.call.ui;
 
+import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
@@ -122,7 +123,21 @@ public class ContactDetailActivity extends BaseActivity {
     LinearLayout mLayoutCallLog;
     @BindView(R.id.add_favorite)
     TextView mAddToFavorite;
+    @BindView(R.id.delete_contact)
+     LinearLayout deleteContact;
+    @BindView(R.id.share_contact)
+     LinearLayout share_contact;
+    @BindView(R.id.new_contact)
+     LinearLayout new_contact;
+    @OnClick(R.id.new_contact)
+    void addContact(){
+        Intent intent12 = new Intent(Intent.ACTION_INSERT);
+        intent12.setType(ContactsContract.Contacts.CONTENT_TYPE);
+        intent12.putExtra(ContactsContract.Intents.Insert.PHONE,mContact.getNumbers().get(0).getNumber())
+                .putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_WORK);
 
+        startActivity(intent12);
+    }
     @OnClick(R.id.call)
     void call() {
         if (mContact.getNumbers().size() > 1) {
@@ -341,9 +356,17 @@ public class ContactDetailActivity extends BaseActivity {
         initScrollView();
 
         showCardViewPhoneAndEmail();
-
+        deleteContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mContact.delete(ContactDetailActivity.this,true,true);
+            }
+        });
         mAddToFavorite.setVisibility(mContact.getId() == null ? View.GONE : View.VISIBLE);
         linearLayout.setVisibility(mContact.getId() == null ? View.GONE : View.VISIBLE);
+        deleteContact.setVisibility(mContact.getId() == null ? View.GONE : View.VISIBLE);
+        share_contact.setVisibility(mContact.getId() == null ? View.GONE : View.VISIBLE);
+        new_contact.setVisibility(mContact.getId() == null ? View.VISIBLE : View.GONE);
 
 
     }
