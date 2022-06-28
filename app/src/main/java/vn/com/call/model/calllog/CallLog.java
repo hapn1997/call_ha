@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import androidx.annotation.NonNull;
@@ -136,7 +137,7 @@ public class CallLog implements Parcelable {
                     deleteAllCallLogs(context, finishAfterDelete);
                     deleteDialog.dismiss();
 
-                    fragment.getFragmentManager().beginTransaction().detach(fragment).attach(fragment).commit();
+                    ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().detach(fragment).attach(fragment).commit();
 
 
 

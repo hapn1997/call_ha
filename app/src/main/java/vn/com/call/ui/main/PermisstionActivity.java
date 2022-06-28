@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import com.dialer.ios.iphone.contacts.R;
 
+import vn.com.call.db.SharePref;
+
 public class PermisstionActivity extends AppCompatActivity {
   Button bt_click;
     @Override
@@ -33,6 +35,11 @@ public class PermisstionActivity extends AppCompatActivity {
                 showAlertDialogButtonClicked(v);
             }
         });
+        if (SharePref.check(getApplicationContext(),SharePref.PERMISSTION)){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
     @RequiresApi(api = Build.VERSION_CODES.M)
     private boolean isAlreadyDefaultDialer() {
@@ -77,7 +84,7 @@ public class PermisstionActivity extends AppCompatActivity {
 
         builder.setTitle("Important");
 
-        builder.setMessage("Set Call as default phone handler. This is necessary to display call screen and recent calls. Information will not pass to the third parties");
+        builder.setMessage("Set The Phone as default phone handler. This is necessary to display call screen and recent calls. Information will not pass to the third parties");
         // add a button
         builder.setPositiveButton("Set default", new DialogInterface.OnClickListener() {
             @Override
@@ -109,6 +116,7 @@ public class PermisstionActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
+            SharePref.putKey(getApplicationContext(),SharePref.PERMISSTION,SharePref.PERMISSTION);
         }
     }
 }

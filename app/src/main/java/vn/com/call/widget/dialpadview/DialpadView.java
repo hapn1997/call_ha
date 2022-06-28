@@ -49,7 +49,7 @@ import vn.com.call.utils.SmsUtils;
  * Created by ngson on 11/09/2017.
  */
 
-public class DialpadView extends FrameLayout implements View.OnClickListener, LoaderManager.LoaderCallbacks<Cursor> {
+public class DialpadView extends FrameLayout implements View.OnClickListener,View.OnLongClickListener, LoaderManager.LoaderCallbacks<Cursor> {
     public static final String ACTION_SIM_STATE_CHANGED = "android.intent.action.SIM_STATE_CHANGED";
 
     private View mDialpad;
@@ -182,6 +182,7 @@ public class DialpadView extends FrameLayout implements View.OnClickListener, Lo
         mDialpad.findViewById(R.id.addnumber).setOnClickListener(this);
         //mDialpad.findViewById(R.id.add_contact).setOnClickListener(this);
         mDialpad.findViewById(R.id.key_zero).setOnClickListener(this);
+        mDialpad.findViewById(R.id.key_zero).setOnLongClickListener(this);
         mDialpad.findViewById(R.id.key_one).setOnClickListener(this);
         mDialpad.findViewById(R.id.key_two).setOnClickListener(this);
         mDialpad.findViewById(R.id.key_three).setOnClickListener(this);
@@ -505,5 +506,17 @@ public class DialpadView extends FrameLayout implements View.OnClickListener, Lo
     @Override
     public void onLoaderReset(@NonNull Loader loader) {
 
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.key_zero:
+                mInputNumber.append("+");
+
+                break;
+        }
+        return false;
     }
 }

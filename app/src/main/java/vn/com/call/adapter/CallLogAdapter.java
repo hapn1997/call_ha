@@ -86,7 +86,6 @@ public class CallLogAdapter extends BaseSectionQuickAdapter<CallLogSectionEntity
 //               // listener.onClickAvatar(callLog, holder.avatar);
 //            }
 //        });
-
         holder.root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,7 +93,11 @@ public class CallLogAdapter extends BaseSectionQuickAdapter<CallLogSectionEntity
                      listener.onClickCall(callLog.getNumber());
 
                  }else {
+//                     mContext.getContentResolver().delete(android.provider.CallLog.Calls.CONTENT_URI, android.provider.CallLog.Calls.DATE + "=?",
+//                             new String[] {Long.toString(callLog.getDetails().get(0).getDate())});
                      listener.deleteCall(callLog,callLog.getNumber(),fragment);
+//                     remove(getParentPosition(item));
+//                     notifyItemChanged(getParentPosition(item));
                      notifyDataSetChanged();
                  }
             }

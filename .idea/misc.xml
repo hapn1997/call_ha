@@ -33,8 +33,11 @@
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/custom_diglog_favourite.xml" value="0.18541666666666667" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/dialog_create_contact.xml" value="0.18541666666666667" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/dialog_remove_fav.xml" value="0.18541666666666667" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/dialpad.xml" value="0.18802083333333333" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/dialpad_key.xml" value="0.18802083333333333" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/fragment_call_log.xml" value="0.3625" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/fragment_contact.xml" value="0.3625" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/fragment_dialpad.xml" value="0.18802083333333333" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/fragment_favorite.xml" value="0.18541666666666667" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/item_call_log.xml" value="0.5" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/item_call_log_detail_contact_detail.xml" value="0.18541666666666667" />

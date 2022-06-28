@@ -114,16 +114,16 @@ public class MainActivity extends BaseActivity {
         setupBottomBar();
         initSearch();
 
-        loadCallLog();
+//        loadCallLog();
         //boquyen cacheAllSms();
        //hasua
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q){
-            setDefaultCallAppApi30();
-        }else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                checkDefaultHandler();
-            }
-        }
+//        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q){
+//            setDefaultCallAppApi30();
+//        }else {
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                checkDefaultHandler();
+//            }
+//        }
 //
 //        AppShortcutUtils.createAppShortcuts(this);
 //

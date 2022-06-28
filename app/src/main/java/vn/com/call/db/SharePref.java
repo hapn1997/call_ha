@@ -9,6 +9,7 @@ public class SharePref {
     private static SharedPreferences sharedPreferences;
 
     public static final String preference_name = "Call";
+    public static final String PERMISSTION = "permisstion";
 
     @SuppressLint("CommitPrefEdits")
     public static void putKey(Context context, String Key, String Value) {

@@ -46,7 +46,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="vn.com.call.ui.main.PermisstionActivity"
+            android:name="vn.com.call.ui.intro.IntroActivity"
             android:exported="false" />
         <activity
             android:name="vn.com.call.ui.main.FavoritesAddFragment"
@@ -169,7 +169,7 @@
             android:label="@string/title_activity_add_messenger_app"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="vn.com.call.ui.intro.IntroActivity"
+            android:name="vn.com.call.ui.main.PermisstionActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.DIAL" />

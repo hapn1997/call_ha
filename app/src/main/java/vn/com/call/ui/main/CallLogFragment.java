@@ -100,7 +100,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
     @Override
     protected void onCreateView(Bundle savedInstanceState) {
 //        mOnClickViewCallLogListener = new OnClickViewCallLogListener(getContext());
-        mOnClickViewCallLogListener = new extOnClickViewCallLogListener(getContext());
+        mOnClickViewCallLogListener = new extOnClickViewCallLogListener(getActivity());
         mAdapter = new CallLogAdapter(mOnClickViewCallLogListener, mCallLogs,this);
         mAdapter.setType(true);
         addlistCall.setSelected(true);
