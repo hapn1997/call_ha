@@ -1,7 +1,12 @@
 package vn.com.call.ui.main;
 
+import static com.facebook.FacebookSdk.getApplicationContext;
+
 import android.Manifest;
+import android.app.role.RoleManager;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -9,6 +14,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +23,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.huyanh.base.utils.BaseConstant;
@@ -80,6 +88,12 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
      Button addlistCall;
     @BindView(R.id.btnLastHeaderMissed)
     Button btnLastHeaderMissed ;
+    @BindView(R.id.per_call_log)
+    RelativeLayout per_call_log;
+    @BindView(R.id.bt_click)
+    Button bt_click;
+    @BindView(R.id.tv_dsc)
+    TextView tv_dsc;
     private CallLogAdapter mAdapter;
     private LinearLayoutManager mLayoutManager;
     private List<CallLogSectionEntity> mCallLogs = new ArrayList<>();
@@ -87,6 +101,8 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
 
     protected Subscription mSubscription;
     private  boolean checkaddMiss;
+    private int PERMISSION_REQUEST_CONTACT = 102;
+
     public static CallLogFragment newInstance() {
 
         Bundle args = new Bundle();
@@ -373,7 +389,27 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
         }
         mAdapter.notifyDataSetChanged();
     }
-
+    private void setDefaultCallAppApi30() {
+        RoleManager roleManager;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            roleManager = getApplicationContext().getSystemService(RoleManager.class);
+            if (roleManager.isRoleAvailable(RoleManager.ROLE_DIALER)) {
+                if (roleManager.isRoleHeld(RoleManager.ROLE_DIALER)) {
+                    loadAndShowData();
+                    per_call_log.setVisibility(View.GONE);
+                } else {
+                    per_call_log.setVisibility(View.VISIBLE);
+                    bt_click.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent roleRequestIntent = roleManager.createRequestRoleIntent(RoleManager.ROLE_DIALER);
+                            startActivityForResult(roleRequestIntent, 2);
+                        }
+                    });
+                }
+            }
+        }
+    }
     @Override
     public void onPause() {
         super.onPause();
@@ -382,7 +418,17 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
     @Override
     public void onResume() {
         super.onResume();
-        loadAndShowData();
+
+        setDefaultCallAppApi30();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 2) {
+           loadAndShowData();
+           per_call_log.setVisibility(View.GONE);
+        }
     }
 
     public void hideDial() {
@@ -390,13 +436,12 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
     }
 
     public void loadAndShowData() {
-        showCacheCallLog();
-
-//        CallLogFragmentPermissionsDispatcher.queryCallLogWithCheck(this);
+//        showCacheCallLog();
+        CallLogFragmentPermissionsDispatcher.queryCallLogWithCheck(this);
     }
     public void loadandShowMiss(){
-        showCacheCallLog();
-//        CallLogFragmentPermissionsDispatcher.queryCallLogMisWithCheck(this);
+//        showCacheCallLog();
+        CallLogFragmentPermissionsDispatcher.queryCallLogMisWithCheck(this);
 
     }
 
@@ -408,7 +453,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        CallLogFragmentPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+//        CallLogFragmentPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
 
     @Override
@@ -425,6 +470,8 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
                     @Override
                     public void call(List<CallLog> callLogs) {
                         commitData(callLogs);
+                        Log.d("finisherr", String.valueOf(callLogs.size()));
+
                     }
 
                 }, new Action1<Throwable>() {
@@ -434,7 +481,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
                     }
                 });
     }
-    @NeedsPermission({Manifest.permission.WRITE_CALL_LOG, Manifest.permission.WRITE_CONTACTS})
+    @NeedsPermission({Manifest.permission.WRITE_CALL_LOG, Manifest.permission.READ_CALL_LOG})
     void queryCallLogMis(){
         mSubscription = CallLogHelper.queryMissCallLog(getContext())
                 .subscribeOn(Schedulers.newThread())

@@ -237,14 +237,12 @@
                                 android:padding="@dimen/_3sdp"
                                 android:src="@drawable/ic_search_gray" />
 
-                            <TextView
-
+                            <EditText
                                 android:id="@+id/edt_search_thread_messagechinh"
-
                                 android:layout_width="match_parent"
+                                android:textColor="@color/gray_400"
                                 android:layout_height="match_parent"
                                 android:layout_toRightOf="@+id/img_search_1chinh"
-
                                 android:background="@android:color/transparent"
                                 android:ellipsize="end"
                                 android:gravity="center_vertical"
@@ -290,11 +288,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
+
     <FrameLayout
-        android:layout_below="@id/tabHome"
         android:id="@+id/search_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        android:layout_below="@id/tabHome" />
 
 </RelativeLayout>

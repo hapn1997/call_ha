@@ -368,5 +368,13 @@
         android:layout_height="match_parent"
         android:layout_below="@id/tabHome" />
 
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/per_call_log"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/permission_generate" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

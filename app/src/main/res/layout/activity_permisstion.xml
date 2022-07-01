@@ -82,33 +82,34 @@
                 android:src="@drawable/security_lock_new" />
 
             <TextView
-                android:fontFamily="@font/ios_bold"
-
                 android:id="@+id/text_config_accessibility1"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="@dimen/len_32"
                 android:layout_toEndOf="@+id/iv_modifi2"
+                android:fontFamily="@font/ios_bold"
                 android:gravity="center_vertical"
                 android:text="@string/permission"
                 android:textColor="@color/black"
-                android:textSize="@dimen/sp_16"
-                />
+                android:textSize="@dimen/sp_16" />
 
             <TextView
-                android:fontFamily="@font/ios_medium"
                 android:id="@+id/text_config_accessibility_desc2"
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text_config_accessibility1"
                 android:layout_marginLeft="@dimen/len_32"
                 android:layout_toEndOf="@+id/iv_modifi2"
+                android:fontFamily="@font/ios_medium"
                 android:gravity="center_vertical"
                 android:text="@string/grand_permistion_contact"
                 android:textColor="@color/gray_400"
                 android:textSize="@dimen/text_size_list_item_text_small" />
+
             <Switch
+                android:visibility="gone"
                 android:id="@+id/img_config_accessibility_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -135,6 +136,8 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="@string/let_doit"
+            android:gravity="center"
+            android:textSize="@dimen/sp_16"
             android:fontFamily="@font/ios_bold"
 
             android:textColor="@color/white" />

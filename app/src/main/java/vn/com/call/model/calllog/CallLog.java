@@ -159,7 +159,7 @@ public class CallLog implements Parcelable {
 
     }
 
-    private void deleteAllCallLogs(final Context context, final boolean finishAfterDelete) {
+    public void deleteAllCallLogs(final Context context, final boolean finishAfterDelete) {
         CallLogHelper.deleteCallLog(context, details)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -47,7 +47,7 @@
                 android:focusable="true"
                 android:fontFamily="@font/ios_medium"
                 android:gravity="center"
-                android:text="Are you want to remove this number ?"
+                android:text="@string/ask_delete"
                 android:textColor="#747474"
                 android:textSize="@dimen/sp_16"
                 android:textStyle="normal" />

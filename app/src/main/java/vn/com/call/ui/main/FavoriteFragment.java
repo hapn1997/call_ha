@@ -2,6 +2,7 @@ package vn.com.call.ui.main;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.net.Uri;
@@ -13,6 +14,9 @@ import androidx.annotation.NonNull;
 import com.google.android.material.appbar.AppBarLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.google.android.material.snackbar.Snackbar;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -24,6 +28,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -63,6 +68,7 @@ import static vn.com.call.db.ContactHelper.convertToSectionEntity;
 @RuntimePermissions
 
 public class FavoriteFragment extends BaseFragment {
+    private static final int PERMISSION_REQUEST_CONTACT = 101;
     @BindView(R.id.coordinator)
     CoordinatorLayout coordinatorLayout;
     @BindView(R.id.norecents)
@@ -77,6 +83,13 @@ public class FavoriteFragment extends BaseFragment {
     ImageView addFavourite;
     @BindView(R.id.list_fav)
     FabBottomRecyclerView mlist;
+    @BindView(R.id.per_call_log)
+    RelativeLayout per_call_log;
+    @BindView(R.id.bt_click)
+    Button bt_click;
+    @BindView(R.id.tv_dsc)
+    TextView tv_dsc;
+
     private List<Contact> mFavoriteContacts = new ArrayList<>();
     private List<ContactSectionEntity> contactSectionEntities = new ArrayList<>();
     FavoritesAddFragment mCurrentOverlay;
@@ -131,41 +144,20 @@ public class FavoriteFragment extends BaseFragment {
 
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
         itemTouchhelper.attachToRecyclerView(mlist);
-//        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(getContext()) {
-//            @Override
-//            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
-//
-//                return super.onMove(recyclerView, viewHolder, viewHolder1);
-//
-//            }
-//
-//            @Override
-//            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
-//
-//                 final int position = viewHolder.getAdapterPosition();
-//                Log.d("vvfvfvfv", String.valueOf(position));
-//                mFavoriteContacts.get(position).changeFavorite(getContext());
-//                FavoriteFragment fragment = new FavoriteFragment();
-//
-//                FavoriteFragment.this.getFragmentManager().beginTransaction().detach(FavoriteFragment.this).attach(FavoriteFragment.this).commit();
-//
-//
-//            }
-//        };
-//
-//        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
-//        itemTouchhelper.attachToRecyclerView(mlist);
+
     }
     @Override
     protected void onCreateView(Bundle savedInstanceState) {
+        initView();
+
+    }
+    void initView(){
         final FavoritesAddFragment favoritesAddFragment = new FavoritesAddFragment();
         mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mlist.setLayoutManager(mLayoutManager);
-        loadAndShowData();
         enableSwipeToDeleteAndUndo();
-
-       horizontalContactAdapter=  new HorizontalContactAdapter(this,mFavoriteContacts);
-       horizontalContactAdapter.notifyDataSetChanged();
+        horizontalContactAdapter=  new HorizontalContactAdapter(this,mFavoriteContacts);
+        horizontalContactAdapter.notifyDataSetChanged();
         mlist.setAdapter(horizontalContactAdapter);
         mlist.getAdapter().notifyDataSetChanged();
         mlist.addItemDecoration(new RecyclerView.ItemDecoration() {
@@ -180,8 +172,8 @@ public class FavoriteFragment extends BaseFragment {
                 getChildFragmentManager().beginTransaction()
                         .setCustomAnimations(R.anim.push_up_in,R.anim.push_down_out)
                         .replace(R.id.frmen ,favoritesAddFragment).addToBackStack("FavoriteFragment").commit();
-                 relative_tool_bar.setVisibility(View.GONE);
-              //   getActivity().overridePendingTransition(R.anim.push_up_in,R.anim.push_down_out);
+                relative_tool_bar.setVisibility(View.GONE);
+                //   getActivity().overridePendingTransition(R.anim.push_up_in,R.anim.push_down_out);
             }
         });
 
@@ -197,18 +189,18 @@ public class FavoriteFragment extends BaseFragment {
         tvTabEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            if(horizontalContactAdapter.check()){
-                setCancel();
-              //  Toast.makeText(getContext(),"ccddcdd",Toast.LENGTH_LONG).show();
-                return;
+                if(horizontalContactAdapter.check()){
+                    setCancel();
+                    //  Toast.makeText(getContext(),"ccddcdd",Toast.LENGTH_LONG).show();
+                    return;
 
-            }else{
-                //Toast.makeText(getContext(),"edeefef",Toast.LENGTH_LONG).show();
-                setEdit();
-                return;
+                }else{
+                    //Toast.makeText(getContext(),"edeefef",Toast.LENGTH_LONG).show();
+                    setEdit();
+                    return;
 
 
-            }
+                }
 
             }
         });
@@ -231,7 +223,6 @@ public class FavoriteFragment extends BaseFragment {
         }else {
             norecents.setVisibility(View.GONE);
         }
-
     }
     public  void setEdit(){
         tvTabEdit.setText("Done");
@@ -264,7 +255,25 @@ public  void setCancel(){
 
     }
 
-
+    private void checkPermission() {
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED
+                || ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+                per_call_log.setVisibility(View.VISIBLE);
+                tv_dsc.setText(getResources().getString(R.string.fav_des));
+                bt_click.setText(getResources().getString(R.string.let_doit));
+                bt_click.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ActivityCompat.requestPermissions(getActivity(),
+                                new String[]{Manifest.permission.READ_CONTACTS, Manifest.permission.WRITE_CONTACTS},
+                                PERMISSION_REQUEST_CONTACT);
+                    }
+                });
+        } else {
+            per_call_log.setVisibility(View.GONE);
+            loadAndShowData();
+        }
+    }
     @Override
     public void onPause() {
         super.onPause();
@@ -311,20 +320,29 @@ public  void setCancel(){
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CONTACT) {
+            if (grantResults.length == 1 &&
+                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                per_call_log.setVisibility(View.GONE);
+            } else {
 
-        FavoriteFragmentPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+            }
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+//        FavoriteFragmentPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
     @Override
     public void onResume() {
         super.onResume();
-        loadAndShowData();
+        checkPermission();
 
 
 
     }
     protected void loadAndShowData() {
         commitData(ContactCache.getContacts());
-//        FavoriteFragmentPermissionsDispatcher.readContactWithCheck(this);
+        FavoriteFragmentPermissionsDispatcher.readContactWithCheck(this);
 
     }
 
@@ -341,29 +359,29 @@ public  void setCancel(){
                     }
                 });
     }
-    @OnShowRationale(Manifest.permission.WRITE_CONTACTS)
-    public void showRationale(PermissionRequest request) {
-        request.proceed();
-    }
-
-    @OnPermissionDenied(Manifest.permission.WRITE_CONTACTS)
-    public void onPermissionContactDenied() {
-
-    }
-
-    @OnNeverAskAgain(Manifest.permission.WRITE_CONTACTS)
-    public void onNeverAskAgainContact() {
-
-    }
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+//    @OnShowRationale(Manifest.permission.WRITE_CONTACTS)
+//    public void showRationale(PermissionRequest request) {
+//        request.proceed();
+//    }
+//
+//    @OnPermissionDenied(Manifest.permission.WRITE_CONTACTS)
+//    public void onPermissionContactDenied() {
+//
+//    }
+//
+//    @OnNeverAskAgain(Manifest.permission.WRITE_CONTACTS)
+//    public void onNeverAskAgainContact() {
+//
+//    }
+//    /**
+//     * This interface must be implemented by activities that contain this
+//     * fragment to allow an interaction in this fragment to be communicated
+//     * to the activity and potentially other fragments contained in that
+//     * activity.
+//     * <p>
+//     * See the Android Training lesson <a href=
+//     * "http://developer.android.com/training/basics/fragments/communicating.html"
+//     * >Communicating with Other Fragments</a> for more information.
+//     */
 
 }

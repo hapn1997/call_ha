@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -11,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import com.google.android.material.appbar.AppBarLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,6 +23,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -69,6 +73,7 @@ import vn.com.call.utils.CallUtils;
 @RuntimePermissions
 public class ContactFragment extends BaseFragment implements SideBar.OnTouchingLetterChangedListener {
     private final static String TAG = ContactFragment.class.getSimpleName();
+    private int PERMISSION_REQUEST_CONTACT = 103;
 
     public static ContactFragment newInstance() {
 
@@ -118,10 +123,14 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
     void clearSearch() {
         mInputSearch.setText("");
     }
-
     @BindView(R.id.add)
     ImageView mAdd;
-
+    @BindView(R.id.per_call_log)
+    RelativeLayout per_call_log;
+    @BindView(R.id.bt_click)
+    Button bt_click;
+    @BindView(R.id.tv_dsc)
+    TextView tv_dsc;
     @OnClick(R.id.add)
     void addContact() {
         Intent intent = new Intent(Intent.ACTION_INSERT);
@@ -157,13 +166,10 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
             public void onOffsetChanged(AppBarLayout appBarLayout, int i) {
                 if(i== (-appBarLayout.getTotalScrollRange())){
                     tvTabTitle.setVisibility(View.VISIBLE);
-
                     newMessageTitle.setVisibility(View.VISIBLE);
-
                     return;
                 }
                 tvTabTitle.setVisibility(View.GONE);
-
                 newMessageTitle.setVisibility(View.GONE);
             }
         });
@@ -426,8 +432,7 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
     public void onResume() {
         super.onResume();
 
-        loadAndShowData();
-
+     checkPermission();
     }
 
     protected void loadAndShowData() {
@@ -439,8 +444,17 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CONTACT) {
+            if (grantResults.length == 1 &&
+                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                per_call_log.setVisibility(View.GONE);
+            } else {
 
-        ContactFragmentPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+            }
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+//        ContactFragmentPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
 
     private List<ContactSectionEntity> convertToSectionEntity(List<Contact> contacts) {
@@ -487,7 +501,25 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
     protected int getLayoutId() {
         return R.layout.fragment_contact;
     }
-
+    private void checkPermission() {
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED
+                || ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+            per_call_log.setVisibility(View.VISIBLE);
+            tv_dsc.setText(getResources().getString(R.string.fav_des));
+            bt_click.setText(getResources().getString(R.string.let_doit));
+            bt_click.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ActivityCompat.requestPermissions(getActivity(),
+                            new String[]{Manifest.permission.READ_CONTACTS, Manifest.permission.WRITE_CONTACTS},
+                            PERMISSION_REQUEST_CONTACT);
+                }
+            });
+        } else {
+            per_call_log.setVisibility(View.GONE);
+            loadAndShowData();
+        }
+    }
     @Override
     public void onDestroyView() {
         if (mLoadContact != null) mLoadContact.unsubscribe();

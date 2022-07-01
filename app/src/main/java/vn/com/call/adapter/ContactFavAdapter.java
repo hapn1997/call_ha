@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseSectionQuickAdapter;
@@ -22,6 +23,7 @@ import com.huyanh.base.dao.CallOrSms;
 import com.huyanh.base.utils.BaseConstant;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.dialer.ios.iphone.contacts.R;
@@ -47,6 +49,7 @@ import vn.com.call.utils.CallUtils;
 
 public class ContactFavAdapter extends BaseSectionQuickAdapter<ContactSectionEntity, ContactViewHolder> {
     private List<ContactSectionEntity> data;
+    private List<ContactSectionEntity> datacopy;
 
     private String idContactExpand = null;
     private boolean checkb = true;
@@ -58,7 +61,7 @@ public class ContactFavAdapter extends BaseSectionQuickAdapter<ContactSectionEnt
     public ContactFavAdapter(List<ContactSectionEntity> data, Fragment fragment) {
         super(R.layout.item_contact, R.layout.item_header_contact, data);
          this.fragment = fragment;
-        this.data = data;
+        this.datacopy = data;
 
 
     }
@@ -208,7 +211,6 @@ public class ContactFavAdapter extends BaseSectionQuickAdapter<ContactSectionEnt
         final View deleteDialogView = factory.inflate(R.layout.custom_diglog_favourite, null);
         final AlertDialog deleteDialog = new AlertDialog.Builder(context).create();
 
-
         deleteDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
         deleteDialog.getWindow().setLayout(-1, -1);
         deleteDialog.setView(deleteDialogView);
@@ -253,6 +255,7 @@ public class ContactFavAdapter extends BaseSectionQuickAdapter<ContactSectionEnt
                     onClickFav.update();
 
                 }
+
                 deleteDialog.dismiss();
             }
         });
@@ -265,5 +268,10 @@ public class ContactFavAdapter extends BaseSectionQuickAdapter<ContactSectionEnt
 
 
         deleteDialog.show();
+    }
+    public void setFilter(List<ContactSectionEntity> newList) {
+        data.clear();
+        data.addAll(newList);
+        notifyDataSetChanged();
     }
 }

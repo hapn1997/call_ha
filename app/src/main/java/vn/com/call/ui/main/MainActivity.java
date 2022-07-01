@@ -212,15 +212,15 @@ public class MainActivity extends BaseActivity {
     private void setupFragNav(Bundle savedInstanceState) {
         FragNavController.Builder builder = FragNavController.newBuilder(savedInstanceState, getSupportFragmentManager(), R.id.content_main);
 
-        FragNavTransactionOptions.Builder builderOptions = FragNavTransactionOptions.newBuilder();
-        builderOptions.customAnimations(com.ncapdevi.fragnav.R.anim.fade_in, com.ncapdevi.fragnav.R.anim.fade_out);
-        builder.defaultTransactionOptions(builderOptions.build());
+//        FragNavTransactionOptions.Builder builderOptions = FragNavTransactionOptions.newBuilder();
+//        builderOptions.customAnimations(com.ncapdevi.fragnav.R.anim.fade_in, com.ncapdevi.fragnav.R.anim.fade_out);
+//        builder.defaultTransactionOptions(builderOptions.build());
 
         List<Fragment> fragments = new ArrayList<>();
 
-        fragments.add(FavoriteFragment.newInstance());
-        fragments.add(CallLogFragment.newInstance());
-        fragments.add(ContactFragment.newInstance());
+        fragments.add(new FavoriteFragment());
+        fragments.add(new CallLogFragment());
+        fragments.add(new ContactFragment());
         fragments.add(new DialpadFragment());
 
 
@@ -390,7 +390,6 @@ public class MainActivity extends BaseActivity {
                 .delay(1000, TimeUnit.MILLISECONDS)
                 .subscribe();
     }
-
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void checkDefaultHandler() {

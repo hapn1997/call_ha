@@ -3,6 +3,8 @@ package vn.com.call.adapter;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import androidx.fragment.app.Fragment;
+
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +41,7 @@ public class CallLogAdapter extends BaseSectionQuickAdapter<CallLogSectionEntity
     private OnClickViewCallLogListener listener;
     private boolean checklog;
     private boolean type;
+    List<CallLogSectionEntity> listdata;
     public CallLogAdapter(OnClickViewCallLogListener listener, List<CallLogSectionEntity> data, CallLogFragment fragment) {
         super(R.layout.item_call_log, R.layout.item_header_calllog, data);
       this.fragment = fragment;
@@ -93,11 +96,16 @@ public class CallLogAdapter extends BaseSectionQuickAdapter<CallLogSectionEntity
                      listener.onClickCall(callLog.getNumber());
 
                  }else {
-//                     mContext.getContentResolver().delete(android.provider.CallLog.Calls.CONTENT_URI, android.provider.CallLog.Calls.DATE + "=?",
-//                             new String[] {Long.toString(callLog.getDetails().get(0).getDate())});
-                     listener.deleteCall(callLog,callLog.getNumber(),fragment);
-//                     remove(getParentPosition(item));
-//                     notifyItemChanged(getParentPosition(item));
+                     new Handler().postDelayed(new Runnable() {
+                         @Override
+                         public void run() {
+                             mContext.getContentResolver().delete(android.provider.CallLog.Calls.CONTENT_URI, android.provider.CallLog.Calls.DATE + "=?",
+                                     new String[] {Long.toString(callLog.getDetails().get(0).getDate())});
+                         }
+                     },300);
+                     remove(holder.getAdapterPosition());
+//                     notifyItemRemoved(holder.getAdapterPosition());
+
                      notifyDataSetChanged();
                  }
             }

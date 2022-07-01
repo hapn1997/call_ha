@@ -90,7 +90,7 @@ public class FavoritesAddFragment extends BaseFragment implements OnClickFav {
     @BindView(R.id.coordinator)
     CoordinatorLayout coordinatorLayout;
     @BindView(R.id.edt_search_thread_messagechinh)
-    TextView edt_message;
+    EditText edt_message;
     @BindView(R.id.relative_change)
     RelativeLayout relativeLayout_change;
     @BindView(R.id.tvTabCancel)
@@ -129,7 +129,6 @@ public class FavoritesAddFragment extends BaseFragment implements OnClickFav {
 
     @Override
     protected void onCreateView(Bundle savedInstanceState) {
-        initRecyclerView();
         initSearch();
         appBarLayout.getTotalScrollRange();
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
@@ -141,33 +140,34 @@ public class FavoritesAddFragment extends BaseFragment implements OnClickFav {
         edt_message.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mInputSearch.requestFocus();
-                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-
-                relative_tool_bar.setVisibility(View.GONE);
-                relative_search.setVisibility(View.VISIBLE);
-                appBarLayout.setExpanded(false,true);
-                relativeLayout_change.setVisibility(View.GONE);
-                edt_message.setVisibility(View.GONE);
+//                edt_message.requestFocus();
+//                edt_message.setFocusable(true);
+//                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+//                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+//
+//                relative_tool_bar.setVisibility(View.GONE);
+//                relative_search.setVisibility(View.VISIBLE);
+//                appBarLayout.setExpanded(false,true);
+//                relativeLayout_change.setVisibility(View.GONE);
+//                edt_message.setVisibility(View.GONE);
                // mSearchContainer.setVisibility(View.VISIBLE);
 
 
 
             }
         });
-        relativeLayout_search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                relative_tool_bar.setVisibility(View.GONE);
-                relative_search.setVisibility(View.VISIBLE);
-                appBarLayout.setExpanded(false,true);
-                relativeLayout_change.setVisibility(View.GONE);
-                edt_message.setVisibility(View.GONE);
-
-
-            }
-        });
+//        relativeLayout_search.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                relative_tool_bar.setVisibility(View.GONE);
+//                relative_search.setVisibility(View.VISIBLE);
+//                appBarLayout.setExpanded(false,true);
+//                relativeLayout_change.setVisibility(View.GONE);
+//                edt_message.setVisibility(View.GONE);
+//
+//
+//            }
+//        });
         tvTabCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -176,26 +176,31 @@ public class FavoritesAddFragment extends BaseFragment implements OnClickFav {
                 appBarLayout.setExpanded(true,true);
                 relativeLayout_change.setVisibility(View.VISIBLE);
                 edt_message.setVisibility(View.VISIBLE);
-                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(
-                        mInputSearch.getWindowToken(), 0);
-                FavoritesAddFragment.this.getFragmentManager().beginTransaction().detach(FavoritesAddFragment.this).attach(FavoritesAddFragment.this).commit();            }
+//                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+//                imm.hideSoftInputFromWindow(
+//                        mInputSearch.getWindowToken(), 0);
+//                FavoritesAddFragment.this.getParentFragmentManager().beginTransaction().detach(FavoritesAddFragment.this).attach(FavoritesAddFragment.this).commit();
+            }
         });
         final FavoriteFragment favoriteFragment = new FavoriteFragment();
         cancelfragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(
+                        edt_message.getWindowToken(), 0);
                 getChildFragmentManager().beginTransaction().replace(R.id.search_content1 ,favoriteFragment).addToBackStack("FavoriteFragment").commitAllowingStateLoss();
 
             }
         });
 
+        initRecyclerView(contactSectionEntities);
 
     }
 
-    private void initRecyclerView() {
-        mAdapter = new ContactFavAdapter(contactSectionEntities,this);
-        mAdapter = new ContactFavAdapter(contactSectionEntities, this,new OnClickContactListener() {
+    private void initRecyclerView(List<ContactSectionEntity> lisst) {
+        mAdapter = new ContactFavAdapter(lisst,this);
+        mAdapter = new ContactFavAdapter(lisst, this,new OnClickContactListener() {
             @Override
             public void onClick(CallOrSms callOrSms) {
                 if (!showPopup(callOrSms, false)) {
@@ -251,14 +256,30 @@ public class FavoritesAddFragment extends BaseFragment implements OnClickFav {
             }
         });
 
-        mInputSearch.addTextChangedListener(new TextWatcher() {
+        edt_message.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (msearchF != null) msearchF.changeKeyword(s.toString());
+            public void onTextChanged(CharSequence newText, int start, int before, int count) {
+                commitData(ContactCache.getContacts());
+                newText = newText.toString().toLowerCase();
+                ArrayList<ContactSectionEntity> newList = new ArrayList<>();
+                for (ContactSectionEntity channel: contactSectionEntities){
+                    if (channel.t != null){
+                        String channelName = channel.t.getName().toLowerCase();
+                        if (channelName.contains(newText)){
+                            newList.add(channel);
+                        }
+                    }
+
+                }
+                mAdapter.setFilter(newList);
+//                contactSectionEntities.clear();
+//
+//                contactSectionEntities.addAll(newList);
+//                mAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -385,6 +406,8 @@ public class FavoritesAddFragment extends BaseFragment implements OnClickFav {
     public void update() {
         final FavoriteFragment favoriteFragment = new FavoriteFragment();
         getChildFragmentManager().beginTransaction().replace(R.id.search_content1 ,favoriteFragment).addToBackStack("FavoriteFragment").commitAllowingStateLoss();
-
+        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(
+                mInputSearch.getWindowToken(), 0);
     }
 }

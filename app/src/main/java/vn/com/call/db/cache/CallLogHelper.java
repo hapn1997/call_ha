@@ -29,6 +29,8 @@ public class CallLogHelper {
     private static final Uri CALL_LOG_URI = android.provider.CallLog.Calls.CONTENT_URI;
 
     public static Observable<List<CallLog>> queryAllCallLog(final Context context) {
+        android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_MORE_FAVORABLE);
+
         return Observable.create(new Observable.OnSubscribe<List<CallLog>>() {
             @Override
             public void call(Subscriber<? super List<CallLog>> subscriber) {
@@ -43,6 +45,7 @@ public class CallLogHelper {
 
                         while (c.moveToNext()) {
                             String number = c.getString(c.getColumnIndex(android.provider.CallLog.Calls.NUMBER));
+                            String name = c.getString(c.getColumnIndex(android.provider.CallLog.Calls.CACHED_NAME));
                             long date = c.getLong(c.getColumnIndex(android.provider.CallLog.Calls.DATE));
                             int type = c.getInt(c.getColumnIndex(android.provider.CallLog.Calls.TYPE));
                             int duration = c.getInt(c.getColumnIndex(android.provider.CallLog.Calls.DURATION));
@@ -58,10 +61,14 @@ public class CallLogHelper {
                                 CallLog callLog = new CallLog(number);
                                 CallLogDetail detail = new CallLogDetail(id, duration, type, date);
                                 callLog.addCallLog(detail);
-                                String[] dataContact = ContactHelper.retrieveContactPhotoUriAndDisplayName(context, number);
-                                callLog.setIdContact(dataContact[0]);
-                                callLog.setPhotoContact(dataContact[1]);
-                                callLog.setNameContact(dataContact[2]);
+//                                String[] dataContact = ContactHelper.retrieveContactPhotoUriAndDisplayName(context, number);
+//                                callLog.setIdContact(dataContact[0]);
+//                                callLog.setPhotoContact(dataContact[1]);
+                                if (name.length() !=0){
+                                    callLog.setNameContact(name);
+                                }else {
+                                    callLog.setNameContact(number);
+                                }
 
                                 callLogs.add(callLog);
                             } else {
@@ -117,6 +124,7 @@ public class CallLogHelper {
 
                         while (c.moveToNext()) {
                             String number = c.getString(c.getColumnIndex(android.provider.CallLog.Calls.NUMBER));
+                            String name = c.getString(c.getColumnIndex(android.provider.CallLog.Calls.CACHED_NAME));
                             long date = c.getLong(c.getColumnIndex(android.provider.CallLog.Calls.DATE));
                             int type = c.getInt(c.getColumnIndex(android.provider.CallLog.Calls.TYPE));
                             int duration = c.getInt(c.getColumnIndex(android.provider.CallLog.Calls.DURATION));
@@ -132,10 +140,14 @@ public class CallLogHelper {
                                           CallLogDetail detail = new CallLogDetail(id, duration, type, date);
                                           callLog.addCallLog(detail);
 
-                                          String[] dataContact = ContactHelper.retrieveContactPhotoUriAndDisplayName(context, number);
-                                          callLog.setIdContact(dataContact[0]);
-                                          callLog.setPhotoContact(dataContact[1]);
-                                          callLog.setNameContact(dataContact[2]);
+//                                          String[] dataContact = ContactHelper.retrieveContactPhotoUriAndDisplayName(context, number);
+//                                          callLog.setIdContact(dataContact[0]);
+//                                          callLog.setPhotoContact(dataContact[1]);
+                                          if (name.length() !=0){
+                                              callLog.setNameContact(name);
+                                          }else {
+                                              callLog.setNameContact(number);
+                                          }
 
                                           callLogs.add(callLog);
                                       }

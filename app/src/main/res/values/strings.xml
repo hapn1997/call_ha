@@ -196,10 +196,14 @@
     <string name="title_default1">To enable call screen</string>
     <string name="permission">Permissions</string>
     <string name="grand_permistion_contact">Grant contact permission to show contacts and phone permission for dial and accept phone call</string>
-    <string name="let_doit">Let\'s do it</string>
+    <string name="let_doit">Agree</string>
     <string name="des_remove_contact">Are you sure you want to delete ?</string>
     <string name="sure">Delete</string>
     <string name="create_new_contact">Create New Contact</string>
+    <string name="make_default_dialer">Please make app to default dialer to show recent call logs</string>
+    <string name="make_default_dialer_btn">Agree Make Default Dialer</string>
+    <string name="fav_des">Please grant contact permission to view favourite contacts</string>
+    <string name="ask_delete">Are you want to remove all the numbers ?</string>
 
 
 </resources>
