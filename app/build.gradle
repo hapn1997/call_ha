@@ -24,7 +24,6 @@ allprojects {
 
 android {
     compileSdkVersion project.compileSdkVersion
-    buildToolsVersion project.buildToolsVersion
 
     defaultConfig {
         applicationId "com.dialer.ios.iphone.contacts"
