@@ -20,8 +20,6 @@ import vn.com.call.db.Settings;
 import vn.com.call.ui.BaseFragment;
 import vn.com.call.utils.PermissionUtils;
 
-import static com.facebook.FacebookSdk.getApplicationContext;
-
 /**
  * Created by ngson on 30/06/2017.
  */
@@ -114,25 +112,25 @@ public class IntroFragment extends BaseFragment {
         }
         return true;
     }
-    private void startWriteSettingsActivity()
-    {
-        Intent localIntent = new Intent("android.settings.action.MANAGE_WRITE_SETTINGS");
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("package:");
-        localStringBuilder.append(getApplicationContext().getPackageName());
-        localIntent.setData(Uri.parse(localStringBuilder.toString()));
-        try
-        {
-            startActivityForResult(localIntent, 1123);
-            return;
-        }
-        catch (ActivityNotFoundException localActivityNotFoundException)
-        {
-            for (;;) {}
-        }
-       // this.missingManageSettings = true;
-       // moveToNextPageOrFinish();
-    }
+//    private void startWriteSettingsActivity()
+//    {
+//        Intent localIntent = new Intent("android.settings.action.MANAGE_WRITE_SETTINGS");
+//        StringBuilder localStringBuilder = new StringBuilder();
+//        localStringBuilder.append("package:");
+//        localStringBuilder.append(getApplicationContext().getPackageName());
+//        localIntent.setData(Uri.parse(localStringBuilder.toString()));
+//        try
+//        {
+//            startActivityForResult(localIntent, 1123);
+//            return;
+//        }
+//        catch (ActivityNotFoundException localActivityNotFoundException)
+//        {
+//            for (;;) {}
+//        }
+//       // this.missingManageSettings = true;
+//       // moveToNextPageOrFinish();
+//    }
     @Override
     protected void onCreateView(Bundle savedInstanceState) {
 

@@ -20,10 +20,6 @@ import android.widget.Toast;
 
 import com.github.piasy.safelyandroid.component.support.SafelyAppCompatActivity;
 import com.huyanh.base.custominterface.PopupListener;
-import com.huyanh.base.util.IabHelper;
-import com.huyanh.base.util.IabResult;
-import com.huyanh.base.util.Inventory;
-import com.huyanh.base.util.Purchase;
 import com.huyanh.base.utils.BaseConstant;
 import com.huyanh.base.utils.BaseUtils;
 import com.huyanh.base.utils.Log;
@@ -56,130 +52,6 @@ public class BaseActivity extends SafelyAppCompatActivity implements PopupListen
         baseApplication = (BaseApplication) getApplication();
         baseActivity = this;
     }
-
-    private IabHelper mHelper;
-
-    public void initInappBilling() {
-        mHelper = new IabHelper(this, BaseConstant.base64EncodedPublicKey);
-        mHelper.enableDebugLogging(true);
-        mHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
-            public void onIabSetupFinished(IabResult result) {
-                Log.d("Setup finished.");
-
-                if (!result.isSuccess()) {
-                    // Oh noes, there was a problem.
-                    Log.e("Problem setting up in-app billing: " + result);
-                    return;
-                }
-
-                // Have we been disposed of in the meantime? If so, quit.
-                if (mHelper == null) {
-                    return;
-                }
-
-                // Important: Dynamically register for broadcast messages about updated purchases.
-                // We register the receiver here instead of as a <receiver> in the Manifest
-                // because we always call getPurchases() at startup, so therefore we can ignore
-                // any broadcasts sent while the app isn't running.
-                // Note: registering this listener in an Activity is a bad idea, but is done here
-                // because this is a SAMPLE. Regardless, the receiver must be registered after
-                // IabHelper is setup, but before first call to getPurchases().
-//                mBroadcastReceiver = new IabBroadcastReceiver(HomeActivity.this);
-//                IntentFilter broadcastFilter = new IntentFilter(IabBroadcastReceiver.ACTION);
-//                registerReceiver(mBroadcastReceiver, broadcastFilter);
-
-                // IAB is fully set up. Now, let's get an inventory of stuff we own.
-                Log.d("Setup successful. Querying inventory.");
-                try {
-                    mHelper.queryInventoryAsync(mGotInventoryListener);
-                } catch (IabHelper.IabAsyncInProgressException e) {
-                    Log.e("Error querying inventory. Another async operation in progress. " + e.getMessage());
-                }
-            }
-        });
-    }
-
-    public void purchase() {
-        try {
-            mHelper.launchPurchaseFlow(baseActivity, BaseConstant.skuId, BaseConstant.REQUEST_IN_APP_BILLING,
-                    mPurchaseFinishedListener, "HuyAnhPayload");
-        } catch (Exception e) {
-            Log.e("error launch Purchase: " + e.getMessage());
-        }
-    }
-
-    IabHelper.QueryInventoryFinishedListener mGotInventoryListener = new IabHelper.QueryInventoryFinishedListener() {
-        public void onQueryInventoryFinished(IabResult result, Inventory inventory) {
-            Log.d("Query inventory finished.");
-
-            // Have we been disposed of in the meantime? If so, quit.
-            if (mHelper == null) {
-                return;
-            }
-
-            // Is it a failure?
-            if (result.isFailure()) {
-                Log.e("Failed to query inventory: " + result);
-                return;
-            }
-
-            Log.d("Query inventory was successful.");
-
-            /*
-             * Check for items we own. Notice that for each purchase, we check
-             * the developer payload to see if it's correct! See
-             * verifyDeveloperPayload().
-             */
-
-            // Do we have the premium upgrade?
-            Purchase premiumPurchase = inventory.getPurchase(BaseConstant.skuId);
-            if (premiumPurchase != null) {
-                baseApplication.isPurchase = true;
-                Log.i("isPurchase = true");
-            } else {
-                Log.e("premiumPurchase = null");
-
-//                try {
-//                    mHelper.launchPurchaseFlow(baseActivity, BaseConstant.skuId, BaseConstant.REQUEST_IN_APP_BILLING,
-//                            mPurchaseFinishedListener, "HuyAnhPayload");
-//                } catch (Exception e) {
-//                    Log.e("error launch Purchase: " + e.getMessage());
-//                }
-            }
-            onDoneQuerryInappBilling();
-        }
-    };
-
-    IabHelper.OnIabPurchaseFinishedListener mPurchaseFinishedListener = new IabHelper.OnIabPurchaseFinishedListener() {
-        public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
-            Log.d("Purchase finished: " + result + ", purchase: " + purchase);
-
-            // if we were disposed of in the meantime, quit.
-            if (mHelper == null) return;
-
-            if (result.isFailure()) {
-                Log.e("Error purchasing: " + result);
-//                setWaitScreen(false);
-                return;
-            }
-//            if (!verifyDeveloperPayload(purchase)) {
-//                complain("Error purchasing. Authenticity verification failed.");
-//                setWaitScreen(false);
-//                return;
-//            }
-
-            Log.d("Purchase successful.");
-
-            if (purchase.getSku().equals(BaseConstant.skuId)) {
-                // bought the premium upgrade!
-                Log.d("Purchase is premium upgrade. Congratulating user.");
-                baseApplication.isPurchase = true;
-                Toast.makeText(baseActivity, getString(R.string.succes_purchase_message), Toast.LENGTH_SHORT).show();
-            } else {
-                Log.e("Purchase is faile.");
-            }
-        }
-    };
 
 
     @Override
@@ -281,17 +153,6 @@ public class BaseActivity extends SafelyAppCompatActivity implements PopupListen
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == BaseConstant.REQUEST_SHOW_POPUP_CUSTOM) {
             onClose(baseApplication.getPopup().getTempObject());
-        } else if (requestCode == BaseConstant.REQUEST_IN_APP_BILLING) {
-            if (mHelper == null) return;
-            // Pass on the activity result to the helper for handling
-            if (!mHelper.handleActivityResult(requestCode, resultCode, data)) {
-                // not handled, so handle it ourselves (here's where you'd
-                // perform any handling of activity results not related to in-app
-                // billing...
-                super.onActivityResult(requestCode, resultCode, data);
-            } else {
-                Log.d("onActivityResult handled by IABUtil.");
-            }
         }
     }
 

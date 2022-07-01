@@ -9,12 +9,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.provider.Telephony;
-import androidx.annotation.IdRes;
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.telecom.TelecomManager;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -23,13 +17,16 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
-import com.huyanh.base.activity.UpgradePremiumActivity;
+import androidx.annotation.IdRes;
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.dialer.ios.iphone.contacts.R;
 import com.huyanh.base.utils.BaseConstant;
 import com.huyanh.base.utils.Log;
 import com.ncapdevi.fragnav.FragNavController;
-import com.ncapdevi.fragnav.FragNavTransactionOptions;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
@@ -43,12 +40,9 @@ import java.util.concurrent.TimeUnit;
 import butterknife.BindView;
 import butterknife.OnClick;
 import rx.schedulers.Schedulers;
-import com.dialer.ios.iphone.contacts.R;
 import vn.com.call.bus.ShowDialpad;
 import vn.com.call.db.SmsHelper;
 import vn.com.call.db.cache.CallLogHelper;
-import vn.com.call.global.DialogAppCallback;
-import vn.com.call.global.DialogPermission;
 import vn.com.call.ui.BaseActivity;
 import vn.com.call.ui.search.SearchFragment;
 
@@ -68,7 +62,6 @@ public class MainActivity extends BaseActivity {
     BottomBar mBottomBar;
     @BindView(R.id.search_content)
     FrameLayout mSearchContainer;
-
 
 
     private void goDialer() {
@@ -116,7 +109,7 @@ public class MainActivity extends BaseActivity {
 
 //        loadCallLog();
         //boquyen cacheAllSms();
-       //hasua
+        //hasua
 //        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q){
 //            setDefaultCallAppApi30();
 //        }else {
@@ -162,9 +155,9 @@ public class MainActivity extends BaseActivity {
         }
 
         if (baseApplication.isPurchase) {
-           // ivUpgrade.setVisibility(View.GONE);
+            // ivUpgrade.setVisibility(View.GONE);
         } else {
-          //  ivUpgrade.setVisibility(View.VISIBLE);
+            //  ivUpgrade.setVisibility(View.VISIBLE);
         }
 
         showTouchBar();
@@ -305,32 +298,32 @@ public class MainActivity extends BaseActivity {
         mBottomBar.setOnTabSelectListener(
 
                 new OnTabSelectListener() {
-            @Override
-            public void onTabSelected(@IdRes int tabId) {
-                if (tabId == R.id.tab_message && mFragNavController.getCurrentStackIndex() != FragNavController.TAB1) {
-                    if (!showPopup(FragNavController.TAB1, false)) {
-                        mFragNavController.switchTab(FragNavController.TAB1);
-                    }
-                } else if (tabId == R.id.tab_call_log && mFragNavController.getCurrentStackIndex() != FragNavController.TAB2) {
-                    if (!showPopup(FragNavController.TAB2, false)) {
-                        mFragNavController.switchTab(FragNavController.TAB2);
-                    }
-                } else if (tabId == R.id.tab_dialpad) {
-                    if (!showPopup(FragNavController.TAB4, false)) {
-                        goDialer();
-                    }
-                } else if (tabId == R.id.tab_contact && mFragNavController.getCurrentStackIndex() != FragNavController.TAB3) {
-                    if (!showPopup(FragNavController.TAB3, false)) {
-                        mFragNavController.switchTab(FragNavController.TAB3);
-                    }
-                }
+                    @Override
+                    public void onTabSelected(@IdRes int tabId) {
+                        if (tabId == R.id.tab_message && mFragNavController.getCurrentStackIndex() != FragNavController.TAB1) {
+                            if (!showPopup(FragNavController.TAB1, false)) {
+                                mFragNavController.switchTab(FragNavController.TAB1);
+                            }
+                        } else if (tabId == R.id.tab_call_log && mFragNavController.getCurrentStackIndex() != FragNavController.TAB2) {
+                            if (!showPopup(FragNavController.TAB2, false)) {
+                                mFragNavController.switchTab(FragNavController.TAB2);
+                            }
+                        } else if (tabId == R.id.tab_dialpad) {
+                            if (!showPopup(FragNavController.TAB4, false)) {
+                                goDialer();
+                            }
+                        } else if (tabId == R.id.tab_contact && mFragNavController.getCurrentStackIndex() != FragNavController.TAB3) {
+                            if (!showPopup(FragNavController.TAB3, false)) {
+                                mFragNavController.switchTab(FragNavController.TAB3);
+                            }
+                        }
 //                else if (tabId == R.id.tab_settings && mFragNavController.getCurrentStackIndex() != FragNavController.TAB5) {
 //                    if (!showPopup(FragNavController.TAB5, false)) {
 //                        mFragNavController.switchTab(FragNavController.TAB5);
 //                    }
 //                }
-            }
-        });
+                    }
+                });
     }
 
     private void initSearch() {
@@ -356,7 +349,7 @@ public class MainActivity extends BaseActivity {
                     mInputSearch.setText("");
                     mClear.setVisibility(View.GONE);
                     if (!baseApplication.isPurchase) {
-                     //   ivUpgrade.setVisibility(View.VISIBLE);
+                        //   ivUpgrade.setVisibility(View.VISIBLE);
                     }
                 }
             }
@@ -400,8 +393,7 @@ public class MainActivity extends BaseActivity {
         intent.putExtra(TelecomManager.EXTRA_CHANGE_DEFAULT_DIALER_PACKAGE_NAME, getPackageName());
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
-        }
-        else{
+        } else {
             throw new RuntimeException("Default phone functionality not found");
         }
     }
@@ -411,6 +403,7 @@ public class MainActivity extends BaseActivity {
         TelecomManager telecomManager = (TelecomManager) getSystemService(TELECOM_SERVICE);
         return getPackageName().equals(telecomManager.getDefaultDialerPackage());
     }
+
     private void setDefaultCallAppApi30() {
         RoleManager roleManager;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -476,7 +469,7 @@ public class MainActivity extends BaseActivity {
             if (Settings.canDrawOverlays(this)) {
                 mSettings.setEnableChatHeads(true);
 
-             //   startService(new Intent(this, TouchBarService.class));
+                //   startService(new Intent(this, TouchBarService.class));
             }
         } else if (requestCode == BaseConstant.REQUEST_CODE_SHOW_POPUP) {
             Log.d("onActivityResult MainActivity REQUEST_CODE_SHOW_POPUP");

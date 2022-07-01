@@ -1,26 +1,15 @@
 package vn.com.call.ui.main;
 
 import static android.content.Context.TELECOM_SERVICE;
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 import android.Manifest;
 import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.telecom.TelecomManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,15 +18,19 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.huyanh.base.utils.BaseConstant;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
-import org.greenrobot.eventbus.EventBus;
+import com.dialer.ios.iphone.contacts.R;
+import com.huyanh.base.utils.BaseConstant;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
 import permissions.dispatcher.OnPermissionDenied;
@@ -48,18 +41,15 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
-import com.dialer.ios.iphone.contacts.R;
+import vn.com.call.App;
 import vn.com.call.adapter.CallLogAdapter;
 import vn.com.call.adapter.listener.OnClickViewCallLogListener;
-import vn.com.call.bus.ShowDialpad;
 import vn.com.call.db.SharePref;
 import vn.com.call.db.cache.CallLogCache;
 import vn.com.call.db.cache.CallLogHelper;
 import vn.com.call.model.calllog.CallLog;
-import vn.com.call.model.contact.Contact;
 import vn.com.call.ui.BaseFragment;
 import vn.com.call.ui.callback.CallMaker;
-import vn.com.call.ui.callback.SwipeToDeleteCallback;
 import vn.com.call.utils.CallUtils;
 import vn.com.call.utils.TimeUtils;
 import vn.com.call.widget.FabBottomRecyclerView;
@@ -74,7 +64,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
 
     @BindView(R.id.list)
     FabBottomRecyclerView mList;
-//    @BindView(R.id.dial)
+    //    @BindView(R.id.dial)
 //    FloatingActionButton mDial;
 //
 //    @OnClick(R.id.dial)
@@ -88,9 +78,9 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
     @BindView(R.id.btnLastHeaderEdit)
     TextView btnLastHeaderEdit;
     @BindView(R.id.btnLastHeaderAll)
-     Button addlistCall;
+    Button addlistCall;
     @BindView(R.id.btnLastHeaderMissed)
-    Button btnLastHeaderMissed ;
+    Button btnLastHeaderMissed;
     @BindView(R.id.per_call_log)
     RelativeLayout per_call_log;
     @BindView(R.id.bt_click)
@@ -103,7 +93,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
     private OnClickViewCallLogListener mOnClickViewCallLogListener;
 
     protected Subscription mSubscription;
-    private  boolean checkaddMiss;
+    private boolean checkaddMiss;
     private int PERMISSION_REQUEST_CONTACT = 102;
 
     public static CallLogFragment newInstance() {
@@ -120,7 +110,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
     protected void onCreateView(Bundle savedInstanceState) {
 //        mOnClickViewCallLogListener = new OnClickViewCallLogListener(getContext());
         mOnClickViewCallLogListener = new extOnClickViewCallLogListener(getActivity());
-        mAdapter = new CallLogAdapter(mOnClickViewCallLogListener, mCallLogs,this);
+        mAdapter = new CallLogAdapter(mOnClickViewCallLogListener, mCallLogs, this);
         mAdapter.setType(true);
         addlistCall.setSelected(true);
         btnLastHeaderMissed.setSelected(false);
@@ -134,11 +124,11 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
                 addlistCall.setTextColor(Color.BLACK);
 
                 addlistCall.setSelected(true);
-                    btnLastHeaderMissed.setSelected(false);
+                btnLastHeaderMissed.setSelected(false);
 
                 checkaddMiss = false;
 
-                    loadAndShowData();
+                loadAndShowData();
 
             }
         });
@@ -146,7 +136,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
             @Override
             public void onClick(View v) {
                 btnLastHeaderMissed.setTextColor(Color.BLACK);
-               addlistCall.setTextColor(getContext().getResources().getColor(R.color.black));
+                addlistCall.setTextColor(getContext().getResources().getColor(R.color.black));
                 addlistCall.setSelected(false);
                 btnLastHeaderMissed.setSelected(true);
                 checkaddMiss = true;
@@ -156,12 +146,12 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
         mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mList.setLayoutManager(mLayoutManager);
         mList.setAdapter(mAdapter);
-        if(SharePref.check(getContext(),"checkitem") ==true ){
+        if (SharePref.check(getContext(), "checkitem") == true) {
             mAdapter.checkRemoveLog(true);
             btnLastHeaderDeleteAll.setVisibility(View.VISIBLE);
             btnLastHeaderEdit.setText("Done");
 
-        }else{
+        } else {
             btnLastHeaderDeleteAll.setVisibility(View.INVISIBLE);
             btnLastHeaderEdit.setText("Edit");
             mAdapter.checkRemoveLog(false);
@@ -169,10 +159,10 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
         btnLastHeaderEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mAdapter.check()){
+                if (mAdapter.check()) {
                     setCancel();
                     return;
-                }else {
+                } else {
                     setEdit();
                     return;
                 }
@@ -185,28 +175,28 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
             }
         });
 
-      //  mAdapter.enableSwipeToDeleteAndUndo1(mCallLogs);
+        //  mAdapter.enableSwipeToDeleteAndUndo1(mCallLogs);
     }
 
 
-    public  void setEdit(){
+    public void setEdit() {
         btnLastHeaderDeleteAll.setVisibility(View.VISIBLE);
         btnLastHeaderEdit.setText("Done");
         mAdapter.checkRemoveLog(true);
-        if(SharePref.check(getContext(),"checkitem") ==false){
-            SharePref.putKey(getContext(),"checkitem", String.valueOf(mAdapter.check()));
+        if (SharePref.check(getContext(), "checkitem") == false) {
+            SharePref.putKey(getContext(), "checkitem", String.valueOf(mAdapter.check()));
         }
 
         mList.getAdapter().notifyDataSetChanged();
         mAdapter.notifyDataSetChanged();
 
 
-
     }
-    public  void setCancel(){
+
+    public void setCancel() {
         btnLastHeaderDeleteAll.setVisibility(View.INVISIBLE);
         btnLastHeaderEdit.setText("Edit");
-        SharePref.remove(getContext(),"checkitem");
+        SharePref.remove(getContext(), "checkitem");
 
         mAdapter.checkRemoveLog(false);
         mList.getAdapter().notifyDataSetChanged();
@@ -215,7 +205,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
 
     }
 
-    public void showSetting(final Fragment fragment){
+    public void showSetting(final Fragment fragment) {
         LayoutInflater factory = LayoutInflater.from(getContext());
         final View deleteDialogView = factory.inflate(R.layout.dialog_remove_fav, null);
         final AlertDialog deleteDialog = new AlertDialog.Builder(getContext()).create();
@@ -237,11 +227,11 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
             @Override
             public void onClick(View v) {
                 // controller.deleteDevice(contact,holder.callorMess.getText().toString());
-                new CallLog().deleteAllCallLogs12(getContext(),false);
+                new CallLog().deleteAllCallLogs12(getContext(), false);
                 deleteDialog.dismiss();
                 btnLastHeaderDeleteAll.setVisibility(View.INVISIBLE);
                 btnLastHeaderEdit.setText("Edit");
-                SharePref.remove(getContext(),"checkitem");
+                SharePref.remove(getContext(), "checkitem");
 
                 mAdapter.checkRemoveLog(false);
                 mList.getAdapter().notifyDataSetChanged();
@@ -263,6 +253,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
 
         deleteDialog.show();
     }
+
     private class extOnClickViewCallLogListener extends OnClickViewCallLogListener {
 
         public extOnClickViewCallLogListener(Context context) {
@@ -309,14 +300,14 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
             CallLog callLog = callLogs.get(index);
 
             if (TimeUtils.isToday(callLog.getDetails().get(0).getDate())) {
-                if (checkaddMiss ==true ){
-                    if ((callLog.getDetails().get(0).getType() == android.provider.CallLog.Calls.MISSED_TYPE)){
+                if (checkaddMiss == true) {
+                    if ((callLog.getDetails().get(0).getType() == android.provider.CallLog.Calls.MISSED_TYPE)) {
                         mCallLogs.add(new CallLogSectionEntity(true, getString(R.string.today)));
 
                     }
 
 
-                }else {
+                } else {
                     mCallLogs.add(new CallLogSectionEntity(true, getString(R.string.today)));
 
                 }
@@ -324,14 +315,14 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
                 while (index < numberCallLog) {
                     callLog = callLogs.get(index);
                     if (TimeUtils.isToday(callLog.getDetails().get(0).getDate())) {
-                        if (checkaddMiss ==true ){
-                            if ((callLog.getDetails().get(0).getType() == android.provider.CallLog.Calls.MISSED_TYPE)){
+                        if (checkaddMiss == true) {
+                            if ((callLog.getDetails().get(0).getType() == android.provider.CallLog.Calls.MISSED_TYPE)) {
                                 mCallLogs.add(new CallLogSectionEntity(callLog));
 
                             }
 
 
-                        }else {
+                        } else {
                             mCallLogs.add(new CallLogSectionEntity(callLog));
 
                         }
@@ -349,14 +340,14 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
                     callLog = callLogs.get(index);
 
                     if (TimeUtils.isYesterday(callLog.getDetails().get(0).getDate())) {
-                        if (checkaddMiss ==true ){
-                            if ((callLog.getDetails().get(0).getType() == android.provider.CallLog.Calls.MISSED_TYPE)){
+                        if (checkaddMiss == true) {
+                            if ((callLog.getDetails().get(0).getType() == android.provider.CallLog.Calls.MISSED_TYPE)) {
                                 mCallLogs.add(new CallLogSectionEntity(callLog));
 
                             }
 
 
-                        }else {
+                        } else {
                             mCallLogs.add(new CallLogSectionEntity(callLog));
 
                         }
@@ -369,14 +360,14 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
                 mCallLogs.add(new CallLogSectionEntity(true, getString(R.string.older)));
                 while (index < numberCallLog) {
                     callLog = callLogs.get(index);
-                    if (checkaddMiss ==true ){
-                        if ((callLog.getDetails().get(0).getType() == android.provider.CallLog.Calls.MISSED_TYPE)){
+                    if (checkaddMiss == true) {
+                        if ((callLog.getDetails().get(0).getType() == android.provider.CallLog.Calls.MISSED_TYPE)) {
                             mCallLogs.add(new CallLogSectionEntity(callLog));
 
                         }
 
 
-                    }else {
+                    } else {
                         mCallLogs.add(new CallLogSectionEntity(callLog));
 
                     }
@@ -385,17 +376,18 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
             }
 
         }
-        if(mCallLogs.size() ==0){
+        if (mCallLogs.size() == 0) {
             norecents.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             norecents.setVisibility(View.GONE);
         }
         mAdapter.notifyDataSetChanged();
     }
+
     private void setDefaultCallAppApi30() {
         RoleManager roleManager;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            roleManager = getApplicationContext().getSystemService(RoleManager.class);
+            roleManager = App.getAppThis().getSystemService(RoleManager.class);
             if (roleManager.isRoleAvailable(RoleManager.ROLE_DIALER)) {
                 if (roleManager.isRoleHeld(RoleManager.ROLE_DIALER)) {
                     loadAndShowData();
@@ -413,6 +405,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
             }
         }
     }
+
     @Override
     public void onPause() {
         super.onPause();
@@ -422,18 +415,21 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
     public void onResume() {
         super.onResume();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             setDefaultCallAppApi30();
-        }else {
+        } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 checkDefaultHandler();
             }
-        }    }
+        }
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     private boolean isAlreadyDefaultDialer() {
         TelecomManager telecomManager = (TelecomManager) getContext().getSystemService(TELECOM_SERVICE);
         return getContext().getPackageName().equals(telecomManager.getDefaultDialerPackage());
     }
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void checkDefaultHandler() {
         if (isAlreadyDefaultDialer()) {
@@ -451,29 +447,30 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
                     startActivityForResult(intent, 2);
                 }
             });
-        }
-        else{
+        } else {
             throw new RuntimeException("Default phone functionality not found");
         }
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 2) {
-           loadAndShowData();
-           per_call_log.setVisibility(View.GONE);
+            loadAndShowData();
+            per_call_log.setVisibility(View.GONE);
         }
     }
 
     public void hideDial() {
-      //  mDial.setVisibility(View.GONE);
+        //  mDial.setVisibility(View.GONE);
     }
 
     public void loadAndShowData() {
         showCacheCallLog();
         queryCallLog();
     }
-    public void loadandShowMiss(){
+
+    public void loadandShowMiss() {
         showCacheCallLog();
         queryCallLogMis();
 
@@ -495,7 +492,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
         return R.layout.fragment_call_log;
     }
 
-//    @NeedsPermission({Manifest.permission.WRITE_CALL_LOG, Manifest.permission.WRITE_CONTACTS})
+    //    @NeedsPermission({Manifest.permission.WRITE_CALL_LOG, Manifest.permission.WRITE_CONTACTS})
     void queryCallLog() {
         mSubscription = CallLogHelper.queryAllCallLog(getContext())
                 .subscribeOn(Schedulers.newThread())
@@ -515,8 +512,9 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
                     }
                 });
     }
-//    @NeedsPermission({Manifest.permission.WRITE_CALL_LOG, Manifest.permission.READ_CALL_LOG})
-    void queryCallLogMis(){
+
+    //    @NeedsPermission({Manifest.permission.WRITE_CALL_LOG, Manifest.permission.READ_CALL_LOG})
+    void queryCallLogMis() {
         mSubscription = CallLogHelper.queryMissCallLog(getContext())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -533,6 +531,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
                     }
                 });
     }
+
     @OnShowRationale({Manifest.permission.WRITE_CALL_LOG, Manifest.permission.WRITE_CONTACTS})
     void showRationaleReadCallLog(final PermissionRequest request) {
         request.proceed();

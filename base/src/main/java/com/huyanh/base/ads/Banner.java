@@ -11,9 +11,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.facebook.ads.AbstractAdListener;
-import com.facebook.ads.Ad;
-import com.facebook.ads.AdError;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdRequest.Builder;
@@ -32,7 +29,6 @@ import java.util.Random;
 
 public class Banner extends RelativeLayout {
     private AdView mAdViewAbmob;
-    private com.facebook.ads.AdView mAdViewFacebook;
     private LinearLayout mLnrAdview;
     private BaseApplication baseApplication;
 
@@ -129,11 +125,7 @@ public class Banner extends RelativeLayout {
                 }
                 mLnrAdview.setOnClickListener(new impleOnClick(more_apps.getUrl_store()));
             } else {
-                if (baseApplication.getBaseConfig().getAds_network_new().getBanner().equals("admob")) {
-                    loadAdmob();
-                } else {
-                    loadFacebook();
-                }
+                loadAdmob();
             }
         } catch (Exception e) {
             Log.e("error show adsview HDV: " + e.getMessage());
@@ -212,28 +204,7 @@ public class Banner extends RelativeLayout {
         this.mAdViewAbmob.loadAd(mAdRequest);
     }
 
-    private void loadFacebook() {
-        Log.v("load facebook banner: " + baseApplication.getBaseConfig().getKey().getFacebook().getBanner());
-        mAdViewFacebook = new com.facebook.ads.AdView(getContext(), baseApplication.getBaseConfig().getKey().getFacebook().getBanner(), isThumbnail ? com.facebook.ads.AdSize.RECTANGLE_HEIGHT_250 : com.facebook.ads.AdSize.BANNER_HEIGHT_50);
-        mAdViewFacebook.setAdListener(new AbstractAdListener() {
-
-            @Override
-            public void onError(Ad ad, AdError error) {
-                Log.e("facebook banner fail: " + error.getErrorMessage());
-            }
-
-            @Override
-            public void onAdLoaded(Ad ad) {
-                mLnrAdview.removeAllViews();
-                mLnrAdview.addView(Banner.this.mAdViewFacebook);
-            }
-        });
-        // Request to load an ad
-        mAdViewFacebook.loadAd();
-    }
-
     public void destroy() {
-        if (mAdViewFacebook != null) mAdViewFacebook.destroy();
         if (mAdViewAbmob != null) mAdViewAbmob.destroy();
     }
 

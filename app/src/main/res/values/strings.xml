@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name_ban2">X Call</string>
     <string name="app_name">The Phone</string>
-    <string name="app_id_facebook">1900201133404652</string>
     <string name="loading">Loading...</string>
     <string name="error">Error</string>
     <string name="apply">Apply</string>
@@ -78,7 +77,6 @@
     <string name="title_app_in_more_screen">Messenger</string>
     <string name="title_version">Version</string>
     <string name="title_rate_us">Rate us</string>
-    <string name="title_fb_follow">Facebook</string>
     <string name="title_feedback">Feedback</string>
     <string name="title_faq">Faq</string>
     <string name="title_setting_chathead">Chathead</string>
@@ -175,7 +173,6 @@
     <string name="new_message_channel_name">New message</string>
     <string name="default_notification_channel_id">default_notification_channel_id</string>
 
-    <string name="chat_head_nofity_need_mess_fb">You need to install \"Messenger Facebook\" for this task.</string>
     <string name="chat_head_mess_fb_ads">Chat, make voice and video call free from anywhere</string>
     <string name="title_activity_add_messenger_app">AddMessengerAppActivity</string>
 

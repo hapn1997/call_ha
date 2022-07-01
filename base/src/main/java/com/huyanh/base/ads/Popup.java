@@ -4,11 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
+
 import androidx.fragment.app.Fragment;
 
-import com.facebook.ads.Ad;
-import com.facebook.ads.AdError;
-import com.facebook.ads.InterstitialAdListener;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -25,7 +23,6 @@ public class Popup {
     private Context context;
 
     private InterstitialAd mInterstitialAdmob;
-    private com.facebook.ads.InterstitialAd mInterstitialFacebook;
     private AdRequest admobRequest;
 
     private BaseApplication baseApplication;
@@ -43,95 +40,56 @@ public class Popup {
     }
 
     private void loadAds() {
-        if (baseApplication.getBaseConfig().getAds_network_new().getPopup().equals("admob")) {
-            mInterstitialAdmob = new InterstitialAd(context);
-            mInterstitialAdmob.setAdUnitId(baseApplication.getBaseConfig().getKey().getAdmob().getPopup());
-            mInterstitialAdmob.setAdListener(new AdListener() {
-                @Override
-                public void onAdOpened() {
-                    super.onAdOpened();
-                }
-
-                @Override
-                public void onAdClosed() {
-                    super.onAdClosed();
-                    mInterstitialAdmob.loadAd(admobRequest);
-                    for (PopupListener popupListener : listPopupListener) {
-                        if (popupListener != null) popupListener.onClose(tempObject);
-                    }
-                }
-
-                @Override
-                public void onAdLoaded() {
-                    super.onAdLoaded();
-                    Log.d("loadded popup admob.");
-                }
-
-                @Override
-                public void onAdFailedToLoad(int errorCode) {
-                    super.onAdFailedToLoad(errorCode);
-                    Log.e("error load popup admob: " + errorCode);
-                }
-
-                @Override
-                public void onAdLeftApplication() {
-                    baseApplication.editor.putLong(BaseConstant.KEY_CONTROLADS_TIME_CLICKED_POPUP, System.currentTimeMillis());
-                    baseApplication.editor.apply();
-                    super.onAdLeftApplication();
-                }
-            });
-
-            if (BaseConstant.isDebugging) {
-                String android_id = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
-                String deviceId = BaseUtils.md5(android_id).toUpperCase();
-                admobRequest = new AdRequest.Builder()
-                        .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                        .addTestDevice(deviceId)
-                        .build();
-            } else {
-                admobRequest = new AdRequest.Builder()
-                        .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                        .build();
+        mInterstitialAdmob = new InterstitialAd(context);
+        mInterstitialAdmob.setAdUnitId(baseApplication.getBaseConfig().getKey().getAdmob().getPopup());
+        mInterstitialAdmob.setAdListener(new AdListener() {
+            @Override
+            public void onAdOpened() {
+                super.onAdOpened();
             }
-            mInterstitialAdmob.loadAd(admobRequest);
+
+            @Override
+            public void onAdClosed() {
+                super.onAdClosed();
+                mInterstitialAdmob.loadAd(admobRequest);
+                for (PopupListener popupListener : listPopupListener) {
+                    if (popupListener != null) popupListener.onClose(tempObject);
+                }
+            }
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Log.d("loadded popup admob.");
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                super.onAdFailedToLoad(errorCode);
+                Log.e("error load popup admob: " + errorCode);
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                baseApplication.editor.putLong(BaseConstant.KEY_CONTROLADS_TIME_CLICKED_POPUP, System.currentTimeMillis());
+                baseApplication.editor.apply();
+                super.onAdLeftApplication();
+            }
+        });
+
+        if (BaseConstant.isDebugging) {
+            String android_id = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+            String deviceId = BaseUtils.md5(android_id).toUpperCase();
+            admobRequest = new AdRequest.Builder()
+                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                    .addTestDevice(deviceId)
+                    .build();
         } else {
-            mInterstitialFacebook = new com.facebook.ads.InterstitialAd(context, baseApplication.getBaseConfig().getKey().getFacebook().getPopup());
-            mInterstitialFacebook.setAdListener(new InterstitialAdListener() {
-                @Override
-                public void onInterstitialDisplayed(Ad ad) {
-                }
-
-                @Override
-                public void onInterstitialDismissed(Ad ad) {
-                    mInterstitialFacebook.loadAd();
-                    for (PopupListener popupListener : listPopupListener) {
-                        if (popupListener != null) popupListener.onClose(tempObject);
-                    }
-                }
-
-                @Override
-                public void onError(Ad ad, AdError adError) {
-                    Log.e("error load popup facebook: " + adError.getErrorMessage());
-                }
-
-                @Override
-                public void onAdLoaded(Ad ad) {
-                    Log.d("loaded popup facebook");
-                }
-
-                @Override
-                public void onAdClicked(Ad ad) {
-                    baseApplication.editor.putLong(BaseConstant.KEY_CONTROLADS_TIME_CLICKED_POPUP, System.currentTimeMillis());
-                    baseApplication.editor.apply();
-                }
-
-                @Override
-                public void onLoggingImpression(Ad ad) {
-
-                }
-            });
-            mInterstitialFacebook.loadAd();
+            admobRequest = new AdRequest.Builder()
+                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                    .build();
         }
+        mInterstitialAdmob.loadAd(admobRequest);
     }
 
     public boolean showPopup(Fragment fragment, Object object, boolean withOutCondition) {
@@ -183,17 +141,7 @@ public class Popup {
                 return false;
             }
         }
-
-        Log.d("show popup facebook: " + baseApplication.getBaseConfig().getKey().getFacebook().getPopup());
-        if (mInterstitialFacebook.isAdLoaded()) {
-            mInterstitialFacebook.show();
-            baseApplication.editor.putLong(BaseConstant.KEY_CONTROLADS_TIME_SHOWED_POPUP, System.currentTimeMillis());
-            baseApplication.editor.apply();
-            return true;
-        } else {
-            mInterstitialFacebook.loadAd();
-            return false;
-        }
+        return false;
     }
 
     public boolean showPopup(Activity activity, Object object, boolean withOutCondition) {
@@ -245,17 +193,7 @@ public class Popup {
                 return false;
             }
         }
-
-        Log.d("show popup facebook: " + baseApplication.getBaseConfig().getKey().getFacebook().getPopup());
-        if (mInterstitialFacebook.isAdLoaded()) {
-            mInterstitialFacebook.show();
-            baseApplication.editor.putLong(BaseConstant.KEY_CONTROLADS_TIME_SHOWED_POPUP, System.currentTimeMillis());
-            baseApplication.editor.apply();
-            return true;
-        } else {
-            mInterstitialFacebook.loadAd();
-            return false;
-        }
+        return false;
     }
 
 
@@ -295,17 +233,7 @@ public class Popup {
                 return false;
             }
         }
-
-        Log.d("show popup facebook: " + baseApplication.getBaseConfig().getKey().getFacebook().getPopup());
-        if (mInterstitialFacebook.isAdLoaded()) {
-            mInterstitialFacebook.show();
-            baseApplication.editor.putLong(BaseConstant.KEY_CONTROLADS_TIME_SHOWED_POPUP, System.currentTimeMillis());
-            baseApplication.editor.apply();
-            return true;
-        } else {
-            mInterstitialFacebook.loadAd();
-            return false;
-        }
+        return false;
     }
 
 

@@ -1,13 +1,8 @@
-bản 1: Call
-com.dialer.ios.iphone.contacts
-68354
-
-packageName cũ
-vn.com.call
-
-gradle version 3.1.4
-3.3.2
+ban 1: The Phone
+com.phone.thephone.call.dialer
+key_20220701_call
 
 
-42.112.16.118:33141
-admin / vPXaHihID0pr0
+
+14.225.21.89
+administrator/doIt@2021@oKM
