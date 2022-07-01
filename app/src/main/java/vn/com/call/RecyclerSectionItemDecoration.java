@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.dialer.ios.iphone.contacts.R;
+import com.phone.thephone.call.dialer.R;
 
 
 public class RecyclerSectionItemDecoration extends RecyclerView.ItemDecoration {

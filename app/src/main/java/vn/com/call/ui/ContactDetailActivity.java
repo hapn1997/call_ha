@@ -7,7 +7,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.dialer.ios.iphone.contacts.R;
+import com.phone.thephone.call.dialer.R;
 
 import android.app.Activity;
 import android.app.Service;

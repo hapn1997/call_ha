@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.dialer.ios.iphone.contacts.R;
+import com.phone.thephone.call.dialer.R;
 
 import static androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_SWIPE;
 enum ButtonsState {

@@ -3,7 +3,7 @@ package vn.com.call.ui;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.dialer.ios.iphone.contacts.R;
+import com.phone.thephone.call.dialer.R;
 
 public class NewConversationActivity extends AppCompatActivity {
 

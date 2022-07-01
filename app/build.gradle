@@ -26,11 +26,11 @@ android {
     compileSdkVersion project.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.dialer.ios.iphone.contacts"
+        applicationId "com.phone.thephone.call.dialer"
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
-        versionCode 20200302
-        versionName "1.0.1"
+        versionCode 20220701
+        versionName "1.0.0"
 
         multiDexEnabled true
     }

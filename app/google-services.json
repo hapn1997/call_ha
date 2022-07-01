@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "655975368058",
-    "firebase_url": "https://company-2fe85.firebaseio.com",
-    "project_id": "company-2fe85",
-    "storage_bucket": "company-2fe85.appspot.com"
+    "project_number": "348250603206",
+    "project_id": "call-8fbf2",
+    "storage_bucket": "call-8fbf2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:655975368058:android:f5d86779cf16245121c2c3",
+        "mobilesdk_app_id": "1:348250603206:android:3e2d2ce9bebb75fd09e1c7",
         "android_client_info": {
-          "package_name": "com.dialer.ios.iphone.contacts"
+          "package_name": "com.phone.thephone.call.dialer"
         }
       },
       "oauth_client": [
         {
-          "client_id": "655975368058-63mrmt0pd4qpt4ulpd6tll0ev5qbo1rn.apps.googleusercontent.com",
+          "client_id": "348250603206-9f6iqk2rccauhn7438dp8t28t6h4t5s4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAhD-f6p_wOr6-cOUpSwToDhUAtMJ3YyUs"
+          "current_key": "AIzaSyAVyxR1AhP0TXcFpfPXLrc5NxGNj32OJqA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "655975368058-63mrmt0pd4qpt4ulpd6tll0ev5qbo1rn.apps.googleusercontent.com",
+              "client_id": "348250603206-9f6iqk2rccauhn7438dp8t28t6h4t5s4.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

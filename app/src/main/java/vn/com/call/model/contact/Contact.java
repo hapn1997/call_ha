@@ -18,7 +18,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.dialer.ios.iphone.contacts.R;
+import com.phone.thephone.call.dialer.R;
 import vn.com.call.db.ContactHelper;
 import vn.com.call.db.cache.ContactCache;
 import vn.com.call.utils.ClipboardUtils;

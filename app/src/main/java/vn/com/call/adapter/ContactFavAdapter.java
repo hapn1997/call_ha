@@ -26,7 +26,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.dialer.ios.iphone.contacts.R;
+import com.phone.thephone.call.dialer.R;
 
 import vn.com.call.adapter.listener.OnClickFav;
 import vn.com.call.adapter.listener.OnClickViewConversationListener;

@@ -18,7 +18,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.dialer.ios.iphone.contacts.R;
+import com.phone.thephone.call.dialer.R;
 
 import vn.com.call.db.SharePref;
 

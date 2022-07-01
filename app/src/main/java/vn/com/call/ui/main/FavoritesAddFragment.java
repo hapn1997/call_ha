@@ -48,7 +48,7 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
-import com.dialer.ios.iphone.contacts.R;
+import com.phone.thephone.call.dialer.R;
 import vn.com.call.adapter.ContactFavAdapter;
 import vn.com.call.adapter.HorizontalContactAdapter;
 import vn.com.call.adapter.listener.OnClickFav;

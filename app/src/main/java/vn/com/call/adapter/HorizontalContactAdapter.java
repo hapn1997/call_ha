@@ -29,7 +29,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.dialer.ios.iphone.contacts.R;
+import com.phone.thephone.call.dialer.R;
 
 import vn.com.call.adapter.listener.OnClickFav;
 import vn.com.call.adapter.listener.OnClickViewConversationListener;

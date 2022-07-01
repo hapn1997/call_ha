@@ -15,7 +15,7 @@ import android.telecom.TelecomManager;
 
 import com.huyanh.base.utils.BaseUtils;
 
-import com.dialer.ios.iphone.contacts.R;
+import com.phone.thephone.call.dialer.R;
 import vn.com.call.db.Settings;
 import vn.com.call.ui.BaseActivity;
 import vn.com.call.utils.PermissionUtils;

@@ -23,7 +23,7 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.dialer.ios.iphone.contacts.R;
+import com.phone.thephone.call.dialer.R;
 import com.huyanh.base.utils.BaseConstant;
 import com.huyanh.base.utils.Log;
 import com.ncapdevi.fragnav.FragNavController;

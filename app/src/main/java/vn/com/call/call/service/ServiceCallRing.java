@@ -30,7 +30,7 @@ import java.util.TimerTask;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import vn.com.call.App;
-import com.dialer.ios.iphone.contacts.R;
+import com.phone.thephone.call.dialer.R;
 import vn.com.call.call.model.CallFlashItem;
 import vn.com.call.call.model.ContactItem;
 import vn.com.call.call.util.CacheGifUtil;

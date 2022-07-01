@@ -10,7 +10,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import java.util.List;
 
-import com.dialer.ios.iphone.contacts.R;
+import com.phone.thephone.call.dialer.R;
 import vn.com.call.adapter.viewholder.CallLogByContactViewHolder;
 import vn.com.call.model.calllog.CallLogDetail;
 import vn.com.call.utils.TimeUtils;
