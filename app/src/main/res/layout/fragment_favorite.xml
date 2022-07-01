@@ -37,20 +37,20 @@
             android:layout_marginLeft="14dp"
             android:padding="6dp"
             android:src="@drawable/ic_add_primary_color_24dp" />
+
         <TextView
-            style="@style/HeaderSideText"
-            android:fontFamily="@font/ios_regular"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/_12sdp"
             android:id="@+id/tvTabEdit"
+            style="@style/HeaderSideText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/_12sdp"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:fontFamily="@font/ios_regular"
             android:gravity="center"
             android:padding="12dp"
             android:text="@string/edit"
-            android:textColor="#1181ff"
-            />
+            android:textColor="#1181ff" />
 
 
     </RelativeLayout>

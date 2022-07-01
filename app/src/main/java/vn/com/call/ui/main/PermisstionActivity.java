@@ -54,7 +54,7 @@ public class PermisstionActivity extends AppCompatActivity {
         Intent intent = new Intent(TelecomManager.ACTION_CHANGE_DEFAULT_DIALER);
         intent.putExtra(TelecomManager.EXTRA_CHANGE_DEFAULT_DIALER_PACKAGE_NAME, getPackageName());
         if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
+            startActivityForResult(intent, 2);
         }
         else{
             throw new RuntimeException("Default phone functionality not found");
@@ -90,7 +90,7 @@ public class PermisstionActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q){
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
                     setDefaultCallAppApi30();
                 }else {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

@@ -225,6 +225,7 @@ public class FavoriteFragment extends BaseFragment {
         }
     }
     public  void setEdit(){
+        addFavourite.setVisibility(View.GONE);
         tvTabEdit.setText("Done");
         horizontalContactAdapter.checkRemove(true);
         if(SharePref.check(getContext(),"checkitem1") ==false){
@@ -241,6 +242,7 @@ public class FavoriteFragment extends BaseFragment {
 
     }
 public  void setCancel(){
+    addFavourite.setVisibility(View.VISIBLE);
         tvTabEdit.setText("Edit");
     horizontalContactAdapter.checkRemove(false);
     SharePref.remove(getContext(),"checkitem1");

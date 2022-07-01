@@ -1,5 +1,6 @@
 package vn.com.call.ui.main;
 
+import static android.content.Context.TELECOM_SERVICE;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 import android.Manifest;
@@ -19,6 +20,8 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.telecom.TelecomManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -419,9 +422,40 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
     public void onResume() {
         super.onResume();
 
-        setDefaultCallAppApi30();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
+            setDefaultCallAppApi30();
+        }else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                checkDefaultHandler();
+            }
+        }    }
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private boolean isAlreadyDefaultDialer() {
+        TelecomManager telecomManager = (TelecomManager) getContext().getSystemService(TELECOM_SERVICE);
+        return getContext().getPackageName().equals(telecomManager.getDefaultDialerPackage());
     }
-
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void checkDefaultHandler() {
+        if (isAlreadyDefaultDialer()) {
+            loadAndShowData();
+            per_call_log.setVisibility(View.GONE);
+            return;
+        }
+        Intent intent = new Intent(TelecomManager.ACTION_CHANGE_DEFAULT_DIALER);
+        intent.putExtra(TelecomManager.EXTRA_CHANGE_DEFAULT_DIALER_PACKAGE_NAME, getContext().getPackageName());
+        if (intent.resolveActivity(getContext().getPackageManager()) != null) {
+            per_call_log.setVisibility(View.VISIBLE);
+            bt_click.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivityForResult(intent, 2);
+                }
+            });
+        }
+        else{
+            throw new RuntimeException("Default phone functionality not found");
+        }
+    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -436,12 +470,12 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
     }
 
     public void loadAndShowData() {
-//        showCacheCallLog();
-        CallLogFragmentPermissionsDispatcher.queryCallLogWithCheck(this);
+        showCacheCallLog();
+        queryCallLog();
     }
     public void loadandShowMiss(){
-//        showCacheCallLog();
-        CallLogFragmentPermissionsDispatcher.queryCallLogMisWithCheck(this);
+        showCacheCallLog();
+        queryCallLogMis();
 
     }
 
@@ -461,7 +495,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
         return R.layout.fragment_call_log;
     }
 
-    @NeedsPermission({Manifest.permission.WRITE_CALL_LOG, Manifest.permission.WRITE_CONTACTS})
+//    @NeedsPermission({Manifest.permission.WRITE_CALL_LOG, Manifest.permission.WRITE_CONTACTS})
     void queryCallLog() {
         mSubscription = CallLogHelper.queryAllCallLog(getContext())
                 .subscribeOn(Schedulers.newThread())
@@ -481,7 +515,7 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
                     }
                 });
     }
-    @NeedsPermission({Manifest.permission.WRITE_CALL_LOG, Manifest.permission.READ_CALL_LOG})
+//    @NeedsPermission({Manifest.permission.WRITE_CALL_LOG, Manifest.permission.READ_CALL_LOG})
     void queryCallLogMis(){
         mSubscription = CallLogHelper.queryMissCallLog(getContext())
                 .subscribeOn(Schedulers.newThread())

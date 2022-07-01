@@ -64,7 +64,7 @@ public class CallLogHelper {
 //                                String[] dataContact = ContactHelper.retrieveContactPhotoUriAndDisplayName(context, number);
 //                                callLog.setIdContact(dataContact[0]);
 //                                callLog.setPhotoContact(dataContact[1]);
-                                if (name.length() !=0){
+                                if (name != null && name.length() !=0){
                                     callLog.setNameContact(name);
                                 }else {
                                     callLog.setNameContact(number);
@@ -143,7 +143,7 @@ public class CallLogHelper {
 //                                          String[] dataContact = ContactHelper.retrieveContactPhotoUriAndDisplayName(context, number);
 //                                          callLog.setIdContact(dataContact[0]);
 //                                          callLog.setPhotoContact(dataContact[1]);
-                                          if (name.length() !=0){
+                                          if (name != null && name.length() !=0){
                                               callLog.setNameContact(name);
                                           }else {
                                               callLog.setNameContact(number);

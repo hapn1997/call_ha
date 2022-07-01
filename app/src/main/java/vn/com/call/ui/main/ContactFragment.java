@@ -201,18 +201,18 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
 
             }
         });
-        relativeLayout_search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                relative_tool_bar.setVisibility(View.GONE);
-                relative_search.setVisibility(View.VISIBLE);
-                appBarLayout.setExpanded(false,true);
-                relativeLayout_change.setVisibility(View.GONE);
-                edt_message.setVisibility(View.GONE);
-
-
-            }
-        });
+//        relativeLayout_search.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                relative_tool_bar.setVisibility(View.GONE);
+//                relative_search.setVisibility(View.VISIBLE);
+//                appBarLayout.setExpanded(false,true);
+//                relativeLayout_change.setVisibility(View.GONE);
+//                edt_message.setVisibility(View.GONE);
+//
+//
+//            }
+//        });
         tvTabCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -226,7 +226,8 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
                 imm.hideSoftInputFromWindow(
                         mInputSearch.getWindowToken(), 0);
                   ContactFragment.this.getFragmentManager().beginTransaction().detach(ContactFragment.this).attach(ContactFragment.this).commit();
-
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.remove(mSearchFragment).commit();
 
 
             }

@@ -28,6 +28,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -157,6 +159,18 @@ public class ContactDetailActivity extends BaseActivity {
     }
 
     @OnClick({R.id.sms, R.id.send_sms})
+//    void sendSMS() {
+//        try {
+//            SmsManager smsManager = SmsManager.getDefault();
+//            smsManager.sendTextMessage(mContact.getNumbers().get(0).getNumber(), null, null, null, null);
+//            Toast.makeText(getApplicationContext(), "Message Sent",
+//                    Toast.LENGTH_LONG).show();
+//        } catch (Exception ex) {
+//            Toast.makeText(getApplicationContext(),ex.getMessage().toString(),
+//                    Toast.LENGTH_LONG).show();
+//            ex.printStackTrace();
+//        }
+//    }
     void sms() {
 //        if (mContact.getNumbers().size() > 1) {
 //            ChooseNumberDialogFragment dialog = ChooseNumberDialogFragment.newInstance(getString(R.string.send_sms) + " - " + mContact.getName(), mContact.getNumbers());
