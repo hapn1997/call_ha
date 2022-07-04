@@ -266,27 +266,6 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    public void onDoneQuerryInappBilling() {
-//        super.onDoneQuerryInappBilling();
-//        if (mClear == null || ivUpgrade == null) return;
-//
-//        ivUpgrade.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(MainActivity.this, UpgradePremiumActivity.class));
-//            }
-//        });
-//        if (!mClear.isShown()) {
-//            if (baseApplication.isPurchase) {
-//                ivUpgrade.setVisibility(View.GONE);
-//            } else {
-//                ivUpgrade.setVisibility(View.VISIBLE);
-//            }
-//        } else ivUpgrade.setVisibility(View.GONE);
-
-    }
-
-    @Override
     public void onClose(Object object) {
         super.onClose(object);
         if (object == null) return;

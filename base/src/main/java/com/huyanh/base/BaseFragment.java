@@ -33,10 +33,6 @@ public class BaseFragment extends Fragment implements PopupListener {
     }
 
     @Override
-    public void onDoneQuerryInappBilling() {
-    }
-
-    @Override
     public void onClose(Object object) {
         Log.d("onClosePopup: " + object);
     }

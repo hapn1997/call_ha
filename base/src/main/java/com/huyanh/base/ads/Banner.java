@@ -4,22 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.net.Uri;
-import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdRequest.Builder;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
 import com.huyanh.base.BaseApplication;
 import com.huyanh.base.R;
 import com.huyanh.base.dao.BaseConfig;
-import com.huyanh.base.utils.BaseConstant;
 import com.huyanh.base.utils.BaseUtils;
 import com.huyanh.base.utils.Log;
 import com.squareup.picasso.Callback;
@@ -28,7 +21,6 @@ import com.squareup.picasso.Picasso;
 import java.util.Random;
 
 public class Banner extends RelativeLayout {
-    private AdView mAdViewAbmob;
     private LinearLayout mLnrAdview;
     private BaseApplication baseApplication;
 
@@ -149,71 +141,6 @@ public class Banner extends RelativeLayout {
 
     private void loadAdmob() {
         Log.v("load admob " + (isThumbnail ? "thumbnail" : "banner") + " " + baseApplication.getBaseConfig().getKey().getAdmob().getBanner());
-        AdRequest mAdRequest;
-        if (BaseConstant.isDebugging) {
-            String android_id = Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-            String deviceId = BaseUtils.md5(android_id).toUpperCase();
-            mAdRequest = new Builder()
-                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                    .addTestDevice(deviceId)
-                    .build();
-        } else {
-            mAdRequest = new Builder()
-                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                    .build();
-        }
-        this.mAdViewAbmob = new AdView(getContext());
-        if (isThumbnail)
-            mAdViewAbmob.setAdSize(AdSize.MEDIUM_RECTANGLE);
-        else
-            mAdViewAbmob.setAdSize(AdSize.SMART_BANNER);
-
-        this.mAdViewAbmob.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-        this.mAdViewAbmob
-                .setAdUnitId(baseApplication.getBaseConfig().getKey().getAdmob().getBanner());
-        this.mAdViewAbmob.setAdListener(new AdListener() {
-
-            @Override
-            public void onAdClosed() {
-                super.onAdClosed();
-            }
-
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-
-                super.onAdFailedToLoad(errorCode);
-                Log.e("admob banner fail: " + errorCode);
-            }
-
-            @Override
-            public void onAdLeftApplication() {
-                super.onAdLeftApplication();
-            }
-
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                Log.d("onAdLoaded banner");
-                mLnrAdview.removeAllViews();
-                mLnrAdview.addView(Banner.this.mAdViewAbmob);
-            }
-
-            public void onAdOpened() {
-            }
-        });
-        this.mAdViewAbmob.loadAd(mAdRequest);
-    }
-
-    public void destroy() {
-        if (mAdViewAbmob != null) mAdViewAbmob.destroy();
-    }
-
-    public void pause() {
-        if (mAdViewAbmob != null) mAdViewAbmob.pause();
-    }
-
-    public void resume() {
-        if (mAdViewAbmob != null) mAdViewAbmob.resume();
     }
 
 }

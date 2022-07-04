@@ -216,9 +216,6 @@
         <meta-data
             android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule"
             android:value="GlideModule" />
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="fb6056e08bf4294972659c24d7ce217c80515fbd" />
 
         <service
             android:name="vn.com.call.call.util.NotificationServiceCustom"

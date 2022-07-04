@@ -9,17 +9,10 @@
     <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
 
-    <uses-permission android:name="com.android.vending.BILLING" />
-
     <application>
         <activity
             android:name="com.huyanh.base.ads.PopupCustom"
             android:screenOrientation="portrait" />
-        <activity
-            android:name="com.google.android.gms.ads.AdActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-            android:noHistory="true"
-            android:theme="@android:style/Theme.Translucent" />
 
         <activity
             android:name="com.huyanh.base.ads.OtherAppLauncher"

@@ -4,9 +4,6 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion project.compileSdkVersion
 
-    lintOptions{
-        abortOnError false
-    }
     defaultConfig {
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
@@ -19,6 +16,9 @@ android {
         debug {
             testCoverageEnabled true
         }
+    }
+    lint {
+        abortOnError false
     }
 }
 

@@ -6,15 +6,11 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.TextUtils;
 import android.widget.ImageView;
 
 import androidx.multidex.MultiDex;
 
-import com.crashlytics.android.Crashlytics;
-import com.evernote.android.job.JobManager;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.huyanh.base.BaseApplication;
 import com.squareup.picasso.Downloader;
 import com.squareup.picasso.LruCache;
@@ -23,16 +19,11 @@ import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.HashMap;
 
-import io.fabric.sdk.android.Fabric;
 import io.paperdb.Paper;
 import vn.com.call.call.model.CallFlashItem;
 import vn.com.call.db.Settings;
-
-import vn.vmb.security.AppLock;
 
 public class App extends BaseApplication implements Application.ActivityLifecycleCallbacks {
 
@@ -49,7 +40,7 @@ public class App extends BaseApplication implements Application.ActivityLifecycl
     private Gson gson;
     private Picasso picasso;
     // private CircleTransform circleTransform;
-     private CallFlashItem callFlashItem;
+    private CallFlashItem callFlashItem;
     private Handler mHandlerLockApp;
     private Runnable mLockApp = new Runnable() {
         @Override
@@ -68,9 +59,8 @@ public class App extends BaseApplication implements Application.ActivityLifecycl
         thisApp = this;
 
         setupPicasso();
-        Fabric.with(getApplicationContext(), new Crashlytics());
         Paper.init(getApplicationContext());
-       // AppLock.initAppLock(this, LockSession.LOCK_APP, "vietmobi");
+        // AppLock.initAppLock(this, LockSession.LOCK_APP, "vietmobi");
 //        AppLock.setKeepUnlockInMillisecond(LockSession.LOCK_APP, 0);
 
         //  mShowChatheadIconSchedule = new ShowChatheadIconSchedule(this);
@@ -228,7 +218,7 @@ public class App extends BaseApplication implements Application.ActivityLifecycl
     }
 
     private void lockApp() {
-     //   AppLock.setLock(true, LockSession.LOCK_APP);
+        //   AppLock.setLock(true, LockSession.LOCK_APP);
     }
 
     private void detachActivityFromActivityManager(Activity activity) throws

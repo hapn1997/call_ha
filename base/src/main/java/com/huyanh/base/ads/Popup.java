@@ -3,17 +3,12 @@ package com.huyanh.base.ads;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.provider.Settings;
 
 import androidx.fragment.app.Fragment;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 import com.huyanh.base.BaseApplication;
 import com.huyanh.base.custominterface.PopupListener;
 import com.huyanh.base.utils.BaseConstant;
-import com.huyanh.base.utils.BaseUtils;
 import com.huyanh.base.utils.Log;
 
 import java.util.ArrayList;
@@ -21,9 +16,6 @@ import java.util.Random;
 
 public class Popup {
     private Context context;
-
-    private InterstitialAd mInterstitialAdmob;
-    private AdRequest admobRequest;
 
     private BaseApplication baseApplication;
 
@@ -40,56 +32,6 @@ public class Popup {
     }
 
     private void loadAds() {
-        mInterstitialAdmob = new InterstitialAd(context);
-        mInterstitialAdmob.setAdUnitId(baseApplication.getBaseConfig().getKey().getAdmob().getPopup());
-        mInterstitialAdmob.setAdListener(new AdListener() {
-            @Override
-            public void onAdOpened() {
-                super.onAdOpened();
-            }
-
-            @Override
-            public void onAdClosed() {
-                super.onAdClosed();
-                mInterstitialAdmob.loadAd(admobRequest);
-                for (PopupListener popupListener : listPopupListener) {
-                    if (popupListener != null) popupListener.onClose(tempObject);
-                }
-            }
-
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                Log.d("loadded popup admob.");
-            }
-
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-                super.onAdFailedToLoad(errorCode);
-                Log.e("error load popup admob: " + errorCode);
-            }
-
-            @Override
-            public void onAdLeftApplication() {
-                baseApplication.editor.putLong(BaseConstant.KEY_CONTROLADS_TIME_CLICKED_POPUP, System.currentTimeMillis());
-                baseApplication.editor.apply();
-                super.onAdLeftApplication();
-            }
-        });
-
-        if (BaseConstant.isDebugging) {
-            String android_id = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
-            String deviceId = BaseUtils.md5(android_id).toUpperCase();
-            admobRequest = new AdRequest.Builder()
-                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                    .addTestDevice(deviceId)
-                    .build();
-        } else {
-            admobRequest = new AdRequest.Builder()
-                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                    .build();
-        }
-        mInterstitialAdmob.loadAd(admobRequest);
     }
 
     public boolean showPopup(Fragment fragment, Object object, boolean withOutCondition) {
@@ -129,18 +71,6 @@ public class Popup {
             }
         }
 
-        if (baseApplication.getBaseConfig().getAds_network_new().getPopup().equals("admob")) {
-            Log.d("show popup admob: " + baseApplication.getBaseConfig().getKey().getAdmob().getPopup());
-            if (mInterstitialAdmob.isLoaded()) {
-                mInterstitialAdmob.show();
-                baseApplication.editor.putLong(BaseConstant.KEY_CONTROLADS_TIME_SHOWED_POPUP, System.currentTimeMillis());
-                baseApplication.editor.apply();
-                return true;
-            } else {
-                mInterstitialAdmob.loadAd(admobRequest);
-                return false;
-            }
-        }
         return false;
     }
 
@@ -181,18 +111,6 @@ public class Popup {
             }
         }
 
-        if (baseApplication.getBaseConfig().getAds_network_new().getPopup().equals("admob")) {
-            Log.d("show popup admob: " + baseApplication.getBaseConfig().getKey().getAdmob().getPopup());
-            if (mInterstitialAdmob.isLoaded()) {
-                mInterstitialAdmob.show();
-                baseApplication.editor.putLong(BaseConstant.KEY_CONTROLADS_TIME_SHOWED_POPUP, System.currentTimeMillis());
-                baseApplication.editor.apply();
-                return true;
-            } else {
-                mInterstitialAdmob.loadAd(admobRequest);
-                return false;
-            }
-        }
         return false;
     }
 
@@ -218,18 +136,6 @@ public class Popup {
                     - baseApplication.pref.getLong(BaseConstant.KEY_CONTROLADS_TIME_CLICKED_POPUP, 0) < (baseApplication.getBaseConfig().getConfig_ads().getTime_hidden_to_click_popup()
                     * 1000)) {
                 Log.d("Chua du thoi gian click before");
-                return false;
-            }
-        }
-        if (baseApplication.getBaseConfig().getAds_network_new().getPopup().equals("admob")) {
-            Log.d("show popup admob: " + baseApplication.getBaseConfig().getKey().getAdmob().getPopup());
-            if (mInterstitialAdmob.isLoaded()) {
-                mInterstitialAdmob.show();
-                baseApplication.editor.putLong(BaseConstant.KEY_CONTROLADS_TIME_SHOWED_POPUP, System.currentTimeMillis());
-                baseApplication.editor.apply();
-                return true;
-            } else {
-                mInterstitialAdmob.loadAd(admobRequest);
                 return false;
             }
         }

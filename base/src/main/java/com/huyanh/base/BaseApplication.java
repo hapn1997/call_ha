@@ -1,18 +1,13 @@
 package com.huyanh.base;
 
 import android.app.Application;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 
-import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.gson.Gson;
-import com.huyanh.base.ads.OtherAppLauncher;
 import com.huyanh.base.ads.Popup;
 import com.huyanh.base.dao.BaseConfig;
 import com.huyanh.base.dao.BaseTypeface;
@@ -21,10 +16,6 @@ import com.huyanh.base.utils.BaseUtils;
 import com.huyanh.base.utils.Log;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -139,7 +130,7 @@ public class BaseApplication extends Application {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            MobileAds.initialize(getApplicationContext(), baseConfig.getKey().getAdmob().getAppid());
+//            MobileAds.initialize(getApplicationContext(), baseConfig.getKey().getAdmob().getAppid());
             popup = new Popup(getApplicationContext());
 //            new addShorcut().execute();
         }

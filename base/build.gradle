@@ -6,8 +6,6 @@ android {
     defaultConfig {
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
     }
     buildTypes {
         release {
@@ -25,11 +23,8 @@ dependencies {
     implementation 'com.squareup.okio:okio:1.13.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.android.support:appcompat-v7:' + project.supportLibraryVersion
-    implementation 'com.google.firebase:firebase-core:11.4.2'
-    implementation 'com.google.firebase:firebase-ads:11.4.2'
-
-//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-//    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    implementation platform('com.google.firebase:firebase-bom:29.1.0')
+    implementation 'com.google.firebase:firebase-analytics'
 
     implementation 'com.github.piasy:safelyandroid:1.2.0'
 }

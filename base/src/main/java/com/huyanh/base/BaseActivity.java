@@ -55,10 +55,6 @@ public class BaseActivity extends SafelyAppCompatActivity implements PopupListen
 
 
     @Override
-    public void onDoneQuerryInappBilling() {
-    }
-
-    @Override
     public void onClose(Object object) {
     }
 
