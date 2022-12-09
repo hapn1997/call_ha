@@ -27,24 +27,25 @@
                 android:background="@color/white"
                 android:layout_alignParentRight="true"
 
-                android:src="@color/white"
-                 />
+                android:src="@color/white" />
 
-            <EditText
-                android:fontFamily="@font/ios_regular"
-                android:layout_marginLeft="65dp"
-                android:singleLine="true"
+            <TextView
                 android:id="@+id/input_number"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="65dp"
                 android:layout_toLeftOf="@+id/threedot"
                 android:background="@android:color/white"
                 android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:fontFamily="@font/ios_regular"
                 android:gravity="center_horizontal|center_vertical"
+                android:inputType="phone"
+                android:selectAllOnFocus="false"
+                android:singleLine="true"
                 android:textColor="@android:color/black"
-                android:textSize="30dp"
-                />
+                android:textSize="30dp" />
               <TextView
                   android:fontFamily="@font/ios_regular"
                   android:visibility="gone"
@@ -112,7 +113,6 @@
             android:orientation="horizontal">
 
             <include
-
                 android:id="@+id/key_one"
                 layout="@layout/dialpad_key" />
 

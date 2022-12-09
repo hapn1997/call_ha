@@ -19,6 +19,10 @@
         id="@+id/tab_dialpad"
         icon="@drawable/icon_tab_dialpad"
         title="Keypad" />
+    <tab
+        id="@+id/tab_setting"
+        icon="@drawable/icon_tab_settings"
+        title="Settings" />
 
 
 </tabs>

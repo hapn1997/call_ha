@@ -2,10 +2,11 @@
 <vn.com.call.widget.RelativeLayoutRatio xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/height_sub_item_detail_contact"
-
+    android:paddingLeft="32dp"
     android:orientation="horizontal">
 
     <vn.com.call.widget.SquareHeightImageButton
+        android:visibility="gone"
         android:id="@+id/email_icon"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -20,6 +21,12 @@
         android:orientation="vertical"
         android:gravity="center_vertical"
         android:paddingRight="16dp">
+        <TextView
+            android:id="@+id/type_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/email_text"
@@ -28,11 +35,6 @@
             android:text="nguyen.son@gmail.com"
             android:textColor="@android:color/black" />
 
-        <TextView
-            android:id="@+id/type_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Home"
-            android:textSize="12sp" />
+
     </LinearLayout>
 </vn.com.call.widget.RelativeLayoutRatio>

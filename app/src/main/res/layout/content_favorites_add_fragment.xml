@@ -240,7 +240,6 @@
                             <EditText
                                 android:id="@+id/edt_search_thread_messagechinh"
                                 android:layout_width="match_parent"
-                                android:textColor="@color/gray_400"
                                 android:layout_height="match_parent"
                                 android:layout_toRightOf="@+id/img_search_1chinh"
                                 android:background="@android:color/transparent"
@@ -254,6 +253,7 @@
                                 android:paddingEnd="@dimen/_2sdp"
                                 android:paddingRight="@dimen/_2sdp"
                                 android:scrollHorizontally="true"
+                                android:textColor="@color/gray_400"
                                 android:textColorHint="@color/gray_400" />
 
 

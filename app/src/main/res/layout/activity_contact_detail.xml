@@ -154,6 +154,7 @@
                                 android:layout_height="wrap_content"></TextView>
                 </LinearLayout>
                        <LinearLayout
+                           android:id="@+id/ll_email"
                            android:layout_marginLeft="5dp"
                            android:layout_weight="1"
                            android:background="@drawable/bg_touchbar"
@@ -171,6 +172,7 @@
                                android:src="@drawable/mail15">
                            </ImageView>
                            <TextView
+                               android:id="@+id/desc_mail"
                                android:fontFamily="@font/ios_medium"
                                android:layout_marginTop="@dimen/_3sdp"
                                android:textSize="@dimen/_12sdp"
@@ -214,6 +216,9 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:background="@drawable/bg_touchbar"
+                    android:layout_marginLeft="@dimen/text_size_sms_16"
+                    android:layout_marginRight="@dimen/text_size_sms_16"
                     android:id="@+id/phone_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -240,6 +245,7 @@
                     android:layout_height="wrap_content"
                      />
                 <EditText
+                    android:id="@+id/et_note"
                     android:enabled="false"
                     app:backgroundTint="@android:color/transparent"
                     android:layout_marginLeft="@dimen/sp_16"

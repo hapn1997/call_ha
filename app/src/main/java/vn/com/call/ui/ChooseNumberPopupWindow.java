@@ -22,6 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.phone.thephone.call.dialer.R;
 import vn.com.call.adapter.listener.OnClickViewConversationListener;
+import vn.com.call.editCall.CallerHelper;
 import vn.com.call.model.contact.Contact;
 import vn.com.call.model.contact.PhoneNumber;
 import vn.com.call.model.sms.Conversation;
@@ -65,7 +66,8 @@ public class ChooseNumberPopupWindow extends PopupWindow {
                 String number = mContact.getNumbers().get(i).getNumber();
 
                 if (mAction == Action.CALL) {
-                    CallUtils.makeCall(mContext, number);
+//                    CallUtils.makeCall(mContext, number);
+                    CallerHelper.startPhoneAccountChooseActivity(mContext, number);
                 } else {
                     Conversation conversation = new Conversation(mContext, new String[]{number});
 

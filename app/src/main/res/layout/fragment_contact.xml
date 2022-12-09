@@ -9,7 +9,7 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:id="@+id/tabHome"
         android:layout_width="match_parent"
-        android:layout_height="43dp">
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:id="@+id/relative_tool_bar"
@@ -21,8 +21,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Contacts"
                 android:fontFamily="@font/ios_regular"
+                android:text="Contacts"
                 android:textSize="@dimen/text_size_sms_15" />
 
             <!--<ImageView-->
@@ -39,7 +39,6 @@
 
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/tvTabEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -50,20 +49,21 @@
                 android:padding="12dp"
                 android:text="@string/edit"
                 android:textColor="#1181ff"
-                />
+                android:visibility="gone" />
+
             <ImageView
-                android:visibility="gone"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:id="@+id/new_message1"
                 android:layout_width="43dp"
                 android:layout_height="43dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="1dp"
                 android:layout_marginRight="1dp"
-
                 android:padding="6dp"
-                android:src="@drawable/ic_add_primary_color_24dp" />
+
+                android:src="@drawable/ic_add_primary_color_24dp"
+                android:visibility="gone" />
 
 
             <View
@@ -74,24 +74,25 @@
                 android:alpha="0.5"
                 android:background="@color/colorDivider" />
         </RelativeLayout>
+
         <RelativeLayout
             android:visibility="gone"
+            android:layout_below="@+id/relative_tool_bar"
             android:id="@+id/relative_search"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-
-            >
+            android:layout_height="45dp">
 
             <RelativeLayout
+
 
                 android:id="@+id/layout_search"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginEnd="15dp"
-                android:layout_marginBottom="@dimen/_8sdp"
                 android:layout_toStartOf="@+id/tvTabCancel"
                 android:layout_toLeftOf="@+id/tvTabCancel"
                 android:background="@drawable/custom_background_search_os13"
@@ -161,7 +162,6 @@
         </RelativeLayout>
 
 
-
     </RelativeLayout>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
 
@@ -195,16 +195,15 @@
 
 
                         <TextView
-                            android:fontFamily="@font/ios_bold"
-                            android:layout_marginBottom="@dimen/_5sdp"
-                            android:paddingLeft="@dimen/_20sdp"
                             android:id="@+id/txtmessage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:fontFamily="@font/ios_bold"
+                            android:paddingLeft="@dimen/_20sdp"
                             android:text="Contacts"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_35sdp"
-                            />
+                            android:textSize="@dimen/_35sdp" />
 
                         <ImageView
                             android:id="@+id/add"
@@ -265,28 +264,60 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_toRightOf="@+id/img_search_1chinh"
-                                android:fontFamily="@font/ios_regular"
                                 android:background="@android:color/transparent"
                                 android:ellipsize="end"
+                                android:fontFamily="@font/ios_regular"
                                 android:gravity="center_vertical"
                                 android:hint="@string/search"
-                                android:textColorHint="@color/gray_400"
                                 android:inputType="text"
                                 android:maxLines="1"
                                 android:paddingStart="@dimen/_4sdp"
                                 android:paddingLeft="@dimen/_4sdp"
                                 android:paddingEnd="@dimen/_2sdp"
                                 android:paddingRight="@dimen/_2sdp"
-                                android:scrollHorizontally="true" />
+                                android:scrollHorizontally="true"
+                                android:textColorHint="@color/gray_400" />
 
 
                         </RelativeLayout>
 
                         <View
-                            android:layout_marginTop="3dp"
-                            android:layout_below="@+id/layout_searchchinh"
                             android:layout_width="match_parent"
-                            android:layout_height="1dp"
+                            android:layout_height="0.5dp"
+                            android:layout_below="@+id/layout_searchchinh"
+                            android:layout_marginTop="3dp"
+                            android:background="@color/colorDivider" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+
+                        android:id="@+id/rl_mycards"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/relative_searchchinh">
+
+                        <vn.com.call.widget.AvatarView
+                            android:id="@+id/iv_myavatar"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_marginVertical="@dimen/text_size_sms_18"
+                            android:layout_marginLeft="19dp"
+                            android:src="@drawable/ic_people_black_24dp" />
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/text_size_sms_19"
+                            android:layout_toRightOf="@id/iv_myavatar"
+                            android:text="@string/myccards"
+                            android:textColor="@color/black60" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_below="@+id/iv_myavatar"
                             android:background="@color/colorDivider" />
                     </RelativeLayout>
 
@@ -309,20 +340,7 @@
             android:clipToPadding="false"
             android:overScrollMode="always"
             android:scrollbars="vertical"/>
-          <RelativeLayout
-              android:layout_gravity="right"
-              android:layout_width="30dp"
-              android:layout_height="match_parent">
 
-            <vn.com.call.widget.SideBar
-
-                android:id="@+id/sideBar"
-                android:layout_width="30dp"
-                android:layout_height="550dp"
-                android:layout_alignParentRight="true"
-
-                />
-          </RelativeLayout>
         </FrameLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -375,6 +393,23 @@
         android:layout_height="match_parent">
         <include layout="@layout/permission_generate" />
 
+    </RelativeLayout>
+    <RelativeLayout
+
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right"
+        android:layout_centerVertical="true"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content">
+
+        <vn.com.call.widget.SideBar
+
+            android:id="@+id/sideBar"
+            android:layout_width="30dp"
+            android:layout_height="@dimen/_350sdp"
+            android:layout_alignParentRight="true"
+
+            />
     </RelativeLayout>
 
 </RelativeLayout>

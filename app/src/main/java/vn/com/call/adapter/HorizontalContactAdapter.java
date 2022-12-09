@@ -33,6 +33,7 @@ import com.phone.thephone.call.dialer.R;
 
 import vn.com.call.adapter.listener.OnClickFav;
 import vn.com.call.adapter.listener.OnClickViewConversationListener;
+import vn.com.call.editCall.CallerHelper;
 import vn.com.call.model.contact.Contact;
 import vn.com.call.model.contact.PhoneNumber;
 import vn.com.call.ui.ChooseNumberPopupWindow;
@@ -123,7 +124,8 @@ public class HorizontalContactAdapter extends RecyclerView.Adapter<HorizontalCon
                             if (onClickContactListener != null)
                                 onClickContactListener.onClick(new CallOrSms(phoneNumbers.get(0).getNumber(), true));
                                 //Log.d("dsđs",phoneNumbers.get(0).getNumber());
-                            else CallUtils.makeCall(context, phoneNumbers.get(0).getNumber());
+//                            else CallUtils.makeCall(context, phoneNumbers.get(0).getNumber());
+                            else                     CallerHelper.startPhoneAccountChooseActivity(context, phoneNumbers.get(0).getNumber());
                         }
                 }
 

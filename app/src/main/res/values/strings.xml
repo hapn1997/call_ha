@@ -201,6 +201,18 @@
     <string name="make_default_dialer_btn">Agree Make Default Dialer</string>
     <string name="fav_des">Please grant contact permission to view favourite contacts</string>
     <string name="ask_delete">Are you want to remove all the numbers ?</string>
+    <string name="myccards">My Card</string>
+    <string name="mute">mute</string>
+    <string name="keypad_small">keypad</string>
+    <string name="speaker">speaker</string>
+    <string name="add_call">add call</string>
+    <string name="facetime">FaceTime</string>
+    <string name="contact">Contacts</string>
+    <string name="decline">Decline</string>
+    <string name="remind_me">Remind Me</string>
+    <string name="accept">Accept</string>
+    <string name="slide_to_answer">slide to answer</string>
+    <string name="call_ended">Call End</string>
 
 
 </resources>

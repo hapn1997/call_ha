@@ -33,6 +33,7 @@ import vn.com.call.adapter.listener.OnClickViewConversationListener;
 import vn.com.call.adapter.listener.OnClickViewFavoritesListener;
 import vn.com.call.adapter.viewholder.ContactViewHolder;
 import vn.com.call.db.ContactHelper;
+import vn.com.call.editCall.CallerHelper;
 import vn.com.call.model.contact.Contact;
 import vn.com.call.model.contact.PhoneNumber;
 import vn.com.call.model.sms.Conversation;
@@ -118,7 +119,8 @@ public class ContactFavAdapter extends BaseSectionQuickAdapter<ContactSectionEnt
                 } else {
                     if (onClickContactListener != null)
                         onClickContactListener.onClick(new CallOrSms(phoneNumbers.get(0).getNumber(), true));
-                    else CallUtils.makeCall(mContext, phoneNumbers.get(0).getNumber());
+//                    else CallUtils.makeCall(mContext, phoneNumbers.get(0).getNumber());
+                    else CallerHelper.startPhoneAccountChooseActivity(mContext, phoneNumbers.get(0).getNumber());
                 }
             }
         });

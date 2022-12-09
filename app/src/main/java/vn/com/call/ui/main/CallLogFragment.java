@@ -47,6 +47,7 @@ import vn.com.call.adapter.listener.OnClickViewCallLogListener;
 import vn.com.call.db.SharePref;
 import vn.com.call.db.cache.CallLogCache;
 import vn.com.call.db.cache.CallLogHelper;
+import vn.com.call.editCall.CallerHelper;
 import vn.com.call.model.calllog.CallLog;
 import vn.com.call.ui.BaseFragment;
 import vn.com.call.ui.callback.CallMaker;
@@ -549,7 +550,8 @@ public class CallLogFragment extends BaseFragment implements CallMaker {
 
     @NeedsPermission(Manifest.permission.CALL_PHONE)
     public void makeCall(String number) {
-        CallUtils.makeCall(getContext(), number);
+//        CallUtils.makeCall(getContext(), number);
+        CallerHelper.startPhoneAccountChooseActivity(getContext(), number);
     }
 
     @OnShowRationale(Manifest.permission.CALL_PHONE)

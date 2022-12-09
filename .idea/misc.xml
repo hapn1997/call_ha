@@ -6,7 +6,9 @@
         <entry key="..\:/WS/Ha/call/app/src/main/res/layout/fb_friend_item.xml" value="0.36666666666666664" />
         <entry key="..\:/WS/Ha/call/base/src/main/res/layout/activity_upgrade_premium.xml" value="0.36666666666666664" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/background_bottom_message.xml" value="0.1935" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/background_button_call.xml" value="0.2645" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/background_button_dialpad.xml" value="0.2365" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/background_button_passcode.xml" value="0.2675" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/background_message.xml" value="0.2365" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/background_message_mid.xml" value="0.2365" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/bg_schedule_message.xml" value="0.2365" />
@@ -14,8 +16,21 @@
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/bg_touchbar1.xml" value="0.2365" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/border_green.xml" value="0.1935" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/check_color_switch.xml" value="0.1935" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/cirlce_bg2.xml" value="0.2645" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/cirlce_call_bg.xml" value="0.2645" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/custom_background_button_passcode_click.xml" value="0.2675" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/custom_background_call2.xml" value="0.2645" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.1935" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/ic_call.xml" value="0.1935" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/ic_call_end_gray_24dp.xml" value="0.2645" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/ic_call_gray_24dp.xml" value="0.2645" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/ic_microphone.xml" value="0.2645" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/ic_outgoing_call.xml" value="0.1935" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/ic_sim_vector.xml" value="0.2645" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/ic_volume.xml" value="0.2645" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/icon_tab_contact.xml" value="0.1935" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/icon_tab_dialpad.xml" value="0.1935" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/icon_tab_settings.xml" value="0.288" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/last_header_button_left.xml" value="0.2365" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/last_header_button_left_blue.xml" value="0.2365" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/last_header_button_left_gray.xml" value="0.2365" />
@@ -24,9 +39,12 @@
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/last_header_button_right_blue.xml" value="0.2365" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/last_header_button_right_gray.xml" value="0.2365" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/last_header_button_right_white.xml" value="0.2365" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/drawable/progress_fill2.xml" value="0.2645" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/activity_call.xml" value="0.2807153965785381" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/activity_chathead_setting.xml" value="0.18541666666666667" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/activity_contact_detail.xml" value="0.33" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/activity_favorites_add_fragment.xml" value="0.3625" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/activity_lock_screen.xml" value="0.18541666666666667" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/activity_main.xml" value="0.18541666666666667" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/activity_permisstion.xml" value="0.5" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/activity_setting_call_flash_preview.xml" value="0.18958333333333333" />
@@ -35,19 +53,26 @@
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/custom_diglog_favourite.xml" value="0.18541666666666667" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/dialog_create_contact.xml" value="0.18541666666666667" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/dialog_remove_fav.xml" value="0.18541666666666667" />
-        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/dialpad.xml" value="0.18802083333333333" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/dialpad.xml" value="0.22" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/dialpad_key.xml" value="0.18802083333333333" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/dialpad_key_pound.xml" value="0.36666666666666664" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/dialpad_key_star.xml" value="0.3625" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/fragment_call_log.xml" value="0.3625" />
-        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/fragment_contact.xml" value="0.3625" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/fragment_contact.xml" value="0.2" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/fragment_dialpad.xml" value="0.18802083333333333" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/fragment_fav_search.xml" value="0.25" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/fragment_favorite.xml" value="0.18541666666666667" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/fragment_setting.xml" value="0.18541666666666667" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/header_list_contact.xml" value="0.18541666666666667" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/item_add_time_zone.xml" value="0.3625" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/item_call_log.xml" value="0.5" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/item_call_log_detail_contact_detail.xml" value="0.18541666666666667" />
-        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/item_contact.xml" value="0.3625" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/item_contact.xml" value="0.5" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/item_header_calllog.xml" value="0.18541666666666667" />
-        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/item_header_contact.xml" value="0.3625" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/item_header_contact.xml" value="0.67" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/layout_incoming_call_notification.xml" value="0.5" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/permission_generate.xml" value="0.18" />
+        <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/sub_item_mail.xml" value="0.5" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/sub_item_phone_number.xml" value="0.33" />
       </map>
     </option>

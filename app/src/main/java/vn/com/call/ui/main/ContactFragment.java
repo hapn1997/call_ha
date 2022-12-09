@@ -5,8 +5,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.ContentObserver;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.ContactsContract;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -54,6 +57,8 @@ import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import com.phone.thephone.call.dialer.R;
 import vn.com.call.RecyclerSectionItemDecoration;
+import vn.com.call.editCall.CallerHelper;
+import vn.com.call.widget.AvatarView;
 import vn.com.call.widget.SideBar;
 import vn.com.call.adapter.HorizontalContactAdapter;
 import vn.com.call.db.ContactHelper;
@@ -97,6 +102,11 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
     TextView tvTabCancel;
     @BindView(R.id.relative_search)
     RelativeLayout relative_search;
+    @BindView(R.id.rl_mycards)
+    RelativeLayout rl_mycards;
+    @BindView(R.id.iv_myavatar)
+    AvatarView iv_myavatar;
+
     @BindView(R.id.relative_tool_bar)
     RelativeLayout relative_tool_bar;
     @BindView(R.id.relative_searchchinh)
@@ -164,11 +174,20 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int i) {
-                if(i== (-appBarLayout.getTotalScrollRange())){
+//                if(i== (-appBarLayout.getTotalScrollRange())){
+                if(i <-150){
                     tvTabTitle.setVisibility(View.VISIBLE);
                     newMessageTitle.setVisibility(View.VISIBLE);
+                    if (i< -340){
+                        relative_search.setVisibility(View.VISIBLE);
+                    }else if (i > -340){
+                        relative_search.setVisibility(View.GONE);
+                    }
                     return;
                 }
+
+
+
                 tvTabTitle.setVisibility(View.GONE);
                 newMessageTitle.setVisibility(View.GONE);
             }
@@ -219,16 +238,23 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
                 Fragment fragment = new ContactFragment();
                 relative_tool_bar.setVisibility(View.VISIBLE);
                 relative_search.setVisibility(View.GONE);
-                appBarLayout.setExpanded(true,true);
+//                appBarLayout.setExpanded(true,true);
                 relativeLayout_change.setVisibility(View.VISIBLE);
                 edt_message.setVisibility(View.VISIBLE);
                 InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(
                         mInputSearch.getWindowToken(), 0);
-                  ContactFragment.this.getFragmentManager().beginTransaction().detach(ContactFragment.this).attach(ContactFragment.this).commit();
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.remove(mSearchFragment).commit();
+                initRecyclerView();
+//                  ContactFragment.this.getFragmentManager().beginTransaction().detach(ContactFragment.this).attach(ContactFragment.this).commit();
+//                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                fragmentTransaction.remove(mSearchFragment).commit();
 
+
+            }
+        });
+        rl_mycards.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
             }
         });
@@ -247,7 +273,8 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
             public void onClick(CallOrSms callOrSms) {
                 if (!showPopup(callOrSms, false)) {
                 if (callOrSms.isCall()) {
-                    CallUtils.makeCall(getActivity(), callOrSms.getPhoneNumber());
+//                    CallUtils.makeCall(getActivity(), callOrSms.getPhoneNumber());
+                    CallerHelper.startPhoneAccountChooseActivity(getActivity(), callOrSms.getPhoneNumber());
                 } else {
                     Conversation conversation = new Conversation(getActivity(), new String[]{callOrSms.getPhoneNumber()});
                    //hasua ConversationActivity.launch(getActivity(), conversation, BaseConstant.REQUEST_CODE_SHOW_POPUP);
@@ -260,8 +287,9 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
         mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mList.setLayoutManager(mLayoutManager);
         mList.setAdapter(mAdapter);
+
          sectionItemDecoration =
-                new RecyclerSectionItemDecoration(getResources().getDimensionPixelSize(R.dimen._20sdp),
+                new RecyclerSectionItemDecoration(getResources().getDimensionPixelSize(R.dimen._40sdp),
                         true,
                         getSectionCallback(getData()));
         mList.addItemDecoration(sectionItemDecoration);
@@ -317,18 +345,18 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
                     mClear.setVisibility(View.VISIBLE);
                     //ivUpgrade.setVisibility(View.GONE);
                     mInputSearch.setHint(R.string.hint_search_main);
-                    mSearchFragment = new SearchFragment();
+//                    mSearchFragment = new SearchFragment();
                     mInputSearch.setTextColor(R.color.avatar);
-                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.search_content, mSearchFragment);
-                    SupportFragmentTransactionDelegate supportFragmentTransactionDelegate = new SupportFragmentTransactionDelegate();
-
-                    supportFragmentTransactionDelegate.safeCommit(new TransactionCommitter() {
-                        @Override
-                        public boolean isCommitterResumed() {
-                            return true;
-                        }
-                    }, ft);
+//                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction()
+//                            .replace(R.id.search_content, mSearchFragment);
+//                    SupportFragmentTransactionDelegate supportFragmentTransactionDelegate = new SupportFragmentTransactionDelegate();
+//
+//                    supportFragmentTransactionDelegate.safeCommit(new TransactionCommitter() {
+//                        @Override
+//                        public boolean isCommitterResumed() {
+//                            return true;
+//                        }
+//                    }, ft);
                 } else {
                     img_search_1.setImageResource(R.drawable.ic_search_gray);
                   //  mSearchContainer.setVisibility(View.GONE);
@@ -339,7 +367,7 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
                 }
             }
         });
-
+        List<ContactSectionEntity> contactSectionEntitiesSearch = new ArrayList<>();
         mInputSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -347,10 +375,22 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (mSearchFragment != null){
-                    mSearchFragment.changeKeyword(s.toString());
-
+                if (s.length() >0){
+                    contactSectionEntitiesSearch.clear();
+                    for (ContactSectionEntity contactSectionEntity: contactSectionEntities){
+                        if (contactSectionEntity.t.getName().toLowerCase().contains(s.toString().toLowerCase())){
+                            contactSectionEntitiesSearch.add(contactSectionEntity);
+                        }
+                    }
+                    mAdapter = new ContactAdapter(contactSectionEntitiesSearch);
+                    mList.setAdapter(mAdapter);
+                    mList.removeItemDecoration(sectionItemDecoration);
                 }
+
+//                if (mSearchFragment != null){
+//                    mSearchFragment.changeKeyword(s.toString());
+//
+//                }
 
 
             }
@@ -369,7 +409,8 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
         if (object instanceof CallOrSms) {
             CallOrSms callOrSms = (CallOrSms) object;
             if (callOrSms.isCall()) {
-                CallUtils.makeCall(getActivity(), callOrSms.getPhoneNumber());
+//                CallUtils.makeCall(getActivity(), callOrSms.getPhoneNumber());
+                CallerHelper.startPhoneAccountChooseActivity(getActivity(), callOrSms.getPhoneNumber());
             } else {
                 Conversation conversation = new Conversation(getActivity(), new String[]{callOrSms.getPhoneNumber()});
                // ConversationActivity.launch(getActivity(), conversation);
@@ -432,14 +473,14 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
     @Override
     public void onResume() {
         super.onResume();
-
      checkPermission();
     }
 
     protected void loadAndShowData() {
         commitData(ContactCache.getContacts());
+        getContext().getContentResolver().registerContentObserver(ContactsContract.Contacts.CONTENT_URI, true, new MyObserver());
 
-        ContactFragmentPermissionsDispatcher.readContactWithCheck(this);
+//        ContactFragmentPermissionsDispatcher.readContactWithCheck(this);
     }
 
     @Override
@@ -564,6 +605,35 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
                appBarLayout.setExpanded(false);
 
             mList.smoothScrollToPosition(position);
+        }
+    }
+    class MyObserver extends ContentObserver {
+        // left blank below constructor for this Contact observer example to work
+// or if you want to make this work using Handler then change below registering  //line
+        public MyObserver() {
+            super(null);
+        }
+
+        @Override
+        public boolean deliverSelfNotifications() {
+            return super.deliverSelfNotifications();
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            ContactFragmentPermissionsDispatcher.readContactWithCheck(ContactFragment.this);
+
+            this.onChange(selfChange);
+            // Override this method to listen to any changes
+        }
+
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            super.onChange(selfChange, uri);
+
+            ContactFragmentPermissionsDispatcher.readContactWithCheck(ContactFragment.this);
+
+            //On Contact add/delete this method is fired
         }
     }
 }

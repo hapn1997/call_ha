@@ -27,4 +27,6 @@
     <color name="bg_outgoing_message">#e6e5eb</color>
     <color name="snippet_text_color">#A2A1A6</color>
     <color name="custom_grey">#f8f8f8</color>
+    <color name="md_grey_black">#000000</color>
+    <color name="md_indigo_A200">#d972727c</color>
 </resources>

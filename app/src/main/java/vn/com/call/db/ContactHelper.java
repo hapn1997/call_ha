@@ -1,14 +1,19 @@
 package vn.com.call.db;
 
 import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.AssetFileDescriptor;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import androidx.annotation.NonNull;
 import android.text.TextUtils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -221,6 +226,8 @@ public class ContactHelper {
                     contact.setAddress(getAddress(cr, id));
                     contact.setWebsites(getWebsite(cr, id));
                     contact.setBirthday(getBirthday(cr, id));
+                    contact.setNote(getNote(cr, id));
+                    contact.setPhoto(getPhoto(cr, id));
                 }
 
                 if (!subscriber.isUnsubscribed()) {
@@ -350,6 +357,39 @@ public class ContactHelper {
 
                     default: return "Unknown";
                 }
+            }
+            private String getPhoto(ContentResolver cr,String contactId) {
+                Uri contactUri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, Long.parseLong(contactId));
+                Uri displayPhotoUri = Uri.withAppendedPath(contactUri, ContactsContract.Contacts.Photo.DISPLAY_PHOTO);
+                return  displayPhotoUri.toString();
+//                try {
+//                    AssetFileDescriptor fd =
+//                            cr.openAssetFileDescriptor(displayPhotoUri, "r");
+//                    Bitmap photoAsBitmap = BitmapFactory.decodeStream(fd.createInputStream());
+//
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+            }
+            private String getNote(ContentResolver cr,String contactId) {
+//                ContentValues values = new ContentValues();
+                String note = null;
+//                values.clear();
+                String noteWhere = ContactsContract.Data.CONTACT_ID + " = ? AND " + ContactsContract.Data.MIMETYPE + " = ?";
+                String[] noteWhereParams = new String[]{contactId,ContactsContract.CommonDataKinds.Note.CONTENT_ITEM_TYPE};
+//                values.put(ContactsContract.CommonDataKinds.Note.NOTE, "NEW NOTE HERE!!!!");
+//
+//                cr.update(ContactsContract.Data.CONTENT_URI, values, noteWhere, noteWhereParams);
+//
+                Cursor noteCur = cr.query(ContactsContract.Data.CONTENT_URI, null, noteWhere, noteWhereParams, null);
+                if (noteCur.moveToFirst()) {
+
+                  note =  noteCur.getString(noteCur.getColumnIndex(ContactsContract.CommonDataKinds.Note.NOTE));
+                    noteCur.close();
+                }
+                if (noteCur !=null) noteCur.close();
+                return note;
+
             }
         });
     }

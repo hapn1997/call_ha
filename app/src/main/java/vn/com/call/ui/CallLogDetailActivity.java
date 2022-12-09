@@ -22,6 +22,7 @@ import permissions.dispatcher.RuntimePermissions;
 
 import com.phone.thephone.call.dialer.R;
 import vn.com.call.adapter.CallLogDetailAdapter;
+import vn.com.call.editCall.CallerHelper;
 import vn.com.call.model.calllog.CallLog;
 import vn.com.call.utils.CallUtils;
 import vn.com.call.widget.AvatarView;
@@ -54,7 +55,8 @@ public class CallLogDetailActivity extends BaseActivity {
 
     @NeedsPermission(Manifest.permission.CALL_PHONE)
     void makeCall() {
-        CallUtils.makeCall(this, mCallLog.getNumber());
+//        CallUtils.makeCall(this, mCallLog.getNumber());
+        CallerHelper.startPhoneAccountChooseActivity(this, mCallLog.getNumber());
     }
 
     @OnShowRationale(Manifest.permission.CALL_PHONE)

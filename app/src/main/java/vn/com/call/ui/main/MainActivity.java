@@ -215,6 +215,7 @@ public class MainActivity extends BaseActivity {
         fragments.add(new CallLogFragment());
         fragments.add(new ContactFragment());
         fragments.add(new DialpadFragment());
+        fragments.add(new SettingFragment());
 
 
 //        fragments.add(ListThreadSmsFragment.newInstance());
@@ -295,12 +296,11 @@ public class MainActivity extends BaseActivity {
                             if (!showPopup(FragNavController.TAB3, false)) {
                                 mFragNavController.switchTab(FragNavController.TAB3);
                             }
+                        } else if (tabId == R.id.tab_setting && mFragNavController.getCurrentStackIndex() != FragNavController.TAB5) {
+                            if (!showPopup(FragNavController.TAB5, false)) {
+                                mFragNavController.switchTab(FragNavController.TAB5);
+                            }
                         }
-//                else if (tabId == R.id.tab_settings && mFragNavController.getCurrentStackIndex() != FragNavController.TAB5) {
-//                    if (!showPopup(FragNavController.TAB5, false)) {
-//                        mFragNavController.switchTab(FragNavController.TAB5);
-//                    }
-//                }
                     }
                 });
     }

@@ -1,6 +1,7 @@
 package vn.com.call.ui;
 
 import android.content.DialogInterface;
+import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
@@ -25,6 +26,7 @@ import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.util.Pair;
 import androidx.core.view.ViewCompat;
+import androidx.core.widget.ImageViewCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
@@ -39,6 +41,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -62,6 +65,7 @@ import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 import vn.com.call.db.cache.CallLogHelper;
+import vn.com.call.editCall.CallerHelper;
 import vn.com.call.ui.main.FavoritesAddFragment;
 import vn.com.call.widget.AvatarView;
 import vn.com.call.db.ContactHelper;
@@ -129,6 +133,14 @@ public class ContactDetailActivity extends BaseActivity {
      LinearLayout deleteContact;
     @BindView(R.id.share_contact)
      LinearLayout share_contact;
+    @BindView(R.id.email)
+    ImageView email;
+    @BindView(R.id.desc_mail)
+    TextView desc_mail;
+    @BindView(R.id.ll_email)
+    LinearLayout ll_email;
+    @BindView(R.id.et_note)
+    EditText et_note;
     @BindView(R.id.new_contact)
      LinearLayout new_contact;
     @OnClick(R.id.new_contact)
@@ -147,14 +159,16 @@ public class ContactDetailActivity extends BaseActivity {
             dialog.setOnChooseNumberListener(new ChooseNumberDialogFragment.OnChooseNumberListener() {
                 @Override
                 public void onChoosePhoneNumber(String number) {
-                    CallUtils.makeCall(ContactDetailActivity.this, number);
+//                    CallUtils.makeCall(ContactDetailActivity.this, number);
+                    CallerHelper.startPhoneAccountChooseActivity(ContactDetailActivity.this, number);
                 }
             });
 
             dialog.show(getSupportFragmentManager(), "choose_number_call");
         } else {
             if (mContact.getNumbers().size() > 0)
-                CallUtils.makeCall(ContactDetailActivity.this, mContact.getNumbers().get(0).getNumber());
+//                CallUtils.makeCall(ContactDetailActivity.this, mContact.getNumbers().get(0).getNumber());
+            CallerHelper.startPhoneAccountChooseActivity(ContactDetailActivity.this, mContact.getNumbers().get(0).getNumber());
         }
     }
 
@@ -549,10 +563,12 @@ public class ContactDetailActivity extends BaseActivity {
         mLayoutPhoneAndEmail.removeAllViews();
 
         if ((mContact.getNumbers() != null && mContact.getNumbers().size() > 0)
-                || (mContact.getEmailContacts() != null && mContact.getEmailContacts().size() > 0)) {
+                || (mContact.getEmailContacts() != null && mContact.getEmailContacts().size() > 0) || mContact.getNote() !=null && mContact.getNote().length() > 0) {
             showPhoneNumbers();
             showEmails();
             showAddress();
+            showNote();
+
         } else {
             showContactEmpty();
         }
@@ -583,7 +599,8 @@ public class ContactDetailActivity extends BaseActivity {
                 layoutPhoneNumber.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        CallUtils.makeCall(ContactDetailActivity.this, phoneNumber.getNumber());
+//                        CallUtils.makeCall(ContactDetailActivity.this, phoneNumber.getNumber());
+                        CallerHelper.startPhoneAccountChooseActivity(ContactDetailActivity.this, phoneNumber.getNumber());
                     }
                 });
 
@@ -603,6 +620,25 @@ public class ContactDetailActivity extends BaseActivity {
         List<EmailContact> emails = mContact.getEmailContacts();
 
         if (emails != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && emails.size() > 0) {
+                ImageViewCompat.setImageTintList(email, ColorStateList.valueOf(getApplicationContext().getColor(R.color.blue_ios)));
+
+//                email.setBackgroundTintList(ColorStateList.valueOf(getApplicationContext().getColor(R.color.blue_ios)));
+
+                desc_mail.setTextColor(getApplicationContext().getColor(R.color.blue_ios));
+                ll_email.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                                "mailto", emails.get(0).getEmail(), null));
+
+                        startActivity(Intent.createChooser(emailIntent, "Send email..."));
+                    }
+                });
+            }else {
+                ll_email.setOnClickListener(null);
+            }
             if (mContact.getNumbers() != null && mContact.getNumbers().size() > 0)
                 mLayoutPhoneAndEmail.addView(getLineView(mLayoutPhoneAndEmail));
 
@@ -618,7 +654,7 @@ public class ContactDetailActivity extends BaseActivity {
 
                 emailText.setText(email.getEmail());
                 emailType.setText(email.getType());
-                emailButton.setVisibility(i == 0 ? View.VISIBLE : View.INVISIBLE);
+//                emailButton.setVisibility(i == 0 ? View.VISIBLE : View.INVISIBLE);
 
                 layoutEmail.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -634,6 +670,20 @@ public class ContactDetailActivity extends BaseActivity {
             }
         }
     }
+
+    private void showNote() {
+        String note = mContact.getNote();
+        if (note != null && note.length() > 0) {
+            et_note.setText(note);
+
+        }
+//        content://com.android.contacts/display_photo/22
+        if (mContact.getPhoto() !=null && !mContact.getPhoto().contains("/contacts/") ){
+            mAvatar.loadAvatar(mContact.getPhoto(),ContactHelper.getContactName(getApplicationContext(),mContact.getNumbers().get(0).getNumber()),mContact.getNumbers().get(0).getNumber());
+        }
+
+    }
+
 
     private void showAddress() {
         String address = mContact.getAddress();

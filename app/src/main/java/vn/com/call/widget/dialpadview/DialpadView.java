@@ -39,6 +39,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import com.phone.thephone.call.dialer.R;
 import vn.com.call.bus.DismissTouchbar;
+import vn.com.call.editCall.CallerHelper;
 import vn.com.call.model.contact.Contact;
 import vn.com.call.utils.CallUtils;
 import vn.com.call.utils.ScreenUtils;
@@ -130,7 +131,7 @@ public class DialpadView extends FrameLayout implements View.OnClickListener,Vie
         mRow4 = mDialpad.findViewById(R.id.row4);
 
         mInputNumber.setRawInputType(InputType.TYPE_CLASS_PHONE);
-        mInputNumber.setTextIsSelectable(true);
+//        mInputNumber.setTextIsSelectable(true);
         mInputNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -179,6 +180,7 @@ public class DialpadView extends FrameLayout implements View.OnClickListener,Vie
         onChangedSimState();
 
         mBackspace.setOnClickListener(this);
+        mBackspace.setOnLongClickListener(this);
         mDialpad.findViewById(R.id.addnumber).setOnClickListener(this);
         //mDialpad.findViewById(R.id.add_contact).setOnClickListener(this);
         mDialpad.findViewById(R.id.key_zero).setOnClickListener(this);
@@ -301,7 +303,9 @@ public class DialpadView extends FrameLayout implements View.OnClickListener,Vie
                 showSetting(getContext());
                 break;
             case R.id.backspace :
-                mInputNumber.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
+//                mInputNumber.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
+                mInputNumber.setText(method(mInputNumber.getText().toString()));
+
                 break;
 //            case R.id.add_contact :
 //
@@ -385,7 +389,8 @@ public class DialpadView extends FrameLayout implements View.OnClickListener,Vie
                 break;
             case R.id.call_single_sim :
                 if (isValidNumber()) {
-                    CallUtils.makeCall(getContext(), mInputNumber.getText().toString());
+                    CallerHelper.startPhoneAccountChooseActivity(getContext(),mInputNumber.getText().toString());
+//                    CallUtils.makeCall(getContext(), mInputNumber.getText().toString());
 
                     sendDismissTouchbar();
                 }
@@ -397,7 +402,12 @@ public class DialpadView extends FrameLayout implements View.OnClickListener,Vie
                 break;
         }
     }
-
+    public String method(String str) {
+        if (str != null && str.length() > 0 ) {
+            str = str.substring(0, str.length() - 1);
+        }
+        return str;
+    }
     private boolean isValidNumber() {
         return mInputNumber.getText().toString().trim().length() > 0;
     }
@@ -516,7 +526,11 @@ public class DialpadView extends FrameLayout implements View.OnClickListener,Vie
                 mInputNumber.append("+");
 
                 break;
+            case R.id.backspace:
+                mInputNumber.setText("");
+
+                break;
         }
-        return false;
+        return true;
     }
 }

@@ -7,6 +7,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.telecom.Call;
+import android.telecom.InCallService;
+
 import androidx.core.app.ActivityCompat;
 
 import vn.com.call.db.RecentDb;
@@ -17,6 +20,10 @@ import vn.com.call.db.RecentDb;
  */
 
 public class CallUtils {
+
+        public static Call callMain;
+        public static InCallService inCallService;
+
     public static void makeCall(Context context, String number) {
         Intent callIntent = new Intent(Intent.ACTION_CALL, getPhoneUri(number));
 

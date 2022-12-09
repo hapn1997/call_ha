@@ -5,24 +5,19 @@
 
     <uses-feature
         android:name="android.hardware.fingerprint"
-        android:required="false" />
-<!--    <uses-permission android:name="android.permission.SEND_SMS" />-->
-
-
-<!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
-<!--    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
+        android:required="false" /> <!-- <uses-permission android:name="android.permission.SEND_SMS" /> -->
+    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
+    <!-- <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> -->
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-    <uses-permission android:name="android.permission.READ_USER_DICTIONARY" /> <!-- <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" /> -->
+    <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
+    <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.MANAGE_OWN_CALLS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.provider.Telephony.SMS_RECEIVED" />
-<!--    <uses-permission android:name="android.permission.INTERNET" />-->
-<!--    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
-<!--    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />-->
-<!--    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />-->
+    <uses-permission android:name="android.provider.Telephony.SMS_RECEIVED" /> <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
@@ -34,9 +29,9 @@
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-<!--    <uses-permission-->
-<!--        android:name="android.permission.PACKAGE_USAGE_STATS"-->
-<!--        tools:ignore="ProtectedPermissions" />-->
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
 
     <application
         android:name="vn.com.call.App"
@@ -46,6 +41,27 @@
         android:roundIcon="@drawable/phone"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name="vn.com.call.editCall.MyConnectionService"
+            android:enabled="true"
+            android:exported="true"
+
+            android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE">
+                <intent-filter>
+                    <action android:name="android.telecom.ConnectionService" />
+                </intent-filter>
+            </service>
+
+        <activity
+            android:name="vn.com.call.editCall.PhoneAccountChooseActivity"
+            android:taskAffinity=".phone_account_choose.PhoneAccountChooseActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:noHistory="true"/>
+
+        <activity
+            android:name="vn.com.call.ui.CallActivity"
+            android:exported="false" />
         <activity
             android:name="vn.com.call.ui.intro.IntroActivity"
             android:exported="false" />
@@ -197,6 +213,16 @@
         </activity>
         <activity android:name="vn.com.call.ui.main.MainActivity">
             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <!-- <data android:mimeType="vnd.android.cursor.dir/calls"/> -->
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.DIAL" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -208,6 +234,15 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.DIAL" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tel" />
+            </intent-filter>
         </activity>
         <activity
             android:name="vn.com.call.ui.intro.IntroSplashActivity"
@@ -216,6 +251,34 @@
         <meta-data
             android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule"
             android:value="GlideModule" />
+
+        <service
+            android:name="vn.com.call.call.service.CallService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_INCALL_SERVICE">
+            <meta-data
+                android:name="android.telecom.IN_CALL_SERVICE_UI"
+                android:value="true" />
+
+            <intent-filter>
+                <action android:name="android.telecom.InCallService" />
+            </intent-filter>
+        </service>
+        <receiver android:name="vn.com.call.call.service.CallReceiver" android:enabled="true" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+
+        </receiver>
+        <receiver android:name="vn.com.call.call.service.MissedCallNotificationReceiver" android:exported="true" android:directBootAware="true">
+            <intent-filter>
+                <action android:name="android.telecom.action.SHOW_MISSED_CALLS_NOTIFICATION"/>
+            </intent-filter>
+        </receiver>
 
         <service
             android:name="vn.com.call.call.util.NotificationServiceCustom"
@@ -228,6 +291,7 @@
         <receiver
             android:name="vn.com.call.call.service.PhoneStateReceiver"
             android:enabled="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
@@ -236,6 +300,8 @@
         <service
             android:name="vn.com.call.call.service.ServiceCallRing"
             android:enabled="true" />
+        <service android:name="vn.com.call.editCall.NotificationActionService"/>
+
     </application>
 
 </manifest>

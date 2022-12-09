@@ -9,7 +9,12 @@
         <item name="android:textColor">@color/colorBlue</item>
         <item name="android:fontFamily">@font/ios_regular</item>
     </style>
-
+    <style name="SlideToActView.Example" parent="@style/SlideToActView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/_500sdp</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:elevation">6dp</item>
+    </style>
     <style name="DetailContact.Tools.Item">
 
         <item name="android:layout_width">0dp</item>

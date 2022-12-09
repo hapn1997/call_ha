@@ -101,4 +101,10 @@ dependencies {
     implementation 'me.saket:better-link-movement-method:2'
     implementation 'com.github.piasy:safelyandroid:1.2.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+    implementation 'com.intuit.ssp:ssp-android:1.1.0'
+    implementation "com.ncorti:slidetoact:0.9.0"
+    implementation 'com.romainpiel.shimmer:library:1.4.0@aar'
+
+
 }

@@ -29,6 +29,7 @@ import vn.com.call.adapter.listener.OnClickViewConversationListener;
 import vn.com.call.adapter.listener.OnClickViewFavoritesListener;
 import vn.com.call.adapter.viewholder.ContactViewHolder;
 import vn.com.call.call.adapter.CallFlashSelectAdapter;
+import vn.com.call.editCall.CallerHelper;
 import vn.com.call.model.contact.Contact;
 import vn.com.call.model.contact.PhoneNumber;
 import vn.com.call.model.sms.Conversation;
@@ -55,7 +56,6 @@ public class ContactAdapter extends BaseSectionQuickAdapter<ContactSectionEntity
 
     public ContactAdapter(List<ContactSectionEntity> data) {
         super(R.layout.item_contact, R.layout.item_header_contact, data);
-
         this.data = data;
 
     }
@@ -66,7 +66,10 @@ public class ContactAdapter extends BaseSectionQuickAdapter<ContactSectionEntity
         this.onClickContactListener = onClickContactListener;
     }
 
-
+   public void filter(List<ContactSectionEntity> data){
+        this.data = data;
+        notifyDataSetChanged();
+   }
 
 
     @Override
@@ -125,7 +128,9 @@ public class ContactAdapter extends BaseSectionQuickAdapter<ContactSectionEntity
                     }
                     else {
                         Log.d("dsđs", phoneNumbers.get(0).getNumber());
-                        CallUtils.makeCall(mContext, phoneNumbers.get(0).getNumber());
+                        CallerHelper.startPhoneAccountChooseActivity(mContext,phoneNumbers.get(0).getNumber());
+
+//                        CallUtils.makeCall(mContext, phoneNumbers.get(0).getNumber());
                     };
                 }
             }

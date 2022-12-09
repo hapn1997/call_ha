@@ -17,6 +17,7 @@ import java.util.List;
 import com.phone.thephone.call.dialer.R;
 import vn.com.call.adapter.HorizontalContactAdapter;
 import vn.com.call.db.cache.ContactCache;
+import vn.com.call.editCall.CallerHelper;
 import vn.com.call.model.calllog.CallLog;
 import vn.com.call.model.contact.Contact;
 import vn.com.call.model.contact.PhoneNumber;
@@ -86,10 +87,12 @@ public class OnClickViewCallLogListener {
     }
 
     public void onClickCall(String number) {
-        CallUtils.makeCall(context, number);
+//        CallUtils.makeCall(context, number);
+        CallerHelper.startPhoneAccountChooseActivity(context, number);
     }
 
     public void onClickCall(Activity activity, String number, int requestCode) {
+        CallUtils.makeCall(activity, number, requestCode);
         CallUtils.makeCall(activity, number, requestCode);
     }
 

@@ -114,6 +114,16 @@
     <dimen name="text_size_list_item_text_small">15sp</dimen>
     <dimen name="margin_horizontal_small">10dp</dimen>
     <dimen name="sp_20">20sp</dimen>
+    <dimen name="bigger_text_size">16sp</dimen>
+    <dimen name="normal_margin">12dp</dimen>
+    <dimen name="incoming_call_button_size">72dp</dimen>
+    <dimen name="call_status_text_size">20sp</dimen>
+    <dimen name="dialpad_button_size">60dp</dimen>
+    <dimen name="dialpad_text_size">30sp</dimen>
+    <dimen name="normal_icon_size">48dp</dimen>
+    <dimen name="activity_margin">16dp</dimen>
+    <dimen name="medium_margin">8dp</dimen>
+    <dimen name="caller_name_text_size">34sp</dimen>
 
 
 </resources>

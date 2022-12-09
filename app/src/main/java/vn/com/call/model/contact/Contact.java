@@ -40,6 +40,7 @@ public class Contact implements Parcelable {
     private List<String> websites;
     private boolean selected;
     private String callorrsms;
+    private String note;
 
     public String getCallorrsms() {
         return callorrsms;
@@ -158,6 +159,13 @@ public class Contact implements Parcelable {
         this.selected = selected;
     }
 
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
 
     public void delete(final Context context, boolean showConfirm, final boolean finishAfterDelete) {
         if (showConfirm) {
@@ -259,6 +267,7 @@ public class Contact implements Parcelable {
         dest.writeStringList(this.websites);
         dest.writeByte(this.selected ? (byte) 1 : (byte) 0);
         dest.writeString(this.callorrsms);
+        dest.writeString(this.note);
 
     }
 
@@ -275,6 +284,7 @@ public class Contact implements Parcelable {
         this.websites = in.createStringArrayList();
         this.selected = in.readByte() != 0;
         this.callorrsms = in.readString();
+        this.note = in.readString();
     }
 
     public static final Creator<Contact> CREATOR = new Creator<Contact>() {

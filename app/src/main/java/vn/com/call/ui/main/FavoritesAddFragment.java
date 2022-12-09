@@ -55,6 +55,7 @@ import vn.com.call.adapter.listener.OnClickFav;
 import vn.com.call.adapter.listener.OnClickViewFavoritesListener;
 import vn.com.call.db.ContactHelper;
 import vn.com.call.db.cache.ContactCache;
+import vn.com.call.editCall.CallerHelper;
 import vn.com.call.model.contact.Contact;
 import vn.com.call.ui.BaseFragment;
 import vn.com.call.ui.search.searchF;
@@ -205,7 +206,8 @@ public class FavoritesAddFragment extends BaseFragment implements OnClickFav {
             public void onClick(CallOrSms callOrSms) {
                 if (!showPopup(callOrSms, false)) {
                 if (callOrSms.isCall()) {
-                    CallUtils.makeCall(getActivity(), callOrSms.getPhoneNumber());
+//                    CallUtils.makeCall(getActivity(), callOrSms.getPhoneNumber());
+                    CallerHelper.startPhoneAccountChooseActivity(getActivity(), callOrSms.getPhoneNumber());
                 } else {
                     Conversation conversation = new Conversation(getActivity(), new String[]{callOrSms.getPhoneNumber()});
                     //hasua ConversationActivity.launch(getActivity(), conversation, BaseConstant.REQUEST_CODE_SHOW_POPUP);
