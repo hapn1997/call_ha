@@ -2,6 +2,7 @@ package vn.com.call.editCall;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Handler;
 import android.telecom.Call;
 
@@ -35,7 +36,7 @@ public class NotificationActionService  extends IntentService {
 
                     Intent intent1 = new Intent(NotificationActionService.this, CallActivity.class);
                     intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK );
-                    intent1.putExtra(TelecomUtils.OnIncomingCallReceived,TelecomUtils.OnIncomingCallReceived);
+                    intent1.putExtra(TelecomUtils.OnIncomingCallAnswered,TelecomUtils.OnIncomingCallAnswered);
                     NotificationActionService.this.startActivity(intent1);
 
                 }
@@ -44,6 +45,13 @@ public class NotificationActionService  extends IntentService {
             List<Call> allCalls = CallerHelper.getInstances().getAllCalls();
             if (!(allCalls == null || allCalls.isEmpty())) {
                 if (allCalls.size() == 1) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (allCalls.get(0).getState() == Call.STATE_RINGING){
+                            allCalls.get(0).reject(false,null);
+                        }else {
+                            allCalls.get(0).disconnect();
+                        }
+                    }
                     NotificationUtils.removeNotificationFromID(NotificationActionService.this, Constants.ACCEPT_DECLINE_NOTIFICATION_ID);
                 }
             }

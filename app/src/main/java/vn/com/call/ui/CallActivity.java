@@ -34,6 +34,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import vn.com.call.db.ContactHelper;
+import vn.com.call.editCall.Constants;
+import vn.com.call.editCall.NotificationActionService;
+import vn.com.call.editCall.NotificationUtils;
 import vn.com.call.editCall.TelecomUtils;
 import vn.com.call.utils.CallUtils;
 
@@ -44,7 +47,7 @@ public class CallActivity extends AppCompatActivity {
      boolean isMuteConfig;
      ConstraintLayout ongoing_call_holder,incoming_call_holder;
     ShimmerTextView shimmerTextView;
-    TextView caller_name_label,call_status_label;
+    TextView caller_name_label,call_status_label,call_decline_label,tvDecline;
     SlideToActView slideToActView2;
     int countTime = 0;
     public Timer timer = new Timer();
@@ -67,14 +70,34 @@ public class CallActivity extends AppCompatActivity {
         caller_name_label= findViewById(R.id.caller_name_label);
         call_status_label= findViewById(R.id.call_status_label);
         slideToActView2= findViewById(R.id.stop_alarm);
+        call_decline_label= findViewById(R.id.call_decline_label);
+        tvDecline= findViewById(R.id.tvDecline);
+
         if (slideToActView2 != null) {
             slideToActView2.setOuterColor(Color.parseColor("#969a95"));
         }
         String stateRing = getIntent().getStringExtra(TelecomUtils.OnIncomingCallReceived);
+        String stateRing1 = getIntent().getStringExtra(TelecomUtils.OnIncomingCallAnswered);
         if (stateRing != null && stateRing.equals(TelecomUtils.OnIncomingCallReceived)){
             incoming_call_holder.setVisibility(View.VISIBLE);
             ongoing_call_holder.setVisibility(View.GONE);
+
         }
+        if (stateRing1 != null && stateRing1.equals(TelecomUtils.OnIncomingCallAnswered)){
+            incoming_call_holder.setVisibility(View.GONE);
+            ongoing_call_holder.setVisibility(View.VISIBLE);
+            Call call = CallUtils.callMain;
+            if (call!=null){
+                call.answer(0);
+            }
+           callAnwser();
+        }
+        tvDecline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnOutgoingCallEnded();
+            }
+        });
         slideToActView2.setOnSlideCompleteListener(new SlideToActView.OnSlideCompleteListener() {
             @Override
             public void onSlideComplete(SlideToActView slideToActView) {
@@ -177,12 +200,13 @@ public class CallActivity extends AppCompatActivity {
            ongoing_call_holder.setVisibility(View.VISIBLE);
            return;
        }else  if (state == TelecomUtils.OnOutgoingCallEnded){
-
+           OnOutgoingCallEnded();
            return;
        }else  if (state == TelecomUtils.OnOutgoingCallAnswered){
           callAnwser();
            return;
        }else  if (state == TelecomUtils.OnMissedCall){
+           NotificationUtils.removeNotificationFromID(this, Constants.ACCEPT_DECLINE_NOTIFICATION_ID);
            OnOutgoingCallEnded();
 
            return;
@@ -217,6 +241,7 @@ public class CallActivity extends AppCompatActivity {
 
     }
     private void callAnwser(){
+        NotificationUtils.removeNotificationFromID(this, Constants.ACCEPT_DECLINE_NOTIFICATION_ID);
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {

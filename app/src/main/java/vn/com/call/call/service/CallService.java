@@ -37,6 +37,9 @@ public class CallService  extends InCallService {
                 Toast.makeText(getApplicationContext(),"STATE_PULLING_CALL",Toast.LENGTH_SHORT).show();
 
             }else  if (call.getState() == Call.STATE_DIALING){
+                 Intent intent = new Intent(getApplicationContext(), CallActivity.class);
+                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK );
+                 getApplicationContext().startActivity(intent);
                 Toast.makeText(getApplicationContext(),"STATE_DIALING",Toast.LENGTH_SHORT).show();
 
             }
@@ -57,15 +60,17 @@ public class CallService  extends InCallService {
     public void onCallAdded(Call call) {
         super.onCallAdded(call);
         mCall = call;
-        Intent intent = new Intent(this, CallActivity.class);
+//        Intent intent = new Intent(this, CallActivity.class);
         CallUtils.callMain = call;
         CallUtils.inCallService = this;
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK );
-        startActivity(intent);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK );
+//        intent.putExtra(TelecomUtils.OnIncomingCallReceived,TelecomUtils.OnIncomingCallReceived);
+//        startActivity(intent);
         call.registerCallback(onListenerCall);
         if (call.getState() == Call.STATE_RINGING){
             NotificationUtils.createAcceptDeclineNotification(call,getApplicationContext());
         }
+
     }
     @Override
     public void onCallRemoved(Call call) {

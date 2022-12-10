@@ -94,10 +94,10 @@ public class NotificationUtils {
             Intent in = new Intent();
             in.setClass(context, CallActivity.class);
             in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//
+            in.putExtra(TelecomUtils.OnIncomingCallReceived,TelecomUtils.OnIncomingCallReceived);
             // The PendingIntent to launch activity.
             PendingIntent activityPendingIntent = PendingIntent.getActivity(context, 0,
-                    in, 0);
+                    in, PendingIntent.FLAG_UPDATE_CURRENT);
             remoteViews.setOnClickPendingIntent(R.id.imageViewAnswer, service2);
             remoteViews.setOnClickPendingIntent(R.id.imageViewDecline, service);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID);
@@ -108,6 +108,7 @@ public class NotificationUtils {
                     .setDefaults(Notification.DEFAULT_ALL)
 //                    .addAction(R.drawable.ic_call_end_gray_24dp, getActionText(context, R.string.decline, R.color.red), service)
 //                    .addAction(R.drawable.ic_call_gray_24dp, getActionText(context, R.string.decline, R.color.green), service2)
+                    .setContentIntent(activityPendingIntent)
                     .setPriority(NotificationCompat.PRIORITY_MAX)
                     .setCategory(NotificationCompat.CATEGORY_CALL)
                     .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
@@ -130,6 +131,7 @@ public class NotificationUtils {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
 
         notificationManager.cancel(null, i6);
+        notificationManager.cancelAll();
     }
 
 }
