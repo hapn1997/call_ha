@@ -75,6 +75,12 @@
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/sub_item_mail.xml" value="0.5" />
         <entry key="..\:/haAndroid/CALL/call_ha/app/src/main/res/layout/sub_item_phone_number.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_call.xml" value="0.15572916666666667" />
+        <entry key="app/src/main/res/layout/activity_call_log_detail.xml" value="0.15572916666666667" />
+        <entry key="app/src/main/res/layout/dialpad.xml" value="0.15572916666666667" />
+        <entry key="app/src/main/res/layout/dialpad_key.xml" value="0.15572916666666667" />
+        <entry key="app/src/main/res/layout/fragment_call_log.xml" value="0.15572916666666667" />
+        <entry key="app/src/main/res/layout/fragment_dialpad.xml" value="0.12135416666666667" />
+        <entry key="app/src/main/res/layout/permission_generate.xml" value="0.15572916666666667" />
       </map>
     </option>
   </component>

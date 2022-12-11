@@ -2,9 +2,11 @@ package vn.com.call.editCall;
 
 import static android.content.Context.MODE_PRIVATE;
 import static android.content.Context.NOTIFICATION_SERVICE;
+import static android.content.Context.POWER_SERVICE;
 
 import static vn.com.call.editCall.Constants.ACCEPT_DECLINE_NOTIFICATION_ID;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -15,6 +17,7 @@ import android.content.SharedPreferences;
 import android.media.AudioAttributes;
 import android.net.Uri;
 import android.os.Build;
+import android.os.PowerManager;
 import android.telecom.Call;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -38,6 +41,9 @@ import vn.com.call.utils.CallUtils;
 public class NotificationUtils {
 
     public final static void createAcceptDeclineNotification(Call call, Context context) {
+        PowerManager powerManager = (PowerManager) context.getSystemService(POWER_SERVICE);
+        @SuppressLint("InvalidWakeLockTag") PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK |PowerManager.ACQUIRE_CAUSES_WAKEUP, "MyWakelockTag");
+        wakeLock.acquire();
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), (int) R.layout.layout_incoming_call_notification);
 
         int NOTIFICATIONID = 1234;
@@ -63,6 +69,7 @@ public class NotificationUtils {
                 mChannel.enableLights(true);
                 mChannel.setLightColor(-65536);
                 mChannel.enableVibration(true);
+                mChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
                 mChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
 
                 mChannel.setSound(sound, audioAttributes);

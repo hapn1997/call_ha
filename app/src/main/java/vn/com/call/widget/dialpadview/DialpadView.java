@@ -2,6 +2,7 @@ package vn.com.call.widget.dialpadview;
 
 import android.animation.Animator;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -388,7 +389,8 @@ public class DialpadView extends FrameLayout implements View.OnClickListener,Vie
 
                 break;
             case R.id.call_single_sim :
-                if (isValidNumber()) {
+                if (isValidNumber() && CallerHelper.checkpermissiton((Activity) getContext())) {
+
                     CallerHelper.startPhoneAccountChooseActivity(getContext(),mInputNumber.getText().toString());
 //                    CallUtils.makeCall(getContext(), mInputNumber.getText().toString());
 

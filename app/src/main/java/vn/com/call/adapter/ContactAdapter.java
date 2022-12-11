@@ -98,10 +98,11 @@ public class ContactAdapter extends BaseSectionQuickAdapter<ContactSectionEntity
         helper.root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mContext instanceof Activity) {
-                    goDetailContact((Activity) mContext, helper.avatar, contact, BaseConstant.REQUEST_CODE_SHOW_POPUP);
-                } else
-                    goDetailContact(mContext, helper.avatar, contact);
+                if (CallerHelper.checkpermissiton((Activity) mContext)){
+                    if (mContext instanceof Activity) {
+                        goDetailContact((Activity) mContext, helper.avatar, contact, BaseConstant.REQUEST_CODE_SHOW_POPUP);
+                    } else
+                        goDetailContact(mContext, helper.avatar, contact);
 //                    if (contact.hasPhoneNumber()) {
 //                        idContactExpand = contact.getId();
 //                        notifyDataSetChanged();
@@ -110,6 +111,8 @@ public class ContactAdapter extends BaseSectionQuickAdapter<ContactSectionEntity
 //                        goDetailContact(mContext, helper.avatar, contact);
 //                    }
                 }
+                }
+
 
 
 

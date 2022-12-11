@@ -170,6 +170,7 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
     protected void onCreateView(Bundle savedInstanceState) {
         initRecyclerView();
          initSearch();
+
         appBarLayout.getTotalScrollRange();
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override

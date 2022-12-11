@@ -1,5 +1,9 @@
 package vn.com.call.editCall;
 
+import static android.content.Context.TELECOM_SERVICE;
+
+import android.app.Activity;
+import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -9,11 +13,16 @@ import android.os.Process;
 import android.telecom.Call;
 import android.telecom.CallAudioState;
 import android.telecom.InCallService;
+import android.telecom.TelecomManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
+
 import java.util.Arrays;
 import java.util.List;
+
+import vn.com.call.App;
 
 public class CallerHelper {
     private InCallService inCallService;
@@ -99,5 +108,43 @@ public class CallerHelper {
                 call.hold();
             }
         }
+    }
+    public static boolean checkpermissiton(Activity context){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            RoleManager roleManager;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                roleManager = App.getAppThis().getSystemService(RoleManager.class);
+                if (roleManager.isRoleAvailable(RoleManager.ROLE_DIALER)) {
+                    if (roleManager.isRoleHeld(RoleManager.ROLE_DIALER)) {
+                        return true;
+                    } else {
+                        Intent roleRequestIntent = roleManager.createRequestRoleIntent(RoleManager.ROLE_DIALER);
+                        context.startActivityForResult(roleRequestIntent,2);
+                        return false;
+                    }
+                }
+            }
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (isAlreadyDefaultDialer(context)) {
+                    return true;
+                }
+                Intent intent = new Intent(TelecomManager.ACTION_CHANGE_DEFAULT_DIALER);
+                intent.putExtra(TelecomManager.EXTRA_CHANGE_DEFAULT_DIALER_PACKAGE_NAME, context.getPackageName());
+                if (intent.resolveActivity(context.getPackageManager()) != null) {
+
+                    context.startActivityForResult(intent,2);
+                    return false;
+                } else {
+
+                }
+            }
+        }
+        return false;
+    }
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private static boolean isAlreadyDefaultDialer(Context context) {
+        TelecomManager telecomManager = (TelecomManager) context.getSystemService(TELECOM_SERVICE);
+        return context.getPackageName().equals(telecomManager.getDefaultDialerPackage());
     }
 }

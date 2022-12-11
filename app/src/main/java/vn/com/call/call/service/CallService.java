@@ -1,7 +1,9 @@
 package vn.com.call.call.service;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
+import android.os.PowerManager;
 import android.telecom.Call;
 import android.telecom.InCallService;
 import android.widget.Toast;
@@ -68,6 +70,7 @@ public class CallService  extends InCallService {
 //        startActivity(intent);
         call.registerCallback(onListenerCall);
         if (call.getState() == Call.STATE_RINGING){
+
             NotificationUtils.createAcceptDeclineNotification(call,getApplicationContext());
         }
 
