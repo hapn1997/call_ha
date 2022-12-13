@@ -324,6 +324,7 @@
             app:layout_constraintBottom_toTopOf="@+id/call_decline">
 
             <LinearLayout
+                android:id="@+id/ll_remind"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_35sdp"
@@ -464,6 +465,9 @@
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+    <include android:visibility="gone"
+        layout="@layout/keyboard_call"></include>
     <LinearLayout
         android:id="@+id/dialpad_wrapper"
         android:layout_width="match_parent"

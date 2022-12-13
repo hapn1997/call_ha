@@ -186,7 +186,7 @@ public class ContactDetailActivity extends BaseActivity {
 //        }
 //    }
     void sms() {
-//        if (mContact.getNumbers().size() > 1) {
+        if (mContact.getNumbers().size() > 0) {
 //            ChooseNumberDialogFragment dialog = ChooseNumberDialogFragment.newInstance(getString(R.string.send_sms) + " - " + mContact.getName(), mContact.getNumbers());
 //            dialog.setOnChooseNumberListener(new ChooseNumberDialogFragment.OnChooseNumberListener() {
 //                @Override
@@ -199,10 +199,14 @@ public class ContactDetailActivity extends BaseActivity {
 //        } else {
 //            if (mContact.getNumbers().size() > 0) sendSms(mContact.getNumbers().get(0).getNumber());
 //        }
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("sms:");
-        stringBuilder.append(mContact.getNumbers().get(0).getNumber());
-        this.startActivity(new Intent("android.intent.action.VIEW", Uri.parse(stringBuilder.toString())));
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("sms:");
+            stringBuilder.append(mContact.getNumbers().get(0).getNumber());
+            this.startActivity(new Intent("android.intent.action.VIEW", Uri.parse(stringBuilder.toString())));
+        }else {
+            Toast.makeText(getApplicationContext(),getString(R.string.add_phone_number),Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     @OnClick(R.id.share_contact)
@@ -218,19 +222,25 @@ public class ContactDetailActivity extends BaseActivity {
 
     @OnClick(R.id.add_favorite)
     void changeFavorite() {
-        if(mContact.isFavorite())
-        {
-            mContact.setFavorite(false);
-            ContactHelper.removeFavorite(this, mContact.getId());
-            mAddToFavorite.setText(mContact.isFavorite() ? R.string.detail_activity_title_menu_remove_favorite : R.string.detail_activity_title_menu_add_favorite);
-            String toast = getString(R.string.detail_activity_title_toast_remove_favorite).replace("{name}", getNameContact());
-            Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
+        if (mContact.getNumbers().size() >0){
+            if(mContact.isFavorite())
+            {
+                mContact.setFavorite(false);
+                ContactHelper.removeFavorite(this, mContact.getId());
+                mAddToFavorite.setText(mContact.isFavorite() ? R.string.detail_activity_title_menu_remove_favorite : R.string.detail_activity_title_menu_add_favorite);
+                String toast = getString(R.string.detail_activity_title_toast_remove_favorite).replace("{name}", getNameContact());
+                Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
 
+            }else {
+                mContact.setFavorite(true);
+                showSetting(this,mContact,mContact.getNumbers().get(0).getNumber(),mContact.getPhoto());
+
+            }
         }else {
-            mContact.setFavorite(true);
-            showSetting(this,mContact,mContact.getNumbers().get(0).getNumber(),mContact.getPhoto());
+            Toast.makeText(getApplicationContext(),getString(R.string.add_phone_number),Toast.LENGTH_SHORT).show();
 
         }
+
 
     }
     public void showSetting(final Context context, final Contact contact, final String phoneNumber, final String photo){
@@ -286,24 +296,25 @@ public class ContactDetailActivity extends BaseActivity {
 
     @OnClick(R.id.edit)
     void editOrCreateContact() {
+
 //        Intent videocall= new Intent("com.android.phone.videocall");
 //        videocall.putExtra("videocall", true);
 //        videocall.setData(Uri.parse("tel:" + mContact.getNumbers().get(0).getNumber()));
 //        startActivity(videocall);
-//        if (mContact.getId() != null) {
-//            Uri uriContact = ContactsContract.Contacts.getLookupUri(Long.parseLong(mContact.getId()), mContact.getLookupKey());
-//
-//            Intent editIntent = new Intent(Intent.ACTION_EDIT);
-//            editIntent.setDataAndType(uriContact, ContactsContract.Contacts.CONTENT_ITEM_TYPE);
-//            startActivity(editIntent);
-//        } else {
-//            Intent intentInsertEdit = new Intent(Intent.ACTION_INSERT_OR_EDIT);
-//            intentInsertEdit.setType(ContactsContract.Contacts.CONTENT_ITEM_TYPE);
-//            intentInsertEdit.putExtra(ContactsContract.Intents.Insert.PHONE, mContact.getNumbers().get(0).getNumber())
-//                    .putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_WORK);
-//
-//            startActivity(intentInsertEdit);
-//        }
+        if (mContact.getId() != null) {
+            Uri uriContact = ContactsContract.Contacts.getLookupUri(Long.parseLong(mContact.getId()), mContact.getLookupKey());
+
+            Intent editIntent = new Intent(Intent.ACTION_EDIT);
+            editIntent.setDataAndType(uriContact, ContactsContract.Contacts.CONTENT_ITEM_TYPE);
+            startActivity(editIntent);
+        } else {
+            Intent intentInsertEdit = new Intent(Intent.ACTION_INSERT_OR_EDIT);
+            intentInsertEdit.setType(ContactsContract.Contacts.CONTENT_ITEM_TYPE);
+            intentInsertEdit.putExtra(ContactsContract.Intents.Insert.PHONE, mContact.getNumbers().get(0).getNumber())
+                    .putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_WORK);
+
+            startActivity(intentInsertEdit);
+        }
     }
 
     @OnClick(R.id.block)

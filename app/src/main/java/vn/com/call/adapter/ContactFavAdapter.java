@@ -103,7 +103,11 @@ public class ContactFavAdapter extends BaseSectionQuickAdapter<ContactSectionEnt
             public void onClick(View view) {
          // contact.changeFavorite(mContext);
              //   Log.d("dcdccdccd",contact.getPhoto()+ contact.getName());
-              showSetting(mContext,contact,phoneNumbers.get(0).getNumber(),contact.getPhoto());
+                if (phoneNumbers.size() >0){
+                    showSetting(mContext,contact,phoneNumbers.get(0).getNumber(),contact.getPhoto());
+                }else {
+                    Toast.makeText(mContext,mContext.getString(R.string.add_phone_number),Toast.LENGTH_SHORT).show();
+                }
             }
 
 

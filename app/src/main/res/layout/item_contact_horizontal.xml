@@ -17,14 +17,15 @@
     android:layout_height="@dimen/_20sdp"
     android:layout_marginTop="@dimen/text_size_sms_15"
     ></ImageView>
+
     <vn.com.call.widget.AvatarView
 
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_toRightOf="@+id/imageremove"
-        android:layout_marginTop="7dp"
         android:id="@+id/avatar"
         android:layout_width="@dimen/_35sdp"
-        android:layout_height="@dimen/_35sdp" />
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="7dp"
+        android:layout_toRightOf="@+id/imageremove" />
 
     <LinearLayout
         android:id="@+id/fvfvfv"

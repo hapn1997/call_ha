@@ -8,6 +8,8 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.Date;
 
+import vn.com.call.editCall.Constants;
+import vn.com.call.editCall.NotificationUtils;
 import vn.com.call.editCall.TelecomUtils;
 import vn.com.call.ui.CallActivity;
 import vn.com.call.utils.CallUtils;
@@ -60,6 +62,7 @@ public class CallReceiver extends  CallActionReceiver {
     @Override
     protected void onMissedCall(Context ctx, String number, Date start) {
         EventBus.getDefault().post(TelecomUtils.OnMissedCall);
+        NotificationUtils.removeNotificationFromID(ctx, Constants.ACCEPT_DECLINE_NOTIFICATION_ID);
         Toast.makeText(ctx,"onMissedCall",Toast.LENGTH_SHORT).show();
 
 

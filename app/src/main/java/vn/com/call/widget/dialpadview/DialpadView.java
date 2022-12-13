@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,7 +55,7 @@ import vn.com.call.utils.SmsUtils;
 
 public class DialpadView extends FrameLayout implements View.OnClickListener,View.OnLongClickListener, LoaderManager.LoaderCallbacks<Cursor> {
     public static final String ACTION_SIM_STATE_CHANGED = "android.intent.action.SIM_STATE_CHANGED";
-
+    MediaPlayer mp;
     private View mDialpad;
     String contactname ;
     String contactNumber;
@@ -76,6 +78,7 @@ public class DialpadView extends FrameLayout implements View.OnClickListener,Vie
             }
         }
     };
+    float valueCaculator;
 
     public DialpadView(@NonNull Context context) {
 
@@ -99,6 +102,7 @@ public class DialpadView extends FrameLayout implements View.OnClickListener,Vie
 //        }
         //fragment.getLoaderManager().initLoader(0,null,this);
         mDialpad.findViewById(R.id.key_one).findViewById(R.id.dialpad_key_letters).setVisibility(View.INVISIBLE);
+
         View keyZero = mDialpad.findViewById(R.id.key_zero);
         View keystart = mDialpad.findViewById(R.id.key_star);
         View keypound = mDialpad.findViewById(R.id.key_pound);
@@ -152,7 +156,7 @@ public class DialpadView extends FrameLayout implements View.OnClickListener,Vie
                     mInputNumber.setTextSize(21);
                 }
                 if(mInputNumber.length()>20){
-                    threedot.setVisibility(VISIBLE);
+//                    threedot.setVisibility(VISIBLE);
                 }
                 if(mInputNumber.length()<22){
                     threedot.setVisibility(GONE);
@@ -177,7 +181,9 @@ public class DialpadView extends FrameLayout implements View.OnClickListener,Vie
             }
         });
 
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            valueCaculator = mInputNumber.getTextSize();
+        }
         onChangedSimState();
 
         mBackspace.setOnClickListener(this);
@@ -202,6 +208,8 @@ public class DialpadView extends FrameLayout implements View.OnClickListener,Vie
         mDialpad.findViewById(R.id.call_single_sim).setOnClickListener(this);
 
         addView(mDialpad);
+
+        mp = MediaPlayer.create(getContext(), R.raw.dialing2);
 
         //mDialpad.setTranslationY(ScreenUtils.getHeightScreen(getContext()));
 
@@ -274,12 +282,22 @@ public class DialpadView extends FrameLayout implements View.OnClickListener,Vie
 
         deleteDialog.show();
     }
-
+    public void play(){
+        try {
+            if (mp.isPlaying()) {
+                mp.stop();
+                mp.release();
+                mp = MediaPlayer.create(getContext(), R.raw.dialing2);
+            } mp.start();
+        } catch(Exception e) { e.printStackTrace(); }
+    }
 
     @Override
     public void onClick(View view) {
         int id = view.getId();
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            mInputNumber.setAutoSizeTextTypeWithDefaults(TextView.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+        }
         String simSlotName[] = {
                 "extra_asus_dial_use_dualsim",
                 "com.android.phone.extra.slot",
@@ -301,7 +319,13 @@ public class DialpadView extends FrameLayout implements View.OnClickListener,Vie
 
         switch (id) {
             case R.id.addnumber :
-                showSetting(getContext());
+                Intent intent12 = new Intent(Intent.ACTION_INSERT);
+                intent12.setType(ContactsContract.Contacts.CONTENT_TYPE);
+                intent12.putExtra(ContactsContract.Intents.Insert.PHONE,mInputNumber.getText().toString())
+                        .putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_WORK);
+
+               getContext().startActivity(intent12);
+//                showSetting(getContext());
                 break;
             case R.id.backspace :
 //                mInputNumber.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
@@ -321,39 +345,62 @@ public class DialpadView extends FrameLayout implements View.OnClickListener,Vie
 //                sendDismissTouchbar();
 //                break;
             case R.id.key_one :
+                play();
                 mInputNumber.append("1");
                 break;
             case R.id.key_two :
+                play();
+
                 mInputNumber.append("2");
                 break;
             case R.id.key_three :
+                play();
+
                 mInputNumber.append("3");
                 break;
             case R.id.key_four :
+                play();
+
                 mInputNumber.append("4");
                 break;
             case R.id.key_five :
+                play();
+
                 mInputNumber.append("5");
                 break;
             case R.id.key_six :
+                play();
+
                 mInputNumber.append("6");
                 break;
             case R.id.key_seven :
+                play();
+
                 mInputNumber.append("7");
                 break;
             case R.id.key_eight :
+                play();
+
                 mInputNumber.append("8");
                 break;
             case R.id.key_nine :
+                play();
+
                 mInputNumber.append("9");
                 break;
             case R.id.key_zero :
+                play();
+
                 mInputNumber.append("0");
                 break;
             case R.id.key_star :
+                play();
+
                 mInputNumber.append("*");
                 break;
             case R.id.key_pound :
+                play();
+
                 mInputNumber.append("#");
                 break;
             case R.id.call_sim_1 :
@@ -400,6 +447,10 @@ public class DialpadView extends FrameLayout implements View.OnClickListener,Vie
                 break;
 
             default:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    mInputNumber.setAutoSizeTextTypeWithDefaults(TextView.AUTO_SIZE_TEXT_TYPE_NONE);
+                }
+                mInputNumber.setTextSize(TypedValue.COMPLEX_UNIT_PX,valueCaculator);
                 mInputNumber.append("");
                 break;
         }
@@ -434,6 +485,10 @@ public class DialpadView extends FrameLayout implements View.OnClickListener,Vie
             public void onAnimationEnd(Animator animator) {
                 //setVisibility(View.GONE);
                 mInputNumber.setText("");
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    mInputNumber.setAutoSizeTextTypeWithDefaults(TextView.AUTO_SIZE_TEXT_TYPE_NONE);
+                }
+                mInputNumber.setTextSize(TypedValue.COMPLEX_UNIT_PX,valueCaculator);
             }
 
             @Override
@@ -529,6 +584,10 @@ public class DialpadView extends FrameLayout implements View.OnClickListener,Vie
 
                 break;
             case R.id.backspace:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    mInputNumber.setAutoSizeTextTypeWithDefaults(TextView.AUTO_SIZE_TEXT_TYPE_NONE);
+                }
+                mInputNumber.setTextSize(TypedValue.COMPLEX_UNIT_PX,valueCaculator);
                 mInputNumber.setText("");
 
                 break;

@@ -112,7 +112,7 @@
                            <TextView
                                android:fontFamily="@font/ios_medium"
                                android:layout_marginTop="3dp"
-                                  android:textSize="12dp"
+                                  android:textSize="@dimen/_12ssp"
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
                                android:gravity="center_horizontal"

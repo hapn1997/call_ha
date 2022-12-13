@@ -80,10 +80,13 @@ public class HorizontalContactAdapter extends RecyclerView.Adapter<HorizontalCon
         holder.info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Context context = holder.info.getContext();
-                if (context instanceof Activity)
-                    ContactDetailActivity.launch((Activity) context, holder.avatar, contact, BaseConstant.REQUEST_CODE_SHOW_POPUP);
-                else ContactDetailActivity.launch(context, contact);
+                if (CallerHelper.checkpermissiton((Activity) context)){
+                    Context context = holder.info.getContext();
+                    if (context instanceof Activity)
+                        ContactDetailActivity.launch((Activity) context, holder.avatar, contact, BaseConstant.REQUEST_CODE_SHOW_POPUP);
+                    else ContactDetailActivity.launch(context, contact);
+                }
+
             }
         });
         holder.name.setText(contact.getName());
@@ -97,6 +100,9 @@ public class HorizontalContactAdapter extends RecyclerView.Adapter<HorizontalCon
         holder.root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (CallerHelper.checkpermissiton((Activity) context)){
+
+
                 if(checkRemove) {
                       showSetting(contact,holder);
                 }else {
@@ -128,7 +134,7 @@ public class HorizontalContactAdapter extends RecyclerView.Adapter<HorizontalCon
                             else                     CallerHelper.startPhoneAccountChooseActivity(context, phoneNumbers.get(0).getNumber());
                         }
                 }
-
+            }
             }
         });
         if(checkRemove){

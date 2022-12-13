@@ -290,6 +290,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:visibility="gone"
 
                         android:id="@+id/rl_mycards"
                         android:layout_width="match_parent"

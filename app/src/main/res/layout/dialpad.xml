@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
 
     <RelativeLayout
         android:id="@+id/rèecđc"
@@ -32,20 +32,24 @@
             <TextView
                 android:id="@+id/input_number"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="65dp"
-                android:layout_toLeftOf="@+id/threedot"
-                android:background="@android:color/white"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:fontFamily="@font/ios_regular"
-                android:gravity="center_horizontal|center_vertical"
-                android:inputType="phone"
-                android:selectAllOnFocus="false"
-                android:singleLine="true"
-                android:textColor="@android:color/black"
-                android:textSize="30dp" />
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@null"
+                android:cursorVisible="false"
+                android:gravity="fill_vertical|center_horizontal"
+                android:maxLines="1"
+                android:textIsSelectable="true"
+                android:ellipsize="end"
+                android:scrollHorizontally="true"
+                android:textSize="@dimen/_36ssp"
+                android:autoSizePresetSizes="@array/autosize_text_sizes"
+                app:autoSizeMaxTextSize="@dimen/_36ssp"
+                app:autoSizeMinTextSize="@dimen/_10ssp"
+                app:autoSizeStepGranularity="2sp"
+                app:autoSizeTextType="uniform"/>
               <TextView
                   android:fontFamily="@font/ios_regular"
                   android:visibility="gone"

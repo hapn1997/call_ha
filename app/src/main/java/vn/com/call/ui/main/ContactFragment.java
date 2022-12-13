@@ -479,7 +479,7 @@ public class ContactFragment extends BaseFragment implements SideBar.OnTouchingL
 
     protected void loadAndShowData() {
         commitData(ContactCache.getContacts());
-        getContext().getContentResolver().registerContentObserver(ContactsContract.Contacts.CONTENT_URI, true, new MyObserver());
+//        getContext().getContentResolver().registerContentObserver(ContactsContract.Contacts.CONTENT_URI, true, new MyObserver());
 
 //        ContactFragmentPermissionsDispatcher.readContactWithCheck(this);
     }

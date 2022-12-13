@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:exitFadeDuration="200">
+    <item android:state_activated="true">
+        <shape android:shape="ring" android:thicknessRatio="2" android:useLevel="false" android:innerRadius="0dp">
+            <solid android:color="@color/white"/>
+        </shape>
+    </item>
+    <item android:state_enabled="false">
+        <shape android:shape="ring" android:thicknessRatio="2" android:useLevel="false" android:innerRadius="0dp">
+            <solid android:color="@color/white10"/>
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape android:shape="ring" android:thicknessRatio="2" android:useLevel="false" android:innerRadius="0dp">
+            <solid android:color="@color/white10"/>
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="ring" android:thicknessRatio="2" android:useLevel="false" android:innerRadius="0dp">
+            <solid android:color="@color/white10"/>
+        </shape>
+    </item>
+</selector>

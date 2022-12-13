@@ -8,6 +8,7 @@
         android:required="false" /> <!-- <uses-permission android:name="android.permission.SEND_SMS" /> -->
     <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
     <!-- <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> -->
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
@@ -31,6 +32,9 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
 
 
     <application
@@ -60,6 +64,9 @@
             android:noHistory="true"/>
 
         <activity
+            android:showOnLockScreen="true"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"
             android:name="vn.com.call.ui.CallActivity"
             android:exported="false" />
         <activity
@@ -274,11 +281,8 @@
             </intent-filter>
 
         </receiver>
-        <receiver android:name="vn.com.call.call.service.MissedCallNotificationReceiver" android:exported="true" android:directBootAware="true">
-            <intent-filter>
-                <action android:name="android.telecom.action.SHOW_MISSED_CALLS_NOTIFICATION"/>
-            </intent-filter>
-        </receiver>
+
+        <service android:name="vn.com.call.editCall.CallLogNotificationsService" android:exported="true" android:directBootAware="true"/>
 
         <service
             android:name="vn.com.call.call.util.NotificationServiceCustom"
@@ -301,6 +305,11 @@
             android:name="vn.com.call.call.service.ServiceCallRing"
             android:enabled="true" />
         <service android:name="vn.com.call.editCall.NotificationActionService"/>
+        <receiver android:name="vn.com.call.call.service.MissedCallNotificationReceiver" android:exported="true" android:directBootAware="true">
+            <intent-filter>
+                <action android:name="android.telecom.action.SHOW_MISSED_CALLS_NOTIFICATION"/>
+            </intent-filter>
+        </receiver>
 
     </application>
 

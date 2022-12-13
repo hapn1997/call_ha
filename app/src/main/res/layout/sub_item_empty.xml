@@ -13,11 +13,11 @@
 
         <vn.com.call.widget.SquareHeightImageButton
             android:id="@+id/phone_icon"
-            android:scaleType="fitCenter"
-            android:padding="@dimen/text_size_sms_15"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="@dimen/_15sdp"
+            android:scaleType="fitCenter"
             android:src="@drawable/call_iconv" />
 
         <TextView
@@ -44,7 +44,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_email_primary_color_detail_contact_24dp" />
+            android:src="@drawable/ic_email_primary_color_detail_contact_24dp"
+            android:tint="@color/colorBlue" />
 
         <TextView
             android:id="@+id/email_text"

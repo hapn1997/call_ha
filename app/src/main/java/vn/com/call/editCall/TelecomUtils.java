@@ -39,7 +39,7 @@ public class TelecomUtils {
         return null;
     }
 
-    public final String getDefaultDialerPackage(TelecomManager telecomManager) {
+    public static final String getDefaultDialerPackage(TelecomManager telecomManager) {
         if (telecomManager == null ) {
             return null;
         }
@@ -48,7 +48,7 @@ public class TelecomUtils {
         }
         return null;
     }
-    private final TelecomManager getTelecomManager(Context context) {
+    private static final TelecomManager getTelecomManager(Context context) {
         Object systemService = context == null ? null : context.getSystemService(Context.TELECOM_SERVICE);
         return (TelecomManager) systemService;
     }
@@ -77,7 +77,45 @@ public class TelecomUtils {
         return sb2;
     }
 
+    public static final void cancelMissedCallsNotification(Context context) {
 
+        if (hasModifyPhoneStatePermission(context)) {
+            try {
+
+                getTelecomManager(context).cancelMissedCallsNotification();
+            } catch (NullPointerException e10) {
+                e10.printStackTrace();
+            } catch (SecurityException e11) {
+                e11.printStackTrace();
+            }
+        }
+    }
+    public static final boolean hasModifyPhoneStatePermission(Context context) {
+        return isDefaultDialer(context) || hasPermission(context, "android.permission.MODIFY_PHONE_STATE");
+    }
+    private static boolean sWarningLogged;
+
+    public static final boolean isDefaultDialer(Context context) {
+        boolean equals = TextUtils.equals(context.getPackageName(), getDefaultDialerPackage(getTelecomManager(context)));
+        if (equals) {
+            sWarningLogged = false;
+        } else if (!sWarningLogged) {
+            sWarningLogged = true;
+        }
+        return equals;
+    }
+    static final boolean hasPermission(Context context, String str) {
+        return chenk(context, str) == 0;
+    }
+
+
+    public static int chenk(Context context, String per) {
+        if (per != null) {
+            return context.checkPermission(per, Process.myPid(), Process.myUid());
+        }
+        throw new IllegalArgumentException("permission is null");
+
+    }
 
 
 }

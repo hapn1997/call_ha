@@ -179,7 +179,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_favorites_add_fragment">FavoritesAddFragment</string>
-    <string name="message">mesage</string>
+    <string name="message">message</string>
     <string name="mobile">mobile</string>
     <string name="edit1">edit</string>
     <string name="email">mail</string>
@@ -211,8 +211,40 @@
     <string name="decline">Decline</string>
     <string name="remind_me">Remind Me</string>
     <string name="accept">Accept</string>
-    <string name="slide_to_answer">slide to answer</string>
+    <string name="slide_to_answer">Slide to answer</string>
     <string name="call_ended">Call End</string>
-
-
+    <string name="content_desc_image">Image content description</string>
+    <string name="one">1</string>
+    <string name="two2" />
+    <string name="two">2</string>
+    <string name="abc">A B C</string>
+    <string name="three">3</string>
+    <string name="def">D E F</string>
+    <string name="four">4</string>
+    <string name="ghi">G H I</string>
+    <string name="five">5</string>
+    <string name="jkl">J K L</string>
+    <string name="six">6</string>
+    <string name="mno">M N O</string>
+    <string name="seven">7</string>
+    <string name="pqrs">P Q R S</string>
+    <string name="eight">8</string>
+    <string name="tuv">T U V</string>
+    <string name="nine">9</string>
+    <string name="wxyz">W X Y Z</string>
+    <string name="star">*</string>
+    <string name="zero">0</string>
+    <string name="plus">+</string>
+    <string name="hash">#</string>
+    <string name="hide">Hide</string>
+    <string name="missed_call_screen_channel_id">Missed calls</string>
+    <string name="notification_missedCall_call_back">Call back</string>
+    <string name="message_1">Can\'t talk right now..</string>
+    <string name="message_2">I\'ll Call you later.</string>
+    <string name="message_3">I\'m on my way</string>
+    <string name="message_4">Can\'t talk now. Call me later.</string>
+    <string name="remind_1">In 5 minute</string>
+    <string name="remind_2">In 10 minute</string>
+    <string name="remind_3">In 30 minute</string>
+    <string name="remind_4">In 1 hour</string>
 </resources>
